@@ -1,0 +1,30 @@
+{% include header.html %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Home</li>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Screenshots</a></li>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#"></a></li>
+                    <li class="nav-header">Documentation</li>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Data loading</a></li>
+                    <li><a href="#">Navigation</a></li>
+                    <li><a href="#">Overlays</a></li>
+                    <li><a href="#">Carving</a></li>
+                    <li><a href="#">Synapse Detection</a></li>
+                </ul>
+            </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+            <div class="page-header">
+                <h1>{{ page.title }}</h1>
+            </div>
+            {{ content }}
+        </div>
+    </div>
+</div><!--/row-->
+{% include footer.html %}

@@ -1,0 +1,14 @@
+permalink: /:categories/:year/:month/:day/:title 
+
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+auto: true
+pygments: true
+
+title : ilastik
+author :
+  name : ilastik developers 
+  email : ilastik-user@ilastik.org
+  github : ilastik
+
+production_url : http://ilastik.github.io
+
