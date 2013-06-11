@@ -1,6 +1,8 @@
 ---
-layout: index
-title: Contact 
+layout: default
+title: Help
+tagline: ask the friendly ilastik team for help
+category: "Contact"
 ---
 For user discussions and support, please use the mailinglist
 [ilastik-user](http://mailman.ilastik.org/cgi-bin/mailman/listinfo/ilastik-user)

@@ -1,8 +1,11 @@
 ---
-layout: ilastik06
-title: Carving - Interactive Segmentation
+layout: documentation
+title: Carving
+tagline: Interactive Segmentation
+category: "Documentation"
+group: "workflow-documentation"
 ---
-
+# Carving
 ## How it works, what it can and cannot do
 
 The seeded watershed algorithm is an image segmentation algorithm for

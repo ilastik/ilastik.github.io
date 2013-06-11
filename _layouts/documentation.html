@@ -1,0 +1,30 @@
+{% include header.html %}
+{% include navbar.html %}
+
+<div class="row">
+  <div class="span12">
+    <div class="page-header">
+    <h1>      <img src="http://www.ilastik.org/layouts/plainoffice/grafiken/ilastik-logo.png"
+    alt="ilastik"> Documentation</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span3">
+       <ul class="nav nav-list well">
+	 <li class="nav-header">ilastik Basics</li>
+	 {% assign pages_list = site.pages %}
+	 {% assign group = 'basic-documentation' %}
+	 {% include pages_list %}
+	 <li class="nav-header">ilastik Workflows</li>
+	 {% assign pages_list = site.pages %}
+	 {% assign group = 'workflow-documentation' %}
+	 {% include pages_list %}
+    </ul>
+  </div>
+  <div class="span9">
+    {{ content }}
+  </div>
+</div>
+{% include footer.html %}
