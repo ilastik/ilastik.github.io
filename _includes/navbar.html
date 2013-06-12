@@ -1,5 +1,6 @@
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
+	  <div class="container">
        	  <a class="brand" href="/">ilastik</a>
 	    <ul class="nav">
 	    <li {% if page.category == "Home" %} class="active" {% endif %}><a href="/index.html">Home</a></li>
@@ -9,6 +10,7 @@
 	    <li class="divider-vertical"></li>
 	    <li {% if page.category == "Contact" %} class="active" {% endif %}><a href="/contact.html">Contact</a></li>
 	  </ul>
+	  </div>
 	</div> <!-- navbar-inner -->
       </div> <!-- navbar -->
 
