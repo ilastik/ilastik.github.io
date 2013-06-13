@@ -1,0 +1,39 @@
+---
+layout: default
+title: About
+category: "About"
+---
+<div class="row">
+  <div class="span9 offset1">
+    <p>
+      ilastik  is a simple, user-friendly tool for <em>image classification and
+	segmentation</em> in up to three spatial and one spectral dimension. Using it
+      requires no experience in image processing.
+    </p>
+
+    <p>
+      ilastik has a convenient mouse interface for labeling an <em>arbitrary number
+      of classes</em> in the images. These labels, along with a set of generic
+      (nonlinear) image features, are then used to train a Random Forest classifier.
+      In the <em>interactive training</em> mode, ilastik provides real-time feedback of
+      the current classifier predictions and thus allows for targeted training and
+      overall reduced labeling time. In addition, an uncertainty measure can guide
+      the user to ambiguous regions of the data. Once the classifier has been trained
+      on a representative subset of the data, it can be exported and used to
+      <em>automatically process</em> a very large number of images.
+    </p>
+    <p>
+      The features are computed in the <em>full 2D/3D/4D pixel neighborhoods</em>,
+      depending on the available data. While the provided set of features includes
+      popular color, edge and texture descriptors, the <em>plug-in functionality</em>
+      allows advanced users to add their own problem-specific features. Feature
+      computation and classifier prediction are <em>multi-threaded</em> and fully
+      exploit modern multi-core machines. 
+    </p>
+    <p>
+      So far, we have used ilastik successfully on applications from the
+      neurosciences (segmentation of EM images), systems biology (high throughput
+      screening experiments) and industrial quality control. 
+    </p>
+  </div>
+</div>

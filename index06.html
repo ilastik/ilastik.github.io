@@ -1,11 +1,23 @@
 ---
-layout: default
+layout: headerfooter
 title: ilastik
 tagline: the interactive learning and segmentation toolkit
 category: Home
 ---
+{% include navbar.html %}
+
 <div class="row">
-  <div class="span5 offset1">
+  <div class="span7 offset2">
+    <div class="page-header">
+      <img src="/assets/ilastik-logo.png" alt="ilastik"
+	   class="pull-left" id="main-logo">
+      <h1>{{ page.title }} {% if page.tagline %} <br /> <small>{{ page.tagline }}</small>{% endif %}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span5 offset3">
     <div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
       <div class="carousel-inner">
 	<div class="item active"><!-- class of active since it's the first item -->
@@ -31,57 +43,73 @@ category: Home
 	</div>
       </div><!-- /.carousel-inner -->
       <!--  Next and Previous controls below
-      href values must reference the id for this carousel -->
+	    href values must reference the id for this carousel -->
       <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
   </div>
+</div>
 
-  <div class="span5">
-    <div class="hero-unit">
-      <p>ilastik is an easy-to-use tool
-	for the analysis of multidimensional image data
-      </p>
-      <p>
-	<a class="btn btn-primary btn-large" href="/download.html">
-	  Download
-	</a>
-      </p>
-    </div>
+<div class="row">
+  <div class="span3 offset1" align="center">
+    <p>
+      <span class="icon-stack icon-4x">
+	<i class="icon-check-empty icon-stack-base"></i>
+	<i class="icon-download-alt icon-4x"></i>
+      </span>
+    </p>
+
+    <h4>
+    <a href="/download.html">Install ilastik</a></h4>
+    <p>Ready-made packages are available for Linux, Mac, and Windows.</p>
+  </div>
+
+  <div class="span3" align="center">
+    <p>
+      <span class="icon-stack icon-4x">
+	<i class="icon-check-empty icon-stack-base"></i>
+	<i class="icon-keyboard icon-4x"></i>
+      </span>
+    </p>
+
+    <h4>
+    <a href=#>Take the tutorial</a></h4>
+    <p>Use one of our demo datasets to learn what ilastik can do for
+    you. FIXME: WRITE THIS TUTORIAL!</p>
+  </div>
+
+  <div class="span3" align="center">
+    <p>
+      <span class="icon-stack icon-4x">
+	<i class="icon-check-empty icon-stack-base"></i>
+	<i class="icon-book icon-4x"></i>
+      </span>
+    </p>
+
+    <h4>
+    <a href="/documentation/index.html">Learn more</a></h4>
+    <p>ilastik comes with an extensive user manual and FAQs.</p>
   </div>
 </div>
 
 <div class="row">
-  <div class="span9 offset1">
-    <p>
-      ilastik  is a simple, user-friendly tool for <em>image classification and
-	segmentation</em> in up to three spatial and one spectral dimension. Using it
-      requires no experience in image processing.
-    </p>
-
-    <p>
-      ilastik has a convenient mouse interface for labeling an <em>arbitrary number
-      of classes</em> in the images. These labels, along with a set of generic
-      (nonlinear) image features, are then used to train a Random Forest classifier.
-      In the <em>interactive training</em> mode, ilastik provides real-time feedback of
-      the current classifier predictions and thus allows for targeted training and
-      overall reduced labeling time. In addition, an uncertainty measure can guide
-      the user to ambiguous regions of the data. Once the classifier has been trained
-      on a representative subset of the data, it can be exported and used to
-      <em>automatically process</em> a very large number of images.
-    </p>
-    <p>
-      The features are computed in the <em>full 2D/3D/4D pixel neighborhoods</em>,
-      depending on the available data. While the provided set of features includes
-      popular color, edge and texture descriptors, the <em>plug-in functionality</em>
-      allows advanced users to add their own problem-specific features. Feature
-      computation and classifier prediction are <em>multi-threaded</em> and fully
-      exploit modern multi-core machines. 
-    </p>
-    <p>
-      So far, we have used ilastik successfully on applications from the
-      neurosciences (segmentation of EM images), systems biology (high throughput
-      screening experiments) and industrial quality control. 
-    </p>
+  <div class="span12">
+    <hr />
   </div>
+</div>
+
+<div class="row">
+  <div class="offset3 span5">
+    <p>
+      <span class="icon-stack icon-4x pull-left">
+	<i class="icon-circle icon-stack-base"></i>
+	<i class="icon-comments icon-light"></i>
+      </span>
+
+    <h4>
+    <a href="/community.html">Get in touch</a></h4>
+      Discuss with other users on our mailing lists or
+      contact the friendly ilastik team directly.</p>
+  </div>
+
 </div>

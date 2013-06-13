@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Help
+title: Contact
 tagline: ask the friendly ilastik team for help
 category: "Contact"
 ---
