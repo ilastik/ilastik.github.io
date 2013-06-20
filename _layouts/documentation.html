@@ -1,6 +1,10 @@
 {% include header.html %}
 {% include navbar.html %}
 
+{% comment %} load the 'toc' macro to generate table of contents {% endcomment %}
+{% include toc %}
+
+
 <div class="row">
   <div class="span12">
     <div class="page-header">
@@ -16,15 +20,18 @@
 	 <li class="nav-header">ilastik Basics</li>
 	 {% assign pages_list = site.pages %}
 	 {% assign group = 'basic-documentation' %}
+	 {% assign active_hook = toc %}
 	 {% include pages_list %}
 	 <li class="nav-header">ilastik Workflows</li>
 	 {% assign pages_list = site.pages %}
 	 {% assign group = 'workflow-documentation' %}
+	 {% assign active_hook = toc %}
 	 {% include pages_list %}
     </ul>
   </div>
   <div class="span9">
-    {{ content }}
+
+{{ content }}
   </div>
 </div>
 {% include footer.html %}
