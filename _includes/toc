@@ -1,0 +1,12 @@
+{% comment %} generate table of contents and store it in 'toc' var {% endcomment %}
+{% capture basemd %}
+{% raw %}
+* TOC
+{:toc}
+{% endraw %}
+{{page.content}}
+{% endcapture %}
+
+{% assign toc = basemd | markdownify | split:'</div>' | first | append:'</div>' %}
+
+   
