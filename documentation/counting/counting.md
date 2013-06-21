@@ -34,27 +34,59 @@ Currently, only 2D data is supported, HDF5-data with z-axis will get refused.
 ### 2. Object size
 
 The chosen Sigma should be large enough so that one gaussian-smoothed dot covers a single object.
-#Selecting a good Sigma
 
 
 ### 3. Interactive refinement
+Using LiveUpdate
+Place Observerboxes
 ## Dots and stripes
--U
-## Choice of method
+Dots have to be placed close to the center
+Cursor has the size of the currently selected Sigma
+
+Most importantly dots on overlapping cells, otherwise training data incorrect.
+Background: broad strokes, just marking unimportant stuff
+
+Use boxes to get general idea of quality
+
+
+
+
+### 4. Algorithm
 # Random Regression Forest
 2 different regressors are supplied in our framework.
 Random Forest is fast and included in scikit-learn, which is a dependency for ilastik.
 Requires more labels to give correct results over bigger dataset.
+Good at handling background labels due to non-linearity
 
 
 
+
+# Support Vector Machine
+Requires Gurobi
+Slower
+Better generalization
+Can offer additional type of label via Box constraints
+-Box constraints not strict
 #Box constraints
+Box constraints offer an easy way to provide counts for a region, while not having to label every instance individually.
 
 
-#Regression parameters
+
+
+##Regression Parameters
+We expose the most important and well-known parameters for our algorithms to the user, though the defaults should already create good results.
+
+
+
+
 
 ##Saving
+Possible to save the regressor
+Will be loaded again, can do prediction directly if parameters and labels untouched
+Can also save prediction itself
+If you want to export the results for a single image, use exportLayerDialog.
 
 ##Batch prediction
+For large-scale prediction, first train regressor, then add input images, then press export all.
 
 
