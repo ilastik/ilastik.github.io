@@ -1,7 +1,7 @@
 ---
 layout: documentation
-title: Carving
-tagline: Interactive Segmentation
+title: Counting
+tagline: Interactive Counting
 category: "Documentation"
 group: "workflow-documentation"
 ---
@@ -18,22 +18,28 @@ or manually fixing the number of objects in specific regions.
 
 While counting connected components via e.g. Pixel Classification is viable for very sparse data, 
 overlapping objects in big clusters require our density-based regression algorithm.
-Still, to provide accurate counts, a high similarity between individual instances is recommended, most notably in size.
-The seeded watershed relies on discernible object
-boundaries in the image data and not on inner appearance of an object like for
-example the classification workflow.
-      
+Still, to provide accurate counts, similarity between individual instances is expected, most notably in size:
+To ease the burden on the user, we focused on minimizing the amount of input that has to be provided, rather than manually labeling either the extent or the boundaries of a specific object, 
+instead of marking the exact shapes of the objects, dots placed close to the centers are sufficient in our case.
 ![](counting_intro_overview.png)
 
-While the
-<a href="/kategorien/20_Documentation/dateien/ilastik_carving_documentation/">Classification
-module</a> is useful for segmenting objects with discernible brightness, color
-or textural differences in comparison to their surroundings, the carving
-module's purpose is to aid in the extraction of objects from images that are
-only separable by their boundary - i.e. objects that do not differ from the
-rest of the image by their internal appearance.
+![](counting_good_bad.png)
 
-![](carving_good_bad.png)
+Complicated but separated objects with a high variability as seen on the left 
+![](object detection) are more suited to the more general<a href="../object_detection"> Object Detection module, on the other hand, clusters of small and overlapping instances as seen on the right are the focus of
+our counting approach, dealing with these issues specifically.
+
+
+##Selecting a good Sigma
+
+
+##Interactive counting
+
+#Box constraints
+
+##Regression parameters
+
+
       
 From the two images displayed to the right, the left image is clearly
 more suitable for the classification module since the cell cores have a
