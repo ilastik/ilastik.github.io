@@ -9,4 +9,5 @@
 
 {% assign toc = basemd | markdownify | split:'</div>' | first | append:'</div>' %}
 
-   
+{% comment %} reset local vars {% endcomment %}
+{% assign basemd = nil %}
