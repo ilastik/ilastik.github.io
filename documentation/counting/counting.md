@@ -25,8 +25,7 @@ instead of marking the exact shapes of the objects, dots placed close to the cen
 
 ![](counting_good_bad.png)
 
-Complicated but separated objects with a high variability as seen on the left 
-![](object detection) are more suited to the more general<a href="../objectClassification"> Object Classification module, on the other hand, clusters of small and overlapping instances as seen on the right are the focus of
+Complicated but separated objects with a high variability as seen on the left are more suited to the more general Object Classification module, on the other hand, clusters of small and overlapping instances as seen on the right are the focus of
 our counting approach, dealing with these issues specifically.
 
 ### 1. Input Data
