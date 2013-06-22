@@ -23,11 +23,11 @@ To ease the burden on the user, we focused on minimizing the amount of input tha
 ## 1. Input Data
 The user can supply either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets. The image import procedure is detailed in LINK TO GENERAL ILASTIK SECTION". Please note that the current version of the Counting module is limited to handling 2D data, for this reason hdf5-datasets with a z-axis are not accepted. Only the training images requiring manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing.
 
-## 2. User interactions
-Similarly to the other modules, annotations are are done by painting while looking at the raw data and the result of the algorithm can be interactively refined while beeing in **live-update** mode. However, unlike the Pixel Classification and the Carving Workflow LINK TO THOSE the user has a broader range of possible interactions which can be divided into two categories:
+## 2. Interactive counting
+Similarly to the other modules, annotations are are done by painting while looking at the raw data and the result of the algorithm can be interactively refined while beeing in **live-update** mode. However, unlike the Pixel Classification where only user brushes are supported LINK TO THOSE, in the Counting workflow the user has a broader range of possible interactions which can be grouped into two categories:
 
-* *Dotting* the object instances and *Brushing* over the background 
-* *Boxing* image regions
+* **Dotting** the object instances and **Brushing** over the background 
+* **Boxing** image regions
 
 ### Dotting/Brushing Interaction Mode
 This is tipically the first step of the workflow. The purpose of this interaction mode is to provide the classifier with examples for the object density and examples for the background. 
