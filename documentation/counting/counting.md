@@ -8,25 +8,39 @@ group: "workflow-documentation"
 # Counting
 ## How it works, what it can and cannot do
 
-Our counting approach is realized in a pixel-to-pixel regression algorithm to estimate the object density map of a given image, 
-via which the object count in a region can be derived via summing over the aforementioned map.
+The purpuse of this workflow is counting the number of objects in crowded scenes such as cells in microscopic images. 
+When the density of objects is low it is possible to count objects by segmenting isolated individuals as in the <a href = "../objectClassification"> Object Classification</a> workflow. However, as the density of objects increases the latter approach underestimates the true counts due to undersegmentation errors. 
 
-The algorithm input are user given markers (see example below) in the form of dots (red)
-for instances of the interesting object and brushstrokes for irrelevant background(green).
-From these markers, the map is calculated and can be refined interactively by either placing more markers 
-or manually fixing the number of objects in specific regions. 
+The workflow offers a supervised learning algorithm to object density estimation from local texture features which is more robust to overlapping instances. This algorithm is appropriate for counting **overlapping** objects with similar appearence (importantly a low variability in size) and a relatively homegeneus spatial distribution over a uniform background. Specifically, this algorithm learns a **continuous object density** whose integral over any large image region gives the **count of objects** in that region. 
+
+To ease the burden on the user, we focused on minimizing the amount of input that has to be provided. The algorithm input are user given markers (see example below) in the form of dots (red) for the object instances and brushstrokes for irrelevant background (green). A pixelwise mapping between local texture features and object density is learned from these markers. This workflow offers the possibility to interectively refine the learned density by:
+
+* placing more markers for the foreground and background 
+* monitoring the object counts in image regions
+* constraining the number of objects in image regions 
+
+
+
+Complicated but separated objects with a high variability as seen on the left are more suited to the more general <a href = "../objectClassification"> Object Classification</a> module, on the other hand, clusters of small and overlapping instances as seen on the right are the focus of
+our counting approach, dealing with these issues specifically.
+
+
+<!---
+#pixel-to-pixel regression algorithm to estimate the object density map of a given image, 
+#via which the object count in a region can be derived via summing over the aforementioned map.
 
 While counting connected components via e.g. Pixel Classification is viable for very sparse data, 
 overlapping objects in big clusters require our density-based regression algorithm.
 Still, to provide accurate counts, similarity between individual instances is expected, most notably in size:
+
 To ease the burden on the user, we focused on minimizing the amount of input that has to be provided, rather than manually labeling either the extent or the boundaries of a specific object, 
 instead of marking the exact shapes of the objects, dots placed close to the centers are sufficient in our case.
 ![](counting_intro_overview.png)
 
 ![](counting_good_bad.png)
+-->
 
-Complicated but separated objects with a high variability as seen on the left are more suited to the more general <a href = "../objectClassification"> Object Classification</a> module, on the other hand, clusters of small and overlapping instances as seen on the right are the focus of
-our counting approach, dealing with these issues specifically.
+
 
 ## 1. Input Data
 IMAGE OF IMPORT DIALOG HERE
