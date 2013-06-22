@@ -19,23 +19,7 @@ To ease the burden on the user, we focused on minimizing the amount of input tha
 * monitoring the object counts in image regions
 * constraining the number of objects in image regions 
 
-<!---
-Complicated but separated objects with a high variability as seen on the left are more suited to the <a href = "../objectClassification"> Object Classification</a> module.
 
-
-#pixel-to-pixel regression algorithm to estimate the object density map of a given image, 
-#via which the object count in a region can be derived via summing over the aforementioned map.
-
-While counting connected components via e.g. Pixel Classification is viable for very sparse data, 
-overlapping objects in big clusters require our density-based regression algorithm.
-Still, to provide accurate counts, similarity between individual instances is expected, most notably in size:
-
-To ease the burden on the user, we focused on minimizing the amount of input that has to be provided, rather than manually labeling either the extent or the boundaries of a specific object, 
-instead of marking the exact shapes of the objects, dots placed close to the centers are sufficient in our case.
-![](counting_intro_overview.png)
-
-![](counting_good_bad.png)
--->
 
 
 
@@ -105,7 +89,7 @@ Will be loaded again, can do prediction directly if parameters and labels untouc
 Can also save prediction itself
 If you want to export the results for a single image, use exportLayerDialog.
 
-[batch_prediction] ##Batch prediction
+##Batch prediction
 For large-scale prediction, first train regressor, then add input images, then press export all.
 
 
