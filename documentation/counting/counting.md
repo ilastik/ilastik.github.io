@@ -11,24 +11,18 @@ group: "workflow-documentation"
 The purpuse of this workflow is counting the number of objects in crowded scenes such as cells in microscopic images. 
 When the density of objects is low it is possible to count objects by segmenting isolated individuals as in the <a href = "../objectClassification"> Object Classification</a> workflow. However, as the density of objects increases the latter approach underestimates the true counts due to undersegmentation errors. 
 
-The workflow offers a supervised learning algorithm to object density estimation from local texture features which is more robust to overlapping instances. This algorithm is appropriate for counting small, **overlapping objects with similar appearence** (importantly a low variability in size) and a relatively homegeneus spatial distribution over an uniform background. Specifically, this algorithm learns a **continuous object density** whose integral over any large image region gives the **count of objects** in that region. 
+This workflow offers a supervised learning strategy to object counting which is more robust to overlapping instances. The algorithms that this workflow implements are appropriate for counting small, **overlapping objects with similar appearence** (importantly a low variability in size) which are homegeneusly distributed over an uniform background. Specifically, these algorithms learn a **continuous object density** whose integral over any large image region gives the **count of objects** in that region. 
 
-To ease the burden on the user, we focused on minimizing the amount of input that has to be provided. The algorithm input are user given markers (see example below) in the form of dots (red) for the object instances and brushstrokes for irrelevant background (green). A pixelwise mapping between local texture features and object density is learned from these markers. This workflow offers the possibility to interectively refine the learned density by:
+To ease the burden on the user, we focused on minimizing the amount of input that has to be provided. The workflow input are user given markers (see example below) in the form of dots (red) for the object instances and brushstrokes for irrelevant background (green). A pixelwise mapping between local texture features and the object density is learned from these markers. This workflow offers the possibility to interectively refine the learned density by:
 
-* placing more markers for the foreground and background 
-* monitoring the object counts in image regions
-* constraining the number of objects in image regions 
-
-
+* Placing more markers for the foreground and background 
+* Monitoring the object counts in image regions
+* Constraining the number of objects in image regions 
 
 
 
 ## 1. Input Data
-IMAGE OF IMPORT DIALOG HERE
-The user can supply either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
-Please note that the current version of the Counting module is limited to handling 2D data, as the performance is not satisfactory yet for larger volumes, for this reason hdf5-datasets with a z-axis are not accepted.
-Only images requiring manual labeling, i.e. the training set have to be added in this way, the full prediction on the dataset can be done via Batch Processing.
-
+The user can supply either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets. The image import procedure is detailed in LINK TO GENERAL ILASTIK SECTION". Please note that the current version of the Counting module is limited to handling 2D data, for this reason hdf5-datasets with a z-axis are not accepted. Only the training images requiring manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing.
 
 ## 2. Sizing up the objects
 
