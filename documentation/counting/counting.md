@@ -29,7 +29,7 @@ Similarly to the other modules, annotations are are done by painting while looki
 * *Dotting* the object instances and *Brushing* over the background 
 * *Boxing* image regions
 
-###2.1 Dotting/Brushing Interaction
+### Dotting/Brushing Interaction Mode
 This is tipically the first step of the workflow. The purpose of this interaction mode is to provide the classifier with examples for the object density and examples for the background. 
 
 Objects instances are marked by user dots which have to be placed close to the center of the objects. To begin placing a dot just click on the **RED** foreground label. Given the dotted annotations, a smooth training density is obtained by placing a Gaussian at the location of each user annotation. The size of the gaussian is controlled by the parameter sigma which should roghly match the object size. In order to decide an appropriate sigma when clicking on this parameter you will see the size 
@@ -44,6 +44,10 @@ Background labelling happens exactly as in the Pixel Classification workflow LIN
 
 IMAGE: Showing different controls for labeling with the brush
 
+### Boxing Interaction Mode
+
+Use boxes to get general idea of quality
+
 
 
 ## 3. Interactive refinement
@@ -52,13 +56,8 @@ Place Observerboxes
 ## Dots and stripes
 
 
-Use boxes to get general idea of quality
-
-
-
-
 ## 4. Algorithms
-Two different regression approaches are currently implemented in this workflow depending on the availability of CPLEX on the machine where ilastik is intalled.
+Two different regression algrotihms are currently supportd by the Counting workflow depending on the availability of CPLEX on the machine where ilastik is intalled. These algorithm have costumizable user parameters. 
 
 ### Random Regression Forest
 This approach uses a Random Regression Forest as regression algorithm. 
@@ -90,16 +89,14 @@ though the defaults should already create good results.
 
 
 
-## Exporting results
-Possible to save the regressor
-Will be loaded again, can do prediction directly if parameters and labels untouched
-Can also save prediction itself
-If you want to export the results for a single image, use exportLayerDialog.
+## 4. Exporting results
+Possible to save the regressor. Will be loaded again, can do prediction directly if parameters and labels untouched
+Can also save prediction itself. If you want to export the results for a single image, use exportLayerDialog.
 
-##Batch prediction
+
+
+## 5. Batch Processing
 For large-scale prediction, first train regressor, then add input images, then press export all.
 
-
-
-## Algorithm references
+## 6. References
 
