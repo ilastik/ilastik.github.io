@@ -30,14 +30,12 @@ our counting approach, dealing with these issues specifically.
 
 ## 1. Input Data
 IMAGE OF IMPORT DIALOG HERE
-The user can supply either images (e.g. *.png, *.jpg and *.tif) directly or pass hdf5 datasets.
+The user can supply either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
 Please note that the current version of the Counting module is limited to handling 2D data, as the performance is not satisfactory yet for larger volumes, for this reason hdf5-datasets with a z-axis are not accepted.
 Only images requiring manual labeling, i.e. the training set have to be added in this way, the full prediction on the dataset can be done via Batch Processing.
 
 
 ## 2. Object size
-
-
 
 The chosen Sigma should be large enough so that one gaussian-smoothed dot covers a single object.
 
@@ -96,7 +94,7 @@ Will be loaded again, can do prediction directly if parameters and labels untouc
 Can also save prediction itself
 If you want to export the results for a single image, use exportLayerDialog.
 
-[Batch prediction] ##Batch prediction
+[batch_prediction] ##Batch prediction
 For large-scale prediction, first train regressor, then add input images, then press export all.
 
 
