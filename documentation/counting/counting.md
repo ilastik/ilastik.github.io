@@ -30,9 +30,16 @@ Please note that the current version of the Counting module is limited to handli
 Only images requiring manual labeling, i.e. the training set have to be added in this way, the full prediction on the dataset can be done via Batch Processing.
 
 
-## 2. Object size
+## 2. Sizing up the objects
 
-The chosen Sigma should be large enough so that one gaussian-smoothed dot covers a single object.
+IMAGE: Showing different controls for labeling with the brush
+Similarly to the other modules, annotations are are done by painting while looking at the raw data.
+Providing background strokes works exactly like in Pixel Classification and has the same goal of classifying, foreground marking is slightly different, evident in the way the cursor behaves. 
+
+
+To give the user a better understanding of the impact of his labels, we provide a preview layer: every **dot** marker is smoothed via a gaussian filter according to the global **Sigma** value, the resulting shapes should cover the training examples as well as possible.
+
+IMAGE: Good sigma/dot, bad sigma/dot
 
 
 ## 3. Interactive refinement
