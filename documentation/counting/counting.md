@@ -59,14 +59,14 @@ Place Observerboxes
 ## 4. Algorithms
 Two different regression algrotihms are currently supportd by the Counting workflow depending on the availability of CPLEX on the machine where ilastik is intalled. These algorithm have costumizable user parameters. 
 
-### Random Regression Forest
+### Random Forest
 This approach uses a Random Regression Forest as regression algorithm. 
 In general it requires more labels to give correct results over several images, however it more robust to  less homogeneus background.
 
 The implementeation of the random regression forest is based on <a href = "http://scikit-learn.org/stable/"> sklearn</a> similar to ref GIVE REFERENCE
-#### Random Forest advanced parameters
+#### advanced parameters
 
-### Support Vector Machine
+### Support Vector Regression
 Requires Gurobi
 Slower
 Better generalization
