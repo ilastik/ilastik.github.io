@@ -37,3 +37,11 @@ The image should be loaded in the data input applet:
 
 ##From pixels to objects - thresholding
 If you already have binary segmentation images, skip this section.
+
+There are two ways to transform a probability map into a segmentation in ilastik and both are covered by the thresholding applet. The "One Threshold" tab performs regular thresholding, followed by the size filter. For debugging purposes, we also provide a view on the thresholded objects before size filtering.
+
+The "Two Thresholds" tab performs hysteresis thresholding with two thresholds: high and low. The high threshold is applied first and the resulting objects are filtered by size. For the remaining objects the segmentation is then relaxed to the level of low threshold. As for the single threshold case, we provide a view on the results after the application of the high threshold, the size filter and the low threshold.
+
+We are now ready to procede to the "Object Extraction" applet.
+
+
