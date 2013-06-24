@@ -28,5 +28,5 @@ project types:
 - **Object classification** allows to train and classifiy already segmented objects in an image using object level features such as size, orientation, average color etc.
   - **from pixel classification** use a pixel level classifier as first stage to obtain objects
   - **from binary image** use a binary object mask image as object input
-  - **from prediction image** use a thresholded image as object input
+  - **from prediction image** use a probability map as object input
 
