@@ -26,7 +26,7 @@ optionally allowing for object divisions
 the following kinds of undersegmentation errors: Merging (objects merge into one detection and later split again),
 and misdetections (false positive detections due to speckles or low contrast).
 
-![](./fig/00_overview.png)
+![](./fig/00_overview.jpg)
 
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
@@ -67,7 +67,7 @@ processing input and exporting the results to
 To directly showcase the Manual 
 Tracking workflow, we provide this file with the data.
 
-![](./fig/02_training.png)
+![](./fig/02_training.jpg)
 
 Now, the Manual Tracking workflow can be launched from the start screen of ilastik
 by creating a new project.
@@ -101,7 +101,7 @@ otherwise, if Label 2 (green by default) was taken as the foreground label, then
 takes value 1. Thus, we choose the Input Channel to be 1 in this tutorial. If the correct 
 channel was selected, the foreground objects appear in white after pressing **Apply**:
 
-![](./fig/07_thresholding-01.png)
+![](./fig/07_thresholding-01.jpg)
 
 The prediction maps are now storing a probability for each single pixel/voxel to be foreground. 
 These probabilities may be smoothed over the neighboring probabilities with a Gaussian filter,
@@ -132,7 +132,7 @@ those objects are assigned independent and unique identities (indicated by disti
 in the **LabelImage** overlay), and features of the objects (e.g. region centers)
 are computed.
 
-![](./fig/09_object-extraction-results.png)
+![](./fig/09_object-extraction-results.jpg)
 
 When the computation was successful, the user can start with the actual tracking
 of the detected objects.
@@ -155,7 +155,7 @@ Note that the next time step is automatically loaded after adding an object to t
 and the logging box displays the successful assignment to the active track.
 Typically, we start with an arbitrary object in time step 0, but any order is fine.
 
-![](./fig/10_manual-tracking-start-track.png)
+![](./fig/10_manual-tracking-start-track.jpg)
 
 In theory, one could now proceed as described and click on each and every object in the following
 time steps which belongs to this track. However, this might be rather cumbersome for the user, especially
@@ -163,7 +163,7 @@ when dealing with a long image sequence. Instead, the user may use an automatic 
 trivial assignments, i.e. assignments where two objects in successive time frames distinctly overlap in space.
 This **automatic tracking** procedure can be started by right-clicking on the object of interest:
 
-![](./fig/11_manual-tracking-right-click.png)
+![](./fig/11_manual-tracking-right-click.jpg)
 
 The automatic tracking will continue assigning objects to the active track until a point is reached
 where the assignment is ambiguous. Then, the user has to decide manually which object to add to the
@@ -182,7 +182,7 @@ time step* (here: green and red). As a result, a new track is created for each c
 track and the two children tracks is displayed in the **Divisions** list, colored by
 the parent object's color (here: blue).
 
-![](./fig/16_manual-tracking-division4.png)
+![](./fig/16_manual-tracking-division4.jpg)
 
 Now, the first sub-lineage may be followed (which possibly divides again, etc.), and when
 finished, the user can go back to the division event to follow the second sub-lineage (the respective
@@ -236,7 +236,7 @@ is some already reserved color), the user may just leave this track empty and st
 The user then has the option, to (i) delete the respective track label from this single object, (ii) delete
 the track label in the current and all later time steps, or (iii) delete the track label in the current
 and all earlier time steps:
-![](./fig/22_manual-tracking-right-click-menu.png)
+![](./fig/22_manual-tracking-right-click-menu.jpg)
 
 
 #### Export
@@ -280,5 +280,5 @@ A sample segmentation of cell nuclei in this dataset is available in `300-349_de
 
 For a manual tracking, the steps of the 2D+time tutorial above may be followed analogously.
 
-![](./fig/23_manual-tracking-3D.png)
+![](./fig/23_manual-tracking-3D.jpg)
 
