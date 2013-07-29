@@ -39,12 +39,7 @@ and 3D+time data, which are both provided in the
 
 ## Workflow Components
 
-To date, this workflow expects the image sequence to be loaded as a dataset
-in a hdf5 files with the axis order `txy(z)c` (time, space, channel). 
-The workflow will soon also support image sequences such as 
-tif or png.
-
-Before starting the Manual Tracking workflow, the data has the be segmented into fore- and 
+Before starting the Manual Tracking workflow, the data has to be segmented into fore- and 
 background. The tutorial uses the dataset 
 `mitocheck_94570_2D+t_01-53.h5` kindly provided by the
 <a href="http://www.mitocheck.org">Mitocheck project</a>,
@@ -83,6 +78,11 @@ need to be specified in the respective tab. In particular, the file
 is added as **Raw Data** and the dataset in
 `mitocheck_94570_2D+t_01-53_results.h5`
 is loaded as **Prediction Maps**.
+
+The tracking workflow expects the image sequence to be loaded as a time-series data containing a time axis;
+if the time axis is not automatically detected (as in hdf5-files), the axes tags may be modified in a dialog 
+when loading the data.
+
 
 ![](./fig/05_load-raw.png)
 
@@ -263,6 +263,27 @@ user. The `Divisions` dataset contains the list of divisions in the format
 
         track_id_parent track_id_child1 track_id_child2 time_parent
 
+
+#### Shortcuts
+To most efficiently use the features described above, there are multiple shortcuts available (a complete documentation
+of all available shortcuts can be displayed/modified in `Settings -> Keyboard Shortcuts`):
+
+| Shortcut       | Description   
+|:--------------:| -----------------------------
+| `Shift + Scroll` | Scroll image through time (if available) 
+| `Ctrl + Scroll`| Zoom
+| `s`            | Start new track
+| `d`            | Mark division event
+| `f`            | Mark false detection
+| `q`            | Increment active track ID
+| `a`            | Decrement active track ID
+| `g`            | Go to next unlabeled object
+| `e`            | Toggle manual tracking layer visibility
+| `r`            | Toggle objects layer visibility
+
+
+
+
 ## Manual Tracking in 3D+time Data
 
 One strength of this manual tracking workflow compared to similar programs available on the web is that 
@@ -273,10 +294,10 @@ orthoviews with the respective track color.
 
 To get started with 3D+time data, we provide example data in the
 <a href="../../Download/">Download</a> section. The file 
-`300-349_demo.h5` shows 50 time steps of a small excerpt of a developing *Drosophila* embryo, kindly
+`drosophila_00-49.h5` shows 50 time steps of a small excerpt of a developing *Drosophila* embryo, kindly
 provided by the 
 <a href="http://www.embl.de/research/units/cbb/hufnagel/">Hufnagel Group at EMBL Heidelberg</a>.
-A sample segmentation of cell nuclei in this dataset is available in `300-349_demo_results.h5`.
+A sample segmentation of cell nuclei in this dataset is available in `drosophila_00-49_results.h5`.
 
 For a manual tracking, the steps of the 2D+time tutorial above may be followed analogously.
 
