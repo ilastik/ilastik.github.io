@@ -94,13 +94,19 @@ Note, that the list of features now only contains the few features that were sel
 
 If the "Live Update" checkbox is activated, the prediction is interactive and you can receive immediate feedback on your labels. Let us examine the prediction results:
 
-![](figs/oc_predictions1.png)
+![](figs/oc_prediction1.png)
 
 In the low right corner we see a cell (shown by the red ellipse), which was classified as "green", while it is most probably "red". Let's label it "red" and check the results again:
 
-![](figs/oc_predictions2.png)
+![](figs/oc_prediction2.png)
 
-All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse).
+All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background. ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmetation after labels are added. Nevertheless, let us try it for demonstrational purposes:
+
+![](figs/thresholding_final2.png)
+
+After a slight change in the segmentation (lower) threshold the objects indeed become separated. And the two independent objects are predicted correctly:
+
+![](figs/oc_prediction3.png)
 
  
 
