@@ -108,6 +108,20 @@ After a slight change in the segmentation (lower) threshold the objects indeed b
 
 ![](figs/oc_prediction3.png)
 
+##Preparing for large scale prediction - Blockwise Object Classification applet
+Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously. While these operations and especially the hysteresis thresholding require a lot of memory, "whole image" processing is sufficient for most 2D images. However, for large 3D image volumes we have to resort to blockwise processing. This applet allows you to experiment with different block and halo sizes on the data you used in the interactive object prediction and, by comparing the "whole image" interactive prediction and blockwise prediction, find the optimal parameters for your data. Let us try to predict our image blockwise:
+
+![](figs/block_oc_pred.png)
+In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
+
+##Large-scale prediction - Batch Prediction applets
+These two applets have the same interface and parameters as batch prediction in <a href="../pixelClassification/">Pixel Classification workflow</a>. The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
+
+![](figs/batch.png)
+
+
+
+
  
 
 
