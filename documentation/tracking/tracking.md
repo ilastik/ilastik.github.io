@@ -6,9 +6,9 @@ category: "Documentation"
 group: "workflow-documentation"
 ---
 
-# Automatic Tracking (Chaingraph) and Manual/Semi-automatic tracking
-
+# Automatic Tracking and Manual Tracking
 ## Overview and Scope
+
 Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
 While the fully [**automatic tracking workflow**](#sec_automatic)
 is used to track multiple (dividing) objects in presumably big datasets, the purpose of the [**manual tracking
@@ -61,8 +61,7 @@ user segments foreground objects (e.g. cells) from background by defining two
 labels and providing examples through brush strokes. 
 Please find a detailed
 description of this workflow 
-<a href="../pixelClassification">here</a>, and a description on how to 
-load a time-series dataset is provided <a href="../inputOutput">here</a>.
+<a href="../pixelClassification">here</a>, and a descand Manual Trackingseries dataset is provided <a href="../inputOutput">here</a>.
 
 In this example, we paint some background
 pixels with Label 1 (red by default) and cell nuclei are marked with Label 2 
@@ -165,7 +164,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-<a id="sec_manual"></a>
+<a name="sec_manual"></a>
 ### 4.1 Manual Tracking:
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
@@ -296,7 +295,7 @@ of all available shortcuts can be displayed/modified in `Settings -> Keyboard Sh
 
 
 <a id="sec_automatic"></a>
-### 4.1 Automatic Tracking (Chaingraph):
+### 4.2 Automatic Tracking (Chaingraph):
 
 If [CPLEX is installed](../../download.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
 and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
@@ -348,7 +347,7 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-<a id="sec_export"></a>
+<a name="sec_export"></a>
 ## 5. Export:
 To export the manual tracking, the user may choose between the following three options, allowing for maximal
 flexibility to adopt the results to the format needed for the next step in the user's process:
@@ -387,7 +386,7 @@ be accessed via the project file:
 
 
 
-<a id="sec_3d"></a>
+<a name="sec_3d"></a>
 # Tracking in 3D+time Data
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
@@ -414,7 +413,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 # References
 
-<a id="ref_chaingraph"></a>
+<a name="ref_chaingraph"></a>
 \[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
 **A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
 *Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.
