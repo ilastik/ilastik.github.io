@@ -414,6 +414,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 # References
 
-<a id="ref:chaingraph"></a>[1] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
+<a id="ref:chaingraph"></a>
+\[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
 **A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
 *Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.
