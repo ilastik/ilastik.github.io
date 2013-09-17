@@ -5,7 +5,6 @@ tagline: Tracking
 category: "Documentation"
 group: "workflow-documentation"
 ---
-
 # Automatic Tracking and Manual Tracking
 ## Overview and Scope
 
@@ -164,7 +163,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-<a name="sec_manual"></a>
+<a name="sec_manual">&nbsp;</a>
 ### 4.1 Manual Tracking:
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
@@ -347,7 +346,7 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-<a name="sec_export"></a>
+<a name="sec_export">&nbsp;</a>
 ## 5. Export:
 To export the manual tracking, the user may choose between the following three options, allowing for maximal
 flexibility to adopt the results to the format needed for the next step in the user's process:
@@ -386,7 +385,7 @@ be accessed via the project file:
 
 
 
-<a name="sec_3d"></a>
+<a name="sec_3d">&nbsp;</a>
 # Tracking in 3D+time Data
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
@@ -413,7 +412,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 # References
 
-<a name="ref_chaingraph"></a>
+<a name="ref_chaingraph">&nbsp;</a>
 \[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
 **A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
 *Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.
