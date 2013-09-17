@@ -410,7 +410,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 
 
-# References
+## References
 
 <a name="ref_chaingraph">&nbsp;</a>
 \[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
