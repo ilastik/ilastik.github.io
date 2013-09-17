@@ -1,12 +1,12 @@
 ---
 layout: documentation
-title: Manual Tracking
+title: Tracking (Automatic and Manual)
 tagline: Tracking
 category: "Documentation"
 group: "workflow-documentation"
 ---
 
-# Tracking (Automated and Manual)
+# Automatic Tracking (Chaingraph) and Manual/Semi-automatic tracking
 
 ## Overview and Scope
 Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
@@ -74,7 +74,7 @@ To directly showcase the tracking workflows, we provide this file with the data.
 
 ![](./fig/02_training.jpg)
 
-Now, one of the tracking workflows (Manual Tracking or Automated Tracking, if [CPLEX is installed](../../download.html) ) 
+Now, one of the tracking workflows (Manual Tracking or Automatic Tracking, if [CPLEX is installed](../../download.html) ) 
 can be launched from the start screen of ilastik
 by creating a new project.
 
