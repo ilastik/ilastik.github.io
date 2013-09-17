@@ -280,7 +280,7 @@ To most efficiently use the features described above, there are multiple shortcu
 of all available shortcuts can be displayed/modified in `Settings -> Keyboard Shortcuts`):
 
 | Shortcut       | Description   
-|:--------------:| -----------------------------
+|:--------------:| :-----------------------------
 | `Shift + Scroll` | Scroll image through time
 | `Ctrl + Scroll`| Zoom
 | `s`            | Start new track
@@ -293,7 +293,7 @@ of all available shortcuts can be displayed/modified in `Settings -> Keyboard Sh
 | `r`            | Toggle objects layer visibility
 
 
-<a id="sec_automatic"></a>
+<a id="sec_automatic">&nbsp;</a>
 ### 4.2 Automatic Tracking (Chaingraph):
 
 If [CPLEX is installed](../../download.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
@@ -324,7 +324,7 @@ Although the tracking result should usually be already sufficient with the defau
 for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_chaingraph) for more details). 
 
 | Parameter       | Description
-|:---------------:| -------------------------
+|:---------------| :-------------------------
 | Divisible Objects | Check if the objects may divide over time, e.g. when tracking proliferating cells
 | Appearance      | Costs to allow one object to appear, i.e. to start a new track other than at the beginning of the time range or the borders of the field of view. High values (&ge;1000) forbid object appearances if possible.
 | Disappearance   | Costs to allow one object to disappear, i.e. to terminate an existing track other than at the end of the time range or the borders of the field of view. High values (&ge;1000) forbid object disappearances if possible.
@@ -362,13 +362,13 @@ flexibility to adopt the results to the format needed for the next step in the u
    division, merger). In each of these hdf5 files (except the one for the first time step), detected events
    between object identifiers (stored in the volume `/segmentation/labels`) are stored in the following format:
 
-   | Event      | Dataset Name | Object IDs 
-   |:----------:|:------------:| -------------------------
-   | Move      | `/tracking/Moves` | `from (previous timestep), to (current timestep)`
-   | Division | `/tracking/Splits` | `ancestor (previous timestep), descendant (current timestep), descendant (current timestep)`
-   | Appearance | `/tracking/Appearances` | `object id appeared in current timestep`
-   | Disappearance | `/tracking/Disappearances` | `object id disappeared in current timestep`
-   | Merger | `/tracking/Mergers` | `object_id number_of_contained_objects` 
+| Event      | Dataset Name | Object IDs 
+|:----------|:------------| :-------------------------
+| Move      | `/tracking/Moves` | `from (previous timestep), to (current timestep)`
+| Division | `/tracking/Splits` | `ancestor (previous timestep), descendant (current timestep), descendant (current timestep)`
+| Appearance | `/tracking/Appearances` | `object id appeared in current timestep`
+| Disappearance | `/tracking/Disappearances` | `object id disappeared in current timestep`
+| Merger | `/tracking/Mergers` | `object_id number_of_contained_objects` 
 
 
 We would recommend the methods described above, but additionally, the results of the manual/semi-automatic tracking may also 
@@ -386,7 +386,7 @@ be accessed via the project file:
 
 
 <a name="sec_3d">&nbsp;</a>
-# Tracking in 3D+time Data
+## Tracking in 3D+time Data
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
