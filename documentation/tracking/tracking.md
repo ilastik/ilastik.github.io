@@ -10,9 +10,9 @@ group: "workflow-documentation"
 
 ## Overview and Scope
 Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
-While the fully [**automatic tracking workflow**](#sec:automatic)
+While the fully [**automatic tracking workflow**](#sec_automatic)
 is used to track multiple (dividing) objects in presumably big datasets, the purpose of the [**manual tracking
-workflow**](#sec:manual) is to track objects *manually* from previously detected objects. 
+workflow**](#sec_manual) is to track objects *manually* from previously detected objects. 
 The latter may be useful for high-quality tracking of small datasets or 
 ground truth acquisition. To speed up this process, sub-tracks may be generated automatically for trivial
 assignments such that the user only has to link objects where the tracking is ambiguous.
@@ -159,13 +159,13 @@ of the detected objects.
 
 ## 4. Tracking:
 The remainder of this tutorial first discusses the tracking in case the **manual tracking
-workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec:automatic).
+workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec_automatic).
 
 Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) datasets. This
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
-[at the end of the tutorial](#sec:3d).
+[at the end of the tutorial](#sec_3d).
 
-<a id="sec:manual"></a>
+<a id="sec_manual"></a>
 ### 4.1 Manual Tracking:
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
@@ -271,7 +271,7 @@ and all earlier time steps:
 
 
 #### Export
-To export the manual tracking annotations, follow the instructions [at the end of this tutorial](#sec:export), since 
+To export the manual tracking annotations, follow the instructions [at the end of this tutorial](#sec_export), since 
 this procedure is similar to the export of the fully automatic tracking.
 
 
@@ -295,13 +295,13 @@ of all available shortcuts can be displayed/modified in `Settings -> Keyboard Sh
 | `r`            | Toggle objects layer visibility
 
 
-<a id="sec:automatic"></a>
+<a id="sec_automatic"></a>
 ### 4.1 Automatic Tracking (Chaingraph):
 
 If [CPLEX is installed](../../download.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
 and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
 
-This automatic tracking applet implements the algorithm described in [\[1\]](#ref:chaingraph). The algorithm aims to
+This automatic tracking applet implements the algorithm described in [\[1\]](#ref_chaingraph). The algorithm aims to
 link all (possibly dividing) objects over time, where objects may be automatically marked as false positive detections 
 (misdetections due to speckles or low contrast) by the
 algorithm. Note that -- as of the time of writing -- this algorithm cannot recover missing objects, i.e. objects which 
@@ -323,7 +323,7 @@ To these objects and relations, costs are assigned defined by the given paramete
 the most probable tracking solution for the model constructed, i.e. it tries to minimize the computed costs.
 
 Although the tracking result should usually be already sufficient with the default values, we now briefly give explanations
-for the **parameters** our tracking algorithm uses (see [\[1\]](#ref:chaingraph) for more details). 
+for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_chaingraph) for more details). 
 
 | Parameter       | Description
 |:---------------:| -------------------------
@@ -348,7 +348,7 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-<a id="sec:export"></a>
+<a id="sec_export"></a>
 ## 5. Export:
 To export the manual tracking, the user may choose between the following three options, allowing for maximal
 flexibility to adopt the results to the format needed for the next step in the user's process:
@@ -387,7 +387,7 @@ be accessed via the project file:
 
 
 
-<a id="sec:3d"></a>
+<a id="sec_3d"></a>
 # Tracking in 3D+time Data
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
@@ -414,7 +414,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 # References
 
-<a id="ref:chaingraph"></a>
+<a id="ref_chaingraph"></a>
 \[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
 **A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
 *Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.
