@@ -15,7 +15,7 @@ This workflow offers a supervised learning strategy to object counting that is r
 
 ![](fig/whichdata2.png)
 
-## How does it works, what do should you annotate
+## How does it works, what should you annotate
 In order to avoid the difficult task of segmenting individual objects, this workflow implements a supervised object counting strategy called **density counting**. The algorithm learns from user annotations a real valued **object density** whose integral over any **large** image region gives an estimate of the  **number of objects** in that region. In the following figure, note that the integral of the smooth density is a real number close to the true number of cells in the image.
 
 <!-- The annotations are provided by the user as **dots** for the centers of few training objects and as **brush-strokes** strokes for regions of background.
@@ -27,6 +27,7 @@ It is important to note that the object density is an approximate estimator of t
 Please refer to the [**references**](#sec_reference) for further details.
 
 ![alt text](fig/density_scheme2.png)
+
 The workflow input are user given markers (see example below) in the form of **dots (Red)** for the objects centers and **brush-strokes (Green)** for irrelevant background. A pixel-wise mapping between local texture features and the object density is learned from these markers. This workflow offers the possibility to interactively refine the learned density by:
 
 * Placing more annotations for the foreground and background
