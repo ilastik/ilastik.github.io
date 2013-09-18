@@ -16,7 +16,7 @@ fulfill these properties.
 
 A typical cell segmentation use case is depicted below.
 
-![](pixelclass_intro.png)
+![](snapshots/training2.png)
 
 Nice properties of the algorithm and workflow are
 - Interactive mode: the user gets immediate feedback after giving additional annotations.
@@ -33,7 +33,7 @@ The selected features and scales should roughly correspond to the visual attribu
 objects and the background.
 A click on the **Select features** button brings up a feature selection dialog.
 
-![](snapshots/feature_selection.png)
+![](snapshots/feature_selection_zoomed.png)
 ![](snapshots/feature_selection2.png)
 
 Here the user can select from several different feature types and scales.
@@ -46,7 +46,7 @@ that is used to calculate the respective feature. I.e. if a typical textural pat
 
 In general we advise to initially select a wide range of feature types and scales. Later on, this selection
 can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog. 
-![](snapshots/feature_selection4.png)
+![](snapshots/feature_selection4_zoomed.png)
 
 ## Training the classifier
 The next step in the pixel classification is the training of a classifier
@@ -54,7 +54,7 @@ that can separate the object classes. This training is done in an iterative fash
 the user gives some labels, evaluates the interactive prediction and then gives additional labels to correct
 eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
-![](snapshots/training.png)
+![](snapshots/training_zoomed.png)
 Each added label should correspond to a object type that we want to separate.
 In the simpelest case, we add one label for the object class (in this example the object class would be cell)
 and an additional label fore the background class.
@@ -63,15 +63,15 @@ After adding at least two labels, the user can begin to mark the objects and the
 To mark an object, the label corresponding to the object class has to be selected, then the user
 can draw a scribble over the image.
 The background can be annotated in the same way after selecting the background class label on the left.
-![](snapshots/training1.png)
+![](snapshots/training1_zoomed.png)
 The user can select the size of the brush, and switch between drawing and erasing mode just below the label list on the left.
 
 To visualize the results of the classification, the **Live update** mode can now be switched on.
 The pixel classification result is displayed as an overlay on the image.
 Now classification errors can be corrected by giving additional annotations. The updated classification results will be displayed immediately in the main window.
-![](snapshots/training2.png)
+![](snapshots/training2_zoomed.png)
 
 To display the hard classification results, i.e. the final class assignment the **Segmentation** overlays
 can be turned on by clicking on the **Segmentation** checkbox.
-![](snapshots/training3.png)
+![](snapshots/training3_zoomed.png)
 
