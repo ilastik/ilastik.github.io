@@ -140,7 +140,9 @@ After that the prediction has been computed for the first time the **Prediction-
 Live Update Mode allows to observe the results of the prediction while
 giving new labels. However it is often faster to toggle this mode ON and OFF  while labeling.
 
-**How do from the density what is the predicted count ? **This is explained in the next section.
+**How do we pass from the density to the number of objects?**
+
+This is explained in the next section.
 
 <a id="sec_boxing_interaction_mode">&nbsp;</a>
 ### 5 Box Interaction Mode
@@ -172,7 +174,7 @@ You can continue adding boxes and provide labels for objects centers and backgro
 Le us switch to another image by using the  appropriate menu on the left. As it is shown in the image below,
 this image will be free from labels and the prediction of the density will not  be yet computed.
 
-![alt text](fig/blue-totorial12.jpg)
+![alt text](fig/blue_totorial12.jpg)
 It is possible to start the prediction by toggling the Live Update button.
 However, let us press the **Update total density button** on the left.
 
@@ -183,7 +185,7 @@ If the training labels are sufficient, we should obtain a count similar to what 
 
 
 
-![alt text](fig/blue-totorial12.jpg)
+![alt text](fig/blue_totorial12.jpg)
 
 **You are now ready to use the workflow on your data!**
 Please continue to read if you want to know some advanced features.
