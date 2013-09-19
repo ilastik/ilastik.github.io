@@ -35,8 +35,13 @@ The workflow input are user given markers (see example below) in the form of **d
 * Constraining the number of objects in image regions
 
 <a id="sec_input_data">&nbsp;</a>
-## 1. Input Data
-Similarly to other ilastik workflow, the user can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets. The image import procedure is detailed in **LINKME**.Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis are not accepted. Only the training images requiring manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing LINKME.
+## Interactive Counting Tutorial
+
+### 1. Input Data
+Similarly to other ilastik workflow, the user can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets. The image import procedure is detailed in **LINKME**.
+Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis are not accepted. 
+Only the training images requiring manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing LINKME.
+In the following tutorial we will use a dataset of syntetic cell images genrated 
 
 <a id="sec_feature_selection">&nbsp;</a>
 ## 2. Feature Selection
