@@ -74,12 +74,12 @@ therefore as the first thing let us just load this project. You should be able t
 The first step is to define the some features. Feature selection is similar to the [Pixel Classification Workflow](../pixelClassification).
 In the image below we show how you can choose the features. In particular, blob-detectors like the `Laplacian of Gaussians` or line-detectors like the `Hessian of Gaussians` are appropriate for blob like structure such as cells. In the figure below it is shown the response of the `Laplacian of Gaussians` for the cells in the image.
 
-![alt text](fig/blue _totorial_features2.jpg)
+![alt text](fig/blue_totorial_features2.jpg)
 
 It is also appropriate to match the scale of the objects and of the cluster of objects with the size of the features as shown in the figure below.
 For further details please refer to LINKME.
 
-![alt text](fig/blue _totorial_features.jpg)
+![alt text](fig/blue_totorial_features.jpg)
 
 <a id="sec_interactive_counting">&nbsp;</a>
 ### 3. Interactive counting
