@@ -100,10 +100,10 @@ This idea is reflected in the layout of the control panel on the left, which is 
 This is  the first interaction with the core of the workflow. The purpose of this interaction mode is to provide
 the classifier with examples for the object centers and examples for the background.
 
-To begin placing a dot just click on the red **Foreground** label.
-The dots have to be placed close to the center of the objects as in the figure below.
+To begin placing dots just click on the red **Foreground** label and then on the image.
+The dot has to be placed close to the center of each object as in the figure below.
 
-![alt text](fig/blue _totorial3.jpg)
+![alt text](fig/blue_totorial3.jpg)
 
 Given the dotted annotations, a smooth training density is computed by placing a Gaussian at the location
 of each dot. The size of the Gaussian is a user parameter **Sigma** which should roughly match the object size.
@@ -130,7 +130,7 @@ marking unimportant areas or regions where the predicted density should be 0.
 <!-- IMAGE: Good sigma/dot, bad sigma/dot -->
 
 <a id="sec_brushing_interaction_mode">&nbsp;</a>
-#### 4 Live Update Mode
+### 4 Live Update Mode
 After that the some labels for the dot and for the background has been given, switch on the **Live-Update**
 button and observe the predicted density.
 After that the prediction has been computed for the first time the **Prediction-Layer**.
@@ -173,19 +173,20 @@ Le us switch to another image by using the  appropriate menu on the left. As it 
 this image will be free from labels and the prediction of the density will not  be yet computed.
 
 ![alt text](fig/blue-totorial12.jpg)
-It is possible to start the prediction by toggling the Live Update button however, let us press the
-** Update total density button ** on the left.
+It is possible to start the prediction by toggling the Live Update button.
+However, let us press the **Update total density button** on the left.
 
 
 
-We have now  an estimate of density for the entire test image together with the predicted count.
+This button estimates the density and provides the predicted count **for the entire image**.
 If the training labels are sufficient, we should obtain a count similar to what is shown in the image below.
 
 
-**You are now ready to use the workflow on your data!**
-Please continue to read if you want to know some advanced features.
 
 ![alt text](fig/blue-totorial12.jpg)
+
+**You are now ready to use the workflow on your data!**
+Please continue to read if you want to know some advanced features.
 
 <a id="sec_algorithms">&nbsp;</a>
 ## The Algorithms
