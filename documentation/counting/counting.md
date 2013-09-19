@@ -155,7 +155,10 @@ counts for the objects in that region.
 
 You can start placing boxes by clicking on the **add Boxes** button and drawing the box region on the image.
 The new box will be added automatically to the **Box List**.
-Boxes show the object count for the region on the upper right corner and beside the box name in the Box List.
+Boxes show the object count for the region on the upper right corner and beside the box name in the Box List as it is shown in the
+next figure.
+
+![alt text](fig/blue_totorial8.jpg)
 
 Boxes can be:
 * **Selected and Moved around**: to select a particular you can select its name the Box List or just pass over it with your mouse. Note that
