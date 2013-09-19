@@ -194,6 +194,7 @@ If the training labels are sufficient, we should obtain a count similar to what 
 **You are now ready to use the workflow on your data!**
 Please continue to read if you want to know some advanced features.
 
+
 <a id="sec_algorithms">&nbsp;</a>
 ## The Algorithms
 **Two different regression algorithms** are currently supported by the Counting workflow depending on the availability of CPLEX on the machine where ilastik is installed. We expose the most important and well-known parameters for our algorithms to the advanced user, details are given below.
@@ -234,14 +235,13 @@ though the defaults should already create good results.
 
 <a id="sec_exporting">&nbsp;</a>
 ## 4. Exporting results
-Possible to save the regressors. Will be loaded again, can do prediction directly if parameters and labels untouched
-Can also save prediction itself. If you want to export the results for a single image, use exportLayerDialog.
+BUOTE - Can also save prediction itself. If you want to export the results for a single image, use exportLayerDialog.
 
 
 
 <a id="sec_batch">&nbsp;</a>
 ## 5. Batch Processing
-For large-scale prediction, first train regressors, then add input images, then press export all.
+BUOTE - For large-scale prediction, first train regressors, then add input images, then press export all.
 
 <a id="sec_reference">&nbsp;</a>
 ## 6. References
