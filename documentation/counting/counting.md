@@ -165,16 +165,17 @@ You can now drag the box in a different position while pressing the `Ctrl` key .
 * **Deleted**: to delete a box either click on the delete button ( a red cross) on the BoxList or press `Del` while selecting the box
 * **Configured**: you can configure the appearance (color, fontsize, fontcolor etc.. ) of each individual box (or of all boxes at the same time), by clicking on the colored rectangle in the BoxList. The interaction dialog for the box properties is show below.
 
+
 You can continue adding boxes and provide labels for objects centers and background until you are satisfied of the results.
 
 
-<!-- ![](fig/res-box2.png) -->
+![alt text](fig/box_dialog.jpg)
 
 ### 6 Counting the entire image
 Le us switch to another image by using the  appropriate menu on the left. As it is shown in the image below,
 this image will be free from labels and the prediction of the density will not  be yet computed.
 
-![alt text](fig/blue_totorial11.jpg)
+![alt text](fig/blue_totorial9.jpg)
 It is possible to start the prediction by toggling the Live Update button.
 However, let us press the **Update total density button** on the left.
 
