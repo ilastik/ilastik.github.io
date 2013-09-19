@@ -174,7 +174,7 @@ You can continue adding boxes and provide labels for objects centers and backgro
 Le us switch to another image by using the  appropriate menu on the left. As it is shown in the image below,
 this image will be free from labels and the prediction of the density will not  be yet computed.
 
-![alt text](fig/blue_totorial12.jpg)
+![alt text](fig/blue_totorial11.jpg)
 It is possible to start the prediction by toggling the Live Update button.
 However, let us press the **Update total density button** on the left.
 
