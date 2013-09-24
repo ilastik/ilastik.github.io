@@ -10,23 +10,23 @@ group: "workflow-documentation"
 
 The purpose of this workflow is to enable the counting of the number of objects in crowded scenes such as cells in microscopy images.
 
-When the density of objects in the image is low and the objects are well separated one from the other it possible to count objects by first
+When the density of objects in the image is low and the objects are well separated from each other, it is possible to count objects by first
 segmenting the foreground and then collecting the connected components as it is done in the
-[Object Classification workflow](../objectClassification). However, as the density of the objects increases the latter approach
+[Object Classification workflow](../objectClassification). However, as the density of the objects increases, the latter approach
 underestimates the true counts due to under-segmentation errors.
 
 This workflow offers a supervised learning strategy to object counting that is robust to overlapping instances.
-It is appropriate for counting **blob-like overlapping objects with similar appearance (size, intensity, texture, etc..)**. Let's make two examples.
+It is appropriate for counting **blob-like overlapping objects with similar appearance (size, intensity, texture, etc..)**. Let's make three examples.
 The left image in the figure below contains large **non-overlapping** objects with high variability in size and appearance (red nuclei and mitotic yellow nuclei) . Therefore it is best suited for the [Object Classification workflow](../objectClassification).  The two right images in the figure
 below contain small overlapping objects that are difficult to segment individually.
 The objects in each one of these images have similar appearance and have roughly the same size,
-therefore these two images are appropriate for the [Counting workflow](./counting.html).
+therefore these two images are appropriate for the Counting workflow.
 
 This workflow will estimate directly the **density of objects** in the image and infer the number objects without requiring segmentation.
 
 ![](fig/whichdata2.jpg)
 
-## How does it works, what should you annotate
+## How does it work, what should you annotate
 In order to avoid the difficult task of segmenting each object individually, this workflow implements a supervised object counting strategy called **density counting**. The algorithm learns from the user annotations a real valued **object density** whose integral over a
 **sufficiently large** image region gives an estimate of the  **number of objects** in that region.
 
@@ -37,7 +37,7 @@ Further details are provided in the section [**interactive counting**](#sec_inte
  -->
 
 It is important to note that the object density is an approximate estimator of the true integer count.
-The estimates are close to the true count when are integrated over sufficiently large regions of the image
+The estimates are close to the true count when integrated over sufficiently large regions of the image
 and when enough training data is provided.
 
 NOTE that also contaminations of the image such as debris or other spurious objects may invalidate the estimated density.
@@ -71,7 +71,7 @@ therefore as the first thing let us just load this project. You should be able t
 
 <a id="sec_feature_selection">&nbsp;</a>
 ### 2. Feature Selection
-The first step is to define the some features. Feature selection is similar to the [Pixel Classification Workflow](../pixelClassification).
+The first step is to define some features. Feature selection is similar to the [Pixel Classification Workflow](../pixelClassification).
 In the image below we show how you can choose the features. In particular, blob-detectors like the `Laplacian of Gaussians` or line-detectors like the `Hessian of Gaussians` are appropriate for blob like structure such as cells. In the figure below it is shown the response of the `Laplacian of Gaussians` for the cells in the image.
 
 ![alt text](fig/blue_totorial_features2.jpg)
@@ -83,14 +83,14 @@ For further details please refer to LINKME.
 
 <a id="sec_interactive_counting">&nbsp;</a>
 ### 3. Interactive counting
-Annotations are are done by painting while looking at the raw data.
+Annotations are done by painting while looking at the raw data.
 The result of this algorithm can be interactively refined while being in **Live-Update** mode.
-The overall workflow resemble the [Pixel Classification Workflow](../pixelClassification).
-The main difference is that the  Counting workflow gives the user the possibility to:
+The overall workflow resembles the [Pixel Classification Workflow](../pixelClassification).
+The main difference is that the Counting workflow gives the user the possibility to:
 
-* Add **dots** for the the object instances
+* Add **dots** for the object instances
 * Add **brush strokes** over the background
-* Add **Boxes** to monitor image regions
+* Add **boxes** to monitor image regions
 
 These list of interactions is typically performed in sequence.
 This idea is reflected in the layout of the control panel on the left, which is typically used from **top to bottom**.
@@ -227,7 +227,7 @@ Box constraints offer an easy way to provide counts for a region, while not havi
 <a id="sec_advanced_svr">&nbsp;</a>
 #### Advanced parameters
 C: How much impact should individual and box errors do compared to w itself, this will likely only change results if you set C to low values.
-epsilon: The amount of error that will be tolerated for individual pixels, this regularizes the result.
+epsilon: The amount of error that will be tolerated for individual pixels, this regularizes the result,
 though the defaults should already create good results.
 
 
