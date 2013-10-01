@@ -64,7 +64,7 @@ _z_-view has a blue color.
 
 * Use the _Mouse wheel_ to scroll forward/backward through the stack
   represented by the slice view
-* Hold _Ctrl_ while using the mouse wheel to zoom in/out
+* Hold _Ctrl_ ( _Cmd_ on Mac OS X) while using the mouse wheel to zoom in/out
 * Pan the view by holding moving the mouse with the _middle mouse button_
   pressed
 * jump to a new 3D position by _double clicking_
