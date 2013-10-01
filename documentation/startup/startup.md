@@ -6,7 +6,8 @@ category: "Documentation"
 group: "basic-documentation"
 ---
 # The Startup Screen
-The first thing you seen when starting ilastik is the startup screen it allows to
+The first thing you see when starting ilastik is the startup screen.
+It allows to
 * Create a new project (A)
 * Open an existing project (B)
 * Open a recently used project (C)
