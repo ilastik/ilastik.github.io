@@ -10,4 +10,5 @@ author :
   github : ilastik
 
 production_url : http://ilastik.github.io
+baseurl: http://ilastik.github.io
 

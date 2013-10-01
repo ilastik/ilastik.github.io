@@ -1,0 +1,5 @@
+To develop these pages locall, run
+
+jekyll --auto --server 8888
+
+and then point your browser to localhost:8888
