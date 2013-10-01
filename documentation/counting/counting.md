@@ -12,12 +12,15 @@ The purpose of this workflow is to enable the counting of the number of objects 
 
 When the density of objects in the image is low and the objects are well separated from each other, it is possible to count objects by first
 segmenting the foreground and then collecting the connected components as it is done in the
-[Object Classification workflow](../objectClassification). However, as the density of the objects increases, the latter approach
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
+However, as the density of the objects increases, the latter approach
 underestimates the true counts due to under-segmentation errors.
 
 This workflow offers a supervised learning strategy to object counting that is robust to overlapping instances.
 It is appropriate for counting **blob-like overlapping objects with similar appearance (size, intensity, texture, etc..)**. Let's make three examples.
-The left image in the figure below contains large **non-overlapping** objects with high variability in size and appearance (red nuclei and mitotic yellow nuclei) . Therefore it is best suited for the [Object Classification workflow](../objectClassification).  The two right images in the figure
+The left image in the figure below contains large **non-overlapping** objects with high variability in size and appearance (red nuclei and mitotic yellow nuclei) . Therefore it is best suited for the
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
+The two right images in the figure
 below contain small overlapping objects that are difficult to segment individually.
 The objects in each one of these images have similar appearance and have roughly the same size,
 therefore these two images are appropriate for the Counting workflow.
@@ -71,7 +74,8 @@ therefore as the first thing let us just load this project. You should be able t
 
 <a id="sec_feature_selection">&nbsp;</a>
 ### 2. Feature Selection
-The first step is to define some features. Feature selection is similar to the [Pixel Classification Workflow](../pixelClassification).
+The first step is to define some features. Feature selection is similar to the
+[Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 In the image below we show how you can choose the features. In particular, blob-detectors like the `Laplacian of Gaussians` or line-detectors like the `Hessian of Gaussians` are appropriate for blob like structure such as cells. In the figure below it is shown the response of the `Laplacian of Gaussians` for the cells in the image.
 
 ![alt text](fig/blue_totorial_features2.jpg)
@@ -85,7 +89,8 @@ For further details please refer to LINKME.
 ### 3. Interactive counting
 Annotations are done by painting while looking at the raw data.
 The result of this algorithm can be interactively refined while being in **Live-Update** mode.
-The overall workflow resembles the [Pixel Classification Workflow](../pixelClassification).
+The overall workflow resembles the
+[Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 The main difference is that the Counting workflow gives the user the possibility to:
 
 * Add **dots** for the object instances
@@ -114,14 +119,18 @@ To help deciding an appropriate value for this parameter you will see the that t
 ![alt text](fig/blue_totorial4.jpg)
 
 NOTE: Large values for sigma can impact the required computation time: consider using a different counting approach,
-such as the [Object Classification workflow](../objectClassification) if this parameter has to be chosen larger than 5.
+such as the
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
+if this parameter has to be chosen larger than 5.
 
 FIXME IMAGE: Showing different sigmas
 
 #### 3.2 Brushing
 After that a few dots are placed (say from 10 - 20 ) we can add training examples for the background.
 
-Background labeling happens exactly as in the [Pixel Classification workflow](../pixelClassification).
+Background labeling happens exactly as in the
+[Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
+
 To activate this interaction click on the green **Background** label and give broad strokes, as in the figure below,
 marking unimportant areas or regions where the predicted density should be 0.
 

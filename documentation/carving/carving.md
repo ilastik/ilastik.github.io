@@ -105,9 +105,8 @@ Additional available interactions include:
 - **Exporting the current segmentation:** Right click on the **Segmentation Overlay** in the overlay widget and select **Export**.
       
 To learn more about how to navigate the data (**scroll, change slice,
-enable/disable overlays, change overlay capacity etc. **) please read the <a
-href="/kategorien/20_Documentation/dateien/ilastik_carving_documentation/">Navigation
-guide for ilastik 0.5</a>
+enable/disable overlays, change overlay capacity etc. **) please read the
+[Navigation guide]({{site.baseurl}}/documentation/startup/navigation.html).
 
 ## Advanced Options
 

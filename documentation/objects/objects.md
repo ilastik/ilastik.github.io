@@ -17,7 +17,9 @@ segmentation images, the user can choose between three flavors of object classif
 
 * Object Classification (from pixel classification)
 This is a combined workflow, which lets you start from the raw data, perform pixel classification as described 
-in <a href="../pixelClassification/">Pixel Classification workflow</a> and then thresholding the probability maps to obtain a segmentation. 
+in
+[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
+and then thresholding the probability maps to obtain a segmentation. 
 
 ![](figs/input_pixel_class.png)
 
@@ -80,7 +82,9 @@ The "Standard Object Features" refer to the built-in ilastik features, computed 
 Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
 
 ##Prediction for objects - "Object Classification" applet
-This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the <a href="../pixelClassification/">Pixel Classification workflow</a>. For a particular example, let us examine the data more closely by activating only the "Raw data" layer:
+This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
+[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
+For a particular example, let us examine the data more closely by activating only the "Raw data" layer:
 
 ![](figs/oc_raw.png)
 
@@ -115,7 +119,9 @@ Segmentation and connected components analysis in the applets above is performed
 In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
 
 ##Large-scale prediction - Batch Prediction applets
-These two applets have the same interface and parameters as batch prediction in <a href="../pixelClassification/">Pixel Classification workflow</a>. The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
+These two applets have the same interface and parameters as batch prediction in
+[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
+The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
 
 ![](figs/batch.png)
 

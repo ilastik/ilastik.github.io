@@ -26,7 +26,7 @@ specific manual/semi-automatic or (fully) automatic tracking applets.
 additional to ilastik. Instructions on how to install CPLEX are given [here](../../download.html).**
 
 The manual tracking and automatic tracking workflows both build on the results of the
-<a href="../pixelClassification/">Pixel Classification workflow</a>. 
+[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 From the objects detected in this workflow, tracks (object identities linked over time) are either created by the user
 in a semi-automatic fashion or by the automatic tracking algorithm, respectively,
 optionally allowing for object divisions
@@ -37,12 +37,13 @@ optionally allowing for object divisions
 
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
-enable/disable overlays, change overlay capacity, etc.* ) please read the <a
-href="../navigation/">Navigation guide</a>.
+enable/disable overlays, change overlay capacity, etc.* ) please read the
+[Navigation guide]({{site.baseurl}}/documentation/startup/navigation.html).
 
 We will now step through a tutorial how to track proliferating cells both in 2D+time
 and 3D+time data, which are both provided in the 
-<a href="../../download.html">Download</a> section. 
+[Download]({{site.baseurl}}/download.html)
+section. 
 The user has to decide already on the startup of ilastik whether he/she wants to *manually* track
 objects or the *automatic* tracking object should be used. Depending on this choice, this tutorial will
 diverge later.
@@ -55,12 +56,14 @@ which is available in the <a href="../../download.html">Download</a> section.
 
 ## 0. Segmentation:
 The tracking workflows are based on the results of the 
-<a href="../pixelClassification">Pixel Classification workflow</a>, where the
+[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
+where the
 user segments foreground objects (e.g. cells) from background by defining two
 labels and providing examples through brush strokes. 
 Please find a detailed
 description of this workflow 
-<a href="../pixelClassification">here</a>, and a descand Manual Trackingseries dataset is provided <a href="../inputOutput">here</a>.
+[here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
+and a descand Manual Trackingseries dataset is provided <a href="../inputOutput">here</a>.
 
 In this example, we paint some background
 pixels with Label 1 (red by default) and cell nuclei are marked with Label 2 
@@ -121,7 +124,7 @@ specified by the **Sigma** values (allowing for anisotropic filtering).
 The resulting probabilities are finally **thresholded** at the value specified. The default
 values for the smoothing and thresholding should be fine in most of the cases. 
 Please consult the documentation of the
-<a href="../objects">Object Classification workflow</a>
+[Oject Classification workflow]({{site.baseurl}}/documentation/objects/objects.html)
 for a more detailed description of this applet, including an explanation of the **Two thresholds** 
 option.
 
@@ -396,7 +399,8 @@ accepted in any orthoview. Tracked objects are colored in 3D space, i.e. colored
 orthoviews with the respective track color. 
 
 To get started with 3D+time data, we provide example data in the
-<a href="../../Download/">Download</a> section. The file 
+[Download]({{site.baseurl}}/download.html)
+section. The file 
 `drosophila_00-49.h5` shows 50 time steps of a small excerpt of a developing *Drosophila* embryo, kindly
 provided by the 
 <a href="http://www.embl.de/research/units/cbb/hufnagel/">Hufnagel Group at EMBL Heidelberg</a>.
@@ -412,7 +416,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 ## References
 
-<a name="ref_chaingraph">&nbsp;</a>
+<a name="ref_chaingraph"> </a>
 \[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
 **A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
 *Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.

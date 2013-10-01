@@ -8,6 +8,21 @@ permalink: navigation.html
 ---
 #Navigation 
 
+##Viewer layout 
+Most applets include a data viewer component in the lower right corner
+of ilastik's main window, like the one shown below:
+
+![](screenshots/volumina-view.png)
+
+The data is shown using three orthogonal slicing planes. The
+x-view (red) shows y,z-slices, the
+y-view (green) shows x,z slices and the
+z-view (blue) shows x,y-slices.
+
+The red, green and blue lines indicate the current position
+(given by the slicing position of the three planes). These lines
+can be hidden with the _Position_ checkbox in the lower right.
+
 ##Navigation Overlay
 In each of the three slice views, there is an overlay dedicated
 to navigation at the top. The
