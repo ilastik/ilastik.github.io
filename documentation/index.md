@@ -1,8 +1,8 @@
 ---
 layout: documentation
-title: Home
+title: Overview
 category: "Documentation"
-group: "basic-documentation"
+group: "documentation-home"
 ---
 #User documentation
 After starting ilastik, you will be greeted by the
