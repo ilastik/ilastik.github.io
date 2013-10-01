@@ -22,7 +22,7 @@
         {% assign active_hook = toc %}
         {% include pages_list %}
         <li class="nav-header">ilastik Basics</li>
-        {% assign pages_list = site.pages %}
+        {% assign pages_list = site.pages | sort:"path" %}
         {% assign group = 'basic-documentation' %}
         {% assign active_hook = toc %}
         {% include pages_list %}

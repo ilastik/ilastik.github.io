@@ -19,8 +19,8 @@ example the classification workflow.
 ![](carving_intro_overview.png)
 
 While the
-<a href="/kategorien/20_Documentation/dateien/ilastik_carving_documentation/">Classification
-module</a> is useful for segmenting objects with discernible brightness, color
+[Classification module]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
+is useful for segmenting objects with discernible brightness, color
 or textural differences in comparison to their surroundings, the carving
 module's purpose is to aid in the extraction of objects from images that are
 only separable by their boundary - i.e. objects that do not differ from the

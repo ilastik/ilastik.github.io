@@ -1,5 +1,8 @@
 To develop these pages locall, run
 
-jekyll --auto --server 8888
+sudo aptitude install ruby-dev
+sudo gem install jekyll
+
+jekyll --watch -t serve --port 8888 --baseurl=""
 
 and then point your browser to localhost:8888

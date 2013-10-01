@@ -1,8 +1,9 @@
 ---
 layout: documentation
-title: Data Navigation 
+title: Data selection 
 tagline: 
 category: "Documentation"
 group: "basic-documentation"
+permalink: dataselection.html
 ---
-#Navigation 
+#Data selection
