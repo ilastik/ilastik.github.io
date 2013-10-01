@@ -23,6 +23,9 @@ The red, green and blue lines indicate the current position
 (given by the slicing position of the three planes). These lines
 can be hidden with the _Position_ checkbox in the lower right.
 
+In the lower left, the current coordinate _under the mouse_
+are shown.
+
 ##Navigation Overlay
 In each of the three slice views, there is an overlay dedicated
 to navigation at the top. The
@@ -33,7 +36,7 @@ _z_-view has a blue color.
 ![](screenshots/hud.png)
 
 * ![](screenshots/hud_00.png)
-  Navigate to a particular slice number
+  Navigate to a particular slice number.
   Click into the spin box and type in a new slice
   position.
   
@@ -56,3 +59,28 @@ _z_-view has a blue color.
 * ![](screenshots/hud_05.png)
   Maximize the slice view. The other two slice views will be hidden.
   Clicking this button again restores the original layout.
+  
+##Mouse & Keyboard
+
+* Use the _Mouse wheel_ to scroll forward/backward through the stack
+  represented by the slice view
+* Hold _Ctrl_ while using the mouse wheel to zoom in/out
+* Pan the view by holding moving the mouse with the _middle mouse button_
+  pressed
+* jump to a new 3D position by _double clicking_
+
+##3D view
+
+![](screenshots/hud3d.png)
+
+* ![](screenshots/hud3d_00.png) toggle the visibility of 
+  x, y or z slicing planes. Often, because the planes are draggable,
+  they hinder the interaction with the data or make it difficult to rotate
+  the view.
+
+* ![](screenshots/hud3d_01.png) 
+  Toggle anaglyph (needs red/blue glasses) rendering.
+
+* ![](screenshots/hud3d_02.png) 
+  Dock the 3D view out of ilastik's main window (for example to move it to
+  another screen). Another click docks the window back.
