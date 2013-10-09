@@ -212,7 +212,7 @@ In general it requires more labels to give correct results over several images, 
 
 The implementation of the random regression forest is based on <a href = "http://scikit-learn.org/stable/"> sklearn</a>.
 
-![alt ](fig/rf-algo.jpg)
+![alt text ](fig/rf-algo.jpg)
 
 <a id="sec_rf_advanced">&nbsp;</a>
 #### Advanced parameters
