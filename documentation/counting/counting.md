@@ -242,12 +242,12 @@ though the defaults should already create good results.
 <a id="sec_exporting">&nbsp;</a>
 ## 4. Exporting results
 We can export the results for all the images that were added to the project.
-This processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/04_export.html).
+This processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/export.html).
 
 
 <a id="sec_batch">&nbsp;</a>
 ## 5. Batch Processing unseen images
-For large-scale prediction of unseen images, the procedure is to interactively train the  regressors, on a representative subset of the images and then batch process the rest of the data. The batch processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/04_export.html).
+For large-scale prediction of unseen images, the procedure is to interactively train the  regressors, on a representative subset of the images and then batch process the rest of the data. The batch processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/export.html).
 
 This worklfow supports the hdf5 format to store the density for the batch processed images. The density for the batch processed image is stored as a dataset of the hdf5 file, this is easily readable with Matlab or Python. The density can then be integrated to retrieve the count of objects in the image.
 

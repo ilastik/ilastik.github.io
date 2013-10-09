@@ -77,7 +77,7 @@ can be turned on by clicking on the **Segmentation** checkbox.
 
 
 ## Batchprocessing unseen images
-When the classifier is trained it can be applied to unseen images as batch processing. This follows a general procedure in ilastik and is demonstrated [here]({{site.baseurl}}/documentation/startup/04_export.html)
+When the classifier is trained it can be applied to unseen images as batch processing. This follows a general procedure in ilastik and is demonstrated [here]({{site.baseurl}}/documentation/startup/export.html)
 
 The result of these worklfow (probability maps and segmentations) can be exported as images (*.tiff, *.png , etc.. ) or *.h5 files. When exporting the results as *.h5 files, it contains the resulting prediction as a multidimensional image. The images have the same shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
 
