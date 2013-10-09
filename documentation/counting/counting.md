@@ -222,7 +222,7 @@ The forest parameters exposed to the user are:
 
 **Both of these parameters influences the smoothness of the prediction and may affect performance**. On the one side, too few and too shallow trees can cause under-fitting of the density. On the other side, too many and too deep trees may also lower performance due to over-fitting and slow down the algorithm computation. This workflow gives the user the possibility to manually tune these parameters.
 
-![alt text ](fig/rf-algo.jpg)
+![alt text](fig/rf-algo.jpg)
 
 <a id="sec_svr">&nbsp;</a>
 ### Support Vector Regression
