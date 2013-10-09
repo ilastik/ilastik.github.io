@@ -8,7 +8,7 @@ group: "workflow-documentation"
 # Pixel Classification
 ## How it works, what it can do
 
-The pixel classification workflow can classify the pixels of an image given 
+The pixel classification workflow can classify the pixels of an image given
 user annotations. The classification of the image pixels can be used to segment
 the image into different objects, such as for example individual cells.
 The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their sorrounding. The algorithm is applicable for a wide range of segmentation problems that
@@ -22,12 +22,12 @@ Nice properties of the algorithm and workflow are
 - Interactive mode: the user gets immediate feedback after giving additional annotations.
 - Batch mode: the trained classifier can be applied to previously unseen images. Results are written to disk.
 - Uncertainty guidance: the user can view an uncertainty map, this indicates areas where the classifier is unsure about the results. Additional annotations in these regions help most.
- 
+
 ## Selecting good features
 
 Assuming the user has already created or loaded an existing
 ilastik project and added a dataset, the first step is to switch to the **Feature Selection Applet**
-where the filter selection and computation are performed. 
+where the filter selection and computation are performed.
 The selected features and scales will be used later on for the training of a classifier.
 The selected features and scales should roughly correspond to the visual attributes that separate the
 objects and the background.
@@ -45,12 +45,12 @@ All of these features can be selected on different scales. The scales correspond
 that is used to calculate the respective feature. I.e. if a typical textural pattern has a pixel size of 4, this should be selected as the scale.
 
 In general we advise to initially select a wide range of feature types and scales. Later on, this selection
-can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog. 
+can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
 ![](snapshots/feature_selection4_zoomed.png)
 
 ## Training the classifier
 The next step in the pixel classification is the training of a classifier
-that can separate the object classes. This training is done in an iterative fashion, 
+that can separate the object classes. This training is done in an iterative fashion,
 the user gives some labels, evaluates the interactive prediction and then gives additional labels to correct
 eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
@@ -77,7 +77,13 @@ can be turned on by clicking on the **Segmentation** checkbox.
 
 
 ## Batchprocessing unseen images
-After the training step the generated classifier can be used to classify and segment other images.
+When the classifier is trained it can be applied to unseen images as batch processing. This follows a general procedure in ilastik and is demonstrated [here]({{site.baseurl}}/documentation/startup/04_export.html)
+
+The result of these worklfow (probability maps and segmentations) can be exported as images (*.tiff, *.png , etc.. ) or *.h5 files. When exporting the results as *.h5 files, it contains the resulting prediction as a multidimensional image. The images have the same shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
+
+
+
+<!-- After the training step the generated classifier can be used to classify and segment other images.
 The first step in batch prediction is the selection of the input files.
 ![](snapshots/batch1_zoomed.png)
 When clicking on the **Add files** button, the user can choose between adding
@@ -94,5 +100,5 @@ The exported files have the same name with a "export.h5" suffix.
 
 The exported .h5 files, contain the resulting prediction as a multidimensional image. The images have the same
 shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
-
+ -->
 

@@ -9,7 +9,8 @@ After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/startup/startup.html).
 After selection one of the available workflows
 ([tracking]({{site.baseurl}}/documentation/tracking/tracking.html),
-[counting]({{site.baseurl}}/documentation/counting/counting.html),
+[density counting]({{site.baseurl}}/documentation/counting/counting.html),
+
 [pixel classification]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
 [object classification]({{site.baseurl}}/documentation/objects/objects.html)
 or
