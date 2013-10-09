@@ -211,6 +211,7 @@ This approach uses a Random Regression Forest as regression algorithm.
 In general it requires more labels to give correct results over several images, however it is more robust to inhomogeneous background.
 
 The implementation of the random regression forest is based on <a href = "http://scikit-learn.org/stable/"> sklearn</a>.
+![alt text](fig/rf-algo.jpg)
 
 <a id="sec_rf_advanced">&nbsp;</a>
 #### Advanced parameters
