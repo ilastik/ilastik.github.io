@@ -5,33 +5,31 @@ tagline: Interactive Counting
 category: "Documentation"
 group: "workflow-documentation"
 ---
-# Interactive Object Counting
+# Interactive Density Counting
 ## Overview, what it can and cannot do
 
-The purpose of this workflow is to enable the counting of the number of objects in crowded scenes such as cells in microscopy images.
+The purpose of this workflow is to enable **counting the number of objects** in crowded scenes such as cells in microscopy images. Counting is performed by directly estimating the density of objects in the image without performing segmentation or objects detection.
 
 When the density of objects in the image is low and the objects are well separated from each other, it is possible to count objects by first
 segmenting the foreground and then collecting the connected components as it is done in the
 [Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
 However, as the density of the objects increases, the latter approach
-underestimates the true counts due to under-segmentation errors.
+underestimates the number of objects due to under-segmentation errors.
 
 This workflow offers a supervised learning strategy to object counting that is robust to overlapping instances.
-It is appropriate for counting **blob-like overlapping objects with similar appearance (size, intensity, texture, etc..)**. Let's make three examples.
+It is appropriate for counting many **blob-like overlapping objects with similar appearance (size, intensity, texture, etc..)** that may overlap in the image plane. Let's make three examples.
+
 The left image in the figure below contains large **non-overlapping** objects with high variability in size and appearance (red nuclei and mitotic yellow nuclei) . Therefore it is best suited for the
-[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
-The two right images in the figure
-below contain small overlapping objects that are difficult to segment individually.
-The objects in each one of these images have similar appearance and have roughly the same size,
-therefore these two images are appropriate for the Counting workflow.
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html). The two right images in the figure below contain small overlapping objects that are difficult to segment individually. The objects in each one of these images have similar appearance and have similar same size,
+therefore these two images are appropriate for the Density Counting workflow.
 
 This workflow will estimate directly the **density of objects** in the image and infer the number objects without requiring segmentation.
 
 ![](fig/whichdata2.jpg)
 
 ## How does it work, what should you annotate
-In order to avoid the difficult task of segmenting each object individually, this workflow implements a supervised object counting strategy called **density counting**. The algorithm learns from the user annotations a real valued **object density** whose integral over a
-**sufficiently large** image region gives an estimate of the  **number of objects** in that region.
+In order to avoid the difficult task of segmenting each object individually, this workflow implements a supervised object counting strategy called **density counting**. The algorithm learns from the user annotations a real valued **object density** whose integral over a **sufficiently large** image region gives an estimate of the  **number of objects** in that region.
+The density is approximated by a normalized Gaussian function placed on the center of each object.
 
 In the following figure, note that the integral of the smooth density is a real number close to the true number of cells in the image.
 
@@ -39,8 +37,7 @@ In the following figure, note that the integral of the smooth density is a real 
 Further details are provided in the section [**interactive counting**](#sec_interactive_counting).
  -->
 
-It is important to note that the object density is an approximate estimator of the true integer count.
-The estimates are close to the true count when integrated over sufficiently large regions of the image
+It is important to note that the object density is an approximate estimator of the true integer count. The estimates are close to the true count when integrated over sufficiently large regions of the image
 and when enough training data is provided.
 
 NOTE that also contaminations of the image such as debris or other spurious objects may invalidate the estimated density.
@@ -49,12 +46,13 @@ Please refer to the [**references**](#sec_reference) for further details.
 
 ![alt text](fig/density_scheme2.png)
 
-The user gives markers (see tutorial below) in the form of **dots (Red)** for the objects centers and **brush-strokes (Green)** for irrelevant background. A pixel-wise mapping between local features and the object density is learned directly from these markers.
+The user gives annotations (see tutorial below) in the form of **dots (Red)** for the objects centers and **brush-strokes (Green)** for the irrelevant background. A pixel-wise mapping between local features and the object density is learned directly from these annotations.
+
 This workflow offers the possibility to interactively refine the learned density by:
 
 * Placing more annotations for the foreground and background
-* Monitoring the object counts in image regions
-* Constraining the number of objects in image regions (requires CPLEX or GUROBI)
+* Monitoring the object counts over sub-image regions
+* Constraining the number of objects in sub-image regions (requires CPLEX or GUROBI)
 
 <a id="sec_input_data">&nbsp;</a>
 ## Interactive Counting Tutorial
@@ -66,64 +64,63 @@ Similarly to other ilastik workflows, you can provide either images (e.g. \*.png
 The image import procedure is detailed in **LINKME**.
 Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing LINKME.
 In the following tutorial we will use a dataset of microscopic
-cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html"> SIMCEP</a>.
-In this tutorial we have already imported the images in the file `counting-tutorial.ilp`,
-therefore as the first thing let us just load this project. You should be able to start from the window below.
+cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html"> SIMCEP</a> this dataset is publicily availabel at the following <a href = "http://www.robots.ox.ac.uk/~vgg/research/counting/"> link</a>.
+
+In this tutorial we have already imported some of the images in the file `counting-tutorial.ilp`, that can be found in the tutorials folder.
+As first step, let us just load this project. You should be able to start from the window below.
 
 ![alt text](fig/blue_totorial0.jpg)
 
 <a id="sec_feature_selection">&nbsp;</a>
 ### 2. Feature Selection
-The first step is to define some features. Feature selection is similar to the
+The second step is to define some features. Feature selection is similar to the
 [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
-In the image below we show how you can choose the features. In particular, blob-detectors like the `Laplacian of Gaussians` or line-detectors like the `Hessian of Gaussians` are appropriate for blob like structure such as cells. In the figure below it is shown the response of the `Laplacian of Gaussians` for the cells in the image.
 
-![alt text](fig/blue_totorial_features2.jpg)
+In the image below is shown an example of feature selection. In particular, blob-detectors like the `Laplacian of Gaussians` or line-detectors like the `Hessian of Gaussians` are appropriate for blob like structure such as cells.
+In the figure below it is shown the response of the `Laplacian of Gaussians` for the cells in the image.
 
-It is also appropriate to match the scale of the objects and of the cluster of objects with the size of the features as shown in the figure below.
-For further details please refer to LINKME.
+![alt text](fig/blue_totorial_features2-red.jpg)
+
+It is appropriate to match the size of the object and of the cluster of objects with the scale of the features as shown in the figure below.
+For further details on feature selection please refer to **LINKME**.
 
 ![alt text](fig/blue_totorial_features.jpg)
 
 <a id="sec_interactive_counting">&nbsp;</a>
 ### 3. Interactive counting
-Annotations are done by painting while looking at the raw data.
+Annotations are done by painting while looking at the raw data and at the intermediate results of the algorithm.
 The result of this algorithm can be interactively refined while being in **Live-Update** mode.
 The overall workflow resembles the
 [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
-The main difference is that the Counting workflow gives the user the possibility to:
+The main difference is that the Density Counting workflow gives the user the possibility to:
 
 * Add **dots** for the object instances
 * Add **brush strokes** over the background
-* Add **boxes** to monitor image regions
+* Add **boxes** to monitor the count in sub-image regions
 
 These list of interactions is typically performed in sequence.
-This idea is reflected in the layout of the control panel on the left, which is typically used from **top to bottom**.
+This idea is reflected in the **layout of the left control panel** that is typically used from **top to bottom**.
 
 <a id="sec_brushing_interaction_mode">&nbsp;</a>
 #### 3.1 Dotting
-This is  the first interaction with the core of the workflow. The purpose of this interaction mode is to provide
-the classifier with examples for the object centers and examples for the background.
+This is  the first interaction with the core of this workflow. The purpose of this interaction is to provide the classifier with training examples for the object centers and training examples for the background.
 
-To begin placing dots just click on the red **Foreground** label and then on the image.
-The dot has to be placed close to the center of each object as in the figure below.
+To begin placing dot annotation select red **Foreground** label and then on click on the image. The annotation has to be placed close to the center of an object (cell) as in the figure below.
 
-![alt text](fig/blue_totorial3.jpg)
+![alt text](fig/blue_totorial3-red.jpg)
 
-Given the dotted annotations, a smooth training density is computed by placing a Gaussian at the location
-of each dot. The size of the Gaussian is a user parameter **Sigma** which should roughly match the object size.
-To help deciding an appropriate value for this parameter you will see the that the size of the **crosshair-cursor**
- changes accordingly to the chosen sigma. In addition,
- the density which is used during training is saved in the labelPreview layer as shown in the figure below.
+Given the dotted annotations, a smooth training density is computed by placing a normalized Gaussian function centered at the location of each dot. The scale of the Gaussian is a user parameter **Sigma** which should roughly match the object size. To help deciding an appropriate value for this parameter you will see the that the size of the **crosshair-cursor** changes accordingly to the chosen sigma (in the left panel). In addition, the density which is used during training is saved in the **LabelPreview** layer as shown in the figure below.
 
-![alt text](fig/blue_totorial4.jpg)
+![alt text](fig/blue_totorial4-red.jpg)
 
-NOTE: Large values for sigma can impact the required computation time: consider using a different counting approach,
-such as the
-[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
-if this parameter has to be chosen larger than 5.
+Different choices for the parameter **Sigma** are shown below. On the left and on the right too small and too big sigmas.
 
-FIXME IMAGE: Showing different sigmas
+![alt text](fig/different-sigmas2.jpg)
+
+
+**NOTE**: Large values for sigma can impact the required computation time: consider using a different counting approach, such as the
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html) if this parameter has to be chosen larger than 5.
+
 
 #### 3.2 Brushing
 After that a few dots are placed (say from 10 - 20 ) we can add training examples for the background.
