@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Counting
+title: Density Counting
 tagline: Interactive Counting
 category: "Documentation"
 group: "workflow-documentation"
