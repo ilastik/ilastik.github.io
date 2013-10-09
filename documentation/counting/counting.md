@@ -185,7 +185,8 @@ You can continue adding boxes and provide new annotations (dots or brushes) for 
 ### 6 Counting the entire image
 Le us switch to another image by using the **Current View** menu on the left. As it is shown in the image below, this image is free from annotations and the prediction of the density will is not yet computed. However, we the algorithms is already trained and therefore we are ready to compute the density for this new image.
 
-![alt text](fig/blue_totorial9.jpg)
+![alt text](fig/blue_totorial9-red.jpg)
+
 As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
 
 If the training labels are sufficient, we should obtain a count similar to what is shown in the image below that matches the number of objects in the images.
