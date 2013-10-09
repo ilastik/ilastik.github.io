@@ -113,6 +113,8 @@ Given the dotted annotations, a smooth training density is computed by placing a
 
 ![alt text](fig/blue_totorial4-red.jpg)
 
+
+<!-- IMAGE: Good sigma/dot, bad sigma/dot -->
 Different choices for the parameter **Sigma** are shown below. On the left and on the right too small and too big sigmas.
 
 ![alt text](fig/different-sigmas2.jpg)
@@ -123,17 +125,15 @@ Different choices for the parameter **Sigma** are shown below. On the left and o
 
 
 #### 3.2 Brushing
-After that a few dots are placed (say from 10 - 20 ) we can add training examples for the background.
+After that a few dots are placed (say from 10 - 20 depending on the data ) we can add training examples for the background.
 
 Background labeling happens exactly as in the
 [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 
-To activate this interaction click on the green **Background** label and give broad strokes, as in the figure below,
-marking unimportant areas or regions where the predicted density should be 0.
+To activate this interaction select the green **Background** label and give broad strokes on the image, as in the figure below, marking unimportant areas or regions where the predicted density should be 0.
 
 ![alt text](fig/blue_totorial6.jpg)
 
-<!-- IMAGE: Good sigma/dot, bad sigma/dot -->
 
 <a id="sec_brushing_interaction_mode">&nbsp;</a>
 ### 4 Live Update Mode
@@ -141,61 +141,56 @@ After that the some labels for the dot and for the background has been given, sw
 button and observe the predicted density.
 After that the prediction has been computed for the first time the **Prediction-Layer**.
 
-![](fig/blue_totorial7.jpg)
+![alt text](fig/blue_totorial7-red.jpg)
 
-Live Update Mode allows to observe the results of the prediction while
-giving new labels. However it is often faster to toggle this mode ON and OFF  while labeling.
+The Live Update Mode allows to observe the results of the prediction while
+giving new labels. However, it is often faster to toggle this mode ON and OFF  while labeling.
 
-**How do we pass from the density to the number of objects?**
+**How do we get from the density to the number of objects?**
 
 This is explained in the next section.
 
 <a id="sec_boxing_interaction_mode">&nbsp;</a>
 ### 5 Box Interaction Mode
-This interaction takes place after that the you have pressed the LiveUpdate Button for the first time.
-The boxes are windows that integrates the density over a certain image region and therefore provide the predicted
+This interaction takes place **after** that the we have pressed the LiveUpdate Button for the first time. The boxes are operator windows that integrate the density over a certain image region. Therefore they provide the predicted
 counts for the objects in that region.
-**Advanced usage** of the boxes is explained in the Support Vector Regression section.
+
+Boxes can also be used to annotate the counts over image regions. This **advanced usage** of the boxes is explained in the Support Vector Regression section **LINKME**.
 
 <!-- ![alt text](fig/density2.png) -->
 
-You can start placing boxes by clicking on the **add Boxes** button and drawing the box region on the image.
+You can start placing boxes by selecting the **Add Box** button and drawing a rectangular region on the image from the top left to the bottom right.
 The new box will be added automatically to the **Box List**.
 Boxes show the object count for the region on the upper right corner and beside the box name in the Box List as it is shown in the
 next figure.
 
-![alt text](fig/blue_totorial8.jpg)
+![alt text](fig/blue_totorial8-red.jpg)
 
 Boxes can be:
-* **Selected and Moved around**: to select a particular you can select its name the Box List or just pass over it with your mouse. Note that
-when you pass with your mouse over a particular box, its name in the BoxList is highlighted. The box will change color once selected.
-You can now drag the box in a different position while pressing the `Ctrl` key .
-* **Resized**: when selecting a box it will show 2 resize handles at its borders.
+
+* **Selected and Moved**: to select a particular you can select its name the Box List or just pass over it with your mouse. Note that
+when you pass over a particular box with the mouse, its name in the BoxList is highlighted. The box will change color once selected.
+You can now drag the box in a different position while by clicking and moving the mouse while pressing the `Ctrl` key.
+
+* **Resized**: when selecting a box it will show 2 resize handles at its borders right and bottom borders.
+
 * **Deleted**: to delete a box either click on the delete button ( a red cross) on the BoxList or press `Del` while selecting the box
+
 * **Configured**: you can configure the appearance (color, fontsize, fontcolor etc.. ) of each individual box (or of all boxes at the same time), by clicking on the colored rectangle in the BoxList. The interaction dialog for the box properties is show below.
 
-
-You can continue adding boxes and provide labels for objects centers and background until you are satisfied of the results.
-
+You can continue adding boxes and provide new annotations (dots or brushes) for objects centers and background until you are satisfied of the counting results as shown by the boxes.
 
 ![alt text](fig/box_dialog.jpg)
 
 ### 6 Counting the entire image
-Le us switch to another image by using the  appropriate menu on the left. As it is shown in the image below,
-this image will be free from labels and the prediction of the density will not  be yet computed.
+Le us switch to another image by using the **Current View** menu on the left. As it is shown in the image below, this image is free from annotations and the prediction of the density will is not yet computed. However, we the algorithms is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
 
-![alt text](fig/blue_totorial9.jpg)
-It is possible to start the prediction by toggling the Live Update button.
-However, let us press the **Update total density button** on the left.
+If the training labels are sufficient, we should obtain a count similar to what is shown in the image below that matches the number of objects in the images.
 
+**Note**: In a real world scenario, you may need to distribute several annotations across many images to obtain accurate counts for all the images in the dataset.
 
 
-This button estimates the density and provides the predicted count **for the entire image**.
-If the training labels are sufficient, we should obtain a count similar to what is shown in the image below.
-
-
-
-![alt text](fig/blue_totorial12.jpg)
+![alt text](fig/blue_totorial12-red.jpg)
 
 **You are now ready to use the workflow on your data!**
 Please continue to read if you want to know some advanced features.
@@ -203,7 +198,9 @@ Please continue to read if you want to know some advanced features.
 
 <a id="sec_algorithms">&nbsp;</a>
 ## The Algorithms
-**Two different regression algorithms** are currently supported by the Counting workflow depending on the availability of CPLEX on the machine where ilastik is installed. We expose the most important and well-known parameters for our algorithms to the advanced user, details are given below.
+**Two different regression algorithms** are currently supported by the Density Counting workflow depending on the availability of CPLEX (or GUROBI) on the machine where ilastik is installed. Note that for copyright reason we cannot provide the license (free for academic use) to this software that can be installed separately following this procedure **LINKME**.
+
+The most important parameters for our algorithms can be set by an advanced user with the menu on the left, details are given below.
 
 <a id="sec_rf">&nbsp;</a>
 ### Random Forest
@@ -212,23 +209,26 @@ In general it requires more labels to give correct results over several images, 
 
 The implementation of the random regression forest is based on <a href = "http://scikit-learn.org/stable/"> sklearn</a>.
 
+
+
 <a id="sec_rf_advanced">&nbsp;</a>
 #### Advanced parameters
 The forest parameters exposed to the user are:
 * **Ntrees** Number of trees in the forest
 * **MaxDepth** maximum depth of each individual tree.
 
-FIXME IMAGE: Effect of different parameters
+**Both of these parameters influences the smoothness of the prediction and may affect performance**. On the one side, too few and too shallow trees can cause under-fitting of the density. On the other side, too many and too deep trees may also lower performance due to over-fitting and slow down the algorithm computation. This workflow gives the user the possibility to manually tune these parameters.
+
+![alt text](fig/rf-algo.jpg)
 
 <a id="sec_svr">&nbsp;</a>
 ### Support Vector Regression
-Requires Gurobi
-Slower
-Better generalization
-Can offer additional type of label via Box constraints
--Box constraints not strict
+BUOTE -
+* Requires Gurobi
+* Maybe Slower but more robust and better generalization
+* Can offer additional type of label via Box constraints -Box constraints not strict
 #### Box Constraints
-Box constraints offer an easy way to provide counts for a region, while not having to label every instance individually.
+* Box constraints offer an easy way to provide counts for a region, while not having to label every instance individually.
 
 <a id="sec_advanced_svr">&nbsp;</a>
 #### Advanced parameters
@@ -249,6 +249,9 @@ BUOTE - Can also save prediction itself. If you want to export the results for a
 ## 5. Batch Processing
 BUOTE - For large-scale prediction, first train regressors, then add input images, then press export all.
 
-<a id="sec_reference">&nbsp;</a>
+
 ## 6. References
-FIXME: reference
+<a id="sec_reference">&nbsp;</a>
+\[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
+**Learning to Count with Regression Forest and Structured Labels.**
+*Proceedings of the International Conference on Pattern Recognition (ICPR 2012)*, Tsukuba, Japan, November, 2012.
