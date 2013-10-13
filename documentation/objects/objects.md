@@ -9,13 +9,17 @@ group: "workflow-documentation"
 #Object Classification Workflow
 ##Input
 
-As the name suggests, object classification workflow aims to classify full *objects*, based on object-level features and user annotations. 
+As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations. 
 In order to do so, the workflow needs *segmentation* images besides the usual raw image data. Depending on the availability of these 
 segmentation images, the user can choose between three flavors of object classification workflow, which differ by their input data:
 
+* Object Classification (from pixel classification)
+* Object Classification (from prediction image)
+* Object Classification (from binary image)
+
 ![](figs/ilastik_start_screen.png)
 
-* Object Classification (from pixel classification)
+### Object Classification (from pixel classification)
 This is a combined workflow, which lets you start from the raw data, perform pixel classification as described 
 in
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
@@ -23,15 +27,15 @@ and then thresholding the probability maps to obtain a segmentation.
 
 ![](figs/input_pixel_class.png)
 
-If you have pre-computed probability maps, you can also use
-
-* Object Classification (from prediciton image)
-The data input applet of this workflow expects you to load the probability maps:
+### Object Classification (from prediction image)
+You should choose this workflow if you have pre-computed probability
+maps.
+The data input applet of this workflow expects you to load the probability mapsin addition to the raw data:
 
 ![](figs/input_prediction_image.png)
 
-* Object Classification (from binary image)
-This workflow should be used, if you already have a binary segmentation image. 
+### Object Classification (from binary image)
+This workflow should be used if you already have a binary segmentation image. 
 The image should be loaded in the data input applet:
 
 ![](figs/input_segmentation_image.png)
@@ -75,7 +79,7 @@ The following dialog will appear if you press the "Select features" button:
 
 ![](figs/object_extraction_selection_dialog.png)
 
-The "Standard Object Features" refer to the built-in ilastik features, computed by the [vigra library](http://hci.iwr.uni-heidelberg.de/vigra/doc/vigra/group__FeatureAccumulators.html). Unless otherwise specified by the "Coord" prefix, the features are computed on the grayscale values of the pixels that belong to the object. You will also notice features, which can be computed "in the neighborhood". In that case, the neighborhood of the object ( specified by the user at the bottom of the dialog) is found by distance transform and the feature is computed for the object itself and for the neighborhood including and excluding the object.
+The "Standard Object Features" refer to the built-in ilastik features, computed by the [vigra library](http://hci.iwr.uni-heidelberg.de/vigra/doc/vigra/group__FeatureAccumulators.html). Unless otherwise specified by the "Coord" prefix, the features are computed on the grayscale values of the pixels that belong to the object. You will also notice features, which can be computed "in the neighborhood". In that case, the neighborhood of the object (specified by the user at the bottom of the dialog) is found by distance transform and the feature is computed for the object itself and for the neighborhood including and excluding the object.
 
 ![](figs/object_extraction_selection_dialog_neigh.png)
 
