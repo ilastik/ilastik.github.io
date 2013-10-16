@@ -202,7 +202,11 @@ Please continue to read if you want to know some advanced features.
 
 <a id="sec_algorithms">&nbsp;</a>
 ## The Algorithms
-**Two different regression algorithms** are currently supported by the Density Counting workflow depending on the availability of CPLEX (or GUROBI) on the machine where ilastik is installed. Note that for copyright reason we cannot provide the license (free for academic use) to this software that can be installed separately following this procedure **LINKME**.
+**Two different regression algorithms** are currently supported by the Density Counting workflow depending on the
+availability of CPLEX (or GUROBI) on the machine where ilastik is installed. Note that for copyright reason we cannot
+provide the license (free for academic use) to this software that can be installed separately following the procedure
+described in
+[**Advanced Installation**](#sec_advanced_installation).
 
 The most important parameters for our algorithms can be set by an advanced user with the menu on the left; details are given below.
 
@@ -260,7 +264,21 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 **NOTE:** the density can be exported also as a normal grayscale image (\*.png, \*.tiff, etc..). However, due to normalization, the intensity value of the image do not correspond anymore to the predicted density values (originally between 0,1).
 
-## 6. References
+<a id="sec_advanced_installation>&nbsp;</a>
+## 6. Installation of the 3rd-party plugins
+To use the method as described in the [**Support Vector Regression section**](#sec_svr), Gurobi has to be installed on
+the system.
+#Windows
+The *gurobi55.dll* (the currently supported version) is by default installed to a place noted in the system-wide
+```PATH```
+variable. If this does not seem the case for your installation, copying the dll from the ```$GUROBI/bin``` directory of the
+gurobi installation into the ```$ILASTIK/bin``` directory of the ilastik installation will make it accessible to our workflow.
+#Linux
+As the Linux installer for Gurobi does not change ```LD_LIBRARY_PATH```, it is required to manually copy the
+***libgurobi55.so*** from the ```$GUROBI/lib``` subfolder into the ```$ILASTIK/lib``` location.
+
+
+## 7. References
 <a id="sec_reference">&nbsp;</a>
 \[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
 **Learning to Count with Regression Forest and Structured Labels.**
