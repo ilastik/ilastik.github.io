@@ -264,7 +264,7 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 **NOTE:** the density can be exported also as a normal grayscale image (\*.png, \*.tiff, etc..). However, due to normalization, the intensity value of the image do not correspond anymore to the predicted density values (originally between 0,1).
 
-<a id="sec_advanced_installation>&nbsp;</a>
+<a id="sec_advanced_installation">&nbsp;</a>
 ## 6. Installation of the 3rd-party plugins
 To use the method as described in the [**Support Vector Regression section**](#sec_svr), Gurobi has to be installed on
 the system.
