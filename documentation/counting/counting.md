@@ -61,8 +61,9 @@ Let's warm up with a small tutorial.
 
 ### 1. Input Data
 Similarly to other ilastik workflows, you can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
-The image import procedure is detailed in **LINKME**.
-Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing LINKME.
+The image import procedure is detailed in [Data Selection]({{site.baseurl}}/documentation/startup/dataselection.html).
+Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing 
+[Data Selection]({{site.baseurl}}/documentation/startup/export.html#batchprocessing_unseen_images).
 In the following tutorial we will use a dataset of microscopic
 cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
 This dataset is publicly available at the following <a href = "http://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
@@ -83,7 +84,8 @@ The figure below shows the response of the *Laplacian of Gaussians* filter.
 ![alt text](fig/blue_totorial_features2-red.jpg)
 
 It is appropriate to match the size of the object and of the cluster of objects with the scale of the features as shown in the figure below.
-For further details on feature selection please refer to **LINKME**.
+For further details on feature selection please refer to [How to select good
+features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting_good_features).
 
 ![alt text](fig/blue_totorial_features.jpg)
 
@@ -139,15 +141,13 @@ To activate this interaction select the green **Background** label and give broa
 
 <a id="sec_brushing_interaction_mode">&nbsp;</a>
 ### 4 Live Update Mode
-After some labels for the dot and for the background have been given, switch the **Live-Update** on
-(using the *Live Update* button) and examine the predicted density.
-After that the prediction has been computed for the first time the **Prediction-Layer**. FIXME
+After some labels for the objects and the background have been given, switch the **Live-Update** on
+(using the *Live Update* button), this will trigger a first prediction, displayed in the **Prediction-Layer**.
 
 ![alt text](fig/blue_totorial7-red.jpg)
 
-The Live Update Mode allows to observe the results of the prediction while
-giving new labels. However, it is often faster to toggle this mode ON and OFF  while labeling.
-FIXEM: reword: In Live Update Mode, predictions are re-computed whenever annotations are changed. ....
+If the Live Update Mode is active, every single change in the training data (e.g. placing new labels or changing parameters)
+causes a new prediction - thus it may be faster to toggle it OFF again when you plan extensive modifications.
 
 **How do we get from the density to the number of objects?**
 
@@ -158,7 +158,8 @@ This is explained in the next section.
 This interaction takes place **after** we have pressed the *Live Update* Button for the first time. The boxes are operator windows that integrate the density over a certain image region. Therefore they provide the predicted
 counts for the objects in that region.
 
-Boxes can also be used to annotate the counts over image regions. This **advanced usage** of the boxes is explained in the Support Vector Regression section **LINKME**.
+Boxes can also be used to annotate the counts over image regions. This **advanced usage** of the boxes is explained in
+the [**Support Vector Regression section**](#sec_svr).
 
 <!-- ![alt text](fig/density2.png) -->
 
@@ -226,19 +227,22 @@ The forest parameters exposed to the user are:
 
 <a id="sec_svr">&nbsp;</a>
 ### Support Vector Regression
-BUOTE -
-* Requires Gurobi
+* Requires an installation of Gurobi on the system
 * Maybe slower but more robust and better generalization
-* Can offer additional type of label via *Box constraints* not strict FIXME
+* Can offer additional type of label via *Box constraints* not strict
+* The density inside of a box now be approximately fixed to a real number, providing additional training information
 #### Box Constraints
-* Box constraints offer an easy way to provide counts for a region, while not having to label every instance individually.
+![fixing boxes](fig/boxes2.png)
+* By clicking on the little lock icon you can easily provide counts for a region (highlighted in red),
+which will be taken into account for the training.
+* Note that this value only poses a *soft contraint*, so the prediction may slightly differ to better adher to the dot labels.
+
 
 <a id="sec_advanced_svr">&nbsp;</a>
 #### Advanced parameters
 C: How much impact should individual and box errors do compared to w itself, this will likely only change results if you set C to low values.
 epsilon: The amount of error that will be tolerated for individual pixels, this regularizes the result,
 though the defaults should already create good results.
-
 
 
 
