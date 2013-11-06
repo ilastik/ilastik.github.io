@@ -7,7 +7,7 @@ category: "Download"
 #Download
 
 ##Windows
-[ilastik-1.0.beta-win64-20131014.zip](http://files.ilastik.org/ilastik-1.0.beta-win64-20131014.zip)
+[ilastik-1.0.beta-win64-20131104.zip](http://files.ilastik.org/ilastik-1.0.beta-win64-20131104.zip)
  
 ##Linux
 [ilastik-1.0.beta-Linux-20131104.tar.gz](http://files.ilastik.org/ilastik-1.0.beta-Linux-20131104.tar.gz)
