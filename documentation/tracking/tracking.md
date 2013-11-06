@@ -23,7 +23,8 @@ This tutorial describes those shared applets for both workflows simultaneously b
 specific manual/semi-automatic or (fully) automatic tracking applets.
 
 **Please note that the _automatic_ tracking workflow only works on machines where CPLEX is installed
-additional to ilastik. Instructions on how to install CPLEX are given [here](../../download.html).**
+additional to ilastik. Instructions on how to install CPLEX are given 
+[here]({{site.baseurl}}/installation/installation.html).**
 
 The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
@@ -75,7 +76,8 @@ To directly showcase the tracking workflows, we provide this file with the data.
 
 ![](./fig/02_training.jpg)
 
-Now, one of the tracking workflows (Manual Tracking or Automatic Tracking, if [CPLEX is installed](../../download.html) ) 
+Now, one of the tracking workflows (Manual Tracking or Automatic Tracking, if 
+[CPLEX is installed]({{site.baseurl}}/installation/installation.html) ) 
 can be launched from the start screen of ilastik
 by creating a new project.
 
@@ -299,7 +301,8 @@ of all available shortcuts can be displayed/modified in `Settings -> Keyboard Sh
 <a id="sec_automatic">&nbsp;</a>
 ### 4.2 Automatic Tracking (Chaingraph):
 
-If [CPLEX is installed](../../download.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
+If 
+[CPLEX is installed]({{site.baseurl}}/installation/installation.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
 and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
 
 This automatic tracking applet implements the algorithm described in [\[1\]](#ref_chaingraph). The algorithm aims to
