@@ -7,13 +7,10 @@ category: "Download"
 #Download
 
 ##Windows
-[ilastik-1.0-beta-win64.exe](https://docs.google.com/file/d/0B6oM8wrl4_PSUE12QnB4amlWZFE/edit?usp=sharing)
-
-Updated version from 14.10.2013:
-[ilastik-1.0-beta-10142013.zip](https://docs.google.com/file/d/0B6oM8wrl4_PSRUxOeWdKbVgzR2M/edit?usp=sharing)
-
+[ilastik-1.0.beta-win64-20131014.zip](http://files.ilastik.org/ilastik-1.0.beta-win64-20131014.zip)
+ 
 ##Linux
-[ilastik-1.0.beta-Linux.tar.gz](https://docs.google.com/file/d/0B6oM8wrl4_PSWVdNNUk0LVU1Mzg/edit?usp=sharing)
+[ilastik-1.0.beta-Linux-20131104.tar.gz](http://files.ilastik.org/ilastik-1.0.beta-Linux-20131104.tar.gz)
 
 ##Mac
-[ilastik-1.0.beta.Mac.app.zip](https://docs.google.com/file/d/0B6oM8wrl4_PSUUZ0SmRpUDRBX1k/edit?usp=sharing)
+[ilastik.app-20131104.zip](http://files.ilastik.org/ilastik.app-20131104.zip)
