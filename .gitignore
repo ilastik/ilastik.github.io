@@ -3,3 +3,6 @@ _site
 
 *~
 *.kate-swp
+
+#misc.
+.directory
