@@ -63,15 +63,15 @@ user segments foreground objects (e.g. cells) from background by defining two
 labels and providing examples through brush strokes. 
 Please find a detailed
 description of this workflow 
-[here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
-and a descand Manual Trackingseries dataset is provided <a href="../inputOutput">here</a>.
+[here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
+and hints on how to load time-series datasets are provided <a href="../inputOutput">here</a>.
 
 In this example, we paint some background
 pixels with Label 1 (red by default) and cell nuclei are marked with Label 2 
 (green by default). When happy with the live segmentation, the user applies
 the learned model to the entire dataset by exporting the results in the **Prediction Export** applet 
 to (preferably) an hdf5 file such as  
-`mitocheck_94570_2D+t_01-53_resultas.h5`. 
+`mitocheck_94570_2D+t_01-53_results.h5`. 
 To directly showcase the tracking workflows, we provide this file with the data.
 
 ![](./fig/02_training.jpg)
