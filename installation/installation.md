@@ -9,7 +9,7 @@ category: "Installation"
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
-**Note that it is not needed to install IBM CPLEX for all other ilastik workflows.**
+**Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for the Automatic Tracking workflow.**
 
 ## Application for Academic License at IBM
 
@@ -21,15 +21,15 @@ Please note that it might take some days until the application gets approved by 
 
 ## Download IBM CPLEX
 
-As soon as the academic membership got approved, the user can download IBM CPLEX. To do so, 
+After the academic membership has been approved, the user can download IBM CPLEX. To do so, 
 the steps on [this IBM website](http://www-03.ibm.com/ibm/university/academic/pub/jsps/assetredirector.jsp?asset_id=1070)
 may be followed. 
 The search result in the IBM software catalogue should look similar to this:
-![center](./fig/ibm_search_result.jpg)
+![center|alt=IBM Search Result](./fig/ibm_search_result.jpg)
 
 We recommend to use *Http transfer*, then clicking on the CPLEX instance in *Industry Solutions* should open
 a list of CPLEX versions available for different platforms:
-![center](./fig/cplex_result.jpg)
+![center|alt=IBM Search Result CPLEX](./fig/cplex_result.jpg)
 
 The current version of ilastik works with 
 **IBM ILOG CPLEX Optimization Studio V12.5.1**.
