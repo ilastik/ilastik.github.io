@@ -11,4 +11,4 @@ author :
 
 production_url : http://ilastik.github.io
 baseurl: http://ilastik.github.io
-
+relative_permalinks: false
