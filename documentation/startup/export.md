@@ -4,7 +4,7 @@ title: Export
 tagline:
 category: "Documentation"
 group: "basic-documentation"
-permalink: export.html
+weight: 4
 ---
 #Export
 In the machine learning based ilastik workflows such as the

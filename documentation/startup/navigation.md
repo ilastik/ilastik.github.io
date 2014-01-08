@@ -4,7 +4,7 @@ title: Data Navigation
 tagline: 
 category: "Documentation"
 group: "basic-documentation"
-permalink: navigation.html
+weight: 2
 ---
 #Navigation 
 

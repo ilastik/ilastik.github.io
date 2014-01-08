@@ -22,15 +22,15 @@
         {% assign active_hook = toc %}
         {% include pages_list %}
         <li class="nav-header">ilastik Basics</li>
-        {% assign pages_list = site.pages | sort:"path" %}
+        {% assign pages_list = site.pages %}
         {% assign group = 'basic-documentation' %}
         {% assign active_hook = toc %}
-        {% include pages_list %}
+        {% include weighted_pages_list %}
         <li class="nav-header">ilastik Workflows</li>
         {% assign pages_list = site.pages %}
         {% assign group = 'workflow-documentation' %}
         {% assign active_hook = toc %}
-        {% include pages_list %}
+        {% include weighted_pages_list %}
     </ul>
   </div>
   <div class="span9">

@@ -4,6 +4,7 @@ title: Pixel Classification
 tagline: Pixel Classification
 category: "Documentation"
 group: "workflow-documentation"
+weight: 0
 ---
 # Pixel Classification
 ## How it works, what it can do

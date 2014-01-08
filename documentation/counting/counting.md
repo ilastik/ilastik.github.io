@@ -4,6 +4,7 @@ title: Density Counting
 tagline: Interactive Counting
 category: "Documentation"
 group: "workflow-documentation"
+weight: 4
 ---
 # Interactive Density Counting
 ## Overview, what it can and cannot do

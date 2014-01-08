@@ -4,6 +4,7 @@ title: Object Classification
 tagline: Object Classifcation
 category: "Documentation"
 group: "workflow-documentation"
+weight: 1
 ---
 
 #Object Classification Workflow

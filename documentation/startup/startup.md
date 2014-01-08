@@ -4,7 +4,7 @@ title: Startup screen
 tagline: 
 category: "Documentation"
 group: "basic-documentation"
-permalink: startup.html
+weight: 0
 ---
 # The Startup Screen
 The first thing you see when starting ilastik is the startup screen.

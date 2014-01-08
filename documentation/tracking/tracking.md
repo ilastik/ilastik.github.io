@@ -4,6 +4,7 @@ title: Tracking (Automatic and Manual)
 tagline: Tracking
 category: "Documentation"
 group: "workflow-documentation"
+weight: 2
 ---
 # Automatic Tracking and Manual Tracking
 ## Overview and Scope
