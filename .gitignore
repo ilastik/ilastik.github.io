@@ -6,3 +6,6 @@ _site
 
 #misc.
 .directory
+
+# Vim swap files
+*.s[a-w][a-z]
