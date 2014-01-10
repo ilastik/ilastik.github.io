@@ -50,5 +50,5 @@ Alternatively, a layer's contextmenu (right click) can be used to access the
 same layer export functionality.
 
 The export dialog is described in
-the [data export]({{site.baseurl}}/documentation/startup/export.html) section.
+the [data export]({{site.baseurl}}/documentation/basics/export.html) section.
 

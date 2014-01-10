@@ -107,7 +107,7 @@ Additional available interactions include:
       
 To learn more about how to navigate the data (**scroll, change slice,
 enable/disable overlays, change overlay capacity etc. **) please read the
-[Navigation guide]({{site.baseurl}}/documentation/startup/navigation.html).
+[Navigation guide]({{site.baseurl}}/documentation/basics/navigation.html).
 
 ## Advanced Options
 

@@ -6,7 +6,7 @@ group: "documentation-home"
 ---
 #User documentation
 After starting ilastik, you will be greeted by the
-[startup screen]({{site.baseurl}}/documentation/startup/startup.html).
+[startup screen]({{site.baseurl}}/documentation/basics/startup.html).
 After selection one of the available workflows
 ([tracking]({{site.baseurl}}/documentation/tracking/tracking.html),
 [density counting]({{site.baseurl}}/documentation/counting/counting.html),
@@ -18,12 +18,12 @@ or
 get familiar with ilastik's main interface.
 
 First, select data using the
-[data selection]({{site.baseurl}}/documentation/startup/dataselection.html)
+[data selection]({{site.baseurl}}/documentation/basics/dataselection.html)
 applet.
 To learn how to navigate and interact with you data, read the
-[navigation]({{site.baseurl}}/documentation/startup/navigation.html)
+[navigation]({{site.baseurl}}/documentation/basics/navigation.html)
 documentation as well as the
-[layers]({{site.baseurl}}/documentation/startup/layers.html)
+[layers]({{site.baseurl}}/documentation/basics/layers.html)
 documentation.
 
 #Developer documentation

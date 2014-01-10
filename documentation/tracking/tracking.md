@@ -40,7 +40,7 @@ optionally allowing for object divisions
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
 enable/disable overlays, change overlay capacity, etc.* ) please read the
-[Navigation guide]({{site.baseurl}}/documentation/startup/navigation.html).
+[Navigation guide]({{site.baseurl}}/documentation/basics/navigation.html).
 
 We will now step through a tutorial how to track proliferating cells both in 2D+time
 and 3D+time data, which are both provided in the 

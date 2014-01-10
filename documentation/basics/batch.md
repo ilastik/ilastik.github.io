@@ -17,7 +17,7 @@ In the machine learning based ilastik workflows such as the
 
 The following tutorial demonstrates the batch prediction for the [pixel classification workflow]({{site.baseurl}}/documentation/objects/objects.html) the same procedure applies also to the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html).
 
-The first step in batch prediction is the selection of the input files. This uses the same mechanism as [data selection]({{baseurl}}/documentation/startup/dataselection.html).
+The first step in batch prediction is the selection of the input files. This uses the same mechanism as [data selection]({{baseurl}}/documentation/basics/dataselection.html).
 
 ![](screenshots/batch1_zoomed.png)
 

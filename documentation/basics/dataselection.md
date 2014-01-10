@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Data selection
+title: Data Selection
 tagline:
 category: "Documentation"
 group: "basic-documentation"

@@ -27,7 +27,7 @@ The panel can be used to change export settings as well as bulk export of all th
 * **Export All:** exports output for all input files based on the settings, including output file names and locations, specified in [the export settings dialog](#settings)
 * **Delete All:** removes all output files
 
-The box on the top right lists the input files using their nicknames defined in [data selection applet]({{baseurl}}/documentation/startup/dataselection.html) along with the location of the ouput file. The location can only be changed through [the export settings dialog](#settings) which can be opened with the **Choose Settings** button on the left. The **Export** button generates individual output files corresponding to the selected dataset.
+The box on the top right lists the input files using their nicknames defined in [data selection applet]({{baseurl}}/documentation/basics/dataselection.html) along with the location of the ouput file. The location can only be changed through [the export settings dialog](#settings) which can be opened with the **Choose Settings** button on the left. The **Export** button generates individual output files corresponding to the selected dataset.
 <div style="clear: right;" />
 
 ## Export Settings {#settings}
