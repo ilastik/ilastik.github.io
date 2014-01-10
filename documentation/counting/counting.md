@@ -64,7 +64,7 @@ Let's warm up with a small tutorial.
 Similarly to other ilastik workflows, you can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
 The image import procedure is detailed in [Data Selection]({{site.baseurl}}/documentation/startup/dataselection.html).
 Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing 
-[Data Selection]({{site.baseurl}}/documentation/startup/export.html#batchprocessing_unseen_images).
+[Data Selection]({{site.baseurl}}/documentation/startup/batch.html#batchprocessing_unseen_images).
 In the following tutorial we will use a dataset of microscopic
 cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
 This dataset is publicly available at the following <a href = "http://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
@@ -259,7 +259,7 @@ This processing follows a standard ilastik procedure that is demonstrated [here]
 
 <a id="sec_batch">&nbsp;</a>
 ## 5. Batch Processing unseen images
-For large-scale prediction of unseen images, the procedure is to first interactively train the regressors on a representative subset of the images. Then, use batch processing for the rest of the data. The batch processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/export.html).
+For large-scale prediction of unseen images, the procedure is to first interactively train the regressors on a representative subset of the images. Then, use batch processing for the rest of the data. The batch processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/startup/batch.html).
 
 This workflow supports the hdf5 format to store the density for the batch processed images. The density for the batch processed image is stored as a dataset of the hdf5 file, which is easily readable with Matlab or Python. The density can then be integrated to retrieve the count of objects in the image.
 

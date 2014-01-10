@@ -8,15 +8,15 @@ weight: 1
 ---
 # Data Selection Applet
 
-The first step in any Ilastik workflow is to load the data into the
-project. Ilastik supports importing data in [various formats](#formats), from
+The first step in any ilastik workflow is to load the data into the
+project. ilastik supports importing data in [various formats](#formats), from
 a single file or a stack of files which form a new dimension.
 
 <div style="float: right;" markdown="1">
 ![](screenshots/data_selection-window_layout.png)
 </div>
 
-After creating a new project, you will be presented with the main Ilastik
+After creating a new project, you will be presented with the main ilastik
 window. The left panel of this window is populated with steps of the
 workflow and the overlay selection box. The right panel contains different
 data views based on the active workflow step selected on the left.
@@ -81,7 +81,7 @@ the names of the files that will be imported as an image stack.
 
 ## Supported File Formats {#formats}
 
-The main file format used by Ilastik is [HDF5](http://www.hdfgroup.org/HDF5/whatishdf5.html). Files with extensions `h5`, `hdf5`, `ilp` (Ilastik project files) will be recognized as HDF5.
+The main file format used by ilastik is [HDF5](http://www.hdfgroup.org/HDF5/whatishdf5.html). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5.
 
 Widely used image formats such as
  * Microsoft Windows bitmap image file (`bmp`),
@@ -109,7 +109,7 @@ files with extension `npy`.
 </div>
 
 Double clicking on an input file in the data selection box opens the file
-properties dialog. This dialog can be used to review and change how Ilastik
+properties dialog. This dialog can be used to review and change how ilastik
 interprets the data file.
 
 - **Nickname:** short name used to identify the data
@@ -117,7 +117,7 @@ interprets the data file.
 - **Data type:** data type used to interpret the binary data in the file. This is selected automatically based on the file type.
 - **Axes:** Axes tags indicating how each dimension should be interpreted.
 The letters `t` and `c` correspond to time and color dimensions
-respectively. Ilastik differentiates 2D + time data from 3D data, computing
+respectively. ilastik differentiates 2D + time data from 3D data, computing
 temporal features for the former. Marking a dimension as time changes
 ilastik behavior.
 - **Range:**
