@@ -29,11 +29,11 @@ selected files.
 
 New data can be imported in a project with the "Add New..." button.
 Clicking this will present two options,
- * Add one or more separate files...
- * Add Volume from Stack...
+ * Add separate image(s)...
+ * Add a single 3D/4D Volume from Stack...
 
-These can be used to [load data from a single file](#single_file) or [load
-an image stack](#image_stack) respectively.
+These can be used to [load a 2D/3D/4D image from a single file](#single_file) or [load
+a single 2D/3D/4D image from a stack of 2D images](#image_stack) respectively.
 
 <div style="float: left;" markdown="1">
 ![](screenshots/data_selection-tabs.png)
@@ -49,7 +49,7 @@ additional data corresponding to an input.
 
 ## Loading data from a single file {#single_file}
 
-You can use the "Add one or more separate files..." option to add new data
+You can use the "Add separate image(s)..." option to add new data
 files to a project. This will present a standard file open dialog, where
 the desired input file can be selected. This dialog also allows selecting
 multiple files. Note that multiple files will be added as if the dialog was
@@ -120,8 +120,11 @@ The letters `t` and `c` correspond to time and color dimensions
 respectively. ilastik differentiates 2D + time data from 3D data, computing
 temporal features for the former. Marking a dimension as time changes
 ilastik behavior.
-- **Range:**
-- **Normalize:**
-- **Internal Dataset Name:**
-- **Storage:**
-- **Channel Display:**
+- **Range:** If you know your data's minimum and maximum pixel values, you can use this field to help ilastik interpret and display your data.
+- **Normalize:** If you would like your data to be displayed with a contrast adjustment using the minimum and maximum pixel values, set this to 'True'.
+- **Internal Dataset Name:** Several volumes may exist within a single HDF5 file.  Use this field to choose which internal volume ilastik should load from your file. 
+- **Storage:** Specifies how ilastik should locate your data the next time your project is opened.
+  - Absolute Link: Your data always resides in the same place on disk, even if you moved your project file since it was last opened.
+  - Relative Link: Your data is in the same parent directory tree as your project file.  You may move your project file and data files simultaneously, but their relative locations must be fixed.
+  - Copied to Project File: If you select this, your data will be copied to the project file the next time your project is saved.  Pro: Your project file will always be valid, even if you move your data.  Con: This creates a copy of your data.
+- **Channel Display:** If your raw data has multiple channels, use this setting to tell ilastik whether it should be displayed as a composite RGB image or as separate grayscale channels.
