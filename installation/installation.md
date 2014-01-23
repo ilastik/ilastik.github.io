@@ -9,7 +9,7 @@ category: "Installation"
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
-**Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for the Automatic Tracking workflow.**
+**Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for [Automatic Tracking]({{baseurl}}/documentation/tracking/tracking.html) and [Density Counting]({{baseurl}}/documentation/counting/counting.html) workflows.**
 
 ## Application for Academic License at IBM
 
@@ -111,7 +111,7 @@ and look at the output. This should be either `GCC 4.2.1`, or `Apple LLVM (clang
       g++ -fpic -shared -Wl,-all_load libilocplex.a -Wl,-noall_load -L. -L../../../../concert/lib/x86-64_osx/static_pic -lcplex -lconcert -o libilocplex.dylib
 
 
-- If the compiler is `clang` and you have OSX 10.9 Mavericks, then you need to to specify the correct C++ standard library to use in addition to the commands above:
+- If the compiler is `clang` and you have OSX 10.9 Mavericks, then you need to specify the correct C++ standard library to use in addition to the commands above:
 
       g++ -fpic -shared -Wl,-all_load libcplex.a -Wl,-noall_load -stdlib=libstdc++ -o libcplex.dylib
       g++ -fpic -shared -Wl,-all_load libconcert.a -Wl,-noall_load -stdlib=libstdc++ -o libconcert.dylib
