@@ -117,7 +117,7 @@ and look at the output. This should be either `GCC 4.2.1`, or `Apple LLVM (clang
       g++ -fpic -shared -Wl,-all_load libconcert.a -Wl,-noall_load -stdlib=libstdc++ -o libconcert.dylib
       g++ -fpic -shared -Wl,-all_load libilocplex.a -Wl,-noall_load -L. -L../../../../concert/lib/x86-64_osx/static_pic -lcplex -lconcert -stdlib=libstdc++ -o libilocplex.dylib
 
-Now copy those files to your ilastik installation into the lib folder.
+Now copy those files to your ilastik installation into the lib folder. On Mac this works by right-clicking on _ilastik.app_, choose _Show package contents_, and place the three libraries in _Contents/Frameworks_.
 
 After a successful installation, the *Automatic Tracking Workflow* will appear on the Start-Screen of ilastik.
 
