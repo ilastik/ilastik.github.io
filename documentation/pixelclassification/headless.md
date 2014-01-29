@@ -8,8 +8,6 @@ weight: 4
 ---
 # Headless Mode Operation
 
-**NOTE:** Linux and Windows users can follow these instructions, but headless mode is not supported on Mac (yet).
-
 The [Pixel Classification Workflow][] contains an interactive graphical user interface for training a classifier and refining your results.
 However, once you're happy with your classifier, you may wish to apply it to other images without bothering with the graphical user interface at all.
 For that use case, ilastik provides a command-line interface to the batch processing applet, a.k.a. "headless mode".
@@ -25,6 +23,10 @@ For example, on Linux:
     $ cd ilastik-Linux
     $ ./bin/ilastik_gui --headless
 
+On Mac:
+
+    $ ./ilastik.app/Contents/MacOS/ilastik --headless
+
 And on Windows:
 
     $ cd "\Program Files\ilastik-1.0"
@@ -32,6 +34,8 @@ And on Windows:
 
 ...but those commands will just start ilastik and immediately quit.
 To do something useful, you'll need to load your project file, and provide some input data for batch predictions.
+The following examples use linux shell syntax, but the options are the same for all platforms.
+
 For example this example command will run your classifier over 2 additional images. 
 (Here we assume your classifier was trained on 2D images.)
 
