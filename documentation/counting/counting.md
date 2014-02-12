@@ -231,7 +231,7 @@ The forest parameters exposed to the user are:
 
 <a id="sec_svr">&nbsp;</a>
 ### Support Vector Regression
-* Requires an installation of Gurobi on the system
+* Requires an installation of CPLEX on the system
 * Maybe slower but more robust and better generalization
 * Can offer additional type of label via *Box constraints* not strict
 * The density inside of a box now be approximately fixed to a real number, providing additional training information
@@ -266,20 +266,12 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 <a id="sec_advanced_installation">&nbsp;</a>
 ## 6. Installation of the 3rd-party plugins
-To use the method as described in the [**Support Vector Regression section**](#sec_svr), Gurobi has to be installed on
-the system.
-#Windows
-The *gurobi55.dll* (the currently supported version) is by default installed to a place noted in the system-wide
-```PATH```
-variable. If this does not seem the case for your installation, copying the dll from the ```$GUROBI/bin``` directory of the
-gurobi installation into the ```$ILASTIK/bin``` directory of the ilastik installation will make it accessible to our workflow.
-#Linux
-As the Linux installer for Gurobi does not change ```LD_LIBRARY_PATH```, it is required to manually copy the
-***libgurobi55.so*** from the ```$GUROBI/lib``` subfolder into the ```$ILASTIK/lib``` location.
+For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
+We provide simple [Instructions]({{site.baseurl}}/installation/installation.html) on doing so, note
+that it this is not required for the basic functionality of this workflow. 
 
-
-## 7. References
 <a id="sec_reference">&nbsp;</a>
+## 7. References
 \[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
 **Learning to Count with Regression Forest and Structured Labels.**
 *Proceedings of the International Conference on Pattern Recognition (ICPR 2012)*, Tsukuba, Japan, November, 2012.
