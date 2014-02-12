@@ -334,7 +334,7 @@ for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_chaingraph)
 
 
 Furthermore, a **Field of View** may be specified for the tracking. Restricting the field of view to less time steps 
-or a smaller volume may lead to significant speed-ups of the tracking. Furthermore, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
+or a smaller volume may lead to significant speed-ups of the tracking. Moreover, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
 
 In **Data Scales**, the scales of the dimensions may be configured. For instance, if the resolution of the 
 pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are (x,y,z)=(1,1.25,2).
