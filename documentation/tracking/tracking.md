@@ -133,7 +133,7 @@ option.
 
 Note that, although the tracking workflows expect prediction maps as input files, nothing prevents
 the user from loading (binary) segmentation images instead. In this case, we recommend to disable
-the smoothing filter by setting all **Sigmas** to 0.
+the smoothing filter by setting all **Sigmas** to 0 and the user should choose a **Threshold** of 0.
 
 Finally, objects outside the given **Size Range** are filtered out for this and the following
 steps.
