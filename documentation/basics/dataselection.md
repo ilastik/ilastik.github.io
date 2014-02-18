@@ -102,15 +102,16 @@ can be imported directly into a project, as well as NumPy binary array
 files with extension `npy`.
 
 
-## File properties {#properties}
+## Dataset Properties Editor {#properties}
 
 <div style="float: right;" markdown="1">
 ![](screenshots/data_selection-file_properties.png)
 </div>
 
-Double clicking on an input file in the data selection box opens the file
-properties dialog. This dialog can be used to review and change how ilastik
-interprets the data file.
+You can review and/or change the way ilastik interprets your dataset using the Dataset Properties Editor.
+For example, to specify that a stack of images should be interpreted as having a t-axis (for time) instead of a z-axis, use this editor.
+To open the editor, double-click an item in the dataset list or right-click the item and select "Edit Properties".
+Read on for a description of each field in this window.
 
 - **Nickname:** short name used to identify the data
 - **Shape:** specifies the sizes of each dimension
