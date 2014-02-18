@@ -5,14 +5,52 @@ tagline: Install Ilastik
 category: "Installation"
 ---
 
-# Install CPLEX
+# Basic Installation
+
+Most workflows do not require any special install instructions.  Follow these steps to get started right away.
+
+To use the [Automated Tracking Workflow]({{baseurl}}/documentation/tracking/tracking.html), you will need to 
+install CPLEX separately, and then follow a special procedure to enable ilastik to use it.  
+See the special instructions below for details.
+
+**Note: ilastik requires a 64-bit machine.  We do not provide 32-bit binaries.**
+
+### Mac
+
+[Download]({{site.baseurl}}/download.html) the `.zip` file for your version of OSX and extract its contents with a simple double-click.  
+Copy ilastik.app to the folder of your choice (usually your `Applications` folder), and double-click to begin. 
+
+### Linux
+
+[Download]({{site.baseurl}}/download.html) the Linux `.tar.gz` bundle and extract its contents:
+
+    tar xzf ilastik-1.0-Linux.tar.gz
+
+To run ilastik, use the included `run_ilastik.sh` script:
+
+    cd ilastik-1.0-Linux
+    ./run_ilastik.sh
+
+### Windows
+
+[Download]({{site.baseurl}}/download.html) the Windows self-extracting installer and run it.
+The installer will guide you through the installation process.
+
+Note: Some special releases of ilastik are provided as a `.zip` file.  In that case, extract the 
+`.zip` file to the location of your choice and run the enclosed `ilastik.bat` script to launch the program.
+
+-----------------
+
+-----------------
+
+# Automated Tracking Workflow Setup: CPLEX Installation and Setup
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
 **Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for the [Automatic Tracking]({{baseurl}}/documentation/tracking/tracking.html) workflow.
 To enable additional functionality, it is also recommended for the [Density Counting]({{baseurl}}/documentation/counting/counting.html) workflow.**
 
-## Application for Academic License at IBM
+### Application for Academic License at IBM
 
 IBM CPLEX is a commercial solver which is free for academic use.
 To apply for an academic license, the user first needs to apply for an 
@@ -20,7 +58,7 @@ academic membership at IBM. Details may be found on
 [the IBM Academic Initiative website](http://www-03.ibm.com/ibm/university/academic/pub/page/membership).
 Please note that it might take some days until the application gets approved by IBM.
 
-## Download IBM CPLEX
+### Download IBM CPLEX
 
 After the academic membership has been approved, the user can download IBM CPLEX. To do so, 
 the steps on [this IBM website](http://www-03.ibm.com/ibm/university/academic/pub/jsps/assetredirector.jsp?asset_id=1070)
@@ -41,7 +79,7 @@ Finally, CPLEX may be downloaded and is ready to install.
 very small problem sizes. Please make sure, the correct version is downloaded as described here.**
 
 
-##Windows
+###Windows
 
 On Windows, there are typically no further modifications needed after installing CPLEX. 
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
@@ -53,7 +91,7 @@ located at `C:/Program Files/ilastik/lib`.
 
 
 
-##Linux
+###Linux
 
 Unfortunately, CPLEX packages do not provide shared versions of all required libraries, but only 
 static variants. The user has to navigate to the installation folder of CPLEX and therein to the 
@@ -72,7 +110,7 @@ Finally, these shared libraries need to be copied into the library folder of the
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
 
 
-##Mac
+###Mac
 
 Similar to Linux, CPLEX packages for Mac do not provide shared versions of all required libraries, but only static variants.
 
