@@ -6,34 +6,36 @@
 
 
 <div class="row">
-  <div class="span12">
+  <div class="row-sm-12">
     <div class="page-header">
-    <h1>      <img src="/assets/ilastik-logo.png"
-    alt="ilastik"> Documentation</h1>
+      <h1>
+        <img src="/assets/ilastik-logo.png" alt="ilastik">
+        Documentation
+      </h1>
     </div>
   </div>
 </div>
 
-<div class="row-fluid">
-  <div class="span3">
-    <ul class="sidenav nav nav-list well" data-offset-top="130">
+<div class="row">
+  <div class="col-sm-3">
+    <ul class="nav nav-pill nav-stacked well" data-offset-top="130">
         {% assign pages_list = site.pages %}
         {% assign group = 'documentation-home' %}
         {% assign active_hook = toc %}
         {% include pages_list %}
-        <li class="nav-header">ilastik Basics</li>
+        <li class="nav-header disabled">ilastik Basics</li>
         {% assign pages_list = site.pages %}
         {% assign group = 'basic-documentation' %}
         {% assign active_hook = toc %}
         {% include weighted_pages_list %}
-        <li class="nav-header">ilastik Workflows</li>
+        <li class="nav-header disabled">ilastik Workflows</li>
         {% assign pages_list = site.pages %}
         {% assign group = 'workflow-documentation' %}
         {% assign active_hook = toc %}
         {% include weighted_pages_list %}
     </ul>
   </div>
-  <div class="span9">
+  <div class="col-sm-9">
 {{ content }}
   </div>
 </div>
