@@ -5,6 +5,10 @@ category: "Documentation"
 group: "documentation-home"
 ---
 #User documentation
+[Here]({{site.baseurl}}/documentation/ilastik_manual.pdf) you can find a detailed manual 
+for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
+training course organized by CellNetworks in Heidelberg. 
+
 After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/basics/startup.html).
 After selection one of the available workflows

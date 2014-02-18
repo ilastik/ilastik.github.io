@@ -9,7 +9,8 @@ category: "Installation"
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
-**Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for [Automatic Tracking]({{baseurl}}/documentation/tracking/tracking.html) and [Density Counting]({{baseurl}}/documentation/counting/counting.html) workflows.**
+**Note that ilastik will run even without IBM CPLEX installed, it is only a requirement for the [Automatic Tracking]({{baseurl}}/documentation/tracking/tracking.html) workflow.
+To enable additional functionality, it is also recommended for the [Density Counting]({{baseurl}}/documentation/counting/counting.html) workflow.**
 
 ## Application for Academic License at IBM
 

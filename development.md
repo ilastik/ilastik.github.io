@@ -21,4 +21,4 @@ available as [Sphinx](http://sphinx-doc.org) documentation for the
 sub-projects _ilastik_, _lazyflow_ and _volumina_.
 * [ilastik documentation](http://ilastik.github.io/ilastik)
 * [lazyflow documentation](http://ilastik.github.io/lazyflow)
-* [volumina documentation](http://ilastik.github.io/volumina)
+* [volumina documentation](http://ilastik.github.io/volumina) 

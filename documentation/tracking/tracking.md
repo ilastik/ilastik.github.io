@@ -65,14 +65,14 @@ labels and providing examples through brush strokes.
 Please find a detailed
 description of this workflow 
 [here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
-and hints on how to load time-series datasets are provided <a href="../inputOutput">here</a>.
+and hints on how to load time-series datasets are provided <a href="../basics/dataselection.html">here</a>.
 
 In this example, we paint some background
 pixels with Label 1 (red by default) and cell nuclei are marked with Label 2 
 (green by default). When happy with the live segmentation, the user applies
 the learned model to the entire dataset by exporting the results in the **Prediction Export** applet 
 to (preferably) an hdf5 file such as  
-`mitocheck_94570_2D+t_01-53_results.h5`. 
+`mitocheck_94570_2D+t_01-53_export.h5`. 
 To directly showcase the tracking workflows, we provide this file with the data.
 
 ![](./fig/02_training.jpg)
@@ -92,13 +92,13 @@ other sources)
 need to be specified in the respective tab. In particular, the file 
 `mitocheck_94570_2D+t_01-53.h5` 
 is added as **Raw Data** and the dataset in
-`mitocheck_94570_2D+t_01-53_results.h5`
+`mitocheck_94570_2D+t_01-53_export.h5`
 is loaded as **Prediction Maps**.
 
 The tracking workflow expects the image sequence to be loaded as a time-series data containing a time axis;
 if the time axis is not automatically detected (as in hdf5-files), the axes tags may be modified in a dialog 
-when loading the data (e.g. the `z` axis may be interpreted as `t` axis by replacing `z` by `z` in this dialog). 
-Please read the <a href="../inputOutput">Input/Output guide</a> for further tricks how to load images as time-series
+when loading the data (e.g. the `z` axis may be interpreted as `t` axis by replacing `z` by `t` in this dialog). 
+Please read the <a href="../basics/dataselection.html">Data selection guide</a> for further tricks how to load images as time-series
 data.
 
 
@@ -114,14 +114,14 @@ which is done in the **Thresholding and Size Filter** applet:
 First, the channel of the prediction maps which contains the foreground 
 predictions has to be specified. 
 For instance, if in the Pixel Classification workflow,
-the user chose Label 1 (red by default) to mark foreground, **Channel** will be 0, 
+the user chose Label 1 (red by default) to mark foreground, **Input Channel** will be 0, 
 otherwise, if Label 2 (green by default) was taken as the foreground label, then Channel
 takes value 1. Thus, we choose the Input Channel to be 1 in this tutorial. If the correct 
-channel was selected, the foreground objects appear in white after pressing **Apply**:
+channel was selected, the foreground objects appear in distinct colors after pressing **Apply**:
 
 ![](./fig/07_thresholding-01.jpg)
 
-The prediction maps are now storing a probability for each single pixel/voxel to be foreground. 
+The prediction maps are storing a probability for each single pixel/voxel to be foreground. 
 These probabilities may be smoothed over the neighboring probabilities with a Gaussian filter,
 specified by the **Sigma** values (allowing for anisotropic filtering).
 The resulting probabilities are finally **thresholded** at the value specified. The default
@@ -132,11 +132,10 @@ for a more detailed description of this applet, including an explanation of the 
 option.
 
 Note that, although the tracking workflows expect prediction maps as input files, nothing prevents
-the user from loaded (binary) segmentation images instead. Since the smoothing filter and thresholding
-are applied also to those binary images, the user should choose Sigmas of 0.1 to keep their original 
-segmentation images in the further process of the workflow.
+the user from loading (binary) segmentation images instead. In this case, we recommend to disable
+the smoothing filter by setting all **Sigmas** to 0 and the user should choose a **Threshold** of 0.
 
-Finally, objects outside the given **Size** bound are filtered out for this and the following
+Finally, objects outside the given **Size Range** are filtered out for this and the following
 steps.
 
 ***Please note that all of the following computations and the tracking will 
@@ -146,15 +145,8 @@ In the following applets, connected groups of pixels will be treated as individu
 
 
 ## 3. Object Extraction:
-This is the most computation intensive preprocessing step of the tracking workflows. 
-Note that dependent on
-the size of the datasets, this step might take minutes to hours.
-
-All the user has to do here is to press the **Calculate Features** button. Neighboring
-pixels/voxels are then grouped (in 2D or 3D, respectively) to define individual objects,
-those objects are assigned independent and unique identities (indicated by distinct random colors
-in the **LabelImage** overlay), and features of the objects (e.g. region centers)
-are computed.
+All the user has to do here is to press the **Calculate Features** button to trigger the 
+computation of features of the objects (e.g. region centers).
 
 ![](./fig/09_object-extraction-results.jpg)
 
@@ -169,7 +161,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-<a name="sec_manual">&nbsp;</a>
+<a name="sec_manual"> </a>
 ### 4.1 Manual Tracking:
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
@@ -210,7 +202,7 @@ Then, the next track may be recorded by pressing **Start New Track**.
 
 #### Divisions
 In case the user is tracking **dividing objects**, e.g. proliferating cells as in this tutorial,
-divisions have to be assigned manually (the semi-automatic tracking will stop at these points). To do so,
+divisions have to be assigned manually (the semi-automatic tracking will typically stop at these points). To do so,
 the user clicks the button **Division Event**, and then -- in this order -- clicks on the 
 parent object (mother cell) followed by clicks on the two children objects (daughter cells) *in the next
 time step* (here: green and red). As a result, a new track is created for each child. The connection between the parent 
@@ -242,11 +234,10 @@ later splitting again. Then -- in the sequence where the two cells are occluding
 are treated as *Mergers* of two tracks, and the tracks are recovered after the occlusion.
 It should be noted that the object is marked with a color randomly chosen from the track IDs of the comprised
 objects. By right-clicking on the object, the user may check which track IDs it is assigned to.
-- **Misdetections**: It may happen that background is falsely detected as foreground objects. For reasons of
-clarity, the user may
-mark those objects explicitly as false detections with black color
+- **Misdetections**: It may happen that background is falsely detected as foreground objects. 
+The user may mark those objects explicitly as false detections with black color
 by pressing **Mark as Misdetection** followed by a click
-on the object. Note, however, that untracked objects later would not be exported anyway.
+on the object. Internally, these false detections get assigned the track ID `-1` (corresponds to `65535` in the exported dataset, see below.).
 - **Appearance/Disappearance of objects**: Due to low contrast or limited field of view, objects may appear
 or disappear. If an object does not have an ancestor or successor in the directly adjacent timesteps, an
 appearance or disappearance event, respectively, is evoked. 
@@ -261,7 +252,7 @@ useful to automatically jump to the next untracked object, particularly if only 
 The user may then either track the suggested object or mark it as misdetection to get another suggestion for an
 object to track next.
 - **Window size**: These parameters define the size of the window in which the automatic tracker searches for
-overlapping between objects of consecutive time steps. Note that the tracking is faster for smaller window sizes,
+overlap between objects of consecutive time steps. Note that the tracking is faster for smaller window sizes,
 however, longer sub-tracks may be achieved by bigger window sizes. For the example datasets, we choose a window
 size of 40 pixels along each dimension.
 - **Inappropriate track colors**: If the color of the next active track is inapproriate (e.g. it has low contrast
@@ -282,8 +273,7 @@ this procedure is similar to the export of the fully automatic tracking.
 
 
 #### Shortcuts
-To most efficiently use the features described above, there are multiple shortcuts available (a complete documentation
-of all available shortcuts can be displayed/modified in `Settings -> Keyboard Shortcuts`):
+To most efficiently use the features described above, there are multiple shortcuts available:
 
 | Shortcut       | Description   
 |:--------------:| :-----------------------------
@@ -299,7 +289,7 @@ of all available shortcuts can be displayed/modified in `Settings -> Keyboard Sh
 | `r`            | Toggle objects layer visibility
 
 
-<a id="sec_automatic">&nbsp;</a>
+<a id="sec_automatic"> </a>
 ### 4.2 Automatic Tracking (Chaingraph):
 
 If 
@@ -344,7 +334,7 @@ for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_chaingraph)
 
 
 Furthermore, a **Field of View** may be specified for the tracking. Restricting the field of view to less time steps 
-or a smaller volume may lead to significant speed-ups of the tracking.
+or a smaller volume may lead to significant speed-ups of the tracking. Moreover, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
 
 In **Data Scales**, the scales of the dimensions may be configured. For instance, if the resolution of the 
 pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are (x,y,z)=(1,1.25,2).
@@ -353,16 +343,31 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-<a name="sec_export">&nbsp;</a>
+<a name="sec_export"> </a>
 ## 5. Export:
-To export the manual tracking, the user may choose between the following three options, allowing for maximal
-flexibility to adopt the results to the format needed for the next step in the user's process:
+To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
+provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
+as image/hdf-file/etc. 
+Recall that all objects get assigned random IDs (visualized as random colors) at the first frame of the image sequence
+and all descendants in the same track (also children objects such as daughter cells) inherit this ID/color.
+In other words, each **lineage** has the same label over time starting with unique IDs in the first time step for 
+each object.
 
-* **Export as tif**: By pressing the **Export Results as tif...** button, an image sequence is created where 
-   each **lineage** has the same label, i.e. starting with unique IDs in the first time step for each object (pixelwise),
-   each successor
-   as well as possible sub-lineages (e.g. daughter cells) are indicated with the same ID. Note, however,
-   that *Mergers* get only one of their comprised track IDs assigned.
+In addition to the export applet, we provide further 
+useful export funcionality in the **Manual Tracking** applet. We distinguish between `track_id` which corresponds
+to the **Active track** ID chosen earlier, and `object_id` which stands for the identifier each object has in the **Objects** layer.
+The `object_ids` can be exported separately by right-clicking on the **Objects** layer control.
+
+* **Export Divisions as csv**: By pressing the **Export Divisions as csv ...** button in the **Manual Tracking** applet,
+   the list of dividing cells is exported as a csv file. Its content is in the following format: `timestep_parent,track_id_parent,track_id_child1,track_id_child2`
+
+* **Export Mergers as csv**: As mentioned above, mergers are only assigned one of their comprised track IDs. 
+   Thus, it may be useful to separately export the list of mergers with all comprised track IDs to file.
+   In the **Manual Tracking** applet, the button **Export Mergers as csv ...** will write out such a csv-file
+   where the content has the following format: `timestep,object_id,track_ids`, where the `track_ids` contained in the
+   merged object are concatenated using semicolons. 
+   Here, the `object_id` corresponds to the unique identifier the object has in the **Objects layer** which can be 
+   exported separately by right clicking on the **Objects** layer control.
 
 * **Export as h5**: Another option is to export the manual tracking as a set of hdf5 files, one for 
    each time step, containing pairwise events between consecutive frames (appearance, disappearance, move,
@@ -372,33 +377,37 @@ flexibility to adopt the results to the format needed for the next step in the u
 | Event      | Dataset Name | Object IDs 
 |:----------|:------------| :-------------------------
 | Move      | `/tracking/Moves` | `from (previous timestep), to (current timestep)`
-| Division | `/tracking/Splits` | `ancestor (previous timestep), descendant (current timestep), descendant (current timestep)`
-| Appearance | `/tracking/Appearances` | `object id appeared in current timestep`
-| Disappearance | `/tracking/Disappearances` | `object id disappeared in current timestep`
-| Merger | `/tracking/Mergers` | `object_id number_of_contained_objects` 
+| Division | `/tracking/Splits` | `ancestor (prev. timestep), descendant (cur. timestep), descendant (cur. timestep)`
+| Appearance | `/tracking/Appearances` | `object_id appeared in current timestep`
+| Disappearance | `/tracking/Disappearances` | `object_id disappeared in current timestep`
+| Merger | `/tracking/Mergers` | `object_id, number_of_contained_objects` 
 
 
-We would recommend the methods described above, but additionally, the results of the manual/semi-automatic tracking may also 
-be accessed via the project file:
+We would recommend to use the methods described above, but additionally, the results of the manual **and** automatic tracking may also 
+be accessed via the ilastik project file:
 
 
 * **Process the content of the project file**: The ilastik project file (.ilp) may be opened with any hdf5 dataset viewer/reader, 
-   e.g. with `hdfview`. Here, in the Manual Tracking folder, there are the folders `Labels` and `Divisions`. The `Labels`
+   e.g. with `hdfview`:
+
+   * *Manual Tracking*: In the Manual Tracking folder, there are the folders `Labels` and `Divisions`. The `Labels`
    folder contains for each time step a list of objects, each of which holds a list of the track IDs which were assigned by the
    user. The `Divisions` dataset contains the list of divisions in the format
 
-        track_id_parent track_id_child1 track_id_child2 time_parent
+           track_id_parent track_id_child1 track_id_child2 time_parent
+
+   * *Automatic Tracking*: In the Chaingraph Tracking folder, the events are stored as described in the table above.
 
 
 
 
-<a name="sec_3d">&nbsp;</a>
+<a name="sec_3d"> </a>
 ## Tracking in 3D+time Data
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
-described above. The data may be inspected in a 3D orthoview and, in the case of manual/semi-automatic tracking
-a click on a pixel of the object is 
+described above. The data may be inspected in a 3D orthoview and, in the case of manual/semi-automatic tracking,
+a click on one pixel of the object is 
 accepted in any orthoview. Tracked objects are colored in 3D space, i.e. colored in all
 orthoviews with the respective track color. 
 
@@ -408,7 +417,7 @@ section. The file
 `drosophila_00-49.h5` shows 50 time steps of a small excerpt of a developing *Drosophila* embryo, kindly
 provided by the 
 <a href="http://www.embl.de/research/units/cbb/hufnagel/">Hufnagel Group at EMBL Heidelberg</a>.
-A sample segmentation of cell nuclei in this dataset is available in `drosophila_00-49_results.h5`.
+A sample segmentation of cell nuclei in this dataset is available in `drosophila_00-49_export.h5`.
 
 For both manual and automatic tracking, the steps of the 2D+time tutorial above may be followed analogously.
 
