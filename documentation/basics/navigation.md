@@ -12,7 +12,7 @@ weight: 2
 Most applets include a data viewer component in the lower right corner
 of ilastik's main window, like the one shown below:
 
-![](screenshots/volumina-view.png)
+<a href="screenshots/volumina-view.png" data-toggle="lightbox"><img src="screenshots/volumina-view.png" class="img-responsive" /></a>
 
 The data is shown using three orthogonal slicing planes. The
 x-view (red) shows y,z-slices, the
@@ -33,7 +33,7 @@ _x_-view has a red color,
 _y_-view has a green color and the
 _z_-view has a blue color.
 
-![](screenshots/hud.png)
+<a href="screenshots/hud.png" data-toggle="lightbox"><img src="screenshots/hud.png" class="img-responsive" /></a>
 
 * ![](screenshots/hud_00.png)
   Navigate to a particular slice number.
@@ -71,7 +71,7 @@ _z_-view has a blue color.
 
 ##3D view
 
-![](screenshots/hud3d.png)
+<a href="screenshots/hud3d.png" data-toggle="lightbox"><img src="screenshots/hud3d.png" class="img-responsive" /></a>
 
 * ![](screenshots/hud3d_00.png) toggle the visibility of 
   x, y or z slicing planes. Often, because the planes are draggable,

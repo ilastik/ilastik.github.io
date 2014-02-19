@@ -17,7 +17,7 @@ Data export is handled through a specific step in the workflow. For example, the
 ## Data Export Applet
 
 <div style="float: right;" markdown="1">
-![](screenshots/export-applet.png)
+<a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export-applet.png" class="img-responsive" /></a>
 </div>
 
 The export step is handled through the data export applet in ilastik. This applet displays a panel with three buttons on the left and a box on the top right.
@@ -32,7 +32,7 @@ The box on the top right lists the input files using their nicknames defined in 
 
 ## Export Settings {#settings}
 
-![](screenshots/export-dialog.png)
+<a href="screenshots/export-dialog.png" data-toggle="lightbox"><img src="screenshots/export-dialog.png" class="img-responsive" /></a>
 
 - **Source Image Description:** This is a description (shape, datatype, and axis order) of the full image volume you can export with this interface. (Non-editable.)
 - **Cutout Subregion:** This can be used to select a specific region-of-interest to export.  Results outside of the specified region will not be exported, and *may not be computed* during the export process. Each dimension of the region's bounding box is edited with separate start, stop controls. **Note:** The 'stop' field is non-inclusive! e.g. to export the first 100 z-slices in a dataset, set the z range to \[0, 100\).

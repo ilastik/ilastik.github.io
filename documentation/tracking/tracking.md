@@ -35,7 +35,7 @@ optionally allowing for object divisions
 (e.g. cell mitosis). 
 
 
-![](./fig/00_overview.jpg)
+<a href="./fig/00_overview.jpg" data-toggle="lightbox"><img src="./fig/00_overview.jpg" class="img-responsive" /></a>
 
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
@@ -75,14 +75,14 @@ to (preferably) an hdf5 file such as
 `mitocheck_94570_2D+t_01-53_export.h5`. 
 To directly showcase the tracking workflows, we provide this file with the data.
 
-![](./fig/02_training.jpg)
+<a href="./fig/02_training.jpg" data-toggle="lightbox"><img src="./fig/02_training.jpg" class="img-responsive" /></a>
 
 Now, one of the tracking workflows (Manual Tracking or Automatic Tracking, if 
 [CPLEX is installed]({{site.baseurl}}/installation/installation.html) ) 
 can be launched from the start screen of ilastik
 by creating a new project.
 
-![](./fig/04_start-workflow.jpg)
+<a href="./fig/04_start-workflow.jpg" data-toggle="lightbox"><img src="./fig/04_start-workflow.jpg" class="img-responsive" /></a>
 
 These two workflows comprise the following applets:
 
@@ -102,9 +102,9 @@ Please read the <a href="../basics/dataselection.html">Data selection guide</a> 
 data.
 
 
-![](./fig/05_load-raw.png)
+<a href="./fig/05_load-raw.png" data-toggle="lightbox"><img src="./fig/05_load-raw.png" class="img-responsive" /></a>
 
-![](./fig/06_load-predictions.png)
+<a href="./fig/06_load-predictions.png" data-toggle="lightbox"><img src="./fig/06_load-predictions.png" class="img-responsive" /></a>
 
 After specifying the raw data and its prediction maps, the latter will be smoothed
 and thresholded in order to get a binary segmentation, 
@@ -119,7 +119,7 @@ otherwise, if Label 2 (green by default) was taken as the foreground label, then
 takes value 1. Thus, we choose the Input Channel to be 1 in this tutorial. If the correct 
 channel was selected, the foreground objects appear in distinct colors after pressing **Apply**:
 
-![](./fig/07_thresholding-01.jpg)
+<a href="./fig/07_thresholding-01.jpg" data-toggle="lightbox"><img src="./fig/07_thresholding-01.jpg" class="img-responsive" /></a>
 
 The prediction maps are storing a probability for each single pixel/voxel to be foreground. 
 These probabilities may be smoothed over the neighboring probabilities with a Gaussian filter,
@@ -148,7 +148,7 @@ In the following applets, connected groups of pixels will be treated as individu
 All the user has to do here is to press the **Calculate Features** button to trigger the 
 computation of features of the objects (e.g. region centers).
 
-![](./fig/09_object-extraction-results.jpg)
+<a href="./fig/09_object-extraction-results.jpg" data-toggle="lightbox"><img src="./fig/09_object-extraction-results.jpg" class="img-responsive" /></a>
 
 When the computation was successful, the user can start with the actual tracking
 of the detected objects. 
@@ -182,7 +182,7 @@ Note that the next time step is automatically loaded after adding an object to t
 and the logging box displays the successful assignment to the active track.
 Typically, we start with an arbitrary object in time step 0, but any order is fine.
 
-![](./fig/10_manual-tracking-start-track.jpg)
+<a href="./fig/10_manual-tracking-start-track.jpg" data-toggle="lightbox"><img src="./fig/10_manual-tracking-start-track.jpg" class="img-responsive" /></a>
 
 In theory, one could now proceed as described and click on each and every object in the following
 time steps which belongs to this track. However, this might be rather cumbersome for the user, especially
@@ -190,7 +190,7 @@ when dealing with a long image sequence. Instead, the user may use a semi-automa
 trivial assignments, i.e. assignments where two objects in successive time frames distinctly overlap in space.
 This **semi-automatic tracking** procedure can be started by right-clicking on the object of interest:
 
-![](./fig/11_manual-tracking-right-click.jpg)
+<a href="./fig/11_manual-tracking-right-click.jpg" data-toggle="lightbox"><img src="./fig/11_manual-tracking-right-click.jpg" class="img-responsive" /></a>
 
 The semi-automatic tracking will continue assigning objects to the active track until a point is reached
 where the assignment is ambiguous. Then, the user has to decide manually which object to add to the
@@ -209,7 +209,7 @@ time step* (here: green and red). As a result, a new track is created for each c
 track and the two children tracks is displayed in the **Divisions** list, colored by
 the parent object's color (here: blue).
 
-![](./fig/16_manual-tracking-division4.jpg)
+<a href="./fig/16_manual-tracking-division4.jpg" data-toggle="lightbox"><img src="./fig/16_manual-tracking-division4.jpg" class="img-responsive" /></a>
 
 Now, the first sub-lineage may be followed (which possibly divides again, etc.), and when
 finished, the user can go back to the division event to follow the second sub-lineage (the respective
@@ -262,7 +262,7 @@ is some already reserved color), the user may just leave this track empty and st
 The user then has the option, to (i) delete the respective track label from this single object, (ii) delete
 the track label in the current and all later time steps, or (iii) delete the track label in the current
 and all earlier time steps:
-![](./fig/22_manual-tracking-right-click-menu.jpg)
+<a href="./fig/22_manual-tracking-right-click-menu.jpg" data-toggle="lightbox"><img src="./fig/22_manual-tracking-right-click-menu.jpg" class="img-responsive" /></a>
 
 
 #### Export
@@ -310,7 +310,7 @@ To track the objects detected in the preprocessing steps over all time steps, it
 (after having checked whether the objects are divisible such as cells or not). After successful tracking, each object (and 
 its children in case of divisions) should be marked over time in a distinct random color.
 
-![](./fig/24_chaingraph-tracking-track.jpg)
+<a href="./fig/24_chaingraph-tracking-track.jpg" data-toggle="lightbox"><img src="./fig/24_chaingraph-tracking-track.jpg" class="img-responsive" /></a>
 
 The algorithm internally formulates a graphical
 model comprising all potential objects with relations to objects in their spatial neighborhood in the following time step.
@@ -421,9 +421,9 @@ A sample segmentation of cell nuclei in this dataset is available in `drosophila
 
 For both manual and automatic tracking, the steps of the 2D+time tutorial above may be followed analogously.
 
-![](./fig/23_manual-tracking-3D.jpg)
+<a href="./fig/23_manual-tracking-3D.jpg" data-toggle="lightbox"><img src="./fig/23_manual-tracking-3D.jpg" class="img-responsive" /></a>
 
-![](./fig/25_chaingraph-tracking-3d.jpg)
+<a href="./fig/25_chaingraph-tracking-3d.jpg" data-toggle="lightbox"><img src="./fig/25_chaingraph-tracking-3d.jpg" class="img-responsive" /></a>
 
 
 

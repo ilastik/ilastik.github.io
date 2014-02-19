@@ -26,7 +26,7 @@ therefore these two images are appropriate for the Density Counting workflow.
 
 This workflow will estimate directly the **density of objects** in the image and infer the number of objects without requiring segmentation.
 
-![](fig/whichdata2.jpg)
+<a href="fig/whichdata2.jpg" data-toggle="lightbox"><img src="fig/whichdata2.jpg" class="img-responsive" /></a>
 
 ## How does it work, what should you annotate
 In order to avoid the difficult task of segmenting each object individually, this workflow implements a supervised object counting strategy called **density counting**. The algorithm learns from the user annotations a real valued **object density**. Integrating over a **sufficiently large** image region yields an estimate of the  **number of objects** in that region.
@@ -45,7 +45,7 @@ NOTE that also contaminations of the image such as debris or other spurious obje
 
 Please refer to the [**references**](#sec_reference) for further details.
 
-![alt text](fig/density_scheme2.png)
+<a href="fig/density_scheme2.png" data-toggle="lightbox"><img src="fig/density_scheme2.png" class="img-responsive" /></a>
 
 The user gives annotations (see tutorial below) in the form of **dots (red)** for the object centers and **brush-strokes (green)** for the irrelevant background. A pixel-wise mapping between local features and the object density is learned directly from these annotations.
 
@@ -71,7 +71,7 @@ This dataset is publicly available at the following <a href = "http://www.robots
 In this tutorial we have already imported some of the images in the file `counting-tutorial.ilp`, that can be found in the tutorials folder.
 As a first step, let us just load this project. You should be able to start from the window below.
 
-![alt text](fig/blue_totorial0.jpg)
+<a href="fig/blue_totorial0.jpg" data-toggle="lightbox"><img src="fig/blue_totorial0.jpg" class="img-responsive" /></a>
 
 <a id="sec_feature_selection">&nbsp;</a>
 ### 2. Feature Selection
@@ -81,13 +81,13 @@ The second step is to define some features. Feature selection is similar to the
 The image below shows an example of feature selection. In particular, blob-detectors like the *Laplacian of Gaussians* or line-detectors like the *Hessian of Gaussians* are appropriate for blob like structure such as cells.
 The figure below shows the response of the *Laplacian of Gaussians* filter.
 
-![alt text](fig/blue_totorial_features2-red.jpg)
+<a href="fig/blue_totorial_features2-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial_features2-red.jpg" class="img-responsive" /></a>
 
 It is appropriate to match the size of the object and of the cluster of objects with the scale of the features as shown in the figure below.
 For further details on feature selection please refer to [How to select good
 features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting_good_features).
 
-![alt text](fig/blue_totorial_features.jpg)
+<a href="fig/blue_totorial_features.jpg" data-toggle="lightbox"><img src="fig/blue_totorial_features.jpg" class="img-responsive" /></a>
 
 <a id="sec_interactive_counting">&nbsp;</a>
 ### 3. Interactive counting
@@ -110,18 +110,18 @@ This is  the first interaction with the core of this workflow. The purpose of th
 
 To begin placing dot annotation select the red **Foreground** label and then on click on the image. The annotation has to be placed close to the center of an object (cell) as in the figure below.
 
-![alt text](fig/blue_totorial3-red.jpg)
+<a href="fig/blue_totorial3-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial3-red.jpg" class="img-responsive" /></a>
 
 Given the dotted annotations, a smooth training density is computed by placing a normalized Gaussian function centered at the location of each dot. The scale of the Gaussian is a user parameter **Sigma** which should roughly match the object size. To help deciding an appropriate value for this parameter you will see the that the size of the **crosshair-cursor** changes accordingly to the chosen sigma (in the left panel). In addition, the density which is used during training is saved in the **LabelPreview** layer as shown in the figure below.
 
-![alt text](fig/blue_totorial4-red.jpg)
+<a href="fig/blue_totorial4-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial4-red.jpg" class="img-responsive" /></a>
 
 
 <!-- IMAGE: Good sigma/dot, bad sigma/dot -->
 Different choices for the parameter **Sigma** are shown below. On the left image, the value of sigma is
 chose too small, while on the right the value of sigma is too large. The center image shows a well chosen sigma.
 
-![alt text](fig/different-sigmas2.jpg)
+<a href="fig/different-sigmas2.jpg" data-toggle="lightbox"><img src="fig/different-sigmas2.jpg" class="img-responsive" /></a>
 
 
 **NOTE**: Large values for sigma can impact the required computation time: consider using a different counting approach, such as the
@@ -136,7 +136,7 @@ Background labeling works the same as in the
 
 To activate this interaction select the green **Background** label and give broad strokes on the image, as in the figure below, marking unimportant areas or regions where the predicted density should be 0.
 
-![alt text](fig/blue_totorial6.jpg)
+<a href="fig/blue_totorial6.jpg" data-toggle="lightbox"><img src="fig/blue_totorial6.jpg" class="img-responsive" /></a>
 
 
 <a id="sec_brushing_interaction_mode">&nbsp;</a>
@@ -144,7 +144,7 @@ To activate this interaction select the green **Background** label and give broa
 After some labels for the objects and the background have been given, switch the **Live-Update** on
 (using the *Live Update* button), this will trigger a first prediction, displayed in the **Prediction-Layer**.
 
-![alt text](fig/blue_totorial7-red.jpg)
+<a href="fig/blue_totorial7-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial7-red.jpg" class="img-responsive" /></a>
 
 If the Live Update Mode is active, every single change in the training data (e.g. placing new labels or changing parameters)
 causes a new prediction - thus it may be faster to toggle it OFF again when you plan extensive modifications.
@@ -168,7 +168,7 @@ The new box will be added automatically to the **Box List**.
 Boxes show the object count for the region on the upper right corner and beside the box name in the Box List as it is shown in the
 next figure.
 
-![alt text](fig/blue_totorial8-red.jpg)
+<a href="fig/blue_totorial8-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial8-red.jpg" class="img-responsive" /></a>
 
 Boxes can be:
 
@@ -184,7 +184,7 @@ You can now drag the box in a different position by clicking and moving the mous
 
 You can continue adding boxes and provide new annotations (dots or brushes) for object centers and background until you are satisfied of the counting results as shown by the boxes.
 
-![alt text](fig/box_dialog.jpg)
+<a href="fig/box_dialog.jpg" data-toggle="lightbox"><img src="fig/box_dialog.jpg" class="img-responsive" /></a>
 
 ### 6 Counting the entire image
 Le us switch to another image by using the **Current View** menu on the left. As is shown in the image below, this image is free from annotations and the prediction of the density is not yet computed. However, the algorithm is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
@@ -194,7 +194,7 @@ If the training labels are sufficient, we should obtain a count similar to what 
 **Note**: In a real world scenario, you may need to distribute several annotations across many images to obtain accurate counts for all the images in the dataset.
 
 
-![alt text](fig/blue_totorial12-red.jpg)
+<a href="fig/blue_totorial12-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial12-red.jpg" class="img-responsive" /></a>
 
 **You are now ready to use the workflow on your data!**
 Please continue to read if you want to know some advanced features.
@@ -227,7 +227,7 @@ The forest parameters exposed to the user are:
 
 **Both of these parameters influence the smoothness of the prediction and may affect performance**. On the one side, too few and too shallow trees can cause under-fitting of the density. On the other side, too many and too deep trees may also lower performance due to over-fitting and slow down the algorithm computation. This workflow gives the user the possibility to manually tune these parameters.
 
-![alt text](fig/rf-algo.jpg)
+<a href="fig/rf-algo.jpg" data-toggle="lightbox"><img src="fig/rf-algo.jpg" class="img-responsive" /></a>
 
 <a id="sec_svr">&nbsp;</a>
 ### Support Vector Regression
@@ -236,7 +236,7 @@ The forest parameters exposed to the user are:
 * Can offer additional type of label via *Box constraints* not strict
 * The density inside of a box now be approximately fixed to a real number, providing additional training information
 #### Box Constraints
-![fixing boxes](fig/boxes2.png)
+<a href="fig/boxes2.png" data-toggle="lightbox"><img src="fig/boxes2.png" class="img-responsive" /></a>
 * By clicking on the little lock icon you can easily provide counts for a region (highlighted in red),
 which will be taken into account for the training.
 * Note that this value only poses a *soft contraint*, so the prediction may slightly differ to better adher to the dot labels.

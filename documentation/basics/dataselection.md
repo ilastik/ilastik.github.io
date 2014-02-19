@@ -13,7 +13,7 @@ project. ilastik supports importing data in [various formats](#formats), from
 a single file or a stack of files which form a new dimension.
 
 <div style="float: right;" markdown="1">
-![](screenshots/data_selection-window_layout.png)
+<a href="screenshots/data_selection-window_layout.png" data-toggle="lightbox"><img src="screenshots/data_selection-window_layout.png" class="img-responsive" /></a>
 </div>
 
 After creating a new project, you will be presented with the main ilastik
@@ -36,7 +36,7 @@ These can be used to [load a 2D/3D/4D image from a single file](#single_file) or
 a single 2D/3D/4D image from a stack of 2D images](#image_stack) respectively.
 
 <div style="float: left;" markdown="1">
-![](screenshots/data_selection-tabs.png)
+<a href="screenshots/data_selection-tabs.png" data-toggle="lightbox"><img src="screenshots/data_selection-tabs.png" class="img-responsive" /></a>
 </div>
 Some workflows require matching datasets that correspond to an input. For
 example, the
@@ -64,7 +64,7 @@ frame in a movie, this option can be used to form a new dimension based on
 a list of files.
 
 <div style="float: right;" markdown="1">
-![](screenshots/data_selection-image_stack.png)
+<a href="screenshots/data_selection-image_stack.png" data-toggle="lightbox"><img src="screenshots/data_selection-image_stack.png" class="img-responsive" /></a>
 </div>
 
 Selecting this option will open a new dialog to select the files that will
@@ -105,7 +105,7 @@ files with extension `npy`.
 ## Dataset Properties Editor {#properties}
 
 <div style="float: right;" markdown="1">
-![](screenshots/data_selection-file_properties.png)
+<a href="screenshots/data_selection-file_properties.png" data-toggle="lightbox"><img src="screenshots/data_selection-file_properties.png" class="img-responsive" /></a>
 </div>
 
 You can review and/or change the way ilastik interprets your dataset using the Dataset Properties Editor.

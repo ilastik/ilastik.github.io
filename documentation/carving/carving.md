@@ -17,7 +17,7 @@ be refined interactively. The seeded watershed relies on discernible object
 boundaries in the image data and not on inner appearance of an object like for
 example the classification workflow.
       
-![](carving_intro_overview.png)
+<a href="carving_intro_overview.png" data-toggle="lightbox"><img src="carving_intro_overview.png" class="img-responsive" /></a>
 
 While the
 [Classification module]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
@@ -27,7 +27,7 @@ module's purpose is to aid in the extraction of objects from images that are
 only separable by their boundary - i.e. objects that do not differ from the
 rest of the image by their internal appearance.
 
-![](carving_good_bad.png)
+<a href="carving_good_bad.png" data-toggle="lightbox"><img src="carving_good_bad.png" class="img-responsive" /></a>
       
 From the two images displayed to the right, the left image is clearly
 more suitable for the classification module since the cell cores have a
@@ -53,7 +53,7 @@ Assuming the user has already created or loaded an existing
 ilastik project and added a dataset, the first step is to switch to the **Preprocessing Applet**
 where the filter selection and computation are performed.
 
-![](snapshots/preprocessing1-zoomed.png)
+<a href="snapshots/preprocessing1-zoomed.png" data-toggle="lightbox"><img src="snapshots/preprocessing1-zoomed.png" class="img-responsive" /></a>
 
 Here the user can select from several different boundary types.
 * Bright lines: this option should be selected if the boundaries in the image appear as bright lines.
@@ -66,7 +66,7 @@ In the example image above, a good boundary choice would clearly be **Dark lines
 
 To check if the computed boundaries visually correspond with the edges in the image the visibility of the **Filtered Data** layer
 can be toggled by clicking on the small eye in that layer:
-![](snapshots/preprocessing2-zoomed.png)
+<a href="snapshots/preprocessing2-zoomed.png" data-toggle="lightbox"><img src="snapshots/preprocessing2-zoomed.png" class="img-responsive" /></a>
 If the boundary map looks too noisy or overly smooth the size of the smoothing kernel needs to be changed with the **sigma** option.
 The **Filtered Data** layer is updated when the user changes the size of the smoothing kernel. This setting should be changed
 until a satisfactory boundary map is obtained.
@@ -85,7 +85,7 @@ After the necessary preprocessing the interactive segmentation of objects in the
 
 Two different types of seeds exist, **Object seeds** and **Background seeds** - per default the background seed receives a higher priority such that the background seed is preferred in the case of ambiguous boundaries.
 
-![](snapshots/labeling1-zoomed.png)
+<a href="snapshots/labeling1-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling1-zoomed.png" class="img-responsive" /></a>
 
 After marking the objects of interest with a object seed and the outside
 with a background seed the button **Segment** can be clicked to obtain a seeded
@@ -131,7 +131,7 @@ in the labeling applet on the left side.
   boundaries in the image have values between 0 and 255). Usually it is not
   neccessary to change this parameter.
   
-![](snapshots/labeling2-zoomed.png)
+<a href="snapshots/labeling2-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling2-zoomed.png" class="img-responsive" /></a>
 
 
 ## Saving and loading segmented objects
@@ -140,22 +140,22 @@ Once the user has successfully segmented an object, the segmentation result
 can be stored by clicking on the **Save As** button. A dialog will pop up that
 asks for the objects name:
 
-![](snapshots/labeling3-zoomed.png)
+<a href="snapshots/labeling3-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling3-zoomed.png" class="img-responsive" /></a>
 
 After saving an object, all existing markers will be removed to allow segmenting a new
 object from scratch. To see which objects have already been segmented and saved the **Done** overlay
 can be enabled by clicking on the little eye in that layer:
 
-![](snapshots/labeling4-zoomed.png)
+<a href="snapshots/labeling4-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling4-zoomed.png" class="img-responsive" /></a>
 
 already segmented (and saved) objects will be highlighted to prevent segmenting something twice.
 
 Sometimes it is neccessary to refine the segmentation of an already saved object. To do so, click
 on the **Browse objects** button and load the corresponding object. 
 
-![](snapshots/labeling5-zoomed.png)
+<a href="snapshots/labeling5-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling5-zoomed.png" class="img-responsive" /></a>
 
 Another way to load or delete a saved object is by right-clicking on the object displayed in the **Done** overlay
 and selecting the corresponding option.
-![](snapshots/labeling6-zoomed.png)
+<a href="snapshots/labeling6-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling6-zoomed.png" class="img-responsive" /></a>
 

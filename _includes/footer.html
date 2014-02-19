@@ -8,6 +8,8 @@
     <script src="/assets/lightbox/ekko-lightbox.min.js"></script>
     <script>
         $('#ilastik-screenshots-carousel').carousel({ interval: 5000 })
+        
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) { event.preventDefault(); $(this).ekkoLightbox(); });
     </script>
   <div>
 </body>

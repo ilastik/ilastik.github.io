@@ -13,7 +13,7 @@ It allows to
 * Open an existing project (B)
 * Open a recently used project (C)
       
-![](screenshots/startup-overview.png)
+<a href="screenshots/startup-overview.png" data-toggle="lightbox"><img src="screenshots/startup-overview.png" class="img-responsive" /></a>
 
 When creating a new project (A) the user can choose from several different
 project types:
