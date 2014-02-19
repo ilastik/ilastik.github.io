@@ -12,7 +12,9 @@ weight: 2
 Most applets include a data viewer component in the lower right corner
 of ilastik's main window, like the one shown below:
 
-![](screenshots/volumina-view.png)
+<div class="col-sm-9">
+<img class="img-responsive" src="screenshots/volumina-view.png" alt="">
+</div>
 
 The data is shown using three orthogonal slicing planes. The
 x-view (red) shows y,z-slices, the
