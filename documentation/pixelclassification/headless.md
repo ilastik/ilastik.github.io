@@ -21,7 +21,7 @@ To start ilastik in "headless" mode, use the `--headless` command-line flag.
 For example, on Linux:
 
     $ cd ilastik-Linux
-    $ ./bin/ilastik_gui --headless
+    $ ./run_ilastik.sh --headless
 
 On Mac:
 
@@ -39,14 +39,14 @@ The following examples use linux shell syntax, but the options are the same for 
 For example this example command will run your classifier over 2 additional images. 
 (Here we assume your classifier was trained on 2D images.)
 
-    $ ./bin/ilastik_gui --headless --project=MyProject.ilp my_next_image.png my_next_image2.png
+    $ ./run_ilastik.sh --headless --project=MyProject.ilp my_next_image.png my_next_image2.png
 
 ## Using stack input
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
 then use globstring syntax to tell ilastik which images to combine for each volume.
 
-    $ ./bin/ilastik_gui --headless --project=MyProject.ilp "my_next_stack_*.png" "my_other_stack_*.png"
+    $ ./run_ilastik.sh --headless --project=MyProject.ilp "my_next_stack_*.png" "my_other_stack_*.png"
 
 **Note:** The use of quotation marks in the above example is critical.  The `*` in each input argument must 
 be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
@@ -56,7 +56,7 @@ be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the c
 By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.  
 However, you can customize the output location and format with extra parameters. For example:
 
-    $ ./bin/ilastik_gui --headless 
+    $ ./run_ilastik.sh --headless 
                         --project=MyProject.ilp
                         --output_format=tiff
                         --output_filename_format=/tmp/results/{nickname}_results.tiff
