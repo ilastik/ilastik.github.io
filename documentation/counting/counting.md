@@ -267,7 +267,7 @@ This workflow supports the hdf5 format to store the density for the batch proces
 <a id="sec_advanced_installation">&nbsp;</a>
 ## 6. Installation of the 3rd-party plugins
 For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
-We provide simple [Instructions]({{site.baseurl}}/installation/installation.html) on doing so, note
+We provide simple [Instructions]({{site.baseurl}}/documentation/basics/installation.html) on doing so, note
 that it this is not required for the basic functionality of this workflow. 
 
 <a id="sec_reference">&nbsp;</a>

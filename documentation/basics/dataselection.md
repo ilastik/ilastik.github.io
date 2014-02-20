@@ -4,7 +4,7 @@ title: Data Selection
 tagline:
 category: "Documentation"
 group: "basic-documentation"
-weight: 1
+weight: 10
 ---
 # Data Selection Applet
 

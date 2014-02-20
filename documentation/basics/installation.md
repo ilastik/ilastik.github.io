@@ -1,8 +1,10 @@
 ---
-layout: default
+layout: documentation
 title: Installation
-tagline: Install Ilastik
-category: "Installation"
+tagline: 
+category: "Documentation"
+group: "basic-documentation"
+weight: 0
 ---
 
 # Basic Installation
