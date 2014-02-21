@@ -66,11 +66,15 @@ After the academic membership has been approved, the user can download IBM CPLEX
 the steps on [this IBM website](http://www-03.ibm.com/ibm/university/academic/pub/jsps/assetredirector.jsp?asset_id=1070)
 may be followed. 
 The search result in the IBM software catalogue should look similar to this:
-<div align="center"><img src="./fig/ibm_search_result.jpg"></div>
+
+<a href="./fig/ibm_search_result.jpg" data-toggle="lightbox">
+<img src="./fig/ibm_search_result.jpg" class="img-responsive"></a>
 
 We recommend to use *Http transfer*, then clicking on the CPLEX instance in *Industry Solutions* should open
 a list of CPLEX versions available for different platforms:
-<div align="center"><img src="./fig/cplex_result.jpg"></div>
+
+<a href="./fig/cplex_result.jpg" data-toggle="lightbox">
+<img src="./fig/cplex_result.jpg" class="img-responsive"></a>
 
 The current version of ilastik works with 
 **IBM ILOG CPLEX Optimization Studio V12.5.1**.
