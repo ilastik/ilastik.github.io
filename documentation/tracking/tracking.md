@@ -144,16 +144,7 @@ be invalid (and deleted) when parameters in this step are changed.***
 In the following applets, connected groups of pixels will be treated as individual objects.
 
 
-## 3. Object Extraction:
-All the user has to do here is to press the **Calculate Features** button to trigger the 
-computation of features of the objects (e.g. region centers).
-
-<a href="./fig/09_object-extraction-results.jpg" data-toggle="lightbox"><img src="./fig/09_object-extraction-results.jpg" class="img-responsive" /></a>
-
-When the computation was successful, the user can start with the actual tracking
-of the detected objects. 
-
-## 4. Tracking:
+## 3. Tracking:
 The remainder of this tutorial first discusses the tracking in case the **manual tracking
 workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec_automatic).
 
@@ -162,7 +153,7 @@ tutorial guides through a 2D+time example, and a 3D+time example dataset is prov
 [at the end of the tutorial](#sec_3d).
 
 <a name="sec_manual"> </a>
-### 4.1 Manual Tracking:
+### 3.1 Manual Tracking:
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects. All
@@ -290,7 +281,7 @@ To most efficiently use the features described above, there are multiple shortcu
 
 
 <a id="sec_automatic"> </a>
-### 4.2 Automatic Tracking (Chaingraph):
+### 3.2 Automatic Tracking (Chaingraph):
 
 If 
 [CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
@@ -344,7 +335,7 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 <a name="sec_export"> </a>
-## 5. Export:
+## 4. Export:
 To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
 provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
 as image/hdf-file/etc. 
