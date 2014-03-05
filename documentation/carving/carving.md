@@ -35,7 +35,7 @@ strong red color component in comparison to their surrounding. The right
 image on the other hand is a good example for the applicability of the
 seeded watershed segmentation (the problem setting is the segmentation of
 a single cell from electron microscopy image of neural tissue) since the
-neural nerveous cells have similar color distributions but can be
+neural cells have similar color distributions but can be
 separated by the dark cell membranes dividing them. (NOTE: the seeded
 watershed **could** also be applied to segment individual cell cores
 in the left image interactively, but in such a case where there is a
