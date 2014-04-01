@@ -1,0 +1,54 @@
+---
+layout: default
+title: ilastik License
+category: "About"
+---
+
+
+Copyright © 2011-2014, the ilastik developers <team@ilastik.org>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+[GNU General Public License](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) for more details.
+
+
+Extending ilastik with other modules is making a combined work based
+on ilastik. Thus, the terms and conditions of the GNU General Public
+License cover the whole combination.
+
+In addition, as a special exception, the copyright holders of ilastik
+give you permission to combine ilastik with applets, workflows and
+plugins which are not covered under the GNU General Public License.
+These are considered independent modules provided that
+
+<ol type="i">
+<li> plugins are subclasses of IPlugin and communicate with ilastik
+  through the plugin interface defined in the documentation
+  </li>
+<li> applets are subclasses of Applet and AppletGuiInteface classes
+  and communicate with ilastik through the Applet API defined in
+  the documentation</li>
+<li>workflows are subclasses of Workflow and communicate with
+  ilastik through the Workflow API defined in the documentation.
+  Workflows can make use of standard applets provided in ilastik.</li>
+</ol>
+
+You may copy and distribute such a combined work following the
+terms of the GNU GPL for the ilastik part, and terms of your
+choice for independent modules as specified in items (i), (ii)
+and (iii) provided that you also meet, for each of these
+modules, the terms and conditions of the license of that module.
+
+A modified version of ilastik that involves changes to the
+interface of the ilastik applet, workflow or plugin interface must
+be distributed under the GNU GPL without this exception. Modified
+versions of ilastik that preserve the original ilastik applet,
+workflow or plugin interfaces must be distributed under the GNU
+GPL; in which case the license may, but need not, carry forward
+this exception.
