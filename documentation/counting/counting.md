@@ -97,7 +97,7 @@ The overall workflow resembles the
 [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 The main difference is that the Density Counting workflow gives the user the possibility to:
 
-* add **dots** for the object instances
+* add **dots** for the object instances (see tips below)
 * add **brush strokes** over the background
 * add **boxes** to monitor the count in sub-image regions.
 
@@ -108,7 +108,7 @@ This idea is reflected in the **layout of the left control panel** that is typic
 #### 3.1 Dotting
 This is  the first interaction with the core of this workflow. The purpose of this interaction is to provide the classifier with training examples for the object centers and training examples for the background.
 
-To begin placing dot annotation select the red **Foreground** label and then on click on the image. The annotation has to be placed close to the center of an object (cell) as in the figure below.
+To begin placing dot annotation select the red **Foreground** label and then on click on the image. The annotation has to be placed **close to the center** of an object (cell) as in the figure below.
 
 <a href="fig/blue_totorial3-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial3-red.jpg" class="img-responsive" /></a>
 
@@ -239,7 +239,7 @@ The forest parameters exposed to the user are:
 <a href="fig/boxes2.png" data-toggle="lightbox"><img src="fig/boxes2.png" class="img-responsive" /></a>
 * By clicking on the little lock icon you can easily provide counts for a region (highlighted in red),
 which will be taken into account for the training.
-* Note that this value only poses a *soft contraint*, so the prediction may slightly differ to better adher to the dot labels.
+* Note that this value only poses a *soft contraint*, so the prediction may slightly differ to better adhere to the dot labels.
 
 
 <a id="sec_advanced_svr">&nbsp;</a>
