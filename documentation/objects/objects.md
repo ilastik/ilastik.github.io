@@ -18,6 +18,13 @@ segmentation images, the user can choose between three flavors of object classif
 * Object Classification (from prediction image)
 * Object Classification (from binary image)
 
+**Size Limitations:**
+
+In the current version of ilastik, computations on the **training** images are not performed lazily -- the entire image is processed at once.  
+This means you can't use enormous images for training the object classifier.  
+However, once you have created a satisfactory classifier using one or more small images, you can use the "Blockwise Object Classification" 
+feature to run object classification on much larger images (prediction only -- no training.)
+
 <a href="figs/ilastik_start_screen.png" data-toggle="lightbox"><img src="figs/ilastik_start_screen.png" class="img-responsive" /></a>
 
 ### Object Classification (from pixel classification)
