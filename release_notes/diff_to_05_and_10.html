@@ -37,13 +37,23 @@ This workflow allows you to count objects in crowded scenes without performing s
 <h3 id="1.0_diff">What has changed compared to versions 1.0.*?</h3>
 <p>
 <ul>
-    <li>Numerous bug fixes and stability improvements</li>
+    <li>Numerous bug fixes and stability improvements. Among others:
+    <ul>
+        <li>Faster project load times thanks to label storage changes</li>
+        <li>Better interactive performance thanks to improved feature matrix caching</li>
+        <li>Errors captured in a log file that can be sent to the ilastik team for analysis</li>
+        <li>Better CPU utilization during batch export</li>
+        <li>Many more images can be loaded thanks to threading optimizations</li>
+    </ul>
+    
+    </li>
     <li>Conservation tracking instead of chaingraph tracking in automatic tracking workflow</li>
     <li>Classifiers other than Random Forest in pixel classification</li>
     <li>Headless mode also for object classification</li>
     <li>Graph Cut segmentation with Ising model in Thresholding applet</li>
     <li>Mesh export in carving</li>
     <li>Export of results other than probability maps</li>
+    
 </p>
 </div>
 </div>
