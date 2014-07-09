@@ -17,7 +17,7 @@ The latter may be useful for high-quality tracking of small datasets or
 ground truth acquisition. To speed up this process, sub-tracks may be generated automatically for trivial
 assignments such that the user only has to link objects where the tracking is ambiguous.
 
-Although they are different workflows and The automatic and manual tracking workflows share a few 
+Although they are different workflows, automatic and manual tracking share a few 
 components (*applets*) for preprocessing the dataset;
 the only difference is the actual tracking applet. 
 This tutorial describes those shared applets for both workflows simultaneously before providing documentation for the
