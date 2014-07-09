@@ -57,3 +57,7 @@ body > .container {
 }
 
 label{font-weight:normal !important};
+
+.form-horizontal .control-label {
+    text-align: left;
+}
