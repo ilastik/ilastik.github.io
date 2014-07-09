@@ -34,9 +34,16 @@ In short, everything, from the back-end to the user interface. But ilastik still
 <dt>Counting:</dt>
 This workflow allows you to count objects in crowded scenes without performing segmentation or object detection first. Under the hood, it implements the algorithm of <a href="">[Fiaschi et al., ICPR 2012]</a>. As usual in ilastik, you have to sparsely label the background and give the algorithm a few examples of object counts in rectangular bounding boxes.
 </p>
-<h3 id="1.0_diff">What has changed compared to version 1.0?</h3>
+<h3 id="1.0_diff">What has changed compared to versions 1.0.*?</h3>
 <p>
-Lots of things.
+<ul>
+    <li>Numerous bug fixes and stability improvements</li>
+    <li>Conservation tracking instead of chaingraph tracking in automatic tracking workflow</li>
+    <li>Classifiers other than Random Forest in pixel classification</li>
+    <li>Headless mode also for object classification</li>
+    <li>Graph Cut segmentation with Ising model in Thresholding applet</li>
+    <li>Mesh export in carving</li>
+    <li>Export of results other than probability maps</li>
 </p>
 </div>
 </div>
