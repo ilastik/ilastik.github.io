@@ -1,69 +1,158 @@
-<!DOCTYPE html>
-<html>
+---
+layout: headerfooter
+title: ilastik
+tagline: the interactive learning and segmentation toolkit
+category: Home
+---
+{% include navbar.html %}
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ilastik.github.io : " />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Ilastik.github.io</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ilastik">View on GitHub</a>
-
-          <h1 id="project_title">Ilastik.github.io</h1>
-          <h2 id="project_tagline"></h2>
-
-        </header>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-2">
+    <div class="page-header">
+      <img src="/assets/ilastik-logo.png" alt="ilastik"
+	   class="pull-left" id="main-logo">
+      <h1>{{ page.title }} {% if page.tagline %} <br /> <small>{{ page.tagline }}</small>{% endif %}</h1>
     </div>
+  </div>
+</div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+<div class="row">
+ <div class="col-sm-7 col-sm-offset-2">
+  <p>
+      ilastik is a simple, user-friendly tool for <b>interactive image classification, 
+      segmentation and analysis</b>. It is built as a modular software framework, which 
+      currently has <a href="/documentation/index.html">workflows</a> for automated (supervised) pixel- and object-level classification, 
+      automated and semi-automated object tracking, semi-automated segmentation
+      and object counting without detection.
+      Most analysis operations are performed <b>lazily</b>, which enables targeted interactive 
+      processing of data subvolumes, followed by complete volume analysis in offline batch mode. Using it
+      requires no experience in image processing.
+    </p>
+ </div>
+</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+<div class="row">
+  <div class="col-sm-5 col-sm-offset-3">
+  
+<div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <!-- SLIDE 1 -->
+    <div class="item active">
+      <img src="/assets/img/carousel/crop_training1.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Pixel Classification</h4>
+        <p>Train using simple brush strokes</p>
+      </div>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+    <!-- SLIDE 2 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_training3.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Pixel Classification</h4>
+        <p>Semantic segmentation using predicted class probabilities</p>
+      </div>
     </div>
+    <!-- SLIDE 3 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_oc_prediction1.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Object classification</h4>
+        <p>Predict the semantic class of objects</p>
+      </div>
+    </div>
+    <!-- SLIDE 4 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_labeling2.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Carving</h4>
+        <p>Extract objects from a 3D volume semi-automatically</p>
+      </div>
+    </div>
+    <!-- SLIDE 5 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_feature_selection3.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Pixel Features</h4>
+        <p>Select from a simple set of predefined image features</p>
+      </div>
+    </div>
+    <!-- SLIDE 6 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_blue_totorial8.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Counting</h4>
+        <p>Count densely packed cells</p>
+      </div>
+    </div>
+    <!-- SLIDE 7 -->
+    <div class="item">
+      <img src="/assets/img/carousel/crop_25_chaingraph-tracking-3d.jpg" alt="" />
+      <div class="carousel-caption">
+        <h4>Tracking</h4>
+        <p>Automatic and manual tracking of dividing cells (2D+3D)</p>
+      </div>
+    </div>
+  </div><!-- /.carousel-inner -->
+  <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div><!-- /.carousel -->
 
-    
+  </div>
+</div>
 
-  </body>
-</html>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-1" align="center">
+    <p>
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-download fa-stack-1x"></i>
+      </span>
+    </p>
+    <h4>
+    <a href="/download.html">Install ilastik</a></h4>
+    <p>Ready-made packages are available for Linux, Mac, and Windows.</p>
+  </div>
+  <div class="col-sm-3" align="center">
+    <p>
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-book fa-stack-1x"></i>
+      </span>
+    </p>
+    <h4>
+    <a href="/documentation/index.html">Read documentation</a></h4>
+    <p>ilastik comes with an extensive user manual.</p>
+  </div>
+  <div class="col-sm-3" align="center">
+    <p>
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-keyboard-o fa-stack-1x"></i>
+      </span>
+    </p>
+    <h4>
+    <a href="/development.html">Contribute</a></h4>
+    <p>View developer documentation and API docs. Report bugs and request features.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <hr />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-offset-3 col-sm-5">
+    <p>
+      <span class="fa fa-stack fa-4x pull-left">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-comments fa-inverse fa-stack-1x"></i>
+      </span>
+    <h4><a href="/community.html">Get in touch</a></h4>
+    <p>
+      Discuss with other users on our mailing lists or
+      contact the friendly ilastik team directly.
+    </p>
+  </div>
+</div>
