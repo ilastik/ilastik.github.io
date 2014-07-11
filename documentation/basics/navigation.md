@@ -64,7 +64,9 @@ _z_-view has a blue color.
 
 * Use the _Mouse wheel_ to scroll forward/backward through the stack
   represented by the slice view
-* Hold _Ctrl_ ( _Cmd_ on Mac OS X) while using the mouse wheel to zoom in/out
+* Hold _Ctrl_ ( _Cmd_ on Mac OS X) while using the mouse wheel to zoom in/out (if the cursor is over one 2D slicing plane,
+  the respective plane is zoomed, otherwise all 3 slicing planes are zoomed simultaneously)
+* Hold _Shift_ while using the mouse wheel to browse a time sequence
 * Pan the view by holding moving the mouse with the _middle mouse button_
   pressed
 * jump to a new 3D position by _double clicking_
