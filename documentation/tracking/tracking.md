@@ -289,7 +289,7 @@ To most efficiently use the features described above, there are multiple shortcu
 ### 3.2 Automatic Tracking (Conservation Tracking):
 
 If 
-[CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
+[CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Conservation Tracking)** 
 and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
 
 This automatic tracking applet implements the algorithm described in [\[1\]](#ref_conservation). The algorithm aims to
@@ -399,7 +399,7 @@ be accessed via the ilastik project file:
 
            track_id_parent track_id_child1 track_id_child2 time_parent
 
-   * *Automatic Tracking*: In the Chaingraph Tracking folder, the events are stored as described in the table above.
+   * *Automatic Tracking*: In the Conservation Tracking folder, the events are stored as described in the table above.
 
 
 
