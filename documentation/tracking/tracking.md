@@ -18,8 +18,7 @@ ground truth acquisition. To speed up this process, sub-tracks may be generated 
 assignments such that the user only has to link objects where the tracking is ambiguous.
 
 Although they are different workflows, automatic and manual tracking share a few 
-components (*applets*) for preprocessing the dataset;
-the only difference is the actual tracking applet. 
+components (*applets*) for preprocessing the dataset.
 This tutorial describes those shared applets for both workflows simultaneously before providing documentation for the
 specific manual/semi-automatic or (fully) automatic tracking applets.
 
@@ -89,7 +88,8 @@ These two workflows comprise the following applets:
 ## 1. Input Data:
 To begin, the raw data and the prediction maps (the results from the Pixel Classification workflow or segmented images from
 other sources) 
-need to be specified in the respective tab. In particular, the file 
+need to be specified in the respective tab (in this case we choose the workflow with **Prediction Map** as input rather than
+binary image). In particular, the file 
 `mitocheck_94570_2D+t_01-53.h5` 
 is added as **Raw Data** and the dataset in
 `mitocheck_94570_2D+t_01-53_export.h5`
@@ -111,6 +111,9 @@ and thresholded in order to get a binary segmentation,
 which is done in the **Thresholding and Size Filter** applet:
 
 ## 2. Thresholding and Size Filter:
+If the user chose a to start the workflow with prediction maps as input (rather than binary images,
+in which case this applet will not appear), 
+the user first has to threshold these prediction maps.
 First, the channel of the prediction maps which contains the foreground 
 predictions has to be specified. 
 For instance, if in the Pixel Classification workflow,
@@ -131,9 +134,11 @@ Please consult the documentation of the
 for a more detailed description of this applet, including an explanation of the **Two thresholds** 
 option.
 
-Note that, although the tracking workflows expect prediction maps as input files, nothing prevents
+Note that, although the tracking workflows usually expect prediction maps as input files, nothing prevents
 the user from loading (binary) segmentation images instead. In this case, we recommend to disable
-the smoothing filter by setting all **Sigmas** to 0 and the user should choose a **Threshold** of 0.
+the smoothing filter by setting all **Sigmas** to 0 and the user should choose a **Threshold** of 0. 
+For performance reasons, it is, however, recommended to start the appropriate workflow when 
+the user has already a binary image.
 
 Finally, objects outside the given **Size Range** are filtered out for this and the following
 steps.
@@ -281,22 +286,29 @@ To most efficiently use the features described above, there are multiple shortcu
 
 
 <a id="sec_automatic"> </a>
-### 3.2 Automatic Tracking (Chaingraph):
+### 3.2 Automatic Tracking (Conservation Tracking):
 
 If 
 [CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Chaingraph)** 
 and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
 
-This automatic tracking applet implements the algorithm described in [\[1\]](#ref_chaingraph). The algorithm aims to
+This automatic tracking applet implements the algorithm described in [\[1\]](#ref_conservation). The algorithm aims to
 link all (possibly dividing) objects over time, where objects may be automatically marked as false positive detections 
 (misdetections due to speckles or low contrast) by the
 algorithm. Note that -- as of the time of writing -- this algorithm cannot recover missing objects, i.e. objects which 
 have not been detected by the previous segmentation step. 
-Moreover, the algorithm cannot handle undersegmentation. In other words, 
-the identities of previously distinct objects which merge to only one connected component 
-may not be recovered after splitting in a later time step.
-We will soon extend this workflow to circumvent this latter limitation.
 
+As a preprocessing for tracking, it is recommended to train object classifiers as described in the
+[Object Classification user documentation]({{site.baseurl}}/documentation/objects/objects.html).
+In the **Division Detection** applet, a object must be labeled as *dividing*, if it is dividing between the current and next timestep into
+two objects. Other objects must be labeled as *not dividing*. The user should label enough objects until the *live prediction* yields
+satisfying results on unlabeled objects.
+
+It furthermore is recommended to train an **Object Count Classifier**. Here, some examples for actually false positive detections are labeled
+red, and examples for 1, 2,... objects (=mergers) are labeled with the respective color. This classifier is trained sufficiently if it returns 
+the right class for most of the objects in *live prediction* mode. 
+
+Now, we can finally proceed to the tracking applet.
 To track the objects detected in the preprocessing steps over all time steps, it is enough to press the **Track** button
 (after having checked whether the objects are divisible such as cells or not). After successful tracking, each object (and 
 its children in case of divisions) should be marked over time in a distinct random color.
@@ -309,7 +321,7 @@ To these objects and relations, costs are assigned defined by the given paramete
 the most probable tracking solution for the model constructed, i.e. it tries to minimize the computed costs.
 
 Although the tracking result should usually be already sufficient with the default values, we now briefly give explanations
-for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_chaingraph) for more details). 
+for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_conservation) for more details). 
 
 | Parameter       | Description
 |:---------------| :-------------------------
@@ -420,7 +432,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 ## References
 
-<a name="ref_chaingraph"> </a>
-\[1\] B. X. Kausler, M. Schiegg, B. Andres, M. Lindner, H. Leitte, L. Hufnagel, U. Koethe, F. A. Hamprecht. 
-**A Discrete Chain Graph Model for 3d+t Cell Tracking with High Misdetection Robustness.**
-*Proceedings of the European Conference on Computer Vision (ECCV 2012)*, Florence, Italy, October, 2012.
+<a name="ref_conservation"> </a>
+\[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 
+**Conservation Tracking.**
+*Proceedings of the IEEE International Conference on Computer Vision (ICCV 2013)*, 2013.
