@@ -7,6 +7,7 @@ group: "workflow-documentation"
 weight: 2
 ---
 # Automatic Tracking and Manual Tracking
+
 ## Overview and Scope
 
 Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.

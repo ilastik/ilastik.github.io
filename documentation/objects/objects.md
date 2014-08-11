@@ -8,6 +8,7 @@ weight: 1
 ---
 
 #Object Classification Workflow
+
 ##Input
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations. 

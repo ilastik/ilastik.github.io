@@ -9,6 +9,6 @@ author :
   email : ilastik-user@ilastik.org
   github : ilastik
 
-production_url : http://ilastik.github.io
-baseurl: http://ilastik.github.io
+production_url : http://ilastik.org
+baseurl: http://ilastik.org
 relative_permalinks: false

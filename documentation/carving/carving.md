@@ -7,6 +7,7 @@ group: "workflow-documentation"
 weight: 3
 ---
 # Carving
+
 ## How it works, what it can and cannot do
 
 The seeded watershed algorithm is an image segmentation algorithm for

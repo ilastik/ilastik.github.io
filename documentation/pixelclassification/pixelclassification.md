@@ -7,6 +7,7 @@ group: "workflow-documentation"
 weight: 0
 ---
 # Pixel Classification
+
 ## How it works, what it can do
 
 The pixel classification workflow can classify the pixels of an image given

@@ -7,6 +7,7 @@ group: "workflow-documentation"
 weight: 4
 ---
 # Interactive Density Counting
+
 ## Overview, what it can and cannot do
 
 The purpose of this workflow is to enable **counting of objects** in crowded scenes such as cells in microscopy images. Counting is performed by directly estimating the density of objects in the image without performing segmentation or object detection.
