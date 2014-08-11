@@ -1,8 +1,22 @@
-{% comment %} generate table of contents and store it in 'toc' var {% endcomment %}
+{% comment %} generate table of contents and store it in 'toc' var
+
+How it works:
+
+We create a new variable which includes the markdown table of contents
+tag :toc before the page contents (see capture statement).
+
+Markdown does not include any <div> tags in the rendered table of
+contents. By surrounding this section with a <div> we can extract it
+afterwards, using the filters on the line with the assign command.
+{% endcomment %}
 {% capture basemd %}
 {% raw %}
+<div markdown="1">
+
 * TOC
 {:toc}
+
+</div>
 {% endraw %}
 {{page.content}}
 {% endcapture %}

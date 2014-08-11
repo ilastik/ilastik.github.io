@@ -3,9 +3,12 @@
   {% if group == null or group == node.group %}
     {% if node.weight == weight %}
     {% if page.url == node.url %}
-      <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a>
+      <li class="active">
+      {% comment %}
+      <a href="{{node.url}}" class="active">{{node.title}}</a>
+      {% endcomment %}
       {{active_hook}}
-</li>
+      </li>
     {% else %}
       <li><a href="{{node.url}}">{{node.title}}</a></li>
     {% endif %}
