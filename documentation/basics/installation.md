@@ -90,11 +90,12 @@ very small problem sizes. Please make sure, the correct version is downloaded as
 On Windows, there are typically no further modifications needed after installing CPLEX. 
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
 
-If this workflow is not present, something went wrong with the CPLEX installation. As a workaround,
-the user may copy the files `libcplex.dll`, `libilocplex.dll`, 
-and `libconcert.dll` from the CPLEX installation directory into the library folder of ilastik, usually
-located at `C:/Program Files/ilastik/lib`.
+If this workflow is not present, something went wrong with the CPLEX installation. To track down the problem, proceed like this:
+* Make sure that the environment variable `CPLEX_STUDIO_DIR1251` is set and points to the proper location. You can check this by typing `echo %CPLEX_STUDIO_DIR1251%` at the DOS command prompt. The output should be something like `C:\Program Files\IBM\ILOG\CPLEX_Studio1251`.
+* Make sure that `cplex` is in the PATH. Type `where cplex` at a DOS prompt. It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio1251\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR1251` variable).
+* Make sure that the directory containing `cplex.exe` also contains `cplex1251.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`. 
 
+The *Automatic Tracking Workflow* should now be displayed on the start screen. If it doesn't, you may copy the files `cplex1251.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`. If it still doesn't work, please contact us.
 
 
 ###Linux
