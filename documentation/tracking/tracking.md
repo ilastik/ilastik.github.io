@@ -158,8 +158,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-<a name="sec_manual"> </a>
-### 3.1 Manual Tracking:
+### 3.1 Manual Tracking: {#sec_manual}
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects. All
@@ -286,8 +285,7 @@ To most efficiently use the features described above, there are multiple shortcu
 | `r`            | Toggle objects layer visibility
 
 
-<a id="sec_automatic"> </a>
-### 3.2 Automatic Tracking (Conservation Tracking):
+### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic}
 
 If 
 [CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Conservation Tracking)** 
@@ -347,8 +345,8 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-<a name="sec_export"> </a>
-## 4. Export:
+## 4. Export: {#sec_export}
+
 To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
 provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
 as image/hdf-file/etc. 
@@ -405,8 +403,7 @@ be accessed via the ilastik project file:
 
 
 
-<a name="sec_3d"> </a>
-## Tracking in 3D+time Data
+## Tracking in 3D+time Data {#sec_3d}
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
