@@ -74,8 +74,8 @@ As a first step, let us just load this project. You should be able to start from
 
 <a href="fig/blue_totorial0.jpg" data-toggle="lightbox"><img src="fig/blue_totorial0.jpg" class="img-responsive" /></a>
 
-<a id="sec_feature_selection">&nbsp;</a>
-### 2. Feature Selection
+### 2. Feature Selection {#sec_feature_selection}
+
 The second step is to define some features. Feature selection is similar to the
 [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 
@@ -90,8 +90,8 @@ features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification
 
 <a href="fig/blue_totorial_features.jpg" data-toggle="lightbox"><img src="fig/blue_totorial_features.jpg" class="img-responsive" /></a>
 
-<a id="sec_interactive_counting">&nbsp;</a>
-### 3. Interactive counting
+### 3. Interactive counting {#sec_interactive_counting}
+
 Annotations are done by painting while looking at the raw data and at the intermediate results of the algorithm.
 The result of this algorithm can be interactively refined while being in **Live-Update** mode.
 The overall workflow resembles the
@@ -105,8 +105,8 @@ The main difference is that the Density Counting workflow gives the user the pos
 These list of interactions is typically performed in sequence.
 This idea is reflected in the **layout of the left control panel** that is typically used from **top to bottom**.
 
-<a id="sec_brushing_interaction_mode">&nbsp;</a>
-#### 3.1 Dotting
+#### 3.1 Dotting {#sec_brushing_interaction_mode}
+
 This is  the first interaction with the core of this workflow. The purpose of this interaction is to provide the classifier with training examples for the object centers and training examples for the background.
 
 To begin placing dot annotation select the red **Foreground** label and then on click on the image. The annotation has to be placed **close to the center** of an object (cell) as in the figure below.
@@ -130,6 +130,7 @@ chose too small, while on the right the value of sigma is too large. The center 
 
 
 #### 3.2 Brushing
+
 After a few dots have been placed (say around 10 - 20 depending on the data) we can add training examples for the *background*.
 
 Background labeling works the same as in the
@@ -140,8 +141,7 @@ To activate this interaction select the green **Background** label and give broa
 <a href="fig/blue_totorial6.jpg" data-toggle="lightbox"><img src="fig/blue_totorial6.jpg" class="img-responsive" /></a>
 
 
-<a id="sec_brushing_interaction_mode">&nbsp;</a>
-### 4 Live Update Mode
+### 4 Live Update Mode {#sec_brushing_interaction_mode}
 After some labels for the objects and the background have been given, switch the **Live-Update** on
 (using the *Live Update* button), this will trigger a first prediction, displayed in the **Prediction-Layer**.
 
@@ -154,8 +154,8 @@ causes a new prediction - thus it may be faster to toggle it OFF again when you 
 
 This is explained in the next section.
 
-<a id="sec_boxing_interaction_mode">&nbsp;</a>
-### 5 Box Interaction Mode
+### 5 Box Interaction Mode {#sec_boxing_interaction_mode}
+
 This interaction takes place **after** we have pressed the *Live Update* Button for the first time. The boxes are operator windows that integrate the density over a certain image region. Therefore they provide the predicted
 counts for the objects in that region.
 
@@ -188,7 +188,8 @@ You can continue adding boxes and provide new annotations (dots or brushes) for 
 <a href="fig/box_dialog.jpg" data-toggle="lightbox"><img src="fig/box_dialog.jpg" class="img-responsive" /></a>
 
 ### 6 Counting the entire image
-Le us switch to another image by using the **Current View** menu on the left. As is shown in the image below, this image is free from annotations and the prediction of the density is not yet computed. However, the algorithm is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
+
+Let us switch to another image by using the **Current View** menu on the left. As is shown in the image below, this image is free from annotations and the prediction of the density is not yet computed. However, the algorithm is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
 
 If the training labels are sufficient, we should obtain a count similar to what is shown in the image below that matches the number of objects in the images.
 
@@ -201,8 +202,8 @@ If the training labels are sufficient, we should obtain a count similar to what 
 Please continue to read if you want to know some advanced features.
 
 
-<a id="sec_algorithms">&nbsp;</a>
-## The Algorithms
+## The Algorithms {#sec_algorithms}
+
 **Two different regression algorithms** are currently supported by the Density Counting workflow depending on the
 availability of CPLEX (or GUROBI) on the machine where ilastik is installed. Note that for copyright reason we cannot
 provide the license (free for academic use) to this software that can be installed separately following the procedure
@@ -211,8 +212,8 @@ described in
 
 The most important parameters for our algorithms can be set by an advanced user with the menu on the left; details are given below.
 
-<a id="sec_rf">&nbsp;</a>
-### Random Forest
+### Random Forest {#sec_rf}
+
 This approach uses a *Random Regression Forest* as regression algorithm.
 In general it requires more labels to give correct results over several images. However it is more robust to inhomogeneous background.
 
@@ -220,9 +221,10 @@ The implementation of the random regression forest is based on <a href="http://s
 
 
 
-<a id="sec_rf_advanced">&nbsp;</a>
-#### Advanced parameters
+#### Advanced parameters {#sec_rf_advanced}
+
 The forest parameters exposed to the user are:
+
 * **Ntrees** number of trees in the forest
 * **MaxDepth** maximum depth of each individual tree.
 
@@ -230,49 +232,52 @@ The forest parameters exposed to the user are:
 
 <a href="fig/rf-algo.jpg" data-toggle="lightbox"><img src="fig/rf-algo.jpg" class="img-responsive" /></a>
 
-<a id="sec_svr">&nbsp;</a>
-### Support Vector Regression
+### Support Vector Regression {#sec_svr}
+
 * Requires an installation of CPLEX on the system
 * Maybe slower but more robust and better generalization
 * Can offer additional type of label via *Box constraints* not strict
 * The density inside of a box now be approximately fixed to a real number, providing additional training information
+
 #### Box Constraints
+
 <a href="fig/boxes2.png" data-toggle="lightbox"><img src="fig/boxes2.png" class="img-responsive" /></a>
+
 * By clicking on the little lock icon you can easily provide counts for a region (highlighted in red),
 which will be taken into account for the training.
-* Note that this value only poses a *soft contraint*, so the prediction may slightly differ to better adhere to the dot labels.
+* Note that this value only poses a *soft constraint*, so the prediction may slightly differ to better adhere to the dot labels.
 
 
-<a id="sec_advanced_svr">&nbsp;</a>
-#### Advanced parameters
-C: How much impact should individual and box errors do compared to w itself, this will likely only change results if you set C to low values.
-epsilon: The amount of error that will be tolerated for individual pixels, this regularizes the result,
+#### Advanced parameters {#sec_advanced_svr}
+
+* **C:** How much impact should individual and box errors do compared to w itself, this will likely only change results if you set C to low values.
+* **epsilon:** The amount of error that will be tolerated for individual pixels, this regularizes the result,
 though the defaults should already create good results.
 
 
 
-<a id="sec_exporting">&nbsp;</a>
-## 4. Exporting results
+## 4. Exporting results {#sec_exporting}
+
 We can export the results for all the images that were added to the project.
 This processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/basics/export.html).
 
 
-<a id="sec_batch">&nbsp;</a>
-## 5. Batch Processing unseen images
+## 5. Batch Processing unseen images {#sec_batch}
+
 For large-scale prediction of unseen images, the procedure is to first interactively train the regressors on a representative subset of the images. Then, use batch processing for the rest of the data. The batch processing follows a standard ilastik procedure that is demonstrated [here]({{site.baseurl}}/documentation/basics/batch.html).
 
 This workflow supports the hdf5 format to store the density for the batch processed images. The density for the batch processed image is stored as a dataset of the hdf5 file, which is easily readable with Matlab or Python. The density can then be integrated to retrieve the count of objects in the image.
 
 **NOTE:** the density can be exported also as a normal grayscale image (\*.png, \*.tiff, etc..). However, due to normalization, the intensity value of the image do not correspond anymore to the predicted density values (originally between 0,1).
 
-<a id="sec_advanced_installation">&nbsp;</a>
-## 6. Installation of the 3rd-party plugins
+## 6. Installation of the 3rd-party plugins {#sec_advanced_installation}
+
 For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
 We provide simple [Instructions]({{site.baseurl}}/documentation/basics/installation.html) on doing so, note
 that it this is not required for the basic functionality of this workflow. 
 
-<a id="sec_reference">&nbsp;</a>
-## 7. References
+## 7. References {#sec_reference}
+
 \[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
 **Learning to Count with Regression Forest and Structured Labels.**
 *Proceedings of the International Conference on Pattern Recognition (ICPR 2012)*, Tsukuba, Japan, November, 2012.
