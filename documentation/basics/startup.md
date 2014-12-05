@@ -9,6 +9,7 @@ weight: 1
 # The Startup Screen
 The first thing you see when starting ilastik is the startup screen.
 It allows to
+
 * Create a new project (A)
 * Open an existing project (B)
 * Open a recently used project (C)
@@ -27,7 +28,7 @@ project types:
 
 - **Tracking Workflow** allows tracking of a large and unknown number of (possible divisible) objects with similar appearance in 2d+t and 3d+t 
 
-- **Object classification** allows to train and classifiy already segmented objects in an image using object level features such as size, orientation, average color etc.
+- **Object classification** allows to train and classify already segmented objects in an image using object level features such as size, orientation, average color etc.
   - **from pixel classification** use a pixel level classifier as first stage to obtain objects
   - **from binary image** use a binary object mask image as object input
   - **from prediction image** use a probability map as object input

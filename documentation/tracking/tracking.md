@@ -251,7 +251,7 @@ object to track next.
 overlap between objects of consecutive time steps. Note that the tracking is faster for smaller window sizes,
 however, longer sub-tracks may be achieved by bigger window sizes. For the example datasets, we choose a window
 size of 40 pixels along each dimension.
-- **Inappropriate track colors**: If the color of the next active track is inapproriate (e.g. it has low contrast
+- **Inappropriate track colors**: If the color of the next active track is inappropriate (e.g. it has low contrast
 on the user's screen, it may be mixed up with other colors in the proximity of the object of interest, or it
 is some already reserved color), the user may just leave this track empty and start another track.
 - **Delete label**: False assignments of track IDs can be deleted by right-clicking on the respective object.
@@ -356,7 +356,7 @@ In other words, each **lineage** has the same label over time starting with uniq
 each object.
 
 In addition to the export applet, we provide further 
-useful export funcionality in the **Manual Tracking** applet. We distinguish between `track_id` which corresponds
+useful export functionality in the **Manual Tracking** applet. We distinguish between `track_id` which corresponds
 to the **Active track** ID chosen earlier, and `object_id` which stands for the identifier each object has in the **Objects** layer.
 The `object_ids` can be exported separately by right-clicking on the **Objects** layer control.
 
