@@ -21,6 +21,7 @@ A typical cell segmentation use case is depicted below.
 <a href="snapshots/training2.png" data-toggle="lightbox"><img src="snapshots/training2.png" class="img-responsive" /></a>
 
 Nice properties of the algorithm and workflow are
+
 - Interactive mode: the user gets immediate feedback after giving additional annotations.
 - Batch mode: the trained classifier can be applied to previously unseen images. Results are written to disk.
 - Uncertainty guidance: the user can view an uncertainty map, this indicates areas where the classifier is unsure about the results. Additional annotations in these regions help most.
@@ -39,6 +40,7 @@ A click on the **Select features** button brings up a feature selection dialog.
 <a href="snapshots/feature_selection2.png" data-toggle="lightbox"><img src="snapshots/feature_selection2.png" class="img-responsive" /></a>
 
 Here the user can select from several different feature types and scales.
+
 - Color/Intensity: these features should be selected if the color or brightness can be used to discern objects
 - Edge: should be selected if brightness or color gradients can be used to discern objects.
 - Texture: this might be an important feature if the objects in the image have a special textural appearance.
