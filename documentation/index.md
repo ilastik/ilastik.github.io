@@ -11,17 +11,14 @@ training course organized by CellNetworks in Heidelberg.
 
 After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/basics/startup.html).
-After selection one of the available workflows
+There you can select one of the available workflows
 ([tracking]({{site.baseurl}}/documentation/tracking/tracking.html),
 [density counting]({{site.baseurl}}/documentation/counting/counting.html),
-
 [pixel classification]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
 [object classification]({{site.baseurl}}/documentation/objects/objects.html)
-or
-[carving]({{site.baseurl}}/documentation/carving/carving.html)),
-get familiar with ilastik's main interface.
+or [carving]({{site.baseurl}}/documentation/carving/carving.html)).
 
-First, select data using the
+To get started, load your data using the
 [data selection]({{site.baseurl}}/documentation/basics/dataselection.html)
 applet.
 To learn how to navigate and interact with you data, read the
