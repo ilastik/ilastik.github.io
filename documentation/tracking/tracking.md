@@ -131,7 +131,7 @@ specified by the **Sigma** values (allowing for anisotropic filtering).
 The resulting probabilities are finally **thresholded** at the value specified. The default
 values for the smoothing and thresholding should be fine in most of the cases. 
 Please consult the documentation of the
-[Oject Classification workflow]({{site.baseurl}}/documentation/objects/objects.html)
+[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html)
 for a more detailed description of this applet, including an explanation of the **Two thresholds** 
 option.
 

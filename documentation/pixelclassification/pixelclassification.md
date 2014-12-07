@@ -13,7 +13,7 @@ weight: 0
 The pixel classification workflow can classify the pixels of an image given
 user annotations. The classification of the image pixels can be used to segment
 the image into different objects, such as for example individual cells.
-The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their sorrounding. The algorithm is applicable for a wide range of segmentation problems that
+The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their surrounding. The algorithm is applicable for a wide range of segmentation problems that
 fulfill these properties.
 
 A typical cell segmentation use case is depicted below.
@@ -60,7 +60,7 @@ eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
 <a href="snapshots/training_zoomed.png" data-toggle="lightbox"><img src="snapshots/training_zoomed.png" class="img-responsive" /></a>
 Each added label should correspond to a object type that we want to separate.
-In the simpelest case, we add one label for the object class (in this example the object class would be cell)
+In the simplest case, we add one label for the object class (in this example the object class would be cell)
 and an additional label fore the background class.
 
 After adding at least two labels, the user can begin to mark the objects and the background.
@@ -80,16 +80,16 @@ can be turned on by clicking on the **Segmentation** checkbox.
 <a href="snapshots/training3_zoomed.png" data-toggle="lightbox"><img src="snapshots/training3_zoomed.png" class="img-responsive" /></a>
 
 ## Window Leveling
-If labeling grayscale images the **Training** applet has an additional option: **Window Leveling**.  This option can facilitate the labeling but has no impact on the training process itself. It can be used to adjust the data range used for visualization and thus helps to bring out small difference in contrast which might be usefull when placing the labels. Pressing the left mouse button while moving the mouse back and forth changes the window width (data range) used for display. Moving the mouse in the left-right plane changes the window level, i.e. the center of the window. Of course, combinations of back-forth and left-right movements are possible to find just the right contrast needed. Pressing the right mouse button leads to an automatic range adjustment based on the intensity values currently displayed. To activate this feature either press the button outlined in the image below or use its keyboard shortcut (default 't').
+If labeling grayscale images the **Training** applet has an additional option: **Window Leveling**.  This option can facilitate the labeling but has no impact on the training process itself. It can be used to adjust the data range used for visualization and thus helps to bring out small difference in contrast which might be useful when placing the labels. Pressing the left mouse button while moving the mouse back and forth changes the window width (data range) used for display. Moving the mouse in the left-right plane changes the window level, i.e. the center of the window. Of course, combinations of back-forth and left-right movements are possible to find just the right contrast needed. Pressing the right mouse button leads to an automatic range adjustment based on the intensity values currently displayed. To activate this feature either press the button outlined in the image below or use its keyboard shortcut (default 't').
 
 <a href="snapshots/window_leveling.png" data-toggle="lightbox"><img src="snapshots/window_leveling.png" class="img-responsive" /></a>
 
 Note: if you can not see the button, you are either not working with grayscale images or you did not set the **Channel Display** to **Grayscale** in the **Dataset Properties** of your **Raw Data**.
 
-## Batchprocessing unseen images
+## Processing unseen images in batch mode
 When the classifier is trained it can be applied to unseen images as batch processing. This follows a general procedure in ilastik and is demonstrated [here]({{site.baseurl}}/documentation/basics/batch.html)
 
-The result of these worklfow (probability maps and segmentations) can be exported as images (*.tiff, *.png , etc.. ) or *.h5 files. When exporting the results as *.h5 files, it contains the resulting prediction as a multidimensional image. The images have the same shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
+The result of these workflow (probability maps and segmentations) can be exported as images (*.tiff, *.png , etc.. ) or *.h5 files. When exporting the results as *.h5 files, it contains the resulting prediction as a multidimensional image. The images have the same shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
 
 
 

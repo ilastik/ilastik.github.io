@@ -11,7 +11,7 @@ weight: 50
 In the machine learning based ilastik workflows such as the
 [pixel classification workflow]({{site.baseurl}}/documentation/objects/objects.html) and the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html), the user interactively trains a classifier on a representative set of images. After that training step, the generated classifier can be used for batch processing.
 
-<!-- The following documentation applies to the [Density Counting workflow]({{site.baseurl}}/documentation/counting/counting.html) and to the [Pixel Classifcation workflow]({{site.baseurl}}/documentation/objects/objects.html). -->
+<!-- The following documentation applies to the [Density Counting workflow]({{site.baseurl}}/documentation/counting/counting.html) and to the [Pixel Classification workflow]({{site.baseurl}}/documentation/objects/objects.html). -->
 
 ## Example Usage (Pixel Classification)
 

@@ -104,8 +104,8 @@ Additional available interactions include:
 
 - **Updating the segmentation:** Left click on button **Segment**
 - **Erasing a brush stroke:** Change brush mode to eraser by clicking on the eraser button
-- **Changing the active seed type:** Left Mouseclick on seed in the left-hand side seed list.
-- **Changing the color of a seed type:** Right Mouseclick on the corresponding seed in the seed list and select **Change Color**.
+- **Changing the active seed type:** Left Mouse click on seed in the left-hand side seed list.
+- **Changing the color of a seed type:** Right Mouse click on the corresponding seed in the seed list and select **Change Color**.
 - **Erasing all markers:** Click on the  **Clear**.button next to the segment button.
 - **Exporting the current segmentation:** Right click on the **Segmentation Overlay** in the overlay widget and select **Export**.
       
@@ -115,7 +115,7 @@ enable/disable overlays, change overlay capacity etc. **) please read the
 
 ## Advanced Options
 
-The seeded watershed algrorithm of the module has some advanced options which
+The seeded watershed algorithm of the module has some advanced options which
 can be changed to obtain improved segmentations when the default settings are
 not sufficient.
 
@@ -126,14 +126,14 @@ in the labeling applet on the left side.
   preferred in comparison to the other labels. A value smaller then 1.0 will
   lower the detected boundaries for the background seeds. Since the normal
   seeds still work on the original boundaries the background is preferred in
-  case of ambigouity. Usually a value of around 0.95 yields good results, but
+  case of ambiguity. Usually a value of around 0.95 yields good results, but
   sometimes playing with the parameter is a good way to improve segmentations
   without additional seeds.
 - **No bias below** The threshold is a value that affects when the **BG priority**
   for the background will be applied. Normally the background seed is only
   preferred when the boundaries are sufficiently strong, i.e. > 64 (the
   boundaries in the image have values between 0 and 255). Usually it is not
-  neccessary to change this parameter.
+  necessary to change this parameter.
   
 <a href="snapshots/labeling2-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling2-zoomed.png" class="img-responsive" /></a>
 
@@ -154,7 +154,7 @@ can be enabled by clicking on the little eye in that layer:
 
 already segmented (and saved) objects will be highlighted to prevent segmenting something twice.
 
-Sometimes it is neccessary to refine the segmentation of an already saved object. To do so, click
+Sometimes it is necessary to refine the segmentation of an already saved object. To do so, click
 on the **Browse objects** button and load the corresponding object. 
 
 <a href="snapshots/labeling5-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling5-zoomed.png" class="img-responsive" /></a>

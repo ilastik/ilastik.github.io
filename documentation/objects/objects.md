@@ -1,7 +1,7 @@
 ---
 layout: documentation
 title: Object Classification
-tagline: Object Classifcation
+tagline: Object Classification
 category: "Documentation"
 group: "workflow-documentation"
 weight: 1
@@ -39,7 +39,7 @@ and then thresholding the probability maps to obtain a segmentation.
 ### Object Classification (from prediction image)
 You should choose this workflow if you have pre-computed probability
 maps.
-The data input applet of this workflow expects you to load the probability mapsin addition to the raw data:
+The data input applet of this workflow expects you to load the probability maps in addition to the raw data:
 
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
@@ -77,7 +77,7 @@ The **"Two Thresholds"** tab performs hysteresis thresholding with two threshold
 
 The last parameter of this applet is the size filter, for which you can specify the minimum and maximum value. For both thresholding methods the end result is shown in the "Final output" layer.
 
-Now that we have obtained a segmentation, we are ready to procede to the "Object Feature Selection" applet.
+Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
 ##From segmentation to objects - "Object Feature Selection" applet
 This applet finds the connected components (objects) in the provided binary segmentation image and computes user-defined features for each object. If you want to inspect the connected components, activate the "Objects (connected components) layer. If you select any object features, connected component analysis will be performed automatically.
@@ -101,7 +101,7 @@ For a particular example, let us examine the data more closely by activating onl
 
 <a href="figs/oc_raw.png" data-toggle="lightbox"><img src="figs/oc_raw.png" class="img-responsive" /></a>
 
-Clearly, two classes of cells are present in the image: one more bright but variable, the other darker and more homogenous. Hopefully, the two classes can be separated by the grayscale mean and variance in the objects. Let us select these two features and add two labels. 
+Clearly, two classes of cells are present in the image: one more bright but variable, the other darker and more homogeneous. Hopefully, the two classes can be separated by the grayscale mean and variance in the objects. Let us select these two features and add two labels. 
 
 <a href="figs/oc_subset.png" data-toggle="lightbox"><img src="figs/oc_subset.png" class="img-responsive" /></a>
 
@@ -117,7 +117,7 @@ In the low right corner we see a cell (shown by the red ellipse), which was clas
 
 <a href="figs/oc_prediction2.png" data-toggle="lightbox"><img src="figs/oc_prediction2.png" class="img-responsive" /></a>
 
-All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background. ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmetation after labels are added. Nevertheless, let us try it for demonstrational purposes:
+All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background. ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
 
 <a href="figs/thresholding_final2.png" data-toggle="lightbox"><img src="figs/thresholding_final2.png" class="img-responsive" /></a>
 

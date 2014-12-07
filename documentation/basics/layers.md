@@ -25,7 +25,7 @@ _Uncertainty_, and
 _Labels_.
 
 <a href="screenshots/eye_active.png) (visible" data-toggle="lightbox"><img src="screenshots/eye_active.png) (visible" class="img-responsive" /></a>
-<a href="screenshots/eye_inactive.png) (invisble" data-toggle="lightbox"><img src="screenshots/eye_inactive.png) (invisble" class="img-responsive" /></a>
+<a href="screenshots/eye_inactive.png) (invisible" data-toggle="lightbox"><img src="screenshots/eye_inactive.png) (inviable" class="img-responsive" /></a>
 shows whether this layer is visible or not. Invisible
 layers are ignored.
 
