@@ -12,7 +12,7 @@ The ilastik software suite is based on three Python packages licensed as follows
 
 All packages are
 
-`Copyright © 2011-2014, the ilastik developers <team@ilastik.org>`
+`Copyright © 2011-2015, the ilastik developers <team@ilastik.org>`
 
 Feel free to contact [the ilastik team](mailto:team@ilastik.org) for questions regarding licensing.
 
