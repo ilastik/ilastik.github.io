@@ -141,3 +141,17 @@ To omit one of the images, simply remove the --export_object_XXX_img flag from t
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
 - If you want to change the output format or output file locations, you can add some options to the command, just as described in the headless pixel classification documentation shown above.
 
+# Controlling CPU and RAM resources
+
+By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors).
+
+If you want to explicitly specify the number of parallel threads ilastik should use, you can do so via a special environment variable recognized by ilastik:
+
+    LAZYFLOW_THREADS=4 run_ilastik.sh --headless ...
+    
+There's an additional environment variable for specifying how much RAM to use during headless execution:
+
+    LAZYFLOW_THREADS=4 LAZYFLOW_TOTAL_RAM_MB=4000 run_ilastik.sh --headless ...
+    
+The RAM limit is not perfectly respected in all cases, so you may want to leave some buffer if your RAM budget is strict.
+
