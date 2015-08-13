@@ -4,7 +4,7 @@ title: Headless Operation
 tagline:
 category: "Documentation"
 group: "workflow-documentation"
-weight: 4
+weight: 6
 ---
 # Headless Mode Operation
 
