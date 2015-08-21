@@ -9,6 +9,7 @@ tagline: what's new?
     <ul class="sidenav nav nav-list well" data-offset-top="130">
       <li><a href="#0.5_diff">New compared to ilastik 0.5</a></li>
       <li><a href="#1.0_diff">New compared to ilastik 1.0</a></li>
+      <li><a href="#1.1.5_diff">New compared to ilastik 1.1.5</a></li>
     </ul>
   </div>
 <div class="col-sm-9">
@@ -38,22 +39,49 @@ This workflow allows you to count objects in crowded scenes without performing s
 <p>
 <ul>
     <li>Numerous bug fixes and stability improvements. Among others:
-    <ul>
-        <li>Faster project load times thanks to label storage changes</li>
-        <li>Better interactive performance thanks to improved feature matrix caching</li>
-        <li>Errors captured in a log file that can be sent to the ilastik team for analysis</li>
-        <li>Better CPU utilization during batch export</li>
-        <li>Many more images can be loaded thanks to threading optimizations</li>
-    </ul>
-    
+        <ul>
+            <li>Faster project load times thanks to label storage changes</li>
+            <li>Better interactive performance thanks to improved feature matrix caching</li>
+            <li>Errors captured in a log file that can be sent to the ilastik team for analysis</li>
+            <li>Better CPU utilization during batch export</li>
+            <li>Many more images can be loaded thanks to threading optimizations</li>
+        </ul>    
     </li>
+    
     <li>Conservation tracking instead of chaingraph tracking in automatic tracking workflow</li>
     <li>Classifiers other than Random Forest in pixel classification</li>
     <li>Headless mode also for object classification</li>
     <li>Graph Cut segmentation with Ising model in Thresholding applet</li>
     <li>Mesh export in carving</li>
     <li>Export of results other than probability maps</li>
-    
+</ul>
+</p>
+<h3 id="1.1.5_diff">What has changed compared to version 1.1.5?</h3>
+<p>
+<ul>
+    <li>New Workflow: IIBoost Synapse Detection</li>
+    <li>Performance Enahancements:
+        <ul>
+            <li>New Batch Mode Implementation - Faster set-up time for 1000s of images</li>
+            <li>Faster Carving Backend</li>
+            <li>Improved Memory Management</li>
+        </ul>
+    </li>
+    <li>New Features:
+        <ul>
+            <li>Better support for reading multi-dimensional TIFF datasets, including OME-TIFF</li>
+            <li>"Camera" export button: Export image views exactly as they appear in the Window.</li>
+            <li>Object Classification: New Object Statistics Window</li>
+            <li>Object Counting:
+                <ul>
+                    <li>Export to CSV</li>
+                    <li>Headless-mode support</li>
+                </ul>
+            </li>
+            <li>Runs on more Linux distros, including CentOS 6</li>
+        </ul>
+    </li>
+    <li>Numerous bug fixes and stability improvements</li> 
 </p>
 </div>
 </div>
