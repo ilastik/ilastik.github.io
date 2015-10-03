@@ -20,12 +20,12 @@ To start ilastik in "headless" mode, use the `--headless` command-line flag.
 
 For example, on Linux:
 
-    $ cd ilastik-Linux
+    $ cd ilastik-1.1.7-Linux
     $ ./run_ilastik.sh --headless
 
 On Mac:
 
-    $ ./ilastik.app/Contents/MacOS/ilastik --headless
+    $ ./ilastik-1.1.7-OSX.app/Contents/ilastik-release/run_ilastik.sh --headless
 
 And on Windows:
 
@@ -50,6 +50,18 @@ then use globstring syntax to tell ilastik which images to combine for each volu
 
 **Note:** The use of quotation marks in the above example is critical.  The `*` in each input argument must 
 be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
+
+###Side note: Running your own Python scripts
+
+For developers and power-users, you can run your own ilastik-dependent python scripts using the interpreter shipped within the ilastik install tree.  The interpreter is located in the `bin` directory:
+
+    # Linux
+    $ ./ilastik-1.1.7-Linux/bin/python -c "import ilastik; print ilastik.__version__"
+    1.1.7
+    
+    # Mac
+    $ ./ilastik-1.1.7-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
+    1.1.7
 
 ## Output Options
 
