@@ -8,9 +8,11 @@ category: "Development"
 <div class="row">
 <div class="col-sm-offset-1 col-sm-8">
 
+<!--
 <h2>Job Offer</h2>
 We are seeking a full time <a href="http://hci.iwr.uni-heidelberg.de/Jobs/#software">software developer</a> 
 to enhance ilastik's capabilities, especially in the area of tracking.
+-->
 
 <h1>Code</h1>
 All code is open source and can be found on <a href="https://github.com/ilastik">Github</a>.<br />
@@ -28,13 +30,19 @@ It is divided into the three main repositories: <i>ilastik</i>,
 <a href="/documentation/basics/installation.html">Installation instructions</a> are available
 for installing the pre-built binaries for all major platforms.
 </p>
+
+Even with the pre-built binary, developers power-users can run their own Python scripts with the 
+provided interpreter.
+See the note in the <a href="/documentation/pixelclassification/headless.html">Headless Mode</a>
+documentation for details.
+
 <h3>Building from source</h3>
 <p>
-Furthermore, there are repositories for a comprehensive build system
-for both
-<a href="https://github.com/ilastik/ilastik-build-win64">Windows, 64bit</a>
-and
-<a href="https://github.com/ilastik/ilastik-build-Linux">Linux + Mac</a>.
+Furthermore, there are repositories for a comprehensive build system for 
+<a href="https://github.com/ilastik/ilastik-build-conda">Linux and Mac</a>, based on the
+<a href="http://conda.pydata.org/docs/">conda</a>
+and <a href="https://github.com/conda/conda-build">conda-build</a> tools.
+(A new-and-improved build system for Windows is coming soon, also based on conda.)
 </p>
 
 <h1>Developer documentation</h1>
