@@ -97,7 +97,7 @@ the command (as shown in the example above).
   - `{x_start}`, `{x_stop}`, `{y_start}`, `{y_stop}`, etc - Specific axis start/stop boundaries for the region-of-interest
   - `{slice_index}` - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
 - `--output_internal_path` (HDF5 only) Specifies the name of the HDF5 dataset to write to. (Default: `/exported_data`)
-- `--cutout_subregion` Subregion to export (start,stop), e.g. `--cutout_subregion="[(0,0,0,0,0), (1,100,200,20,3)]"`. As well, when either of both start or stop are indicated as `None`, the subregion range is automatically expanded to the starting or to the ending index of the corresponding dimension, e.g `--cutout_subregion="[(None,None,None), (None,None,10)]"` would yield a tridimensional array of size 10 in its last dimension.
+- `--cutout_subregion` Subregion to export (start,stop), e.g. `--cutout_subregion="[(0,0,0,0,0), (1,100,200,20,3)]"`. As well, when either (or both) start or stop are indicated as `None`, the subregion range is automatically expanded to the starting or to the ending index of the corresponding dimension, e.g `--cutout_subregion="[(None,None,None), (None,None,10)]"` would yield a tridimensional array of size 10 in its last dimension.
 - `--export_dtype` The pixel type to convert your results to.  Choices are: `uint8`, `uint16`, `uint32`, `int8`, `int16`, `int32`, `float32`, `float64`.  Note that some formats don't support every pixel type.
 - `--output_axis_order` Transpose the storage order of the results. For example, this affects the sliced dimension for stack outputs.
 - `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0, 1.0)"`
