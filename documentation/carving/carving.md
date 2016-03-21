@@ -147,7 +147,7 @@ asks for the objects name:
 <a href="snapshots/labeling3-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling3-zoomed.png" class="img-responsive" /></a>
 
 After saving an object, all existing markers will be removed to allow segmenting a new
-object from scratch. To see which objects have already been segmented and saved the **Done** overlay
+object from scratch. To see which objects have already been segmented and saved the **Completed Segments** overlay
 can be enabled by clicking on the little eye in that layer:
 
 <a href="snapshots/labeling4-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling4-zoomed.png" class="img-responsive" /></a>
@@ -159,7 +159,16 @@ on the **Browse objects** button and load the corresponding object.
 
 <a href="snapshots/labeling5-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling5-zoomed.png" class="img-responsive" /></a>
 
-Another way to load or delete a saved object is by right-clicking on the object displayed in the **Done** overlay
+Another way to load or delete a saved object is by right-clicking on the object displayed in the **Completed Segments** overlay
 and selecting the corresponding option.
 <a href="snapshots/labeling6-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling6-zoomed.png" class="img-responsive" /></a>
 
+The mesh of the object can be exported as well. Just right-click on the object you want in the **Completed Segments** overlay:
+<a href="snapshots/export_meshes.png" data-toggle="lightbox"><img src="snapshots/export_meshes.png" class="img-responsive" /></a>
+
+## Post-processing
+Wonderful users of ilastik have created these tools to post-process carving results and made them available for all:
+
+1. [Neuromorph](http://cvlab.epfl.ch/NeuroMorph), for measuring and analyzing the segmented object properties. Featured in <br>
+A. Jorstad, B. Nigro, C. Cali, M. Wawrzyniak, P. Fua, G. Knott.  "NeuroMorph: A Toolset for the Morphometric Analysis and Visualization of 3D Models Derived from Electron Microscopy Image Stacks." Neuroinformatics, 2014.
+2. [StackObjectCombiner](http://wiki.imagej.net/StackObjectCombiner), for glueing together objects from datasets, which were carved blockwise.
