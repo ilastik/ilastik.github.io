@@ -89,6 +89,7 @@ the command (as shown in the example above).
 
 **Optional settings:**
 
+- `--export_source` The data to export.  See the dropdown list on the Data Export GUI for choices. (For example, in pixel classification try `--export_source="Simple Segmentation"`)
 - `--output_format` The file format to store your results in. Some formats are less flexible than others and therefore cannot be combined with every option here. Choices are: `bmp`, `gif`, `hdr`, `jpeg`, `jpg`, `pbm`, `pgm`, `png`, `pnm`, `ppm`, `ras`, `tif`, `tiff`, `xv`, `bmp sequence`, `gif sequence`, `hdr sequence`, `jpeg sequence`, `jpg sequence`, `pbm sequence`, `pgm sequence`, `png sequence`, `pnm sequence`, `ppm sequence`, `ras sequence`, `tif sequence`, `tiff sequence`, `xv sequence`, `multipage tiff`, `multipage tiff sequence`, `hdf5`, `numpy`, `dvid`.
 - `--output_filename_format` The path to the output file to write. A few "magic" placeholders can be used in these settings.  These are useful when you are exporting multiple datasets:
   - `{dataset_dir}` - the directory containing the original raw dataset corresponding these export results
