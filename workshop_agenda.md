@@ -34,7 +34,7 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 **Thursday 14.07.2016**: Advanced workshop.  
 Here we have left a couple of slots open for the participants who want to present their work with ilastik.  
 If you have written your own ilastik extensions, deployed ilastik on a cluster or  
-just used ilastik on a large scale and have feedback for us, put that into the [sign-up form](http://goo.gl/forms/8IvSYd85Pq7bLROD3) and we'll get back to you!
+just used ilastik on a large scale and have feedback for us, put that into the [sign-up form](http://goo.gl/forms/8IvSYd85Pq7bLROD3) and we'll get back to you!  
 + Block-wise extension of the carving workflow, Glendon Holst
 + Tracking extension for malaria parasite data, Sabrina Rossberger
 + ilastik in the FMI infrastructure, Raphael Thierry
