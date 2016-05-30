@@ -9,6 +9,7 @@ group: "documentation-home"
 for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
 training course organized by CellNetworks in Heidelberg. 
 
+
 After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/basics/startup.html).
 There you can select one of the available workflows
