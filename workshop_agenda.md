@@ -65,3 +65,6 @@ just used ilastik on a large scale and have feedback for us, put that into the [
 **Friday: 15.07.2016**: Roadmap and future development planning.
 
 
+
+This workshop is possible thanks to the support by IWR and the CellNetworks MathClinic. 
+
