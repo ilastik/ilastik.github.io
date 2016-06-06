@@ -58,6 +58,8 @@ just used ilastik on a large scale and have feedback for us, put that into the [
 
 * ilastik for MRI volumetry, Jens Petersen, DKFZ 
 
+* Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
+
 * Your talk?
 
 * Discussion
