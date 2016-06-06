@@ -56,6 +56,8 @@ just used ilastik on a large scale and have feedback for us, put that into the [
 
 * ilastik in the FMI infrastructure, Raphael Thierry
 
+* ilastik for MRI volumetry, Jens Petersen, DKFZ 
+
 * Your talk?
 
 * Discussion
