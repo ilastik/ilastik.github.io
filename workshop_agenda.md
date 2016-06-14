@@ -60,6 +60,10 @@ just used ilastik on a large scale and have feedback for us, put that into the [
 
 * Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
 
+* ilastik use cases in EMBL, Volker Hilsenstein, EMBL
+
+* FlyEM large-scale segmentation for connectomics, Stuart Berg, HHMI Janelia Research Campus 
+
 * Your talk?
 
 * Discussion
