@@ -18,6 +18,8 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
 * Hands-on: Apply ilastik to your own or our example real data with our help 
 
+* 19:00 Join us for dinner!
+
 **Tuesday 12.07.2016**: Advanced workshop (09:00 - 17:00).   
 
 * Presentation: What’s new since the last major release? 
@@ -45,26 +47,30 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
    * The participants are expected to be able to use pixel and object classification workflows already.  
 [Sign up](http://goo.gl/forms/8IvSYd85Pq7bLROD3) for the beginner workshop if you need guidance.
 
+* 19:00 Join us for dinner!
+
 **Thursday 14.07.2016**: Advanced workshop.  
 Here we have left a couple of slots open for the participants who want to present their work with ilastik.  
 If you have written your own ilastik extensions, deployed ilastik on a cluster or  
 just used ilastik on a large scale and have feedback for us, put that into the [sign-up form](http://goo.gl/forms/8IvSYd85Pq7bLROD3) and we'll get back to you!  
 
-* Block-wise extension of the carving workflow, Glendon Holst
+* Opening remarks, Fred Hamprecht, University of Heidelberg
 
-* Tracking extension for malaria parasite data, Sabrina Rossberger
+* Block-wise extension of the carving workflow, Glendon Holst, KAUST, Saudi Arabia
 
-* ilastik in the FMI infrastructure, Raphael Thierry
+* Semi-automated nuclei segmentation with ilastik, Michael Morehead, West Virginia University
 
-* ilastik for MRI volumetry, Jens Petersen, DKFZ 
+* Tracking extension for malaria parasite data, Sabrina Rossberger, MPI
 
-* Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
+* ilastik in the FMI infrastructure, Raphael Thierry, Jan Eglinger, FMI Basel
 
 * ilastik use cases in EMBL, Volker Hilsenstein, EMBL
 
-* FlyEM large-scale segmentation for connectomics, Stuart Berg, HHMI Janelia Research Campus 
+* Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
 
-* Your talk?
+* ilastik for MRI volumetry, Jens Petersen, DKFZ 
+
+* FlyEM large-scale segmentation for connectomics, Stuart Berg, HHMI Janelia Research Campus 
 
 * Discussion
 
