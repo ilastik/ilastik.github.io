@@ -6,9 +6,9 @@ category: "Documentation"
 group: "basic-documentation"
 weight: 20
 ---
-#Navigation 
+# Navigation 
 
-##Viewer layout 
+## Viewer layout 
 Most applets include a data viewer component in the lower right corner
 of ilastik's main window, like the one shown below:
 
@@ -26,7 +26,7 @@ can be hidden with the _Position_ checkbox in the lower right.
 In the lower left, the current coordinate _under the mouse_
 are shown.
 
-##Navigation Overlay
+## Navigation Overlay
 In each of the three slice views, there is an overlay dedicated
 to navigation at the top. The
 _x_-view has a red color, 
@@ -60,7 +60,7 @@ _z_-view has a blue color.
   Maximize the slice view. The other two slice views will be hidden.
   Clicking this button again restores the original layout.
   
-##Mouse & Keyboard
+## Mouse & Keyboard
 
 * Use the _Mouse wheel_ to scroll forward/backward through the stack
   represented by the slice view
@@ -71,7 +71,7 @@ _z_-view has a blue color.
   pressed
 * jump to a new 3D position by _double clicking_
 
-##3D view
+## 3D view
 
 <a href="screenshots/hud3d.png" data-toggle="lightbox"><img src="screenshots/hud3d.png" class="img-responsive" /></a>
 

@@ -7,9 +7,8 @@ group: "workflow-documentation"
 weight: 1
 ---
 
-#Object Classification Workflow
 
-##Input
+## Input
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations. 
 In order to do so, the workflow needs *segmentation* images besides the usual raw image data. Depending on the availability of these 
@@ -49,7 +48,7 @@ The image should be loaded in the data input applet:
 
 <a href="figs/input_segmentation_image.png" data-toggle="lightbox"><img src="figs/input_segmentation_image.png" class="img-responsive" /></a>
 
-##From probabilities to a segmentation - "Threshold and Size Filter" applet
+## From probabilities to a segmentation - "Threshold and Size Filter" applet
 If you already have binary segmentation images, skip this section.
 
 Suppose we have a probability map for a 2-class classification, which looks like this:
@@ -79,7 +78,7 @@ The last parameter of this applet is the size filter, for which you can specify 
 
 Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
-##From segmentation to objects - "Object Feature Selection" applet
+## From segmentation to objects - "Object Feature Selection" applet
 This applet finds the connected components (objects) in the provided binary segmentation image and computes user-defined features for each object. If you want to inspect the connected components, activate the "Objects (connected components) layer. If you select any object features, connected component analysis will be performed automatically.
 
 <a href="figs/object_extraction_cc.png" data-toggle="lightbox"><img src="figs/object_extraction_cc.png" class="img-responsive" /></a>
@@ -94,7 +93,7 @@ The "Standard Object Features" refer to the built-in ilastik features, computed 
 
 Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
 
-##Prediction for objects - "Object Classification" applet
+## Prediction for objects - "Object Classification" applet
 This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 For a particular example, let us examine the data more closely by activating only the "Raw data" layer:
@@ -125,13 +124,13 @@ After a slight change in the segmentation (lower) threshold the objects indeed b
 
 <a href="figs/oc_prediction3.png" data-toggle="lightbox"><img src="figs/oc_prediction3.png" class="img-responsive" /></a>
 
-##Preparing for large scale prediction - Blockwise Object Classification applet
+## Preparing for large scale prediction - Blockwise Object Classification applet
 Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously. While these operations and especially the hysteresis thresholding require a lot of memory, "whole image" processing is sufficient for most 2D images. However, for large 3D image volumes we have to resort to blockwise processing. This applet allows you to experiment with different block and halo sizes on the data you used in the interactive object prediction and, by comparing the "whole image" interactive prediction and blockwise prediction, find the optimal parameters for your data. Let us try to predict our image blockwise:
 
 <a href="figs/block_oc_pred.png" data-toggle="lightbox"><img src="figs/block_oc_pred.png" class="img-responsive" /></a>
 In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
 
-##Large-scale prediction - Batch Prediction applets
+## Large-scale prediction - Batch Prediction applets
 These two applets have the same interface and parameters as batch prediction in
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:

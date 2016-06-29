@@ -4,7 +4,7 @@ title: Overview
 category: "Documentation"
 group: "documentation-home"
 ---
-#User documentation
+# User documentation
 [Here]({{site.baseurl}}/documentation/ilastik_manual.pdf) you can find a detailed manual 
 for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
 training course organized by CellNetworks in Heidelberg. 
@@ -34,5 +34,5 @@ documentation as well as the
 [layers]({{site.baseurl}}/documentation/basics/layers.html)
 documentation.
 
-#Developer documentation
+# Developer documentation
 [Developer Documentation]({{site.baseurl}}/development.html)
