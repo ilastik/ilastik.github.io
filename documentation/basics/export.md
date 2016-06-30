@@ -9,10 +9,12 @@ weight: 5
 # Exporting Output
 
 Results of various ilastik workflows can be exported for later use by
+
 * other ilastik workflows such as using pixel classification outputs in object classification or tracking workflows or
+
 * analysis software such as [Fiji](http://fiji.sc/Fiji).
 
-Data export is handled through a specific step in the workflow. For example, the "Prediction Export" step in [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html) or "Density Export" step in [counting]({{baseurl}}/documentation/counting/counting.html). This is a general introduction to the options available in this interface.
+In all workflows, there is a designated applet to export results (see, for example the "Prediction Export" step in [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html) or "Density Export" step in [counting]({{baseurl}}/documentation/counting/counting.html)). Besides, individual layers in the layerstack can be exported by right-clicking on them and choosing the "Export..." item from the context menu. This page is a general introduction to the options of the export interface.
 
 ## Data Export Applet
 
@@ -20,9 +22,10 @@ Data export is handled through a specific step in the workflow. For example, the
 <a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export-applet.png" class="img-responsive" /></a>
 </div>
 
-The export step is handled through the data export applet in ilastik. This applet displays a panel with three buttons on the left and a box on the top right.
+The export step is handled through the data export applet in ilastik. In [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html), for example, the applet is called "Prediction Export". 
+The GUI can be used to change export settings as well as to bulk export all of the data. The following controls are available in the panel:
 
-The panel can be used to change export settings as well as bulk export of all the data. These buttons are available in the panel:
+* **Source:** offers a drop-down menu of layers which can be exported. 
 * **Choose Settings:** opens [the export settings dialog](#settings) explained below
 * **Export All:** exports output for all input files based on the settings, including output file names and locations, specified in [the export settings dialog](#settings)
 * **Delete All:** removes all output files
