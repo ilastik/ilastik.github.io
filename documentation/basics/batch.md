@@ -4,7 +4,7 @@ title: Batch Processing
 tagline:
 category: "Documentation"
 group: "basic-documentation"
-weight: 50
+weight: 6
 ---
 # Batch Processing
 

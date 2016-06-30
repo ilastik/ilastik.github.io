@@ -4,7 +4,7 @@ title: Carving
 tagline: Interactive Segmentation
 category: "Documentation"
 group: "workflow-documentation"
-weight: 3
+weight: 4
 ---
 # Carving
 
