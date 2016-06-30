@@ -4,9 +4,7 @@
     {% if node.weight == weight %}
     {% if page.url == node.url %}
       <li class="active">
-      {% comment %}
       <a href="{{node.url}}" class="active">{{node.title}}</a>
-      {% endcomment %}
       {{active_hook}}
       </li>
     {% else %}
