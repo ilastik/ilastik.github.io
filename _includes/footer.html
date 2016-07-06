@@ -11,6 +11,16 @@
         
         $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) { event.preventDefault(); $(this).ekkoLightbox(); });
     </script>
+    <script src="/javascripts/jquery.toc.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+      $('#tocMain').toc({
+        showAlways:true,
+        renderIn:'#renderIn'
+      });
+    });
+    </script>
   </div>
 {% include analytics.html %}
 </body>
