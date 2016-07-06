@@ -104,7 +104,7 @@ the command (as shown in the example above).
 - `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0, 1.0)"`
 - `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0, 255)"`
 
-# Headless Mode for Object Classification
+## Headless Mode for Object Classification
 
 The [Object Classification Workflow] can also be used in "headless" mode.  
 The command-line interface is similar to the Pixel Classification interface described above, but with a few minor changes.  
@@ -147,14 +147,14 @@ So, the example command above produces 3 files:
 
 To omit one of the images, simply remove the --export_object_XXX_img flag from the example command.  (But it won't save much CPU time to do so.)
 
-##Important Notes:
+### Important Notes:
 
 - Just as in Pixel Classification, 3D object classification inputs may be provided as image stacks, but quotes are required around the argument, as shown in the above example.  (See the corresponding note above.)
 - For paths to hdf5 datasests (either input or output), ilastik uses the same conventions as the generic `h5ls` utility. That is, the hdf5 dataset name should be appended to the file path: `/path/to/my_file.h5/internal/path/to/dataset`.
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
 - If you want to change the output format or output file locations, you can add some options to the command, just as described in the headless pixel classification documentation shown above.
 
-# Controlling CPU and RAM resources
+## Controlling CPU and RAM resources
 
 By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors).
 

@@ -60,11 +60,16 @@
             }
             var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
             h1.attr('id', anchorId);
-            tocHTML += createLevelHTML(anchorId,
-                tocLevel,
-                tocSection,
-                h1.text(),
-                levelHTML);
+            if(tocSection == 1) {
+                tocHTML += levelHTML
+            }
+            else {
+                tocHTML += createLevelHTML(anchorId,
+                    tocLevel,
+                    tocSection,
+                    h1.text(),
+                    levelHTML);
+            }
 
             tocSection += 1 + innerSection;
         });
