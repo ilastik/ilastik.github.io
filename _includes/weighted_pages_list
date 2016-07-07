@@ -5,7 +5,7 @@
     {% if page.url == node.url %}
       <li class="active">
       <a href="{{node.url}}" class="active">{{node.title}}</a>
-      {{active_hook}}
+      <div id="renderIn"></div>
       </li>
     {% else %}
       <li><a href="{{node.url}}">{{node.title}}</a></li>
