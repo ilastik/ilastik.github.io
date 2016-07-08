@@ -85,7 +85,7 @@ Finally, CPLEX may be downloaded and is ready to install.
 very small problem sizes. Please make sure, the correct version is downloaded as described here.**
 
 
-###Windows
+### Windows
 
 On Windows, there are typically no further modifications needed after installing CPLEX. 
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
@@ -98,7 +98,7 @@ If this workflow is not present, something went wrong with the CPLEX installatio
 The *Automatic Tracking Workflow* should now be displayed on the start screen. If it doesn't, you may copy the files `cplex1251.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`. If it still doesn't work, please contact us.
 
 
-###Linux and Mac
+### Linux and Mac
 
 CPLEX packages for Linux and Mac do not provide shared versions of all required libraries, but only static variants.
 
