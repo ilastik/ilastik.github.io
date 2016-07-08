@@ -84,8 +84,9 @@ Finally, CPLEX may be downloaded and is ready to install.
 **Important note: It is not sufficient to download the Trial version of CPLEX since its solver can only handle
 very small problem sizes. Please make sure, the correct version is downloaded as described here.**
 
-
 ### Windows
+
+Run the installer by double clicking the executable that you've downloaded.
 
 On Windows, there are typically no further modifications needed after installing CPLEX. 
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
@@ -99,6 +100,15 @@ The *Automatic Tracking Workflow* should now be displayed on the start screen. I
 
 
 ### Linux and Mac
+
+#### CPLEX Installation
+
+On Linux and Mac, the CPLEX installer comes as a commandline executable (`cplex-someversion.sh` on Linux and `cplex-someversion.bin`). 
+To install it, open a terminal and run `bash /path/to/your/cplex-someversion.sh` (or `bash /path/to/your/cplex-someversion.bin` on Mac).
+
+**Hint:** on Mac and most Linux distributions you can drag and drop the installer file into the terminal to get the full path appended to your command line. 
+
+#### Adding CPLEX to ilastik
 
 CPLEX packages for Linux and Mac do not provide shared versions of all required libraries, but only static variants.
 
