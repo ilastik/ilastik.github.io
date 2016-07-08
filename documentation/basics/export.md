@@ -18,8 +18,8 @@ In all workflows, there is a designated applet to export results (see, for examp
 
 ## Data Export Applet
 
-<div style="float: right;" markdown="1">
-<a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export-applet.png" class="img-responsive" /></a>
+<div style="float: right; width: 60%" markdown="1">
+<a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
 </div>
 
 The export step is handled through the data export applet in ilastik. In [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html), for example, the applet is called "Prediction Export". 
@@ -58,11 +58,22 @@ On the right you can see all your datasets listed by their nickname, as defined 
 
 - **Exporting sequences:** When a 3D, 4D or 5D dataset is exported as a sequence, ilastik chooses the first axis as the slicing one. For example, if your dataset is 1001x1002x1003 pixels and you choose to export it as an image sequence, it will export 1001 images, 1002x1003 pixels each. This information is displayed in the dialogue if you select a "sequence" output format. To change the slicing axis, use the "Transpose to Axis Order" control to bring the axis you need to the front. Continuing on the 1001x1002x1003 example, assume it had "xyz" as axis order. Now if you want to slice on the z axis (of size 1003), type "zxy" in the "Transpose to Axis Order" control. Now ilastik will export 1003 images, 1001x1002 pixels each. 
 
-#FIXME: add the screenshots for that
+<div style="width: 95%; margin-left: 5%" markdown="1">
+<div style="float: left; width: 50%" markdown="1">
+<a href="screenshots/export_as_sequence_1.png" data-toggle="lightbox"><img src="screenshots/export_as_sequence_1.png" class="img-responsive"/></a>
+</div>
+<div style="float: right; width: 50%" markdown="1">
+<a href="screenshots/export_as_sequence_2.png" data-toggle="lightbox"><img src="screenshots/export_as_sequence_2.png" class="img-responsive" /></a>
+</div>
+</div>
 
-## Export Display Layers
+## Previewing export results
 
 Your export results can be previewed in the viewer.  Typically, three layers are shown:
 - **Raw Data**: The raw dataset associated with the selected export results
 - **Live Preview**: A preview of your export results.  Note that the data for this preview is computed on-the-fly and therefore may be slow to generate!
 - **Exported Image (from disk)**: Once you have exported your results to disk, they are shown in this layer.  Navigation will be as fast as the data format allows. **Note:** Some formats (e.g. stack output) cannot be viewed in this window.
+
+## Exporting tracks and objects
+
+Besides exporting the images you see in the viewer, ilastik allows to save the results of tracking and object classification in the form of csv tables or hdf5 files.
