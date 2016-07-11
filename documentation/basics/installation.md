@@ -135,11 +135,11 @@ Now you can download and execute a [script][] that will convert your CPLEX stati
     wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-cplex-shared-libs.sh
     
     # Linux:
-    bash install-cplex-shared-libs.sh <cplex-root-dir> <path/to/ilastik-1.X.Y-Linux>
+    bash install-cplex-shared-libs.sh /path/to/your/cplex-root-dir /path/to/ilastik-1.X.Y-Linux
     # Mac:
-    bash install-cplex-shared-libs.sh <cplex-root-dir> <path/to/ilastik-1.X.Y-OSX.app>
+    bash install-cplex-shared-libs.sh /path/to/your/cplex-root-dir /path/to/ilastik-1.X.Y-OSX.app
 
-In the command above, `<cplex-root-dir>` is the location of your cplex studio installation.  It should contain directories named `concert` and `cplex`, among others.
+In the command above, `cplex-root-dir` is the location of your cplex studio installation. It should contain directories named `concert` and `cplex`, among others.
 
 **Note:** The above script installs CPLEX directly into your ilastik installation.  Once you've done that, you should not distribute your copy of ilastik to others, unless you have a license to distribute CPLEX.
 
