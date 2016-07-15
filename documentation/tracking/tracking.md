@@ -25,7 +25,7 @@ specific manual/semi-automatic or (fully) automatic tracking applets.
 
 **Please note that the _automatic_ tracking workflow only works on machines where CPLEX is installed
 additional to ilastik. Instructions on how to install CPLEX are given 
-[here]({{site.baseurl}}/documentation/basics/installation.html).**
+[here]({{site.baseurl}}/documentation/basics/installation.html#cplex-setup).**
 
 The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
