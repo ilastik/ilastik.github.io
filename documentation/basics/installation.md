@@ -45,7 +45,7 @@ Note: Some special releases of ilastik are provided as a `.zip` file.  In that c
 
 -----------------
 
-## Automated Tracking Workflow Setup: CPLEX Installation and Setup
+## Automated Tracking Workflow Setup: CPLEX Installation and Setup<a name="cplex-setup"></a>
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
