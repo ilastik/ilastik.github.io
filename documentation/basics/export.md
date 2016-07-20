@@ -18,19 +18,22 @@ In all workflows, there is a designated applet to export results (see, for examp
 
 ## Data Export Applet
 
-<div style="float: right;" markdown="1">
-<a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export-applet.png" class="img-responsive" /></a>
+<div style="float: right; width: 60%" markdown="1">
+<a href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
 </div>
 
 The export step is handled through the data export applet in ilastik. In [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html), for example, the applet is called "Prediction Export". 
 The GUI can be used to change export settings as well as to bulk export all of the data. The following controls are available in the panel:
 
-* **Source:** offers a drop-down menu of layers which can be exported. 
-* **Choose Settings:** opens [the export settings dialog](#settings) explained below
-* **Export All:** exports output for all input files based on the settings, including output file names and locations, specified in [the export settings dialog](#settings)
-* **Delete All:** removes all output files
+* **Source:** offers a drop-down menu of layers which can be exported. For example, in [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html) you can export label probabilities or segmentations.
 
-The box on the top right lists the input files using their nicknames defined in [data selection applet]({{baseurl}}/documentation/basics/dataselection.html) along with the location of the output file. The location can only be changed through [the export settings dialog](#settings) which can be opened with the **Choose Settings** button on the left. The **Export** button generates individual output files corresponding to the selected dataset.
+* **Choose Settings:** opens [the export settings dialog](#settings) explained below. Here you can control all the necessary parameters to export what you need, where you need.
+
+* **Export All:** runs the export for all input files based on the settings, including output file names and locations, specified in [the export settings dialog](#settings).
+
+* **Delete All:** removes all output files.
+
+On the right you can see all your datasets listed by their nickname, as defined in the [data selection applet]({{baseurl}}/documentation/basics/dataselection.html). The nickname is usually the name of the input file or, for stacks, a combination of the names of the files in the stack. Besides, you can see the location of the output file, where the results for this dataset will be exported. To change the location, open [the export settings dialog](#settings) by clicking the **Choose Settings** button on the left. The **Export** button generates individual output files corresponding to the selected dataset.
 <div style="clear: right;" />
 
 ## Export Settings {#settings}
@@ -38,21 +41,39 @@ The box on the top right lists the input files using their nicknames defined in 
 <a href="screenshots/export-dialog.png" data-toggle="lightbox"><img src="screenshots/export-dialog.png" class="img-responsive" /></a>
 
 - **Source Image Description:** This is a description (shape, data type, and axis order) of the full image volume you can export with this interface. (Non-editable.)
-- **Cutout Subregion:** This can be used to select a specific region-of-interest to export.  Results outside of the specified region will not be exported, and *may not be computed* during the export process. Each dimension of the region's bounding box is edited with separate start, stop controls. **Note:** The 'stop' field is non-inclusive! e.g. to export the first 100 z-slices in a dataset, set the z range to \[0, 100\).
+- **Cutout Subregion:** This can be used to select a specific region-of-interest to export.  Results outside of the specified region will not be exported, and *may not be computed* during the export process (ilastik internally computes the results blockwise. It may happen that parts of the dataset outside the crop you selected are presented in the blocks). Each dimension of the region's bounding box can be edited with separate start, stop controls. **Note:** The 'stop' field is non-inclusive! e.g. to export the first 100 z-slices in a dataset, set the z range to \[0, 100\).
 - **Transformations:** These controls provide fine-grained control over the output result format.
   - *Convert to Data Type:* If unchecked, the results will be exported with whatever pixel type is shown in the "Source Image Description" fields. Use this setting to save your results with an alternative pixel type.
   - *Renormalize \[min,max\] from:* Use this setting to scale the range of your results.  For example, prediction data is typically given a range of \[0.0,1.0\], but you can scale it to the range of \[0,255\] for easy viewing with other software.
   - *Transpose to Axis Order:* This setting sets "outermost" and "innermost" axes (and so on). For some formats, this doesn't matter so much (e.g. hdf5).  For others, you may care.  For example, when exporting a stack of pngs across the Z dimension, make sure 'z' appears on the left (the outer dimension). If you aren't sure, tzyxc is typically a good choice.
-- **Output File Info:** Use these controls to select an output file format and save location.  A few "magic" placeholders can be used in these settings.  These are useful when you are exporting multiple datasets:
-  - *{dataset_dir}* - the directory containing the original raw dataset corresponding these export results
-  - *{nickname}* - the ilastik nickname of the raw dataset corresponding to these export results
+
+**Note:** if you export probability maps (pixelwise prediction results) and want to view them in other software, **convert them to data type "uint8"** and check the "Renormalize" check box to change the range. 
+
+- **Output File Info:** Use these controls to select an output file format and location.  A few "magic" placeholders can be used in these settings.  These are useful when you are exporting multiple datasets:
+  - *{dataset_dir}* - the directory containing the original raw dataset
+  - *{nickname}* - the ilastik nickname of the raw dataset (usually the input file name for single file datasets and a combination of input file names for stacks)
   - *{roi}* - The region-of-interest as specified in the "Cutout Subregion" settings.
   - *{x_start}*, *{x_stop}*, *{y_start}*, *{y_stop}*, etc - Specific axis start/stop boundaries for the region-of-interest
   - *{slice_index}* - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
 
-## Export Display Layers
+- **Exporting sequences:** When a 3D, 4D or 5D dataset is exported as a sequence, ilastik chooses the first axis as the slicing one. For example, if your dataset is 1001x1002x1003 pixels and you choose to export it as an image sequence, it will export 1001 images, 1002x1003 pixels each. This information is displayed in the dialogue if you select a "sequence" output format. To change the slicing axis, use the "Transpose to Axis Order" control to bring the axis you need to the front. Continuing on the 1001x1002x1003 example, assume it had "xyz" as axis order. Now if you want to slice on the z axis (of size 1003), type "zxy" in the "Transpose to Axis Order" control. Now ilastik will export 1003 images, 1001x1002 pixels each. 
+
+<div style="width: 95%; margin-left: 5%" markdown="1">
+<div style="float: left; width: 50%" markdown="1">
+<a href="screenshots/export_as_sequence_1.png" data-toggle="lightbox"><img src="screenshots/export_as_sequence_1.png" class="img-responsive"/></a>
+</div>
+<div style="float: right; width: 50%" markdown="1">
+<a href="screenshots/export_as_sequence_2.png" data-toggle="lightbox"><img src="screenshots/export_as_sequence_2.png" class="img-responsive" /></a>
+</div>
+</div>
+
+## Previewing export results
 
 Your export results can be previewed in the viewer.  Typically, three layers are shown:
 - **Raw Data**: The raw dataset associated with the selected export results
 - **Live Preview**: A preview of your export results.  Note that the data for this preview is computed on-the-fly and therefore may be slow to generate!
 - **Exported Image (from disk)**: Once you have exported your results to disk, they are shown in this layer.  Navigation will be as fast as the data format allows. **Note:** Some formats (e.g. stack output) cannot be viewed in this window.
+
+## Exporting tracks and objects
+
+Besides exporting the images you see in the viewer, ilastik allows to save the results of tracking and object classification in the form of csv tables or hdf5 files.

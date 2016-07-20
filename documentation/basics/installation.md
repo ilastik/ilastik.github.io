@@ -45,7 +45,7 @@ Note: Some special releases of ilastik are provided as a `.zip` file.  In that c
 
 -----------------
 
-# Automated Tracking Workflow Setup: CPLEX Installation and Setup
+## Automated Tracking Workflow Setup: CPLEX Installation and Setup<a name="cplex-setup"></a>
 
 To use the *Automatic Tracking* Workflow, it is required to install the commercial solver IBM CPLEX. 
 
@@ -84,8 +84,9 @@ Finally, CPLEX may be downloaded and is ready to install.
 **Important note: It is not sufficient to download the Trial version of CPLEX since its solver can only handle
 very small problem sizes. Please make sure, the correct version is downloaded as described here.**
 
+### Windows
 
-###Windows
+Run the installer by double clicking the executable that you've downloaded.
 
 On Windows, there are typically no further modifications needed after installing CPLEX. 
 After successful installation, the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
@@ -98,7 +99,16 @@ If this workflow is not present, something went wrong with the CPLEX installatio
 The *Automatic Tracking Workflow* should now be displayed on the start screen. If it doesn't, you may copy the files `cplex1251.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`. If it still doesn't work, please contact us.
 
 
-###Linux and Mac
+### Linux and Mac
+
+#### CPLEX Installation
+
+On Linux and Mac, the CPLEX installer comes as a commandline executable (`cplex-someversion.sh` on Linux and `cplex-someversion.bin`). 
+To install it, open a terminal and run `bash /path/to/your/cplex-someversion.sh` (or `bash /path/to/your/cplex-someversion.bin` on Mac).
+
+**Hint:** on Mac and most Linux distributions you can drag and drop the installer file into the terminal to get the full path appended to your command line. 
+
+#### Adding CPLEX to ilastik
 
 CPLEX packages for Linux and Mac do not provide shared versions of all required libraries, but only static variants.
 
@@ -125,11 +135,11 @@ Now you can download and execute a [script][] that will convert your CPLEX stati
     wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-cplex-shared-libs.sh
     
     # Linux:
-    bash install-cplex-shared-libs.sh <cplex-root-dir> <path/to/ilastik-1.X.Y-Linux>
+    bash install-cplex-shared-libs.sh /path/to/your/cplex-root-dir /path/to/ilastik-1.X.Y-Linux
     # Mac:
-    bash install-cplex-shared-libs.sh <cplex-root-dir> <path/to/ilastik-1.X.Y-OSX.app>
+    bash install-cplex-shared-libs.sh /path/to/your/cplex-root-dir /path/to/ilastik-1.X.Y-OSX.app
 
-In the command above, `<cplex-root-dir>` is the location of your cplex studio installation.  It should contain directories named `concert` and `cplex`, among others.
+In the command above, `cplex-root-dir` is the location of your cplex studio installation. It should contain directories named `concert` and `cplex`, among others.
 
 **Note:** The above script installs CPLEX directly into your ilastik installation.  Once you've done that, you should not distribute your copy of ilastik to others, unless you have a license to distribute CPLEX.
 

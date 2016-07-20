@@ -5,12 +5,15 @@ tagline: July 2016, Heidelberg
 category: Home
 ---
 
+## Location
+The workshop will take place at Mathematikon, Building A (INF 205), conference room 5/104 on the 5th floor. 
+
 ## Agenda
 
 This agenda is not final, come check it again for more details as we get closer to the workshop.  
 To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
-**Monday 11.07.2016**: Beginner workshop (09:00 - 17:00).  
+**Monday 11.07.2016**: Beginner workshop (09:30 - 17:00).  
 
 * Presentation: Introduction to ilastik workflows
 
@@ -20,7 +23,7 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
 * 19:00 Join us for dinner!
 
-**Tuesday 12.07.2016**: Advanced workshop (09:00 - 17:00).   
+**Tuesday 12.07.2016**: Advanced workshop (09:30 - 17:00).   
 
 * Presentation: What’s new since the last major release? 
 
@@ -34,7 +37,7 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
 * 19:00 Join us for dinner! 
 
-**Wednesday 13.07.2016**: Tracking workshop.  
+**Wednesday 13.07.2016**: Tracking workshop (09:30 - 17:00).
 
 * Presentation: New tracking workflows.
 
@@ -49,32 +52,33 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
 * 19:00 Join us for dinner!
 
-**Thursday 14.07.2016**: Advanced workshop.  
-Here we have left a couple of slots open for the participants who want to present their work with ilastik.  
-If you have written your own ilastik extensions, deployed ilastik on a cluster or  
-just used ilastik on a large scale and have feedback for us, put that into the [sign-up form](http://goo.gl/forms/8IvSYd85Pq7bLROD3) and we'll get back to you!  
+**Thursday 14.07.2016**: Advanced workshop (09:30 - 17:00)  
 
-* Opening remarks, Fred Hamprecht, University of Heidelberg
+* 09:30 Opening remarks, Fred Hamprecht, University of Heidelberg
 
-* Block-wise extension of the carving workflow, Glendon Holst, KAUST, Saudi Arabia
+* 09:45 Block-wise extension of the carving workflow, Glendon Holst, KAUST, Saudi Arabia
 
-* Semi-automated nuclei segmentation with ilastik, Michael Morehead, West Virginia University
+* 10:30 Coffee break
 
-* Tracking extension for malaria parasite data, Sabrina Rossberger, MPI
+* 11:00 Semi-automated nuclei segmentation with ilastik, Michael Morehead, West Virginia University
 
-* ilastik in the FMI infrastructure, Raphael Thierry, Jan Eglinger, FMI Basel
+* 11:25 Tracking extension for malaria parasite data, Sabrina Rossberger, MPI
 
-* ilastik use cases in EMBL, Volker Hilsenstein, EMBL
+* 11:55 ilastik in the FMI infrastructure, Raphael Thierry, Jan Eglinger, FMI Basel
 
-* Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
+* 12:30 Lunch
 
-* ilastik for MRI volumetry, Jens Petersen, DKFZ 
+* 13:30 ilastik use cases in EMBL, Volker Hilsenstein, EMBL
 
-* FlyEM large-scale segmentation for connectomics, Stuart Berg, HHMI Janelia Research Campus 
+* 13:55 Data compression and its use for ilastik tracking, Lars Hufnagel, EMBL 
+
+* 14:20 ilastik for MRI volumetry, Jens Petersen, DKFZ 
+
+* 14:45 FlyEM large-scale segmentation for connectomics, Stuart Berg, HHMI Janelia Research Campus 
 
 * Discussion
 
-* 19:00 Join us for dinner!
+* 19:00 Join us for dinner at Hemingway's!
 
 **Friday: 15.07.2016**: Roadmap and future development planning.
 

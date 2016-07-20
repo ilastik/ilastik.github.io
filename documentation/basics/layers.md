@@ -6,7 +6,7 @@ category: "Documentation"
 group: "basic-documentation"
 weight: 4
 ---
-#Layers 
+# Layers 
 
 Most applets show a widget as below in the lower left corner:
 
