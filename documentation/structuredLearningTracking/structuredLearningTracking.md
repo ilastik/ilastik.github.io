@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Structured Learning Tracking (with Training)
+title: Tracking with Learning
 tagline: Structured Learning Tracking
 category: "Documentation"
 group: "workflow-documentation"
@@ -393,7 +393,7 @@ or a smaller volume may lead to significant speed-ups of the tracking. Moreover,
 In **Data Scales**, the scales of the dimensions may be configured. For instance, if the resolution of the 
 pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are (x,y,z)=(1,1.25,2).
 
-## 4. Structured Learning Tracking:
+## 4. Structured Learning:
 Automatic tracking uses a set of weights associated with detections, transitions, divisions, appearances, and disappearances to balance the components of the energy function optimized.
 Default weights can be used or they can be user specified. In structured learning we use the training annotations and all the classifiers to calculate optimal weights 
 for the given data and training - press the "Calculate Weights" button.
