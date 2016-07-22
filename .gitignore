@@ -6,3 +6,5 @@ _site
 
 #misc.
 .directory
+.project
+.settings
