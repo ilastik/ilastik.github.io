@@ -10,7 +10,7 @@ kramdown:
 title : ilastik
 author :
   name : the ilastik developers 
-  email : ilastik-user@ilastik.org
+  email : team@ilastik.org
   github : ilastik
 
 production_url : http://ilastik.org
