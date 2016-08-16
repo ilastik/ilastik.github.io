@@ -8,11 +8,16 @@ group: "documentation-home"
 # Overview
 
 ## User documentation
+
+### Complete tutorials
 [Here]({{site.baseurl}}/documentation/ilastik_manual.pdf) you can find a detailed manual 
 for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
 training course organized by CellNetworks in Heidelberg. 
 
+An in-depth tutorial for ilastik tracking can be found in [this book chapter](https://hciweb.iwr.uni-heidelberg.de/node/6055).
+This tutorial also includes pixel and object classification.
 
+### Online documentation
 After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/basics/startup.html).
 There you can select one of the available workflows
