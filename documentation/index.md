@@ -17,6 +17,9 @@ training course organized by CellNetworks in Heidelberg.
 An in-depth tutorial for ilastik tracking can be found in [this book chapter](https://hciweb.iwr.uni-heidelberg.de/node/6055).
 This tutorial also includes pixel and object classification.
 
+The [CellProfiler Blog](https://blog.cellprofiler.org/) has a [helpful post](https://blog.cellprofiler.org/2017/01/19/cellprofiler-ilastik-superpowered-segmentation/)
+about using ilastik segmentations in CellProfiler, including good advice for labeling (brushing) techniques for generating a precise segmentation.
+
 ### Online documentation
 After starting ilastik, you will be greeted by the
 [startup screen]({{site.baseurl}}/documentation/basics/startup.html).
