@@ -70,6 +70,8 @@ method
 <a href="fig/seedsApplet.png" data-toggle="lightbox"><img src="fig/seedsApplet.png" class="img-responsive" /></a>
 " **cited from [chapter 3.2.2 Seeds Applet] Andreas Haller, Master Thesis, "Interactive Watershed Based Segmentation For Biological Images", March 2017, Heidelberg University**
 
+If the image of the supplied seeds is binary, this image is automatically labeled where 0 is background.
+
 
 ## Interactive Watershed Segmentation with manipulation of Seeds 
 
