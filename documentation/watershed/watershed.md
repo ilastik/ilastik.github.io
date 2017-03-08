@@ -12,18 +12,16 @@ weight: 4
 
 "It is important to clarify that
 small changes in the seeds can have a huge impact on the outcome of the watershed.
-Therefore it is important to have an interactive graphical interface which allows the user
+Therefore, it is important to have an interactive graphical interface which allows the user
 to directly see the new outcome of any changes made on the seeds. The topic of this
 thesis is the expansion of this software with a new watershed workflow.
 The workflow needs to be able to handle the following use cases where the following data
 can be supplied:
-1.) Seeds (Nuclei) and/or 2.) Boundaries
+1.) seeds (nuclei) and/or 2.) boundaries
 
 • Seeded Watershed:
 1. only seeds: pointless to do a seeded watershed with seeds only.
-2. boundaries and seeds: use a seeded watershed on boundaries where the seeds
-are the seeds. The seeds can be changed, removed or new seeds can be drawn
-manually.
+2. boundaries and seeds: use a seeded watershed on boundaries with the supplied seeds. The seeds can be changed, removed or new seeds can be drawn manually. 
 3. only boundaries: generate seeds out of the boundaries and label them. Carry
 out the use case where the seeds and the boundaries are supplied.
 
