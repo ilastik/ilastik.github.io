@@ -24,13 +24,13 @@ Copy ilastik.app to the folder of your choice (usually your `Applications` folde
 
 ### Linux
 
-[Download]({{site.baseurl}}/download.html) the Linux `.tar.gz` bundle and extract its contents:
+[Download]({{site.baseurl}}/download.html) the Linux `.tar.bz2` bundle and extract its contents:
 
-    tar xzf ilastik-1.0-Linux.tar.gz
+    tar xjf ilastik-1.*-Linux.tar.bz2
 
 To run ilastik, use the included `run_ilastik.sh` script:
 
-    cd ilastik-1.0-Linux
+    cd ilastik-1.*-Linux
     ./run_ilastik.sh
 
 ### Windows
