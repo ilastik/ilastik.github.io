@@ -6,9 +6,10 @@ category: "Documentation"
 group: "workflow-documentation"
 weight: 2
 ---
-# Setting Up a Pipeline to Track Animals
 
-## Overview
+<a href="./fig/trackingLogoWhiteBackgroundSmall.png" data-toggle="lightbox"><img src="./fig/trackingLogoWhiteBackgroundSmall.png" class="img-responsive" /></a>
+
+# Setting Up a Pipeline to Track Lab Animals
 
 The `Animal Tracking Workflow` allows you to "track" lab animals (eg: flies, larvae, or mice), also called objects, in 2D+t or 3D+t videos. 
 With minimal effort, you only have to provide sparse labels and define a few parameters, and Ilastik will automatically assign IDs to each object on the video. 
@@ -16,6 +17,12 @@ These labels and parameters will also be stored in a `.ilp` project file, which 
 
 This tracking workflow can account for appearances or disappearances, over-segmentation and mergers (clusters of objects), and has already been used successfully to track flies, mice, larvae, and zebrafish. 
 Some examples of the results can be observed in the following videos:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kwDtmxBd5nM" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gQUrABQo6ow" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HpeCzQhOOPM" frameborder="0" allowfullscreen></iframe>
 
 The following tutorial shows a step-by-step guide to setup a tracking pipeline for your experiments. 
 To follow the tutorial, you can download the sample files `flyBowlMovie200.h5` and `flyBowlMovie200_Probabilties.h5` here.
@@ -27,7 +34,7 @@ This tutorial will cover the following topics:
 * Automatic Tracking (Using the Animal Tracking Workflow)
 * Exporting the Results
 * Setting Up a Tracking Pipeline (Batch Processing)
-* Running Tracking on the Cluster (For Janeliause only)
+* Running Tracking on the Cluster (For Janelia use only)
 
 
 
@@ -216,7 +223,7 @@ Here are the 2 commands that you need to use the simple segmentation.
 
 
 
-## Running Tracking on the Cluster (For Janeliause only)
+## Running Tracking on the Cluster (For Janelia use only)
 
 To run tracking on the cluster, create a executable bash script `.sh` file with the following commands:
 
