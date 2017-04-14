@@ -123,10 +123,10 @@ Try to find and label a few of these objects on your video. You can also check t
 
 | Object Label | Screenshot |
 | ---- | ---------- |
-| False Detection | ![False Detection](./fig/0merger.png) |
-| 1 Object | ![False Detection](./fig/1merger.png) |
-| 2 Objects | ![False Detection](./fig/2merger.png) |
-| 3 OBjects | ![False Detection](./fig/3merger.png) |    
+| False Detection | <a href="./fig/0merger.png" data-toggle="lightbox"><img src="./fig/0merger.png" class="img-responsive" /></a> |
+| 1 Object | <a href="./fig/1merger.png" data-toggle="lightbox"><img src="./fig/1merger.png" class="img-responsive" /></a> |
+| 2 Objects | <a href="./fig/2merger.png" data-toggle="lightbox"><img src="./fig/2merger.png" class="img-responsive" /></a> |
+| 3 OBjects | <a href="./fig/3merger.png" data-toggle="lightbox"><img src="./fig/3merger.png" class="img-responsive" /></a> |    
   
 Sometimes it's difficult to find clusters of 2 or more objects, since these can be very sparse. 
 For these cases, click on the `Label Assist` button, and then click on the `Compute Object Info` button which will display a table where you can sort frames by maximum and minimum object area.
@@ -176,7 +176,7 @@ Here is a table with the values that are recommended for this example (most are 
 The video will be running optimization based on the transition, appearance, and disappearance costs across frames in order to assign the correct IDs for each object. 
 A more detailed explanation is available in the `What is Happening Behind the Scenes` section. 
 
-Once you set the parameters click on the `Track!` button ![Track](./fig/trackButtonTracking.png). It's very important to save your project after you run tracking, since the parameters will not be saved otherwise.
+Once you set the parameters click on the `Track!` button <a href="./fig/trackButtonTracking.png" data-toggle="lightbox"><img src="./fig/trackButtonTracking.png" class="img-responsive" /></a>. It's very important to save your project after you run tracking, since the parameters will not be saved otherwise.
 
 ## Exporting the Results
 
