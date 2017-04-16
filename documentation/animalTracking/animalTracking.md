@@ -35,6 +35,7 @@ This tutorial will cover the following topics:
 * Exporting the Results
 * Setting Up a Tracking Pipeline (Batch Processing)
 * Running Tracking on the Cluster (For Janelia use only)
+* Tracking With Head Location (Experimental)
 
 
 ## Pixel Foreground/Background Segmentation (Using the Pixel Classification Workflow)
@@ -245,3 +246,30 @@ Finally, use the following command to run tracking on the cluster with 32 thread
 ~~~
 
 You can use the same command to run tracking on multiple videos.
+
+## Tracking With Head Location (Experimental)
+
+When tracking lab animals, it is often necessary to export the location of the head, in order to determine the body direction and improve behavior classification. 
+Ilastik has an experimental feature that allows you to export object contours with the correspoding head index (index in the contour array).  
+
+To use this feature you have to follow almost all the steps described in the previous sections, but now you will add an extra probability for the head, and do some changes to the threshold.  
+
+In the pixel classification project, you need to add an extra label for the head, and assign labels in the following order: Label 1 (red) for background, Label 2 (green) for body, and Label 3 (yellow) for the head. 
+Proceed to label the background, body, and head on your video.
+
+<a href="./fig/trainingSegmentationWithHead.png" data-toggle="lightbox"><img src="./fig/trainingSegmentationWithHead.png" class="img-responsive" /></a>
+
+In the animal tracking workflow, you will use the method `Hysterisis` and choose 1 for Core and 2 for Final. 
+This change will allow ilastik to merge the body and the head probabilities as foreground.
+
+<a href="./fig/thresholdTrackingWithHead.png" data-toggle="lightbox"><img src="./fig/thresholdTrackingWithHead.png" class="img-responsive" /></a>
+
+VERY IMPORTANT: When you run tracking on the terminal, you need to use the `_Probabilities` file as input for BOTH the `raw_data` and the `prediction_maps`, and you also need to specify the plugin `--export_plugin="Contours-With-Head"` instead of exporting the csv table:
+
+~~~
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file>_Probabilities.h5 --prediction_maps=<your-movie-file>_Probabilities.h5 --export_source="Plugin" --export_plugin="Contours-With-Head"
+~~~
+
+<span style="color:green">**If you have any questions about this workflow contact Jaime I. Cervantes on [GitHub](https://github.com/JaimeIvanCervantes) or [Twitter](https://twitter.com/jaimeicervantes).**</span> 
+
