@@ -35,7 +35,7 @@ This tutorial will cover the following topics:
 * Exporting the Results
 * Setting Up a Tracking Pipeline (Batch Processing)
 * Running Tracking on the Cluster (For Janelia use only)
-
+* Tracking With Head Location (Experimental)
 
 
 ## Pixel Foreground/Background Segmentation (Using the Pixel Classification Workflow)
@@ -123,10 +123,10 @@ Try to find and label a few of these objects on your video. You can also check t
 
 | Object Label | Screenshot |
 | ---- | ---------- |
-| False Detection | ![False Detection](./fig/0merger.png) |
-| 1 Object | ![False Detection](./fig/1merger.png) |
-| 2 Objects | ![False Detection](./fig/2merger.png) |
-| 3 OBjects | ![False Detection](./fig/3merger.png) |    
+| False Detection | <a href="./fig/0merger.png" data-toggle="lightbox"><img src="./fig/0merger.png" class="img-responsive" /></a> |
+| 1 Object | <a href="./fig/1merger.png" data-toggle="lightbox"><img src="./fig/1merger.png" class="img-responsive" /></a> |
+| 2 Objects | <a href="./fig/2merger.png" data-toggle="lightbox"><img src="./fig/2merger.png" class="img-responsive" /></a> |
+| 3 OBjects | <a href="./fig/3merger.png" data-toggle="lightbox"><img src="./fig/3merger.png" class="img-responsive" /></a> |    
   
 Sometimes it's difficult to find clusters of 2 or more objects, since these can be very sparse. 
 For these cases, click on the `Label Assist` button, and then click on the `Compute Object Info` button which will display a table where you can sort frames by maximum and minimum object area.
@@ -174,9 +174,8 @@ Here is a table with the values that are recommended for this example (most are 
 | Filters>Size | 15 to 10000 |  
   
 The video will be running optimization based on the transition, appearance, and disappearance costs across frames in order to assign the correct IDs for each object. 
-A more detailed explanation is available in the `What is Happening Behind the Scenes` section. 
 
-Once you set the parameters click on the `Track!` button ![Track](./fig/trackButtonTracking.png). It's very important to save your project after you run tracking, since the parameters will not be saved otherwise.
+Once you set the parameters click on the `Track!` button <a href="./fig/trackButtonTracking.png" data-toggle="lightbox"><img src="./fig/trackButtonTracking.png" class="img-responsive" /></a>. It's very important to save your project after you run tracking, since the parameters will not be saved otherwise.
 
 ## Exporting the Results
 
@@ -197,9 +196,9 @@ There are 2 ways to process multiple videos on the tracking workflow: processing
 To process files on the terminal, you need two commands (one for segmentation and one for tracking):
 
 ~~~
-./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
 
-./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Probabilities.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --prediction_maps=<your-movie-file>_Probabilities.h5 --export_source="Plugin" --export_plugin="CSV-Table"
 ~~~
 
 The first line is the intermediate segmentation step to generate the `<your-movie>_Probabilities.h5` volume with the foreground/background probabilities.
@@ -212,9 +211,9 @@ This will allow you to skip the thresholding step, and will run faster.
 Here are the 2 commands that you need to use the simple segmentation.  
 
 ~~~
-./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --export_source='Simple Segmentation' --output_format="compressed hdf5" --pipeline_result_drange="(0,1)" --export_drange="(0,1)" --export_dtype=uint8
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
 
-./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --segmentation_image=<your-movie-file>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
 ~~~
 
 <span style="color:blue">**Note:** *The argument `--output_format="compressed hdf5"` will compress the segmentation volume (for Probabilties or Simple Segmentation) in order to reduce the size of the file, but this option will also make processing slower, since the pipeline would have to compress and decompress these volumes.*</span>  
@@ -234,11 +233,11 @@ To run tracking on the cluster, create a executable bash script `.sh` file with 
 
 Add The segmentation and tracking commands described in the previous section, with the number of threads specified in the parameter `LAZYFLOW_THREADS` to your file `<your-bash-script>.sh`. Here's an example:
 
-~~~~
-LAZYFLOW_THREADS=32 ./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --export_source='Simple Segmentation' --output_format="compressed hdf5" --pipeline_result_drange="(0,1)" --export_drange="(0,1)" --export_dtype=uint8
-
-LAZYFLOW_THREADS=32 ./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
-~~~~
+~~~
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --segmentation_image=<your-movie-file>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+rm <your-movie-file>_Simple Segmentation.h5"
+~~~
 
 Finally, use the following command to run tracking on the cluster with 32 threads:  
 
@@ -247,3 +246,30 @@ Finally, use the following command to run tracking on the cluster with 32 thread
 ~~~
 
 You can use the same command to run tracking on multiple videos.
+
+## Tracking With Head Location (Experimental)
+
+When tracking lab animals, it is often necessary to export the location of the head, in order to determine the body direction and improve behavior classification. 
+Ilastik has an experimental feature that allows you to export object contours with the correspoding head index (index in the contour array).  
+
+To use this feature you have to follow almost all the steps described in the previous sections, but now you will add an extra probability for the head, and do some changes to the threshold.  
+
+In the pixel classification project, you need to add an extra label for the head, and assign labels in the following order: Label 1 (red) for background, Label 2 (green) for body, and Label 3 (yellow) for the head. 
+Proceed to label the background, body, and head on your video.
+
+<a href="./fig/trainingSegmentationWithHead.png" data-toggle="lightbox"><img src="./fig/trainingSegmentationWithHead.png" class="img-responsive" /></a>
+
+In the animal tracking workflow, you will use the method `Hysterisis` and choose 1 for Core and 2 for Final. 
+This change will allow ilastik to merge the body and the head probabilities as foreground.
+
+<a href="./fig/thresholdTrackingWithHead.png" data-toggle="lightbox"><img src="./fig/thresholdTrackingWithHead.png" class="img-responsive" /></a>
+
+VERY IMPORTANT: When you run tracking on the terminal, you need to use the `_Probabilities` file as input for BOTH the `raw_data` and the `prediction_maps`, and you also need to specify the plugin `--export_plugin="Contours-With-Head"` instead of exporting the csv table:
+
+~~~
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file>_Probabilities.h5 --prediction_maps=<your-movie-file>_Probabilities.h5 --export_source="Plugin" --export_plugin="Contours-With-Head"
+~~~
+
+<span style="color:green">**If you have any questions about this workflow contact Jaime I. Cervantes on [GitHub](https://github.com/JaimeIvanCervantes) or [Twitter](https://twitter.com/jaimeicervantes).**</span> 
+
