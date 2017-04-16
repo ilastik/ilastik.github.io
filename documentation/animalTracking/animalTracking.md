@@ -37,7 +37,6 @@ This tutorial will cover the following topics:
 * Running Tracking on the Cluster (For Janelia use only)
 
 
-
 ## Pixel Foreground/Background Segmentation (Using the Pixel Classification Workflow)
 
 On the `startup screen` create a new pixel classification project by selecting `Pixel Classification` and choosing a destination and a name for your `.ilp` project file. 
@@ -174,7 +173,6 @@ Here is a table with the values that are recommended for this example (most are 
 | Filters>Size | 15 to 10000 |  
   
 The video will be running optimization based on the transition, appearance, and disappearance costs across frames in order to assign the correct IDs for each object. 
-A more detailed explanation is available in the `What is Happening Behind the Scenes` section. 
 
 Once you set the parameters click on the `Track!` button <a href="./fig/trackButtonTracking.png" data-toggle="lightbox"><img src="./fig/trackButtonTracking.png" class="img-responsive" /></a>. It's very important to save your project after you run tracking, since the parameters will not be saved otherwise.
 
@@ -197,9 +195,9 @@ There are 2 ways to process multiple videos on the tracking workflow: processing
 To process files on the terminal, you need two commands (one for segmentation and one for tracking):
 
 ~~~
-./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
 
-./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Probabilities.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --prediction_maps=<your-movie-file>_Probabilities.h5 --export_source="Plugin" --export_plugin="CSV-Table"
 ~~~
 
 The first line is the intermediate segmentation step to generate the `<your-movie>_Probabilities.h5` volume with the foreground/background probabilities.
@@ -212,9 +210,9 @@ This will allow you to skip the thresholding step, and will run faster.
 Here are the 2 commands that you need to use the simple segmentation.  
 
 ~~~
-./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --export_source='Simple Segmentation' --output_format="compressed hdf5" --pipeline_result_drange="(0,1)" --export_drange="(0,1)" --export_dtype=uint8
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
 
-./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --segmentation_image=<your-movie-file>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
 ~~~
 
 <span style="color:blue">**Note:** *The argument `--output_format="compressed hdf5"` will compress the segmentation volume (for Probabilties or Simple Segmentation) in order to reduce the size of the file, but this option will also make processing slower, since the pipeline would have to compress and decompress these volumes.*</span>  
@@ -234,11 +232,11 @@ To run tracking on the cluster, create a executable bash script `.sh` file with 
 
 Add The segmentation and tracking commands described in the previous section, with the number of threads specified in the parameter `LAZYFLOW_THREADS` to your file `<your-bash-script>.sh`. Here's an example:
 
-~~~~
-LAZYFLOW_THREADS=32 ./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie>.ufmf --export_source='Simple Segmentation' --output_format="compressed hdf5" --pipeline_result_drange="(0,1)" --export_drange="(0,1)" --export_dtype=uint8
-
-LAZYFLOW_THREADS=32 ./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie>.ufmf --segmentation_image=<your-movie>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
-~~~~
+~~~
+./run_ilastik.sh --headless --project=<your-pixel-classification-project>.ilp --raw_data=<your-movie-file> --output_format="compressed hdf5"
+./run_ilastik.sh --headless --project=<your-tracking-file>.ilp --raw_data=<your-movie-file> --segmentation_image=<your-movie-file>_Simple Segmentation.h5" --export_source="Plugin" --export_plugin="CSV-Table"
+rm <your-movie-file>_Simple Segmentation.h5"
+~~~
 
 Finally, use the following command to run tracking on the cluster with 32 threads:  
 
