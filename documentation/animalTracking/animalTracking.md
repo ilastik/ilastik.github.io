@@ -66,9 +66,9 @@ For now select all of the features (as shown on the screesnhot below) to get the
 
 <a href="./fig/featuresSegmentation.png" data-toggle="lightbox"><img src="./fig/featuresSegmentation.png" class="img-responsive" /></a>
 
-<span style="color:blue">**Note:** *Selecting the right features depends on the data that you're processing. You can get information on the feature importance using the `variable Importance Table` on the menu `Advanced>Variable Importance Table`.*</span>
+<span style="color:blue">**Note:** *Selecting the right features depends on the data that you're processing. You can get information on the feature importance using the `variable Importance Table` on the menu `Advanced>Variable Importance Table` or by using the `Suggest Features` button in the `Training` applet.*</span>
 
-Now got to the `Training` section on the left bar, and then click on `Add Label` 2 times, in order to add 2 labels for the foreground and the background. 
+Now go to the `Training` section on the left bar, and then click on `Add Label` 2 times, in order to add 2 labels for the foreground and the background. 
 After you add both labels, click on the `Brush` button ![Brush Button](./fig/brushSegmentation.png), and paint a few foreground and background labels (usually red or Label 1 for foreground and green or Label 2 for background).
 You can click on the `Live Update` button to get live feedback on your results as you draw labels. 
 It's also recommended to draw a few labels on multiple frames, and maybe even multiple videos to make the classifier more robust for videos with varying lighting conditions for example. 
