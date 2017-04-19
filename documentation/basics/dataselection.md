@@ -73,6 +73,24 @@ be included in the stack. The selection can be specified in three ways:
  * selecting all files in a directory
  * using a filename pattern (with [Unix style patterns](http://docs.python.org/2/library/glob.html))
 
+A special case are image stacks saved in multiple .h5 files (HDF5, see paragraph
+[Supported File Formats](#formats)). HDF5 supports saving multiple datasets
+encapsulated in a single file which can be accessed using internal paths,
+similar to paths in a file system. For instance, you could have a folder with
+multiple files, `file_001.h5, file_002.h5, ...`, containing data that can be
+composed into a single image volume. In order to assemble the images an
+internal path to the image data in each file has to be specified.
+Ilastik assumes that data with similar internal paths should be stacked and will
+try to determine a common internal path in the selected .h5 files.
+In case of multiple common internal paths the user is asked to select the
+appropriate one.
+So, if the image data is found in `file_*.h5/data/imagedata` in each of the
+files, ilastik will automatically choose `data/imagedata`.
+In case of multiple datasets per file, e.g. the files might contain data
+collected from multiple subjects at internal paths like
+`file_*.h5/images/subject1, file_*.h5/images/subject2, ...`, ilastik will ask
+which of those sub-images should be selected for stacking.
+
 Once a selection has been made, the `File List` box can be used to review
 the names of the files that will be imported as an image stack.
 
