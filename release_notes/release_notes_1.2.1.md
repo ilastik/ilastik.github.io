@@ -7,6 +7,7 @@ A lot of improvements in tracking:
 -- Mamut export for proof-reading the results in Mamut
 - Batchmode of tracking with learning does not require cplex
 - Label assist to guide the user to frames with very big objects (potential merges) or probable divisions 
+- Fix [bug](https://github.com/ilastik/ilastik/issues/1432) that prevented tracking to work at all on 3D+t data
 
 Data Input:
 
