@@ -32,6 +32,7 @@ This is how you find the right export option from within FIJI. It will warn you 
 </div>
 
 ## ilastik
+<p>
 <div class="row">
 <div class="col-md-6">
 <a href="snapshots/ilastik_import_cropped_full.png" data-toggle="lightbox"><img src="snapshots/ilastik_import_cropped_scale2.png" width="100%" class="img-responsive" /></a>
@@ -40,8 +41,10 @@ This is how you find the right export option from within FIJI. It will warn you 
 Open the file as usual. If the axis order is wrong, as shown in this figure (tzyxc instead of txyzc), change it in this dialogue.
 </div>
 </div>
-<br>
+</p>
+
 Train the classifier in ilastik as you usually would (see [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) docs if you are not sure how to proceed). Once you are happy with the results, switch to the export applet. 
+
 <div class="row">
 <div class="col-md-6">
 <a href="snapshots/pc_training.png" data-toggle="lightbox"><img src="snapshots/pc_training_scale2.png" width="100%" class="img-responsive" /></a>
@@ -51,7 +54,8 @@ Train the classifier in ilastik as you usually would (see [Pixel Classification 
 </div>
 </div>
 <br>
-Depending on your post-processing, export probability maps or simple segmentation. You can control the export source by the "Source" dropdown menu. For probability maps you can either leave all settings at default, or, if you need to save space, convert the results to unsigned int 8-bit and rescale them from [0.0, 1.0] interval to [0, 255].
+
+Depending on your post-processing, export **Probabilities** or **Simple Segmentation**. You can control the export source by the "Source" dropdown menu. For probability maps you can either leave all settings at default, or, if you need to save space, convert the results to unsigned int 8-bit and rescale them from [0.0, 1.0] interval to [0, 255].
 
 ## ilastik to FIJI
 
@@ -59,7 +63,27 @@ Depending on your post-processing, export probability maps or simple segmentatio
 <div class="col-md-6">
 <a href="snapshots/fiji_import_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_import_cropped_scale2.png" width="100%" class="img-responsive" /></a>
 </div>
+
+
 <div class="col-md-6">
-Using the same plugin, you can now load your results into FIJI!
+<p>
+Using the same plugin, you can now load your results into FIJI by selecting "ilastik HDF5" in the File->Import menu. Two options are available: load (and display) the raw pixel values or load and display the image with a lookup-table (LUT). 
+</p>
+<p>
+<a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="50%" class="img-responsive" /></a>
+</p>
+<p>
+For <b>Probabilities</b>, choose <b>Load Raw</b>. <br>
+For <b>Segmentation</b>, choose <b>Load LUT</b>.<br>
+If you loaded the segmentation and the image looks black, you probably loaded it as raw. Try again with a LUT.
+</p>
 </div>
+</div>
+If you load Probabilities, you should see something like the left image. For Simple Segmentation with a lookup-table you should see the right image.
+<div class="row">
+<div class="col-md-6">
+<a href="snapshots/fiji_loaded_pmaps_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_loaded_pmaps_cropped_scale2.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="snapshots/fiji_loaded_ss_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_loaded_ss_cropped_scale2.png" width="100%" class="img-responsive" /></a>
 </div>
