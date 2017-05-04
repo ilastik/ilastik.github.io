@@ -57,7 +57,7 @@ Train the classifier in ilastik as you usually would (see [Pixel Classification 
 
 Depending on your post-processing, export **Probabilities** or **Simple Segmentation**. You can control the export source by the "Source" dropdown menu. For probability maps you can either leave all settings at default, or, if you need to save space, convert the results to unsigned int 8-bit and rescale them from [0.0, 1.0] interval to [0, 255].
 
-## ilastik to FIJI
+## From ilastik to FIJI
 
 <div class="row">
 <div class="col-md-6">
