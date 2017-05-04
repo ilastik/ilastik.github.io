@@ -63,9 +63,9 @@ Let's go throught the controls of this applet from top to bottom:
 
 2. **Threshold** -- threshold for the probability map. Pixel with values above the threshold belong to the boundary, the rest belong to the background. You can see the results of the thresholding operation in the "Thresholded input" layer (on by default, as shown on the left).
 
-3. **Min Membrane Size** -- size filter to get rid of single pixel noise or tiny fake boundary pieces.
+3. **Min Boundary Size** -- size filter to get rid of single pixel noise or tiny fake boundary pieces.
 
-4. **Presmooth before seeds** -- how much to smooth the boundary probability map before computing the distance transform
+4. **Presmooth before Seeds** -- how much to smooth the distance transform map before computing the seeds. The more you smooth, the less seeds you will have. With less seeds you get less superpixels, but they are bigger.
 
 
 
