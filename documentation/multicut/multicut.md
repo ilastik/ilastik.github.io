@@ -12,9 +12,7 @@ weight: 2
 
 This workflow allows you to segment images based on boundary information. Given a boundary probability map, it breaks the image up into superpixels and then merges them to recover segments limited by closed surfaces (no dangling edges). The main algorithm, known as multicut or correlation clustering, was presented in [this paper](http://ieeexplore.ieee.org/document/6126550/) by B. Andres. Its applications to biological image analysis can be found in, for example, [connectomics data](http://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56) or [bright field and phase contrast images](http://link.springer.com/chapter/10.1007/978-3-319-10404-1_2) or any other kind of imaging which uses membrane staining.  
 
-## How to use it
-
-### Boundary evidence
+## Boundary evidence
 Start by creating a boundary probability map. This can be done with ilastik's [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) or by an outside program. The images below illustrate the boundary map creation in ilastik for a very small stack of electron microscopy images of a mouse brain (data from Graham Knott's lab, EPFL). 
 <div class="row">
  <div class="col-md-4">
@@ -40,7 +38,7 @@ If we now start the Multicut workflow and load the raw data and this probability
 <br>
 If you have already computed **superpixels** on your data, you can also load them in the corresponding tab and skip the superpixel creation step described below. If you also have a **groundtruth** segmentation, load it as well and the method will use it for training instead of interactively provided labels. The trained workflow can, as usual, be applied to other datasets in batch or headless mode.
 
-### Superpixels -- DT Watershed
+## Superpixels -- DT Watershed
 We compute superpixels by the watershed algorithm, running it on the distance transform of the boundary probability map. The seeds are computed from the local maxima of the distance transform (each maximum then gives rise to a separate superpixel). The motivation for this approach is as follows:
 Commonly used superpixel algorithms, for example [SLIC](http://ieeexplore.ieee.org/document/6205760/), group pixels based
 on their similarity in brightness. This is, however, not desired here since it would result in superpixels which lie on the boundaries rather then be separated by them. Instead, for our use case, superpixels should group pixels based on which object they belong to. To achieve this, the high-contrast boundaries can be used. Here, the technique of choice is a *watershed*. 
@@ -88,7 +86,45 @@ Let's go throught the controls of this applet from top to bottom:
 
 </div>
 
+## Edge training and multicut
+Now that we have superpixels, we need to train the algorithm how to decide which of them should be merged and which not. The general approach we use was first described in [this publication](http://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels. These features include, for example, the summed intensity of the edge and the minimal and maximal intensity along it, as well as statisitics of the probability map and of the intensity inside the superpixels ("Select Features" button brings up a dialog which lets you choose features). After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but for highly structured graphs, such as our superpixel region adjacency graphs, it usually converges fairly fast. Besides, excellent approximate solvers exist and are also accessible through this applet.
 
+### Training
+If you already have a groundtruth segmentation, you can load it in the "Input Data" applet and then it will be used here as labels if you click the "Auto-label" button. If not, you can label interactively, as described below.  
+<div class="row">
+<div class="col-md-6">
+<a href="snapshots/mc_training_applet2.png" data-toggle="lightbox"><img src="snapshots/mc_training_applet2.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="snapshots/mc_training_applet_labels.png" data-toggle="lightbox"><img src="snapshots/mc_training_applet_labels.png" width="100%" class="img-responsive" /></a>
+</div>
 
+</div>
+<p>
+You can do it in this applet by clicking on the edges between superpixels. Left click, making edge <span style="color: green">green</span>, corresponds to edges which should be <span style="color: green">dropped</span> and right click, making edges <span style="color: red">red</span>, corresponds to true segmentation edges which should be <span style="color: red">preserved</span>. The initial view is shown on the left, while on the right you can see the same image with some edges labeled. To label multiple edges in one sweep, brush across them with either mouse button pressed.
+</p>
+<div class="row">
+<div class="col-md-6">
+<a href="snapshots/mc_training_applet_predictions.png" data-toggle="lightbox"><img src="snapshots/mc_training_applet_predictions.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="snapshots/mc_training_naive.png" data-toggle="lightbox"><img src="snapshots/mc_training_naive.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
+As usual in ilastik, pressing "Live Predict" will show you the edge probabilities and update them live as you click more edges (left figure). The right figure above shows the naive segmentation obtained by simply preserving all red edges. Now let's apply the multicut and get a consistent segmentation.
 
+#### Multicut
+**Beta** - this parameter controls the under- or over-segmentation preference. With lower beta, the algorithm merges more aggressively. The default of 0.5 should handle most common situations correctly.
+**Solver** - the final segmentation is the result of solving an integer linear program (ILP). The available solvers are listed in this dropdown menu, the exact entries depend on whether some outside libraries are installed on your machine. The *Nifty_FmGreedy* solver is the most basic of them and should be available in all ilastik installations. If you have CPLEX or Gurobi installed (see [installation instructions]({{site.baseurl}}/documentation/basics/installation) for more details), you will see other solvers as well. Intersection-based approximate solvers have always worked very well for us in practice. The optimality gap is can not usually be noticed in the final results, but just in case we also provide an exact solver which solves the problem to global optimality.
+<div class="row">
+<div class="col-md-6">
+<a href="snapshots/mc_training_mc_result.png" data-toggle="lightbox"><img src="snapshots/mc_training_mc_result.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="snapshots/mc_training_disagreements.png" data-toggle="lightbox"><img src="snapshots/mc_training_disagreements.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
+On the left you see the results of multicut, edges of the final segmentation are shown in blue. On the right, you see another interesting view into the segmentation algorithm -- in cyan we show the edges where the results of the multicut disagree with predictions of the edge classifier. If you press the "Live Multicut" button, segmentation will be recomputed every time the edge probabilities change following your labels. To only update occasionally, press the "Update Now" button.
+
+Once you are happy with the segmentation, export it and/or use the classifier you trained in the Batch Processing applet or in headless mode. 
 
