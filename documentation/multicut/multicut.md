@@ -65,7 +65,29 @@ Let's go throught the controls of this applet from top to bottom:
 
 3. **Min Boundary Size** -- size filter to get rid of single pixel noise or tiny fake boundary pieces.
 
-4. **Presmooth before Seeds** -- how much to smooth the distance transform map before computing the seeds. The more you smooth, the less seeds you will have. With less seeds you get less superpixels, but they are bigger.
+4. **Presmooth before Seeds** -- how much to smooth the distance transform map before computing the seeds - specify the sigma. The more you smooth, the less seeds you will have. With less seeds you get less superpixels, but they are bigger.
+
+5. **Seed Labeling** -- when local maxima pixels are merged into seeds, which neighborhood is used? *Connected* corresponds to direct 4-neighborhood in 2D and 6-neighborhood in 3D. *Clustered* option groups pixels together based on a distance heuristic.
+
+6. **Min Superpixel Size** -- the resulting superpixels should be at least that big, measured in pixels.
+
+7. **Preserve Thin Structures** -- this checkbox activates a trick to deal with large connected areas of high boundary probability. While not dangerous in general, such areas can lead to wrong seeding and partitioning of thin structures. If you data has long thin objects or objects connected by long thin "tentacles" and your boundary probability map is wide, we recommend putting this setting on. If, however, your foreground objects are roundish and the long thin areas between them belong to the background, don't activate this setting. The images below attempt to illustrate the difference. The thin corridor inside the black rectangle is partitioned between its neighbors in the superpixel creation procedure (middle image). There is no way clustering of these superpixels will recover the corridor. On the right, however, purple, yellow and grey superpixels in the black rectangle can be combined to reconstruct the corridor. The superpixels on the right, produced with this option "on", are thus better than in the middle where it was not activated.
+
+8. **Show Debug Layers** -- show intermediate layers of superpixel computation. This setting is useful if you want to understand the algorithm in detail, but it's not necessary for casual use.
+
+<div class="row">
+<div class="col-md-4">
+<a href="snapshots/export_raw_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_raw_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-4">
+<a href="snapshots/export_not_preserved_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_not_preserved_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-4">
+<a href="snapshots/export_sp_resolved_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_sp_resolved_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
+</div>
+
+</div>
+
 
 
 
