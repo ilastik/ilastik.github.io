@@ -1,4 +1,7 @@
-###Release notes for 1.2.0
+---
+layout: default
+title: Release notes for v1.2.0
+---
 
 News:
 

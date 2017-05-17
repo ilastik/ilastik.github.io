@@ -1,13 +1,16 @@
-# Release notes for v1.2.1
+---
+layout: default
+title: Release notes for v1.2.2
+---
 
 A lot of improvements in tracking:
 
 - Piecewise solving for large videos
 - Export of results in multiple formats, including contours
 -- Mamut export for proof-reading the results in Mamut
-- Batchmode of tracking with learning does not require cplex
+- Batchmode of tracking with learning does not require CPLEX anymore
 - Label assist to guide the user to frames with very big objects (potential merges) or probable divisions 
-- Fix [bug](https://github.com/ilastik/ilastik/issues/1432) that prevented tracking to work at all on 3D+t data
+- Fix for the [bug](https://github.com/ilastik/ilastik/issues/1432) that prevented tracking to work at all on 3D+t data
 
 Data Input:
 
@@ -21,7 +24,7 @@ General performance:
 
 - Better handling of large 2D data by increasing default tile size. Users can experiment via a menu item under View
 
-Multicut:
+Boundary-based segmentation with Multicut:
 
 - Improvements in UI (live mode for multicut, etc.)
 
