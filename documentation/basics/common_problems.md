@@ -6,7 +6,7 @@ category: "Documentation"
 group: "basic-documentation"
 weight: 7
 ---
-# Common problems, their solutions, tips, tricks and workarounds.
+# Common problems and questions, tips, tricks and workarounds.
 
 If you are experiencing a problem with ilastik which we haven't yet described below, please [let us know]({{site.baseurl}}/community.html)! 
 If your problem is already described, [tell us anyway]({{site.baseurl}}/community.html) and we'll adjust our priority list.
@@ -33,4 +33,17 @@ ilastik works best if the input data is in the hdf5 format. Here are some option
 * Write a custom script in Python using the h5py library
 
 #### 4) My exported results are all black!
-ilastik exports probability maps or segmentations. The former have a range from 0 to 1 and by default they are of type float. This is convenient for automatic post-processing, but not for visual inspection. To export as a viewable image, change the output type to ``unsigned int, 8 bit`` and renormalize the range from (0, 1) to (0, 255). More details on these operations can be found [here]({{site.baseurl}}/documentation/basics/export#settings). If you are exporting a segmentation, ilastik saves it as a labeled image, so every pixel has the value of the most probable label found during classification. If you had, say, 3 labels, your image is composed of values 1, 2 and 3, which looks black if viewed raw. An image like this should be displayed with a ``lookup table``. For example, ``glasbey`` LUT in Fiji usually works well, but you can also define your own if you have specific class colors in mind.  
+ilastik exports probability maps or segmentations. The former have a range from 0 to 1 and by default they are of type float. This is convenient for automatic post-processing, but not for visual inspection. To export as a viewable image, change the output type to ``unsigned int, 8 bit`` and renormalize the range from (0, 1) to (0, 255). More details on these operations can be found [here]({{site.baseurl}}/documentation/basics/export#settings). If you are exporting a segmentation, ilastik saves it as a labeled image, so every pixel has the value of the most probable label found during classification. If you had, say, 3 labels, your image is composed of values 1, 2 and 3, which looks black if viewed raw. An image like this should be displayed with a ``lookup table``. For example, ``glasbey`` LUT in Fiji usually works well, but you can also define your own if you have specific class colors in mind.
+
+#### 5) Can I just select all features?
+For [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification) you can select all. In theory and in our own practice, there should be no negative effect on the classification accuracy. However, computing more pixel features is slower than computing less.  
+
+The situation is a little different for the [Object Classification workflow]({{site.baseurl}}/documentation/objects/objects). Here most of the feature computation time is spent in looping over the image and adding more features does not bring a substantial overhead. However, you have to be careful not to select ``Location``-based features for classification (such as ``object center``), unless they really are important for your data (say, if objects of one class tend to assemble at the top of the image and of the other at the bottom). If the object class is independent from the object location, adding location-based features can confuse the classifier. Also, if the background of your iamges is uniform, it does not make sense to select ``in neighborhood`` features. For the rest, we recommend selecting all in the ``Object Extraction`` applet and trying out different subsets in ``Object Classification``. This setup provides the most flexibility, as you don't have to wait for feature computation over and over again.
+
+#### 6) How can I view individual channels of my input data?
+2- and 3-channel data is loaded as RGB by default. To examine the channels one by one, you again have to go to the [Dataset Properties dialog]({{site.baseurl}}/documentation/basics/dataselection#properties) and change the ``Channel Display`` setting. After you do that, a tiny channel spinbox should appear at the Raw data layer in the lower left corner of the ilastik window. 
+
+#### 7) How can I adjust the brightness/contrast of my image for Training?
+If you display individual channels rather than a composite image, you should see a [Window Leveling button]({{site.baseurl}}/documentation/pixelclassification/pixelclassification#window) in the Training applet. This has no effect on the classifier, but makes the labeling process simpler.
+
+
