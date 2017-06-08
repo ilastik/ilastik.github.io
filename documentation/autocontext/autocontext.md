@@ -4,7 +4,7 @@ title: Autocontext
 tagline: Multi-stage pixel classification
 category: "Documentation"
 group: "workflow-documentation"
-weight: 0
+weight: 1
 ---
 # Autocontext -- cascaded pixel classification
 
