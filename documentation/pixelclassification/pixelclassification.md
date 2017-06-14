@@ -79,7 +79,7 @@ To display the hard classification results, i.e. the final class assignment the 
 can be turned on by clicking on the **Segmentation** checkbox.
 <a href="snapshots/training3_zoomed.png" data-toggle="lightbox"><img src="snapshots/training3_zoomed.png" class="img-responsive" /></a>
 
-## How to import labels from an external file
+## How to import labels from an external file {#import}
 To access the "Import Labels" feature in the GUI, do the following:
 
 1. Create N label classes (click "Add Label" N times).
