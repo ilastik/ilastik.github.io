@@ -51,3 +51,6 @@ Interactive labeling and visual inspection are the most convenient way. If you w
 
 #### 9) Pixel+object classification workflow is slow/consumes too much RAM
 Separate the project in two workflows: do pixel classification first, export the prediction results and then start a new object classification workflow. The reason the combined workflow is sometimes slow, especially for bigger data, is that filtering objects by size which happens in the Thresholding applet, is a global operation which can not be done blockwise. This means that every pixel, in the whole dataset, in the pixel classification part needs to be computed before thresholding is applied. 
+
+#### 10) I have labels already, can I import them?
+Yes, the procedure is explained [here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification/#import). But keep in mind that ilastik is not designed to work with dense labels, we assume that the features-labels matrix for the classifier will fit in RAM. 
