@@ -1,30 +1,46 @@
 ---
 layout: documentation
 title: Installation
-tagline: 
+tagline:
 category: "Documentation"
 group: "basic-documentation"
 weight: 0
 ---
 
-# Basic Installation
+# Installation
 
-Most workflows do not require any special install instructions.  Follow these steps to get started right away.
-
-To use the [Automated Tracking Workflow]({{baseurl}}/documentation/tracking/tracking.html), you will need to 
-install CPLEX separately, and then follow a special procedure to enable ilastik to use it.  
-See the special instructions below for details.
+ilastik binaries are provided for for Linux, Mac and Windows at our [download page]({{site.baseurl}}/download.html).
 
 **Note: ilastik requires a 64-bit machine.  We do not provide 32-bit binaries.**
 
-### Mac
+Most workflows are available with the [basic ilastik installation](#basic-installation).
+Some workflows, however, require the manual installation of a commercial solver.
+On Windows, the following workflows will only be available after installing the IBM CPLEX solver:
 
-[Download]({{site.baseurl}}/download.html) the `.zip` file for your version of OSX and extract its contents with a simple double-click.  
-Copy ilastik.app to the folder of your choice (usually your `Applications` folder), and double-click to begin. 
++ Boundary Segmentation with Multicut
++ Tracking (all flavours)
++ Counting (better results with CPLEX)
+
+On MacOs and Linux only Learning in the Tracking workflow *requires* a commercial solver (CPLEX or Gurobi).
+However, the The Boundary Segmentation with Multicut, and the Tracking workflow
+
+## Basic Installation <a id="basic-installation"></a>
+
+### Windows
+
+[Download]({{site.baseurl}}/download.html) the Windows self-extracting installer and run it.
+The installer will guide you through the installation process.
+You can find an entry for ilastik in the start menu and click it to launch the program.
+
+
+### MacOs
+
+[Download]({{site.baseurl}}/download.html) the `.tar.bz2` file for your version of OSX and extract its contents with a simple double-click.
+Copy ilastik.app to the folder of your choice (usually your `Applications` folder), and double-click to begin.
 
 ### Linux
 
-[Download]({{site.baseurl}}/download.html) the Linux `.tar.bz2` bundle and extract its contents:
+[Download]({{site.baseurl}}/download.html) the Linux `.tar.bz2` bundle and extract its contents from the terminal:
 
     tar xjf ilastik-1.*-Linux.tar.bz2
 
@@ -33,13 +49,6 @@ To run ilastik, use the included `run_ilastik.sh` script:
     cd ilastik-1.*-Linux
     ./run_ilastik.sh
 
-### Windows
-
-[Download]({{site.baseurl}}/download.html) the Windows self-extracting installer and run it.
-The installer will guide you through the installation process.
-
-Note: Some special releases of ilastik are provided as a `.zip` file.  In that case, extract the 
-`.zip` file to the location of your choice and run the enclosed `ilastik.bat` script to launch the program.
 
 -----------------
 
