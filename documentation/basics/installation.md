@@ -24,8 +24,8 @@ On *Windows*, the following workflows will only be available after installing th
 
 In order to enable these workflows, please follow the instructions in the section about [commercial solver installation](#solver-setup).
 
-On *Mac* and *Linux* only Learning in the Tracking workflow *requires* a commercial solver (CPLEX or Gurobi).
-Furthermore, the results of the Boundary Segmentation with Multicut and the Tracking workflow tend to be more accurate using one of the two commercial solvers.
+On *Mac* and *Linux* only Learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
+Furthermore, the results of the Boundary Segmentation with Multicut Workflow and the Tracking Workflow tend to be more accurate using one of the two commercial solvers.
 
 
 ## Basic Installation <a id="basic-installation"></a>
@@ -216,6 +216,6 @@ In order to run ilastik with GUROBI support, make sure to always set the path to
     cd /path/to/ilastik-1.*-Linux
     ./run_ilastik.sh
 
-After a successful installation, the *Tracking with Learning Workflow* will appear on the Start-Screen of ilastik.
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
 
 Should you run into any problems, please [contact us]({{site.baseurl}}/community.html).
