@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Common Problems 
+title: FAQ / Common Problems 
 tagline: Tips, tricks and workarounds
 category: "Documentation"
 group: "basic-documentation"
@@ -54,3 +54,7 @@ Separate the project in two workflows: do pixel classification first, export the
 
 #### 10) I have labels already, can I import them?
 Yes, the procedure is explained [here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification#import). But keep in mind that ilastik is not designed to work with dense labels, we assume that the features-labels matrix for the classifier will fit in RAM. 
+
+#### 11) Can I process 3D data as 2D? 
+Yes, there is a workaround for this. The trick is treating the dataset as a time series instead of a 3D stack. So, in the data input applet, go to the [Dataset Properties dialog]({{site.baseurl}}/documentation/basics/dataselection#properties) and change the z-axis for a t-axis. Now your data will be processed one slice at a time.
+ 
