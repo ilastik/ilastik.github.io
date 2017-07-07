@@ -275,6 +275,8 @@ To most efficiently use the features described above, there are multiple shortcu
 |:--------------:| :-----------------------------
 | `Shift + Scroll` | Scroll image through time
 | `Ctrl + Scroll`| Zoom
+| `k`            | Go to next timeframe
+| `j`            | Go to previous timeframe
 | `s`            | Start new track
 | `d`            | Mark division event
 | `f`            | Mark false detection

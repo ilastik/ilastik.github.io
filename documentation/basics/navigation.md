@@ -70,6 +70,7 @@ _z_-view has a blue color.
 * Pan the view by dragging the mouse while pressing _shift_ OR the _middle mouse button_
   pressed
 * jump to a new 3D position by _double clicking_
+* use `k` and `j` to jump forward and backward in time, if you have a dataset with `t` axis loaded.
 
 ## 3D view
 
