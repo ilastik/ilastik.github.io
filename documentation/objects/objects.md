@@ -124,6 +124,18 @@ After a slight change in the segmentation (lower) threshold the objects indeed b
 
 <a href="figs/oc_prediction3.png" data-toggle="lightbox"><img src="figs/oc_prediction3.png" class="img-responsive" /></a>
 
+## Uncertainty Layer
+Uncertainty Layer displays how uncertain prediction for an object is. Applying the minimum number of labels for classifying objects containing up to three cells we have a very uncertain classification:
+
+<a href="figs/uncertainty_01.png" data-toggle="lightbox"><img src="figs/uncertainty_01.png" class="img-responsive" /></a>
+
+Adding a few more labels we get a much better uncertainty estimate:
+
+<a href="figs/uncertainty_02.png" data-toggle="lightbox"><img src="figs/uncertainty_02.png" class="img-responsive" /></a>
+
+Assuming our labels were correct this will lead to a good object classification:
+<a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
+
 ## Preparing for large scale prediction - Blockwise Object Classification applet
 Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously. While these operations and especially the hysteresis thresholding require a lot of memory, "whole image" processing is sufficient for most 2D images. However, for large 3D image volumes we have to resort to blockwise processing. This applet allows you to experiment with different block and halo sizes on the data you used in the interactive object prediction and, by comparing the "whole image" interactive prediction and blockwise prediction, find the optimal parameters for your data. Let us try to predict our image blockwise:
 
