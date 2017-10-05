@@ -26,6 +26,7 @@ Structured learning is used on this small training set to generate weights used 
 
 Although they are different workflows, structured learing, automatic and manual tracking share a few 
 components (*applets*) for preprocessing the dataset.
+
 It is assumed that the user first reads the preceeding section on [**tracking**](#sec_tracking).
 
 **Please note that the _structured learning_ tracking workflow only works on machines where CPLEX is installed
@@ -47,7 +48,7 @@ optionally allowing for object divisions
 
 Structured learning workflow uses manual tracking for training on a small subset of the data,
 then learns optimal weights for the given training points, 
-and finally it uses these weight in the automatic tracking prediction.
+and finally it uses these weights in the automatic tracking prediction.
 
 <a href="./fig/00_overview_compare_slt.png" data-toggle="lightbox"><img src="./fig/00_overview_compare_slt.png" class="img-responsive" /></a>
 
@@ -142,7 +143,7 @@ After specifying the raw data and its prediction maps, the latter will be smooth
 and thresholded in order to get a binary segmentation, 
 which is done in the **Thresholding and Size Filter** applet:
 
-## 2. Thresholding and Size Filter:
+## 2. Thresholding and Object Classification:
 If the user chose a to start the workflow with prediction maps as input (rather than binary images,
 in which case this applet will not appear), 
 the user first has to threshold these prediction maps.
@@ -160,11 +161,34 @@ The prediction maps are storing a probability for each single pixel/voxel to be 
 These probabilities may be smoothed over the neighboring probabilities with a Gaussian filter,
 specified by the **Sigma** values (allowing for anisotropic filtering).
 The resulting probabilities are finally **thresholded** at the value specified. The default
-values for the smoothing and thresholding should be fine in most of the cases. 
+values for the smoothing and thresholding should be fine in most of the cases.
+
+## 2. Object Classification:
 Please consult the documentation of the
 [Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html)
 for a more detailed description of this applet, including an explanation of the **Two thresholds** 
 option.
+
+## 2.1 Uncertainty Layer
+While a correct segmanetation is enough for segmentation purposes,
+tracking workflows benefit from a segmentation with small objects' uncertainties,
+steering the tracking algorithm in using the classified object count in the final solution.
+In the example presented, segmentation is already satisfactory.
+
+<a href="figs/uncertainty_01_1.png" data-toggle="lightbox"><img src="figs/uncertainty_01_1.png" class="img-responsive" /></a>
+
+However, examining the uncertainty layer, we see a high level of uncertainty.
+
+<a href="figs/uncertainty_01_2.png" data-toggle="lightbox"><img src="figs/uncertainty_01_2.png" class="img-responsive" /></a>
+
+Adding a few more labels we get a much better uncertainty estimate:
+
+<a href="figs/uncertainty_02.png" data-toggle="lightbox"><img src="figs/uncertainty_02.png" class="img-responsive" /></a>
+
+with the corresponding segmentation:
+<a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
+
+The same should be done for the Division Classifier if divisions are being tracked.
 
 Note that, although the tracking workflows usually expect prediction maps as input files, nothing prevents
 the user from loading (binary) segmentation images instead. In this case, we recommend to disable
@@ -189,12 +213,8 @@ Structured learning tracking workflow can process 2D+time (`txy`) as well as 3D+
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d_slt).
 
-### 3.1 Crop Selection:
+### 3.1 Training Subset Selection:
 Tracking training only needs to be done on a small subset of the dataset.
-The user can select the crops he/she wants to annotate.
-Gui lines/corner and slider buttons can be used for resizing the crop, 
-which needs to be saved using "Save Crop" button.
-To create a new crop use "New Crop" button.
 
 <a href="./fig/slt_crop_selection.png" data-toggle="lightbox"><img src="./fig/slt_crop_selection.png" class="img-responsive" /></a>
 
@@ -208,9 +228,6 @@ While undetected objects may not be recovered to date, the user can correct for 
 kinds of undersegmentation errors: Merging (objects merge into one detection and later split again), 
 and misdetections (false positive detections due to speckles or low contrast).
 Currently, the tracking model can only handle all cells in a merger appearing (or disappearing) in the same time frame.
-
-First choose the crop you would like to train for tracking in the list of all crops.
-At the end of crop training you have to save the training by pressing "Save Crop Training" button.
 
 <a href="./fig/slt_crop_training.png" data-toggle="lightbox"><img src="./fig/slt_crop_training.png" class="img-responsive" /></a>
 
