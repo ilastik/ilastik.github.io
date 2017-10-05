@@ -214,22 +214,20 @@ tutorial guides through a 2D+time example, and a 3D+time example dataset is prov
 [at the end of the tutorial](#sec_3d_slt).
 
 ### 3.1 Training Subset Selection:
-Tracking training only needs to be done on a small subset of the dataset.
-
-<a href="./fig/slt_crop_selection.png" data-toggle="lightbox"><img src="./fig/slt_crop_selection.png" class="img-responsive" /></a>
+Tracking training only needs to be done on a small subset of the dataset that is not necessarily connected.
+Algorithm prunes objects that are not included in the training.
+Tracks must be continuous.
 
 ### 3.2 Training for Tracking:
 
 The purpose of this applet is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects 
-in a small number of small crops of the original data. 
+in a small subset of the original data.
 All objects detected in the previous steps are indicated by a yellow color.
 While undetected objects may not be recovered to date, the user can correct for the following 
 kinds of undersegmentation errors: Merging (objects merge into one detection and later split again), 
 and misdetections (false positive detections due to speckles or low contrast).
 Currently, the tracking model can only handle all cells in a merger appearing (or disappearing) in the same time frame.
-
-<a href="./fig/slt_crop_training.png" data-toggle="lightbox"><img src="./fig/slt_crop_training.png" class="img-responsive" /></a>
 
 Note that -- as in every workflow in ilastik -- displaying and updating the data is much faster when
 zooming into the region of interest.
