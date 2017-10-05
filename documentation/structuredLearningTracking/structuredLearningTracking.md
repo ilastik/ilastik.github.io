@@ -175,18 +175,18 @@ tracking workflows benefit from a segmentation with small objects' uncertainties
 steering the tracking algorithm in using the classified object count in the final solution.
 In the example presented, segmentation is already satisfactory.
 
-<a href="figs/uncertainty_01_1.png" data-toggle="lightbox"><img src="figs/uncertainty_01_1.png" class="img-responsive" /></a>
+<a href="fig/uncertainty_01_1.png" data-toggle="lightbox"><img src="fig/uncertainty_01_1.png" class="img-responsive" /></a>
 
 However, examining the uncertainty layer, we see a high level of uncertainty.
 
-<a href="figs/uncertainty_01_2.png" data-toggle="lightbox"><img src="figs/uncertainty_01_2.png" class="img-responsive" /></a>
+<a href="fig/uncertainty_01_2.png" data-toggle="lightbox"><img src="fig/uncertainty_01_2.png" class="img-responsive" /></a>
 
 Adding a few more labels we get a much better uncertainty estimate:
 
-<a href="figs/uncertainty_02.png" data-toggle="lightbox"><img src="figs/uncertainty_02.png" class="img-responsive" /></a>
+<a href="fig/uncertainty_02.png" data-toggle="lightbox"><img src="fig/uncertainty_02.png" class="img-responsive" /></a>
 
 with the corresponding segmentation:
-<a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
+<a href="fig/uncertainty_03.png" data-toggle="lightbox"><img src="fig/uncertainty_03.png" class="img-responsive" /></a>
 
 The same should be done for the Division Classifier if divisions are being tracked.
 
