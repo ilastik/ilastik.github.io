@@ -115,12 +115,11 @@ Here's an example command (explanation below):
     $ ./run_ilastik.sh --headless
                        --project=MyProject.ilp
                        --table_filename=/tmp/exported_object_features.csv
-                       --export_object_prediction_img
-                       --export_object_probability_img  
+                       --export_source="Object Predictions"
                        --raw_data "my_grayscale_stack_1/*.png"
                        --segmentation_image my_unclassified_objects_1.h5/binary_segmentation_volume
 
-Depending on which variant of the Object Classification Workflow you're using, you may need to provide more than 
+Depending on which variant of the Object Classification Workflow you're using, you may need to provide more than
 one input image for each volume of data you want to process (e.g. "Raw Data" and "Segmentation Image", or "Raw Data" and "Prediction Maps").
 Both files must be provided on the command-line.  To specify which is which, prefix the list of input files with either `--raw_data`, `--segmentation_image`, or `--prediction_maps` accordingly.
 If you are processing more than one volume a single command, provide all inputs of a given type in sequence:
@@ -130,12 +129,14 @@ If you are processing more than one volume a single command, provide all inputs 
     --raw_data "my_grayscale_stack_1/*.png" "my_grayscale_stack_2/*.png" "my_grayscale_stack_3/*.png"
     --segmentation_image my_unclassified_objects_1.h5/binary_segmentation_volume my_unclassified_objects_2.h5/binary_segmentation_volume my_unclassified_objects_3.h5/binary_segmentation_volume
 
-If provided, the `--export_object_prediction_img` flag tells ilastik to export the label image of object class predictions.  
-If `--export_object_probability_img`, ilastik will export a multi-channel image volume of object prediction probabilities 
-instead of (or in addition to) a label image (one channel for each prediction class).
-Finally, if you happen to be using the "Pixel Classification + Object Classification" workflow which combines pixel classification 
-and object classification into a single workflow, you may optionally export the pixel prediction images by providing the 
-`export_pixel_probability_img` flag. (The other workflows simply ignore this flag.)
+Per default, ilastik exports a label image of the object class predictions.
+This is equivalent to setting `--export_source="Object Predictions"` in the command line.
+Use the `--export_source` flag to specify the output of the processing explicitly.
+If the flag is set to `--export_source="Object Probabilities"`, ilastik will export a multi-channel image volume of object prediction probabilities
+instead of a label image (one channel for each prediction class).
+Finally, if you happen to be using the "Pixel Classification + Object Classification" workflow which combines pixel classification
+and object classification into a single workflow, you may export the pixel prediction images by providing the
+`--export_source="Pixel Probabilities"` flag.
 
 If you provide path for the `--table_filename` output, ilastik will export a `.csv` file of the computed object features that were used during classification, indexed by object id.
 
@@ -144,8 +145,6 @@ So, the example command above produces 3 files:
 - a prediction image (a label image), 
 - a floating-point "probability image" (with N channels -- one for each class), and 
 - a .csv file containing a row for each object and columns for each of the features your project uses.  This file also contains the probability value for each object.  
-
-To omit one of the images, simply remove the --export_object_XXX_img flag from the example command.  (But it won't save much CPU time to do so.)
 
 ### Important Notes:
 
