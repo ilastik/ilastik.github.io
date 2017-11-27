@@ -6,6 +6,15 @@ category: "Documentation"
 group: "basic-documentation"
 weight: 5
 ---
+# Exporting the Current View
+
+The current composite view, exactly as shown in the ilastik viewer, can be exported using the "camera" button in the upper right corner of the image viewer. 
+<div style="float: right; width: 60%" markdown="1">
+<a href="screenshots/ilastik_camera_export.png" data-toggle="lightbox"><img src="screenshots/ilastik_camera_export.png" class="img-responsive" /></a>
+</div>
+You can control exactly which layers are visible and their respective opacity in the layer widget in the lower left corner. This feature is especially useful to produce
+videos of tracking or 3D segmentation results, overlayed with raw data. You can use the camera button in any applet of ilastik and export any view that is displayed. 
+
 # Exporting Output
 
 Results of various ilastik workflows can be exported for later use by
