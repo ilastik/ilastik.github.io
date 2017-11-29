@@ -33,6 +33,11 @@
         {% assign group = 'workflow-documentation' %}
         {% assign active_hook = toc %}
         {% include weighted_pages_list %}
+        <li class="nav-header disabled">Use Cases</li>
+        {% assign pages_list = site.pages %}
+        {% assign group = 'workflow-usecase' %}
+        {% assign active_hook = toc %}
+        {% include weighted_pages_list %}
     </ul>
   </div>
   <section id="tocMain">
