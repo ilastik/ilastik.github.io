@@ -1,16 +1,32 @@
 ---
 layout: documentation
-title: Tracking (Automatic and Manual)
+title: Tracking 
 tagline: Tracking
 category: "Documentation"
 group: "workflow-documentation"
 weight: 2
 ---
-# Automatic Tracking and Manual Tracking
+# Tracking
 
 ## Overview and Scope
 
-Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
+Ilastik provides different tracking workflows, marked with a specific color. Each workflow share a few components (*applets*) for
+preprocessing the data, described in this tutorial. 
+
+<ul>
+<li> Manual Tracking Workflow <span style="color:red">&#9679;</span> </li>
+<li> Automatic Tracking Workflow <span style="color:blue">&#9679;</span> </li>
+<li> Animal Tracking Workflow <span style="color:green">&#9679;</span> </li>
+<li> Structured Learning Tracking Worfklow <span style="color:orange">&#9679;</span> </li>
+</ul>
+
+The colored dots helps the reader to inform which documentation sections needs to be read for the selected workflow.
+The user has to decide already on the startup of ilastik which workflow he/she wants to use for tracking.
+Depending on this choice, this tutorial will diverge later.
+
+<a href="./fig/ilastik_overview.png" data-toggle="lightbox"><img src="./fig/ilastik_overview.png" class="img-responsive" /></a>
+
+<!-- Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
 While the fully [**automatic tracking workflow**](#sec_automatic)
 is used to track multiple (dividing) objects in presumably big datasets, the purpose of the [**manual tracking
 workflow**](#sec_manual) is to track objects *manually* from previously detected objects. 
@@ -21,21 +37,26 @@ assignments such that the user only has to link objects where the tracking is am
 Although they are different workflows, automatic and manual tracking share a few 
 components (*applets*) for preprocessing the dataset.
 This tutorial describes those shared applets for both workflows simultaneously before providing documentation for the
-specific manual/semi-automatic or (fully) automatic tracking applets.
+specific manual/semi-automatic or (fully) automatic tracking applets. -->
 
-**Please note that the _automatic_ tracking workflow only works on machines where CPLEX is installed
+The fully [**automatic tracking workflow**](#sec_automatic)
+is used to track multiple (dividing) objects in presumably big datasets, the purpose of the [**manual tracking workflow**](#sec_manual) is to track objects *manually* from previously detected objects. The latter may be useful for high-quality tracking of small datasets or 
+ground truth acquisition. To speed up this process, sub-tracks may be generated automatically for trivial
+assignments such that the user only has to link objects where the tracking is ambiguous. [**Structured learning**](#sec_structured_learning) tracking builds on applets from both, manual/semi-automatic and automatic tracking. Manual/semi-automatic tracking is used to generate tracking training on a set of crops in the original dataset. Structured learning is used on this small training set to generate weights used for the automatic tracking applet.
+
+**Please note that the _structured learning_ tracking workflow only works on machines where CPLEX is installed
 additional to ilastik. Instructions on how to install CPLEX are given 
 [here]({{site.baseurl}}/documentation/basics/installation.html#cplex-setup).**
 
-The manual tracking and automatic tracking workflows both build on the results of the
+<!-- The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 From the objects detected in this workflow, tracks (object identities linked over time) are either created by the user
 in a semi-automatic fashion or by the automatic tracking algorithm, respectively,
 optionally allowing for object divisions
-(e.g. cell mitosis). 
+(e.g. cell mitosis).  -->
 
 
-<a href="./fig/00_overview.jpg" data-toggle="lightbox"><img src="./fig/00_overview.jpg" class="img-responsive" /></a>
+<!-- <a href="./fig/00_overview.jpg" data-toggle="lightbox"><img src="./fig/00_overview.jpg" class="img-responsive" /></a> -->
 
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
@@ -46,9 +67,6 @@ We will now step through a tutorial how to track proliferating cells both in 2D+
 and 3D+time data, which are both provided in the 
 [Download]({{site.baseurl}}/download.html)
 section. 
-The user has to decide already on the startup of ilastik whether he/she wants to *manually* track
-objects or the *automatic* tracking object should be used. Depending on this choice, this tutorial will
-diverge later.
 
 Before starting the tracking workflows, the data has to be segmented into fore- and 
 background. The tutorial uses the dataset 
@@ -56,7 +74,7 @@ background. The tutorial uses the dataset
 <a href="http://www.mitocheck.org">Mitocheck project</a>,
 which is available in the <a href="../../download.html">Download</a> section. 
 
-## 0. Segmentation:
+## 0. Segmentation: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 The tracking workflows are based on the results of the 
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
 where the
@@ -86,7 +104,7 @@ by creating a new project.
 
 These two workflows comprise the following applets:
 
-## 1. Input Data:
+## 1. Input Data: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 To begin, the raw data and the prediction maps (the results from the Pixel Classification workflow or segmented images from
 other sources) 
 need to be specified in the respective tab (in this case we choose the workflow with **Prediction Map** as input rather than
@@ -111,7 +129,7 @@ After specifying the raw data and its prediction maps, the latter will be smooth
 and thresholded in order to get a binary segmentation, 
 which is done in the **Thresholding and Size Filter** applet:
 
-## 2. Thresholding and Size Filter:
+## 2. Thresholding and Size Filter: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 If the user chose a to start the workflow with prediction maps as input (rather than binary images,
 in which case this applet will not appear), 
 the user first has to threshold these prediction maps.
@@ -149,8 +167,42 @@ be invalid (and deleted) when parameters in this step are changed.***
 
 In the following applets, connected groups of pixels will be treated as individual objects.
 
+## 2.1 Uncertainty Layer <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+While a correct segmanetation is enough for segmentation purposes,
+tracking workflows benefit from a segmentation with small objects' uncertainties,
+steering the tracking algorithm in using the classified object count in the final solution.
+In the example presented, segmentation is already satisfactory.
 
-## 3. Tracking:
+<a href="fig/uncertainty_01_1.png" data-toggle="lightbox"><img src="fig/uncertainty_01_1.png" class="img-responsive" /></a>
+
+However, examining the uncertainty layer, we see a high level of uncertainty.
+
+<a href="fig/uncertainty_01_2.png" data-toggle="lightbox"><img src="fig/uncertainty_01_2.png" class="img-responsive" /></a>
+
+Adding a few more labels we get a much better uncertainty estimate:
+
+<a href="fig/uncertainty_02.png" data-toggle="lightbox"><img src="fig/uncertainty_02.png" class="img-responsive" /></a>
+
+with the corresponding segmentation:
+<a href="fig/uncertainty_03.png" data-toggle="lightbox"><img src="fig/uncertainty_03.png" class="img-responsive" /></a>
+
+The same should be done for the Division Classifier if divisions are being tracked.
+
+Note that, although the tracking workflows usually expect prediction maps as input files, nothing prevents
+the user from loading (binary) segmentation images instead. In this case, we recommend to disable
+the smoothing filter by setting all **Sigmas** to 0 and the user should choose a **Threshold** of 0. 
+For performance reasons, it is, however, recommended to start the appropriate workflow when 
+the user has already a binary image.
+
+Finally, objects outside the given **Size Range** are filtered out for this and the following
+steps.
+
+***Please note that changing any of the following computations and the tracking will 
+be invalid (and deleted) when parameters in this step are changed.***
+
+In the following applets, connected groups of pixels will be treated as individual objects.
+
+## 3. Tracking: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 The remainder of this tutorial first discusses the tracking in case the **manual tracking
 workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec_automatic).
 
@@ -158,7 +210,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-### 3.1 Manual Tracking: {#sec_manual}
+### 3.1 Manual Tracking: <span style="color:red">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_manual}
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects. All
@@ -285,7 +337,7 @@ To most efficiently use the features described above, there are multiple shortcu
 | `r`            | Toggle objects layer visibility
 
 
-### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic}
+### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic} <span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 
 If 
 [CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Conservation Tracking)** 
@@ -343,9 +395,27 @@ pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are 
 
 To export the tracking result for further analysis, the user can choose between different options described next.
 
+## 4. Structured Learning: <span style="color:orange">&#9679;</span> {#sec_structured_learning}
+
+Automatic tracking uses a set of weights associated with detections, transitions, divisions, appearances, and disappearances to balance the components of the energy function optimized.
+Default weights can be used or they can be user specified. In structured learning we use the training annotations and all the classifiers to calculate optimal weights 
+for the given data and training - press the "Calculate Weights" button.
+To obtain a tracking solution press "Track!" button.
+The user can also input weights obtained from other similar data sets and by pass the learning procedure.   
+
+The following two diagrams show the difference of automatic tracking using the default weights and weights obtained by structured learning.
+Example areas of change are circled in red.
+
+<a href="./fig/slt_compare_automatic_circled.png" data-toggle="lightbox"><img src="./fig/slt_compare_automatic_circled.png" class="img-responsive" /></a>
+
+<a href="./fig/slt_compare_slt_circled.png" data-toggle="lightbox"><img src="./fig/slt_compare_slt_circled.png" class="img-responsive" /></a>
+
+ 
+To export the tracking result for further analysis, the user can choose between different options described next.
 
 
-## 4. Export: {#sec_export}
+
+## 5. Export: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_export}
 
 To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
 provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
@@ -403,7 +473,7 @@ be accessed via the ilastik project file:
 
 
 
-## Tracking in 3D+time Data {#sec_3d}
+## Tracking in 3D+time Data <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_3d}
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
@@ -428,7 +498,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 
 
-## References
+## References <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
 
 <a name="ref_conservation"> </a>
 \[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 
