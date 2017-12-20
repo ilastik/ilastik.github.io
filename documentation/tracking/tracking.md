@@ -74,7 +74,7 @@ background. The tutorial uses the dataset
 <a href="http://www.mitocheck.org">Mitocheck project</a>,
 which is available in the <a href="../../download.html">Download</a> section. 
 
-## 0. Segmentation: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## 0. Segmentation: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 The tracking workflows are based on the results of the 
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
 where the
@@ -104,7 +104,7 @@ by creating a new project.
 
 These two workflows comprise the following applets:
 
-## 1. Input Data: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## 1. Input Data: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 To begin, the raw data and the prediction maps (the results from the Pixel Classification workflow or segmented images from
 other sources) 
 need to be specified in the respective tab (in this case we choose the workflow with **Prediction Map** as input rather than
@@ -129,7 +129,7 @@ After specifying the raw data and its prediction maps, the latter will be smooth
 and thresholded in order to get a binary segmentation, 
 which is done in the **Thresholding and Size Filter** applet:
 
-## 2. Thresholding and Size Filter: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## 2. Thresholding and Size Filter: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span  class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 If the user chose a to start the workflow with prediction maps as input (rather than binary images,
 in which case this applet will not appear), 
 the user first has to threshold these prediction maps.
@@ -167,7 +167,7 @@ be invalid (and deleted) when parameters in this step are changed.***
 
 In the following applets, connected groups of pixels will be treated as individual objects.
 
-## 2.1 Uncertainty Layer <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## 2.1 Uncertainty Layer <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 While a correct segmanetation is enough for segmentation purposes,
 tracking workflows benefit from a segmentation with small objects' uncertainties,
 steering the tracking algorithm in using the classified object count in the final solution.
@@ -202,7 +202,7 @@ be invalid (and deleted) when parameters in this step are changed.***
 
 In the following applets, connected groups of pixels will be treated as individual objects.
 
-## 3. Tracking: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## 3. Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 The remainder of this tutorial first discusses the tracking in case the **manual tracking
 workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec_automatic).
 
@@ -210,7 +210,7 @@ Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) 
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-### 3.1 Manual Tracking: <span style="color:red">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_manual}
+### 3.1 Manual Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_manual}
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects. All
@@ -337,7 +337,7 @@ To most efficiently use the features described above, there are multiple shortcu
 | `r`            | Toggle objects layer visibility
 
 
-### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic} <span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic} <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 
 If 
 [CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Conservation Tracking)** 
@@ -395,7 +395,7 @@ pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are 
 
 To export the tracking result for further analysis, the user can choose between different options described next.
 
-## 4. Structured Learning: <span style="color:orange">&#9679;</span> {#sec_structured_learning}
+## 4. Structured Learning: <span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_structured_learning}
 
 Automatic tracking uses a set of weights associated with detections, transitions, divisions, appearances, and disappearances to balance the components of the energy function optimized.
 Default weights can be used or they can be user specified. In structured learning we use the training annotations and all the classifiers to calculate optimal weights 
@@ -415,9 +415,9 @@ To export the tracking result for further analysis, the user can choose between 
 
 
 
-## 5. Export: <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_export}
+## 5. Export - Manual Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span> {#sec_export}
 
-To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
+To export the tracking results for manual tracking, the **Tracking Result Export** applet
 provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
 as image/hdf-file/etc. 
 Recall that all objects get assigned random IDs (visualized as random colors) at the first frame of the image sequence
@@ -470,10 +470,42 @@ be accessed via the ilastik project file:
 
    * *Automatic Tracking*: In the Conservation Tracking folder, the events are stored as described in the table above.
 
+## 5. Export - Tracking: <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_Plugin}
 
 
+All export options can be found in the **Tracking Result Export** applet. The export settings will bring up extra dialogs which allows to transform the image, cutout subregions and select the image file type. To dispatch the actual export, click on "Export All". The Source drop down menu lets the user decide which export functionality he/she wants to use: 
 
-## Tracking in 3D+time Data <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span> {#sec_3d}
+**Object-Identities**: Exports the unique object-IDs of every object as image file.
+
+**Tracking-Results**: Saves the tracking results as images where each object is assigned a gray value corresponding to its lineage ID. It is also possible to transform and select subregions. 
+
+**Merger-Results**: Will export only the detections where the optimization decided that it contains more than one object.
+
+<img href="./fig/Export_01.png" data-toggle="lightbox"><img src="./fig/Export_01.png" align="middle" />
+
+**Plugin**: When choosing Plugin as Source in the Export Settings, it is possible to export it in formats, which can be read by external plugins.
+A full list and detailed information about the plugin is available when pressing "Choose Export Image Settings".
+
+* **Contours**: Plugin to export the ilastik tracking results as contours for branson and Zlatics Lab in Janelia HHMI.
+
+* **Contours with head**: Plugin to export the ilastik tracking results as contours with the head location for Branson and Zlatics Lab in Janelia HHMI.
+
+* **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table. This format is most common for spreadsheets and databases.
+
+
+* **CellTrackingChallenge**: Format used in the ISBI Cell Tracking Challenge. Images will be saved as tiff and the additionaly information as txt. For more details see <a href="http://www.celltrackingchallenge.net/submission-of-results.html"></a>
+
+* **H5-Event Sequence** Plugin to export the ilastik tracking results as H5 event sequence. Detailed description in [Export Manual Tracking](#sec_export).
+
+* **JSON**: JSON export for use of some tracking analysis tools developed by the ilastik tracking guys. 
+
+* **Fiji/Mamut**: Splits the result in XML and hdf5 so it can be used by the MaMut plugin in Fiji/ImageJ.
+	The XML file contains the tracking information for every cell, the hdf5 files the image-data used. Both files needs to be in the same folder when opened with MaMut. 
+
+* **Multi Worm Tracker**: Plugin to export the ilastik tracking results in the Multi-Worm Tracker format for Branson and Zlatics Lab in Janelia HHMI.
+
+
+## Tracking in 3D+time Data <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_3d}
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
@@ -498,7 +530,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 
 
-## References <span style="color:red">&#9679;</span><span style="color:blue">&#9679;</span><span style="color:green">&#9679;</span><span style="color:orange">&#9679;</span>
+## References <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span  class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 
 <a name="ref_conservation"> </a>
 \[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 
