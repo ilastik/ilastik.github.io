@@ -43,9 +43,6 @@ body > .container {
     font-weight: bold;
     text-transform: uppercase;
 }
-.toclevel-2 a span.hidden-in-sidebar{
-    display: none;
-}
 
 #main-logo {
     margin-right: 15px;
