@@ -63,16 +63,16 @@ Let's warm up with a small tutorial.
 ### 1. Input Data
 Similarly to other ilastik workflows, you can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
 The image import procedure is detailed in [Data Selection]({{site.baseurl}}/documentation/basics/dataselection.html).
-Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing 
+Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing
 [Data Selection]({{site.baseurl}}/documentation/basics/batch.html#batchprocessing_unseen_images).
 In the following tutorial we will use a dataset of microscopic
 cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
 This dataset is publicly available at the following <a href = "http://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
 
-In this tutorial we have already imported some of the images in the file `counting-tutorial.ilp`, that can be found in the tutorials folder.
+In this tutorial we have already imported an image in the project file <a href = "http://data.ilastik.org/counting/counting-tutorial.zip">counting-tutorial.ilp</a>.
 As a first step, let us just load this project. You should be able to start from the window below.
 
-<a href="fig/blue_totorial0.jpg" data-toggle="lightbox"><img src="fig/blue_totorial0.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial0.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial0.jpg" class="img-responsive" /></a>
 
 ### 2. Feature Selection {#sec_feature_selection}
 
@@ -82,13 +82,13 @@ The second step is to define some features. Feature selection is similar to the
 The image below shows an example of feature selection. In particular, blob-detectors like the *Laplacian of Gaussians* or line-detectors like the *Hessian of Gaussians* are appropriate for blob like structure such as cells.
 The figure below shows the response of the *Laplacian of Gaussians* filter.
 
-<a href="fig/blue_totorial_features2-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial_features2-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial_features2-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial_features2-red.jpg" class="img-responsive" /></a>
 
 It is appropriate to match the size of the object and of the cluster of objects with the scale of the features as shown in the figure below.
 For further details on feature selection please refer to [How to select good
 features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting_good_features).
 
-<a href="fig/blue_totorial_features.jpg" data-toggle="lightbox"><img src="fig/blue_totorial_features.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial_features.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial_features.jpg" class="img-responsive" /></a>
 
 ### 3. Interactive counting {#sec_interactive_counting}
 
@@ -111,18 +111,18 @@ This is  the first interaction with the core of this workflow. The purpose of th
 
 To begin placing dot annotation select the red **Foreground** label and then on click on the image. The annotation has to be placed **close to the center** of an object (cell) as in the figure below.
 
-<a href="fig/blue_totorial3-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial3-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial3-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial3-red.jpg" class="img-responsive" /></a>
 
 Given the dotted annotations, a smooth training density is computed by placing a normalized Gaussian function centered at the location of each dot. The scale of the Gaussian is a user parameter **Sigma** which should roughly match the object size. To help deciding an appropriate value for this parameter you will see the that the size of the **crosshair-cursor** changes accordingly to the chosen sigma (in the left panel). In addition, the density which is used during training is saved in the **LabelPreview** layer as shown in the figure below.
 
-<a href="fig/blue_totorial4-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial4-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial4-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial4-red.jpg" class="img-responsive" /></a>
 
 
 <!-- IMAGE: Good sigma/dot, bad sigma/dot -->
 Different choices for the parameter **Sigma** are shown below. On the left image, the value of sigma is
 chose too small, while on the right the value of sigma is too large. The center image shows a well chosen sigma.
 
-<a href="fig/different-sigmas2.jpg" data-toggle="lightbox"><img src="fig/different-sigmas2.jpg" class="img-responsive" /></a>
+<a href="fig/different-sigmas.jpg" data-toggle="lightbox"><img src="fig/different-sigmas.jpg" class="img-responsive" /></a>
 
 
 **NOTE**: Large values for sigma can impact the required computation time: consider using a different counting approach, such as the
@@ -138,14 +138,14 @@ Background labeling works the same as in the
 
 To activate this interaction select the green **Background** label and give broad strokes on the image, as in the figure below, marking unimportant areas or regions where the predicted density should be 0.
 
-<a href="fig/blue_totorial6.jpg" data-toggle="lightbox"><img src="fig/blue_totorial6.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial6.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial6.jpg" class="img-responsive" /></a>
 
 
 ### 4 Live Update Mode {#sec_brushing_interaction_mode}
 After some labels for the objects and the background have been given, switch the **Live-Update** on
 (using the *Live Update* button), this will trigger a first prediction, displayed in the **Prediction-Layer**.
 
-<a href="fig/blue_totorial7-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial7-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial7-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial7-red.jpg" class="img-responsive" /></a>
 
 If the Live Update Mode is active, every single change in the training data (e.g. placing new labels or changing parameters)
 causes a new prediction - thus it may be faster to toggle it OFF again when you plan extensive modifications.
@@ -169,7 +169,7 @@ The new box will be added automatically to the **Box List**.
 Boxes show the object count for the region on the upper right corner and beside the box name in the Box List as it is shown in the
 next figure.
 
-<a href="fig/blue_totorial8-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial8-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial8-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial8-red.jpg" class="img-responsive" /></a>
 
 Boxes can be:
 
@@ -181,7 +181,7 @@ You can now drag the box in a different position by clicking and moving the mous
 
 * **Deleted**: to delete a box either click on the delete button (a red cross) on the BoxList or press `Del` while selecting the box
 
-* **Configured**: you can configure the appearance (color, fontsize, fontcolor etc...) of each individual box (or of all boxes at the same time), by clicking on the colored rectangle in the BoxList. The interaction dialog for the box properties is shown below.
+* **Configured**: you can configure the appearance (color, fontsize, fontcolor etc...) of each individual box (or of all boxes at the same time), by double-clicking on the colored rectangle in the BoxList. The interaction dialog for the box properties is shown below.
 
 You can continue adding boxes and provide new annotations (dots or brushes) for object centers and background until you are satisfied of the counting results as shown by the boxes.
 
@@ -189,14 +189,14 @@ You can continue adding boxes and provide new annotations (dots or brushes) for 
 
 ### 6 Counting the entire image
 
-Let us switch to another image by using the **Current View** menu on the left. As is shown in the image below, this image is free from annotations and the prediction of the density is not yet computed. However, the algorithm is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
+Let us switch to another image by using the **Current View** menu on the left (Note that this is only available, if more than one dataset is loaded into the project). As is shown in the image below, this image is free from annotations and the prediction of the density is not yet computed. However, the algorithm is already trained and therefore we are ready to compute the density for this new image. As before, it is possible to start the prediction by toggling the Live Update button and monitor the results with a box. However, let us press the **Update total density button** on the left. This button estimates the predicted count **for the entire image**.
 
 If the training labels are sufficient, we should obtain a count similar to what is shown in the image below that matches the number of objects in the images.
 
 **Note**: In a real world scenario, you may need to distribute several annotations across many images to obtain accurate counts for all the images in the dataset.
 
 
-<a href="fig/blue_totorial12-red.jpg" data-toggle="lightbox"><img src="fig/blue_totorial12-red.jpg" class="img-responsive" /></a>
+<a href="fig/blue_tutorial12-red.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial12-red.jpg" class="img-responsive" /></a>
 
 **You are now ready to use the workflow on your data!**
 Please continue to read if you want to know some advanced features.
@@ -274,7 +274,7 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
 We provide simple [Instructions]({{site.baseurl}}/documentation/basics/installation.html) on doing so, note
-that it this is not required for the basic functionality of this workflow. 
+that it this is not required for the basic functionality of this workflow.
 
 ## 7. References {#sec_reference}
 
