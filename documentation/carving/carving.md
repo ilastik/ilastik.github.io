@@ -49,7 +49,7 @@ clearly visible or in the case of very noisy data, a boundary detection filter
 can be applied to improve results - this is the topic of the following section.
 
 **Example Data:** In the following sections, we use a volume of mouse retina EM data courtesy of Winfried Denk, et al.  
-The data can be found on the [downloads page]({{site.baseurl}}/download.html).
+The data can be found on the [downloads page]({{site.baseurl}}/download.html) or download it directly [here](http://data.ilastik.org/helmstaedter.zip).
 
 ## Constructing a good boundary map
 
