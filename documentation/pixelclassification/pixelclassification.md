@@ -16,6 +16,9 @@ the image into different objects, such as for example individual cells.
 The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their surrounding. The algorithm is applicable for a wide range of segmentation problems that
 fulfill these properties.
 
+In order to follow this tutorial, you can download the used example project <a href="http://data.ilastik.org/pixelClassification_2dcells.zip">here</a>.
+Used image data is courtesy of Daniel Gerlich.
+
 A typical cell segmentation use case is depicted below.
 
 <a href="snapshots/training2.png" data-toggle="lightbox"><img src="snapshots/training2.png" class="img-responsive" /></a>
