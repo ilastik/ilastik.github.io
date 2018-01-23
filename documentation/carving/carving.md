@@ -8,6 +8,11 @@ weight: 4
 ---
 # Carving
 
+
+## Carving Demo (4 minutes)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xGyTriPQXHI" frameborder="0" allowfullscreen></iframe>
+
 ## How it works, what it can and cannot do
 
 The seeded watershed algorithm is an image segmentation algorithm for
@@ -49,7 +54,7 @@ clearly visible or in the case of very noisy data, a boundary detection filter
 can be applied to improve results - this is the topic of the following section.
 
 **Example Data:** In the following sections, we use a volume of mouse retina EM data courtesy of Winfried Denk, et al.  
-The data can be found on the [downloads page]({{site.baseurl}}/download.html).
+The data can be found on the [downloads page]({{site.baseurl}}/download.html) or download it directly [here](http://data.ilastik.org/helmstaedter.zip).
 
 ## Constructing a good boundary map
 
@@ -57,7 +62,7 @@ Assuming the user has already created or loaded an existing
 ilastik project and added a dataset, the first step is to switch to the **Preprocessing Applet**
 where the filter selection and computation are performed.
 
-<a href="snapshots/preprocessing1-zoomed.png" data-toggle="lightbox"><img src="snapshots/preprocessing1-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-1.png" data-toggle="lightbox"><img src="screenshots/carving-1.png" class="img-responsive" /></a>
 
 Here the user can select from several different boundary types.
 * Bright lines: this option should be selected if the boundaries in the image appear as bright lines.
@@ -70,7 +75,7 @@ In the example image above, a good boundary choice would clearly be **Dark lines
 
 To check if the computed boundaries visually correspond with the edges in the image the visibility of the **Filtered Data** layer
 can be toggled by clicking on the small eye in that layer:
-<a href="snapshots/preprocessing2-zoomed.png" data-toggle="lightbox"><img src="snapshots/preprocessing2-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-2.png" data-toggle="lightbox"><img src="screenshots/carving-2.png" class="img-responsive" /></a>
 If the boundary map looks too noisy or overly smooth the size of the smoothing kernel needs to be changed with the **sigma** option.
 The **Filtered Data** layer is updated when the user changes the size of the smoothing kernel. This setting should be changed
 until a satisfactory boundary map is obtained.
@@ -89,7 +94,7 @@ After the necessary preprocessing the interactive segmentation of objects in the
 
 Two different types of seeds exist, **Object seeds** and **Background seeds** - per default the background seed receives a higher priority such that the background seed is preferred in the case of ambiguous boundaries.
 
-<a href="snapshots/labeling1-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling1-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-3.png" data-toggle="lightbox"><img src="screenshots/carving-3.png" class="img-responsive" /></a>
 
 After marking the objects of interest with a object seed and the outside
 with a background seed the button **Segment** can be clicked to obtain a seeded
@@ -135,7 +140,7 @@ in the labeling applet on the left side.
   boundaries in the image have values between 0 and 255). Usually it is not
   necessary to change this parameter.
   
-<a href="snapshots/labeling2-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling2-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-4.png" data-toggle="lightbox"><img src="screenshots/carving-4.png" class="img-responsive" /></a>
 
 
 ## Saving and loading segmented objects
@@ -144,27 +149,27 @@ Once the user has successfully segmented an object, the segmentation result
 can be stored by clicking on the **Save As** button. A dialog will pop up that
 asks for the objects name:
 
-<a href="snapshots/labeling3-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling3-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-5.png" data-toggle="lightbox"><img src="screenshots/carving-5.png" class="img-responsive" /></a>
 
 After saving an object, all existing markers will be removed to allow segmenting a new
 object from scratch. To see which objects have already been segmented and saved the **Completed Segments** overlay
 can be enabled by clicking on the little eye in that layer:
 
-<a href="snapshots/labeling4-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling4-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-6.png" data-toggle="lightbox"><img src="screenshots/carving-6.png" class="img-responsive" /></a>
 
 already segmented (and saved) objects will be highlighted to prevent segmenting something twice.
 
 Sometimes it is necessary to refine the segmentation of an already saved object. To do so, click
 on the **Browse objects** button and load the corresponding object. 
 
-<a href="snapshots/labeling5-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling5-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-7.png" data-toggle="lightbox"><img src="screenshots/carving-7.png" class="img-responsive" /></a>
 
 Another way to load or delete a saved object is by right-clicking on the object displayed in the **Completed Segments** overlay
 and selecting the corresponding option.
-<a href="snapshots/labeling6-zoomed.png" data-toggle="lightbox"><img src="snapshots/labeling6-zoomed.png" class="img-responsive" /></a>
+<a href="screenshots/carving-8.png" data-toggle="lightbox"><img src="screenshots/carving-8.png" class="img-responsive" /></a>
 
 The mesh of the object can be exported as well. Just right-click on the object you want in the **Completed Segments** overlay:
-<a href="snapshots/export_meshes.png" data-toggle="lightbox"><img src="snapshots/export_meshes.png" class="img-responsive" /></a>
+<a href="screenshots/carving-9.png" data-toggle="lightbox"><img src="screenshots/carving-9.png" class="img-responsive" /></a>
 
 ## Post-processing
 Wonderful users of ilastik have created these tools to post-process carving results and made them available for all:

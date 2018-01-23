@@ -1,0 +1,68 @@
+1
+00:00:03,080 --> 00:00:09,080
+Open ilastik and choose the Carving workflow
+
+2
+00:00:14,020 --> 00:00:20,060
+Load your dataset (here a volume of mouse retina EM data, Winfried Denk, et al.)
+
+3
+00:00:24,140 --> 00:00:30,000
+Go to the Preprocessing applet and choose the right boundary type for your data
+
+4
+00:00:33,000 --> 00:00:39,020
+Toggle Filtered Data layer to check if the computed boundaries correspond to the edges in the image
+
+5
+00:00:40,020 --> 00:00:48,060
+Change the sigma of the smoothing kernel if the boundary map is too noisy or overly smooth
+
+6
+00:00:52,040 --> 00:00:56,060
+Click the Run button to apply preprocessing to your data
+
+7
+00:00:59,980 --> 00:01:15,040
+Go to the Labeling applet and mark the object of interest with an 'Object' seed and the outside with a 'Background' seed
+
+8
+00:01:16,060 --> 00:01:23,000
+Click Segment to start a seeded watershed segmentation
+
+9
+00:01:26,980 --> 00:01:53,060
+Scroll over your data and refine segmentation
+
+10
+00:02:11,020 --> 00:02:16,020
+Have a closer look at the 3D view of your object
+
+11
+00:02:20,000 --> 00:02:26,520
+Save the segmented object
+
+12
+00:02:28,400 --> 00:02:32,020
+See already segmented objects by enabling the Completed Segments overlay
+
+13
+00:02:33,040 --> 00:02:42,000
+Segment another object
+
+14
+00:03:12,980 --> 00:03:20,020
+Show both objects in 3D
+
+15
+00:03:32,020 --> 00:03:39,020
+Save the second object
+
+16
+00:03:42,020 --> 00:03:46,020
+Click Completed Segments to show segmented objects
+
+17
+00:03:47,000 --> 00:03:57,080
+Export mesh for 'object02'
+
