@@ -8,6 +8,10 @@ weight: 0
 ---
 # Pixel Classification
 
+## Pixel Classification Demo (3 minutes)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5N0XYW9gRZY" frameborder="0" allowfullscreen></iframe>
+
 ## How it works, what it can do
 
 The pixel classification workflow can classify the pixels of an image given
@@ -15,6 +19,9 @@ user annotations. The classification of the image pixels can be used to segment
 the image into different objects, such as for example individual cells.
 The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their surrounding. The algorithm is applicable for a wide range of segmentation problems that
 fulfill these properties.
+
+In order to follow this tutorial, you can download the used example project <a href="http://data.ilastik.org/pixelClassification_2dcells.zip">here</a>.
+Used image data is courtesy of Daniel Gerlich.
 
 A typical cell segmentation use case is depicted below.
 
@@ -91,11 +98,13 @@ To access the "Import Labels" feature in the GUI, do the following:
 <a href="snapshots/labels_context_menu.png" data-toggle="lightbox"><img src="snapshots/labels_context_menu.png" class="img-responsive" /></a>
 
 ## Window Leveling {#window}
+
+<a href="snapshots/window_leveling.png" data-toggle="lightbox">
+    <img src="snapshots/window_leveling.png" class="img-responsive" style="float: left; margin-right:20px; margin-bottom:10px"/></a>
 If labeling grayscale images the **Training** applet has an additional option: **Window Leveling**.  This option can facilitate the labeling but has no impact on the training process itself. It can be used to adjust the data range used for visualization and thus helps to bring out small difference in contrast which might be useful when placing the labels. Pressing the left mouse button while moving the mouse back and forth changes the window width (data range) used for display. Moving the mouse in the left-right plane changes the window level, i.e. the center of the window. Of course, combinations of back-forth and left-right movements are possible to find just the right contrast needed. Pressing the right mouse button leads to an automatic range adjustment based on the intensity values currently displayed. To activate this feature either press the button outlined in the image below or use its keyboard shortcut (default 't').
 
-<a href="snapshots/window_leveling.png" data-toggle="lightbox"><img src="snapshots/window_leveling.png" class="img-responsive" /></a>
-
 Note: if you can not see the button, you are either not working with grayscale images or you did not set the **Channel Display** to **Grayscale** in the **Dataset Properties** of your **Raw Data**.
+<br><br>
 
 ## Processing new images in batch mode
 After the classifier is trained, it can be applied to unseen images as batch processing (without further training). This follows a general procedure in ilastik and is demonstrated [here]({{site.baseurl}}/documentation/basics/batch.html).  
