@@ -8,6 +8,10 @@ weight: 0
 ---
 # Pixel Classification
 
+## Pixel Classification Demo (3 minutes)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5N0XYW9gRZY" frameborder="0" allowfullscreen></iframe>
+
 ## How it works, what it can do
 
 The pixel classification workflow can classify the pixels of an image given
