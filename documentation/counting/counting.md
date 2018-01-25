@@ -232,7 +232,7 @@ The forest parameters exposed to the user are:
 
 <a href="fig/rf-algo.jpg" data-toggle="lightbox"><img src="fig/rf-algo.jpg" class="img-responsive" /></a>
 
-### Support Vector Regression {#sec_svr}
+<!-- ### Support Vector Regression {#sec_svr}
 
 * Requires an installation of CPLEX on the system
 * Maybe slower but more robust and better generalization
@@ -252,7 +252,7 @@ which will be taken into account for the training.
 
 * **C:** How much impact should individual and box errors do compared to w itself, this will likely only change results if you set C to low values.
 * **epsilon:** The amount of error that will be tolerated for individual pixels, this regularizes the result,
-though the defaults should already create good results.
+though the defaults should already create good results. -->
 
 
 
