@@ -1,0 +1,68 @@
+1
+00:00:03,319 --> 00:00:07,319
+Choose a workflow: Here we choose "Cell Density Counting"
+
+2
+00:00:07,959 --> 00:00:13,979
+Choose where to save your ilastik project
+
+3
+00:00:14,828 --> 00:00:21,128
+Add your data [VisRec Project, University of Oxford]
+
+4
+00:00:23,064 --> 00:00:30,684
+Select a set of features
+
+5
+00:00:35,479 --> 00:00:45,719
+Label the objects you want to count
+
+6
+00:00:47,451 --> 00:00:53,331
+Adjust the "Sigma" value to fit your data, if necessary
+
+7
+00:00:54,172 --> 00:00:59,072
+Label the background as well  
+
+8
+00:01:00,139 --> 00:01:04,639
+Enable "Live Update" to train a classifier with the current labels
+
+9
+00:01:05,879 --> 00:01:13,639
+In the list of image layers you can adjust the current view 
+
+10
+00:01:15,146 --> 00:01:27,506
+Add boxes to verify the trained classifier and adjust your labels and/or the chosen "Sigma"
+
+11
+00:01:28,979 --> 00:01:34,079
+Click "Update total Density" to get the total count estimate for the current view
+
+12
+00:01:37,617 --> 00:01:42,617
+"Choose Export Image Settings... " 
+
+13
+00:01:43,959 --> 00:01:47,299
+Adjust export settings like "Subregion", ...
+
+14
+00:01:48,199 --> 00:01:54,959
+ various data transformations, ...
+
+15
+00:01:55,839 --> 00:02:01,979
+and the output file and format
+
+16
+00:02:05,239 --> 00:02:13,479
+Finally you can either "Export All" datasets at once or export each dataset individually
+
+17
+00:02:14,919 --> 00:02:21,119
+In the list of image viewers you can checkout a preview, as well as the exported data 
+
