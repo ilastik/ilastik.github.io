@@ -61,6 +61,7 @@ On the right you can see all your datasets listed by their nickname, as defined 
 - **Output File Info:** Use these controls to select an output file format and location.  A few "magic" placeholders can be used in these settings.  These are useful when you are exporting multiple datasets:
   - *{dataset_dir}* - the directory containing the original raw dataset
   - *{nickname}* - the ilastik nickname of the raw dataset (usually the input file name for single file datasets and a combination of input file names for stacks)
+  - *{result_type}* - the selected ilastik result source
   - *{roi}* - The region-of-interest as specified in the "Cutout Subregion" settings.
   - *{x_start}*, *{x_stop}*, *{y_start}*, *{y_stop}*, etc - Specific axis start/stop boundaries for the region-of-interest
   - *{slice_index}* - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
