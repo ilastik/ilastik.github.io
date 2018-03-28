@@ -99,7 +99,7 @@ the names of the files that will be imported as an image stack.
 
 ## Supported File Formats {#formats}
 
-The main file format used by ilastik is [HDF5](http://www.hdfgroup.org/HDF5/whatishdf5.html). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5.
+The main file format used by ilastik is [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5.
 
 Widely used image formats such as
  * Microsoft Windows bitmap image file (`bmp`),
