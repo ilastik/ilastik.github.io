@@ -1,16 +1,31 @@
 ---
 layout: documentation
-title: Tracking (Automatic and Manual)
+title: Tracking 
 tagline: Tracking
 category: "Documentation"
 group: "workflow-documentation"
 weight: 2
 ---
-# Automatic Tracking and Manual Tracking
+# Tracking
 
 ## Overview and Scope
 
-Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
+Ilastik provides different tracking workflows, marked with a specific color. Each workflow share a few components (*applets*) for
+preprocessing the data, described in this tutorial. 
+
+<ul>
+<li> Manual Tracking Workflow <span style="color:red">&#9679;</span> </li>
+<li> Automatic Tracking Workflow (most general, for dividing objects) <span style="color:blue">&#9679;</span> </li>
+<li> Animal Tracking Workflow (for animals or other non-dividing objects) <span style="color:green">&#9679;</span> </li>
+<li> Tracking with Learning Worfklow (automatic tracking with more flexible parameters) <span style="color:orange">&#9679;</span> </li>
+</ul>
+
+The colored dots will guide you to the documentation sections for the workflow you need. The workflow has to selected at the start of ilastik.
+Depending on this choice, this tutorial will diverge later.
+
+<a href="./fig/ilastik_overview.png" data-toggle="lightbox"><img src="./fig/ilastik_overview.png" class="img-responsive" /></a>
+
+<!-- Ilastik provides two different tracking workflows, the manual/semi-automatic tracking and the automatic tracking.
 While the fully [**automatic tracking workflow**](#sec_automatic)
 is used to track multiple (dividing) objects in presumably big datasets, the purpose of the [**manual tracking
 workflow**](#sec_manual) is to track objects *manually* from previously detected objects. 
@@ -21,42 +36,50 @@ assignments such that the user only has to link objects where the tracking is am
 Although they are different workflows, automatic and manual tracking share a few 
 components (*applets*) for preprocessing the dataset.
 This tutorial describes those shared applets for both workflows simultaneously before providing documentation for the
-specific manual/semi-automatic or (fully) automatic tracking applets.
+specific manual/semi-automatic or (fully) automatic tracking applets. -->
 
-**Please note that the _automatic_ tracking workflow only works on machines where CPLEX is installed
+All tracking in ilastik is done as "tracking-by-assignment", i.e. on pre-detected objects. The detection (segmentation) itself can be done in ilastik (Pixel Classification workflow) 
+or in another tool of your choice. If the segmentation is not perfect and some of the objects get merged, ilastik tracking workflows can resolve merges of reasonable size.
+
+The fully [**automatic tracking workflow**](#sec_automatic)
+is used to track multiple (dividing) objects in presumably big datasets, while the purpose of the [**manual tracking workflow**](#sec_manual) is to track *manually* or rather semi-automatically. The latter may be useful for high-quality tracking of small datasets or for
+ground truth acquisition. To speed up this process, sub-tracks can be generated automatically for trivial
+assignments such that the user only has to link objects where the tracking is ambiguous. 
+[**Tracking with learning**](#sec_structured_learning) is an even more advanced version of the automatic tracking. It allows you to provide short ground truth sub-tracks to automatically adjust the parameters of automatic tracking using a structured learning approach as described [here](http://papers.nips.cc/paper/4484-structured-learning-for-cell-tracking) and [here](http://arxiv.org/abs/1206.6421). The ground truth sub-tracks are provided using the applets from the manual tracking workflow, while the rest of the training is performed as in the automatic tracking.
+Finally, [**animal tracking**](#sec_animal) workflow is the tool for tracking non-dividing objects.
+
+**Please note that the _tracking with learning_ workflow only works on machines where CPLEX or GUROBI is installed
 additional to ilastik. Instructions on how to install CPLEX are given 
 [here]({{site.baseurl}}/documentation/basics/installation.html#cplex-setup).**
 
-The manual tracking and automatic tracking workflows both build on the results of the
+<!-- The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 From the objects detected in this workflow, tracks (object identities linked over time) are either created by the user
 in a semi-automatic fashion or by the automatic tracking algorithm, respectively,
 optionally allowing for object divisions
-(e.g. cell mitosis). 
+(e.g. cell mitosis).  -->
 
 
-<a href="./fig/00_overview.jpg" data-toggle="lightbox"><img src="./fig/00_overview.jpg" class="img-responsive" /></a>
+<!-- <a href="./fig/00_overview.jpg" data-toggle="lightbox"><img src="./fig/00_overview.jpg" class="img-responsive" /></a> -->
 
 Just as in the Pixel Classification, both 2D(+time) and 3D(+time) data may be processed. 
 To learn about how to navigate in temporal data ( *scroll through space or time, 
 enable/disable overlays, change overlay capacity, etc.* ) please read the
 [Navigation guide]({{site.baseurl}}/documentation/basics/navigation.html).
 
-We will now step through a tutorial how to track proliferating cells both in 2D+time
-and 3D+time data, which are both provided in the 
+We will now step through the tutorial on how to track proliferating cells both in 2D+time
+and 3D+time datasets, which are both provided in the 
 [Download]({{site.baseurl}}/download.html)
 section. 
-The user has to decide already on the startup of ilastik whether he/she wants to *manually* track
-objects or the *automatic* tracking object should be used. Depending on this choice, this tutorial will
-diverge later.
 
-Before starting the tracking workflows, the data has to be segmented into fore- and 
-background. The tutorial uses the dataset 
+Before starting the tracking workflows, the objects to be tracked need to be segmented. To fully illustrate ilastik capabilities,
+we will walk through the common parts of the workflows with both cell and animal data. We use the mitocheck dataset, 
 `mitocheck_94570_2D+t_01-53.h5` kindly provided by the
 <a href="http://www.mitocheck.org">Mitocheck project</a>,
-which is available in the <a href="../../download.html">Download</a> section. 
+which is available in the <a href="../../download.html">Download</a> section, and a video of fruitflies in a bowl, kindly provided by the 
+Branson Lab at HHMI Janelia Research Campus. 
 
-## 0. Segmentation:
+## 0. Segmentation: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 The tracking workflows are based on the results of the 
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
 where the
@@ -65,35 +88,46 @@ labels and providing examples through brush strokes.
 Please find a detailed
 description of this workflow 
 [here]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
-and hints on how to load time-series datasets are provided <a href="../basics/dataselection.html">here</a>.
+and hints on how to load time-series datasets <a href="../basics/dataselection.html">here</a>.
 
-In this example, we paint some background
-pixels with Label 1 (red by default) and cell nuclei are marked with Label 2 
-(green by default). When happy with the live segmentation, the user applies
-the learned model to the entire dataset by exporting the results in the **Prediction Export** applet 
-to (preferably) an hdf5 file such as  
-`mitocheck_94570_2D+t_01-53_export.h5`. 
+For the cells data (on the left), we label background as Label 1 (red by default) and foreground (cell nuclei) as Label 2 (green by default). In the fly bowl data,
+we do the opposite and label background green and the flies are red. When segmenting, keep an eye on the closely located objects in the later, more crowded, time frames. 
+Try to get the objects as well separated as possible. While ilastik 
+tracking can resolve some merges after tracking, it's always better to push the segmentation as far as you can. 
+
+<div class="row" style="margin-bottom:10px">
+ <div class="col-md-6">
+<a href="fig/02_training_widescreen.png" data-toggle="lightbox"><img src="fig/02_training_widescreen.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="../animalTracking/fig/trainingSegmentation.png" data-toggle="lightbox"><img src="../animalTracking/fig/trainingSegmentation.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
+
+When happy with the live prediction, apply
+the classifier to the entire dataset by exporting the results in the **Prediction Export** applet 
+to (preferably) an hdf5 file such as `mitocheck_94570_2D+t_01-53_export.h5`. If you export probability maps, you can threshold them later in the tracking workflows.
 To directly showcase the tracking workflows, we provide this file with the data.
 
-<a href="./fig/02_training.jpg" data-toggle="lightbox"><img src="./fig/02_training.jpg" class="img-responsive" /></a>
+<div class="row" style="margin-bottom:10px">
+ <div class="col-md-6">
+<a href="fig/Export_PC.png" data-toggle="lightbox"><img src="fig/Export_PC.png" width="100%" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="../animalTracking/fig/exportSegmentation.png" data-toggle="lightbox"><img src="../animalTracking/fig/exportSegmentation.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
 
-Now, one of the tracking workflows (Manual Tracking or Automatic Tracking, if 
-[CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html) ) 
-can be launched from the start screen of ilastik
-by creating a new project.
 
-<a href="./fig/04_start-workflow.jpg" data-toggle="lightbox"><img src="./fig/04_start-workflow.jpg" class="img-responsive" /></a>
+Now, one of the tracking workflows can be launched from the start screen of ilastik by creating a new project.
 
-These two workflows comprise the following applets:
+Let's go through the applets of the tracking workflows one by one. Remember, that the color codes correspond to workflows where the applets are present.
 
-## 1. Input Data:
+## 1. Input Data: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 To begin, the raw data and the prediction maps (the results from the Pixel Classification workflow or segmented images from
-other sources) 
-need to be specified in the respective tab (in this case we choose the workflow with **Prediction Map** as input rather than
+other sources) need to be specified in the respective tab (in this case we choose the workflow with **Pixel Prediction Map** as input rather than
 binary image). In particular, the file 
-`mitocheck_94570_2D+t_01-53.h5` 
-is added as **Raw Data** and the dataset in
-`mitocheck_94570_2D+t_01-53_export.h5`
+`mitocheck_94570_2D+t_01-53.h5` is added as **Raw Data** and the dataset in `mitocheck_94570_2D+t_01-53_export.h5`
 is loaded as **Prediction Maps**.
 
 The tracking workflow expects the image sequence to be loaded as a time-series data containing a time axis;
@@ -111,29 +145,30 @@ After specifying the raw data and its prediction maps, the latter will be smooth
 and thresholded in order to get a binary segmentation, 
 which is done in the **Thresholding and Size Filter** applet:
 
-## 2. Thresholding and Size Filter:
-If the user chose a to start the workflow with prediction maps as input (rather than binary images,
-in which case this applet will not appear), 
-the user first has to threshold these prediction maps.
+## 2. Thresholding and Size Filter: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span  class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
+If you choose to start the workflow with pixel prediction maps as input (rather than binary images,
+in which case this applet will not appear), you first has to threshold these prediction maps. The pixel prediction maps 
+store the per-pixel probability of the foreground and background classes. The **Sigma** value allows you to smooth the probability maps,
+with potentially different sigma values along different axis (which comes in very useful for anisotropic data). The smoothed
+probabilities are **thresholded** at the specified value, here 0.5. Depending on the quality of your pixel prediction map, you may want
+to change the thresholding value to be bigger or smaller. The applet can also perform hysteresis thresholding, see the documentation
+of the [Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html) for more details on that. 
+Finally, objects outside the given **Size Range** are filtered out for this and the following steps.
+
 First, the channel of the prediction maps which contains the foreground 
 predictions has to be specified. 
-For instance, if in the Pixel Classification workflow,
-the user chose Label 1 (red by default) to mark foreground, **Input Channel** will be 0, 
-otherwise, if Label 2 (green by default) was taken as the foreground label, then Channel
-takes value 1. Thus, we choose the Input Channel to be 1 in this tutorial. If the correct 
-channel was selected, the foreground objects appear in distinct colors after pressing **Apply**:
+For instance, in the left image the green channel holds the foreground (cells), while in the right image the red channel holds the foreground (flies). 
+If the correct channel was selected, the foreground objects appear in distinct colors after pressing **Apply**:
 
-<a href="./fig/07_thresholding-01.jpg" data-toggle="lightbox"><img src="./fig/07_thresholding-01.jpg" class="img-responsive" /></a>
+<div class="row" style="margin-bottom:10px">
+ <div class="col-md-6">
+<a href="fig/07_thresholding-01.png" data-toggle="lightbox"><img src="fig/07_thresholding-01.png" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="../animalTracking/fig/thresholdTracking.png" data-toggle="lightbox"><img src="../animalTracking/fig/thresholdTracking.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
 
-The prediction maps are storing a probability for each single pixel/voxel to be foreground. 
-These probabilities may be smoothed over the neighboring probabilities with a Gaussian filter,
-specified by the **Sigma** values (allowing for anisotropic filtering).
-The resulting probabilities are finally **thresholded** at the value specified. The default
-values for the smoothing and thresholding should be fine in most of the cases. 
-Please consult the documentation of the
-[Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html)
-for a more detailed description of this applet, including an explanation of the **Two thresholds** 
-option.
 
 Note that, although the tracking workflows usually expect prediction maps as input files, nothing prevents
 the user from loading (binary) segmentation images instead. In this case, we recommend to disable
@@ -141,24 +176,147 @@ the smoothing filter by setting all **Sigmas** to 0 and the user should choose a
 For performance reasons, it is, however, recommended to start the appropriate workflow when 
 the user has already a binary image.
 
-Finally, objects outside the given **Size Range** are filtered out for this and the following
-steps.
 
 ***Please note that all of the following computations and the tracking will 
 be invalid (and deleted) when parameters in this step are changed.***
 
-In the following applets, connected groups of pixels will be treated as individual objects.
+Now that we have extracted objects from pixels, let's proceed with classification and then tracking.
+
+## 3. Division and Object Count classifiers
+To set the tracking problem up correctly, you need to train ilastik to recognize divisions and object mergers.
+The two applets responsible for that are just [object classification]({{site.baseurl}}/documentation/objects/objects.html) applets, where we have already selected
+the most relevant object features. 
+
+### 3.1 Division detection <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
+This applet does not appear in the animal tracking worklfow, so we will only illustrate it with cell data. Two classes are already
+added for you, "Dividing" and "Not dividing". To mark a division, click on the _last frame where the dividing object is still one_. Then advance
+one time frame and label the daughter cells as "Not dividing". In the Mitocheck dataset, let's look at frame 10, where a division happens in upper left corner.
+
+<div class="row" style="margin-bottom:10px">
+ <div class="col-md-6">
+<a href="fig/division_class_label_div.png" data-toggle="lightbox"><img src="fig/division_class_label_div.png" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="fig/division_class_label_not_div.png" data-toggle="lightbox"><img src="fig/division_class_label_not_div.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
+
+Obviously, you have to label more than one division to train the classifier. The Uncertainty layer, described below, should help you get to the right amount of
+training annotations.
+
+### 3.2 Object Count classification <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
+
+As you add labels to this classification applet, you will see "False Detection", "1 object", "2 objects", etc. 
+
+<div class="row" style="margin-bottom:10px" >
+ <div class="col-md-6">
+<a href="fig/object_count_mito.png" data-toggle="lightbox"><img src="fig/object_count_mito.png" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+<a href="../animalTracking/fig/countClassifierTracking.png" data-toggle="lightbox"><img src="../animalTracking/fig/countClassifierTracking.png" width="100%" class="img-responsive" /></a>
+</div>
+</div>
 
 
-## 3. Tracking:
-The remainder of this tutorial first discusses the tracking in case the **manual tracking
-workflow** was started, and then reviews the tracking applet of the [**automatic tracking workflow**](#sec_automatic).
 
-Both tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) datasets. This
+<div class="row" style="margin-top:10px">
+ <div class="col-md-6">
+To help you find the big clusters of objects, we have added a <strong>Label-Assist Table</strong>, which computes the object sizes across the frames and shows you where the biggest and smallest ones 
+are located. To get that info, click on the <strong>Compute Object Info</strong> button and wait a while. The biggest objects most likely correspond to mergers of multiple objects, while the smallest objects
+probably represent false detections.
+</div>
+ <div class="col-md-6">
+<a href="../animalTracking/fig/labelAssistTracking.png" data-toggle="lightbox"><img src="../animalTracking/fig/labelAssistTracking.png" class="img-responsive" /></a>
+</div>
+</div>
+
+
+
+### 3.3 Improving divisions and object counts - Uncertainty layer <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
+While a few annotated objects can already produce a good classification into dividing/not dividing classes or for the object count,
+our tracking algorithm really benefits if the classifiers are certain of their predictions. The reason for this is that the
+graphical model used for tracking takes the object class probabilities into account, not just the most probable class assignments.
+To help you examine the current uncertainty of the classifier you trained, we added an uncertainty layer to our applets.
+<div class="row" style="margin-bottom:10px" >
+ <div class="col-md-6">
+<a href="fig/uncertainty_01_1.png" data-toggle="lightbox"><img src="fig/uncertainty_01_1.png" class="img-responsive" /></a>
+</div>
+<div class="col-md-6">
+
+<a href="fig/uncertainty_01_2.png" data-toggle="lightbox"><img src="fig/uncertainty_01_2.png" class="img-responsive" /></a>
+</div>
+</div>
+In the left image you can see the predictions of the classifier, in the right - the uncertainty, which is still fairly high.
+
+After adding a few more labels we get a much better uncertainty estimate:
+<div class="row" style="margin-bottom:10px" >
+ <div class="col-md-6">
+<a href="fig/uncertainty_03.png" data-toggle="lightbox"><img src="fig/uncertainty_03.png" class="img-responsive" /></a>
+</div>
+ <div class="col-md-6">
+<a href="fig/uncertainty_02.png" data-toggle="lightbox"><img src="fig/uncertainty_02.png" class="img-responsive" /></a>
+</div>
+</div>
+
+Division detection classifier should be treated in the same way.
+
+
+## 4. Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
+And finally, we are getting to track! Here we will first describe the **automatic tracking workflow** and then show
+how the [**manual tracking workflow**](#sec_manual) could be used to either create ground-truth or to power the extension of the automatic
+tracking - the [**tracking with learning workflow**](#sec_structured_learning).
+
+All tracking workflows can process 2D+time (`txy`) as well as 3D+time (`txyz`) datasets. This
 tutorial guides through a 2D+time example, and a 3D+time example dataset is provided and discussed
 [at the end of the tutorial](#sec_3d).
 
-### 3.1 Manual Tracking: {#sec_manual}
+## 4.1 Automatic Tracking (Conservation Tracking): <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_automatic}
+
+The tracking applet implements the algorithm described in [\[1\]](#ref_conservation). The algorithm aims to
+link all (possibly dividing) objects over time, where objects may be automatically marked as false positive detections 
+(misdetections due to speckles or low contrast) by the
+algorithm. Note that -- as of the time of writing -- this algorithm cannot recover missing objects, i.e. objects which 
+have not been detected by the previous segmentation step. 
+
+To track the objects detected in the preprocessing steps over all time steps, it is enough to press the **Track** button
+(after having checked whether the objects are divisible such as cells or not). After successful tracking, each object (and 
+its children in case of divisions) should be marked over time in a distinct random color.
+
+<a href="./fig/tracking_result.png" data-toggle="lightbox"><img src="./fig/tracking_result.png" class="img-responsive" /></a>
+
+The algorithm internally formulates a graphical
+model comprising all potential objects with relations to objects in their spatial neighborhood in the following time step.
+To these objects and relations, costs are assigned defined by the given parameters and an optimizer is called to find
+the most probable tracking solution for the model constructed, i.e. it tries to minimize the computed costs.
+
+Although the tracking result should usually be already sufficient with the default values, we now briefly give explanations
+for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_conservation) for more details). 
+
+| Parameter       | Description
+|:---------------| :-------------------------
+| Max. Object per Merger | Defines how many objects could be contained in a single cluster. Should correspond to the max label in the Object Count applet.
+| Division weight | Cost to allow one object to divide
+| Transition weight | Costs to allow one object to be assigned to another
+| Appearance cost  | Costs to allow one object to appear, i.e. to start a new track other than at the beginning of the time range or the borders of the field of view. High values (&ge;1000) forbid object appearances if possible.
+| Disappearance cost  | Costs to allow one object to disappear, i.e. to terminate an existing track other than at the end of the time range or the borders of the field of view. High values (&ge;1000) forbid object disappearances if possible.
+| Timeout in sec.  | Timeout in seconds for the optimization. Leave empty for not specifying a timeout (then, the best solution will be found no matter how long it takes).
+| Border width | The border pixels have to be treated in a special way for appearance/disappearance
+| Transition neighborhood | How far can an object move
+| Frames per split | By default (0) the tracking is done globally over the whole time range. By specifying a non-zero number here, you break your video up into pieces of this length and then solve hierarchically and in parallel. This is much faster than no splitting for long videos
+| Solver | Flow-based, as described [here](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_35) or ILP, which requires commercial solvers. Flow-based gives excellent tracking solutions and is much faster than ILP, which we keep for consistency with older projects
+| Divisible Objects | Check if the objects may divide over time, e.g. when tracking proliferating cells. Consider using the animal tracking workflow if they don't.
+
+
+Furthermore, a **Field of View** may be specified for the tracking. Restricting the field of view to less time steps 
+or a smaller volume may lead to significant speed-ups of the tracking. Moreover, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
+
+In **Data Scales**, the scales of the dimensions may be configured. For instance, if the resolution of the 
+pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are (x,y,z)=(1,1.25,2).
+
+To export the tracking result for further analysis, you can choose between different options described in [this section](#sec_export).
+To find the best possible values of the parameters above for your particular tracking problem, read on and use the [tracking with learning](#sec_structured_learning)
+
+## 4.2 Manual Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_manual}
 
 The purpose of this workflow is to manually link detected objects in consecutive time steps
 to create tracks (trajectories/lineages) for multiple (possibly dividing) objects. All
@@ -166,6 +324,9 @@ objects detected in the previous steps are indicated by a yellow color.
 While undetected objects may not be recovered to date, the user can correct for the following 
 kinds of undersegmentation errors: Merging (objects merge into one detection and later split again), 
 and misdetections (false positive detections due to speckles or low contrast).
+
+The use cases include manual annotation of small datasets, creation of ground truth for automated methods and, most importantly,
+training of the [**tracking with learning workflow**](#sec_structured_learning).
 
 Note that -- as in every workflow in ilastik -- displaying and updating the data is much faster when
 zooming into the region of interest.
@@ -285,69 +446,47 @@ To most efficiently use the features described above, there are multiple shortcu
 | `r`            | Toggle objects layer visibility
 
 
-### 3.2 Automatic Tracking (Conservation Tracking): {#sec_automatic}
-
-If 
-[CPLEX is installed]({{site.baseurl}}/documentation/basics/installation.html), it is possible to launch the **automatic tracking workflow (Conservation Tracking)** 
-and -- after the same preprocessing steps as described above -- the user arrives at the automatic tracking applet.
-
-This automatic tracking applet implements the algorithm described in [\[1\]](#ref_conservation). The algorithm aims to
-link all (possibly dividing) objects over time, where objects may be automatically marked as false positive detections 
-(misdetections due to speckles or low contrast) by the
-algorithm. Note that -- as of the time of writing -- this algorithm cannot recover missing objects, i.e. objects which 
-have not been detected by the previous segmentation step. 
-
-As a preprocessing for tracking, it is recommended to train object classifiers as described in the
-[Object Classification user documentation]({{site.baseurl}}/documentation/objects/objects.html).
-In the **Division Detection** applet, a object must be labeled as *dividing*, if it is dividing between the current and next timestep into
-two objects. Other objects must be labeled as *not dividing*. The user should label enough objects until the *live prediction* yields
-satisfying results on unlabeled objects.
-
-It furthermore is recommended to train an **Object Count Classifier**. Here, some examples for actually false positive detections are labeled
-red, and examples for 1, 2,... objects (=mergers) are labeled with the respective color. This classifier is trained sufficiently if it returns 
-the right class for most of the objects in *live prediction* mode. 
-
-Now, we can finally proceed to the tracking applet.
-To track the objects detected in the preprocessing steps over all time steps, it is enough to press the **Track** button
-(after having checked whether the objects are divisible such as cells or not). After successful tracking, each object (and 
-its children in case of divisions) should be marked over time in a distinct random color.
-
-<a href="./fig/24_chaingraph-tracking-track.jpg" data-toggle="lightbox"><img src="./fig/24_chaingraph-tracking-track.jpg" class="img-responsive" /></a>
-
-The algorithm internally formulates a graphical
-model comprising all potential objects with relations to objects in their spatial neighborhood in the following time step.
-To these objects and relations, costs are assigned defined by the given parameters and an optimizer is called to find
-the most probable tracking solution for the model constructed, i.e. it tries to minimize the computed costs.
-
-Although the tracking result should usually be already sufficient with the default values, we now briefly give explanations
-for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_conservation) for more details). 
-
-| Parameter       | Description
-|:---------------| :-------------------------
-| Divisible Objects | Check if the objects may divide over time, e.g. when tracking proliferating cells
-| Appearance      | Costs to allow one object to appear, i.e. to start a new track other than at the beginning of the time range or the borders of the field of view. High values (&ge;1000) forbid object appearances if possible.
-| Disappearance   | Costs to allow one object to disappear, i.e. to terminate an existing track other than at the end of the time range or the borders of the field of view. High values (&ge;1000) forbid object disappearances if possible.
-| Opportunity     | Costs for the lost opportunity to explain more of the data, i.e. the costs for not tracking one object and treating it as false detections. High values (&ge;1000) lead to more tracks (but could also include the tracking of noise objects).
-| Noise rate      | The estimated rate of false detections coming from the segmentation step. Small values (&asymp;0.01) treat every detected object as a true detection, if possible.
-| Noise weight    | The costs to balance a detected object against transitions. High values (&ge;100) treat most objects as true detections if the noise rate is set to a small value (&asymp;0.01).
-| Optimality Gap  | The guaranteed upper bound for a solution to deviate from the exact solution of the tracking model. Low values (&le;0.05) lead to better solutions but may lead to long optimization times. Higher values (&ge;0.1) speed up optimization time but lead to approximate solutions only.
-| Number of Neighbors | Number of neighbors to be considered as potential association candidates. Less neighbors speed up optimization time, but might have negative impact on tracking results. A reasonable value might be 2 or 3.
-| Timeout in sec.  | Timeout in seconds for the optimization. Leave empty for not specifying a timeout (then, the best solution will be found no matter how long it takes).
 
 
-Furthermore, a **Field of View** may be specified for the tracking. Restricting the field of view to less time steps 
-or a smaller volume may lead to significant speed-ups of the tracking. Moreover, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
+## 4.3 Structured Learning: <span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_structured_learning}
 
-In **Data Scales**, the scales of the dimensions may be configured. For instance, if the resolution of the 
-pixels is (dx,dy,dz) = (1&mu;m,0.8&mu;m,0.5&mu;m), then the scales to enter are (x,y,z)=(1,1.25,2).
+Automatic tracking uses a set of weights associated with detections, transitions, divisions, appearances, and disappearances to balance the components of the energy function optimized.
+Default weights can be used or they can be specified by the user. In structured learning we use the training annotations and all the classifiers to calculate optimal weights 
+for the given data and training. In order to be able to compute the weights, you have to show the algorithm what tracks look like - annotate a few short sub-tracks, using (almost) 
+the same applet as the [**manual tracking**](#sec_manual). Let's take a look at the applet:
 
+<a href="fig/tracking_with_learning_train.png" data-toggle="lightbox"><img src="fig/tracking_with_learning_train.png" class="img-responsive" /></a>
+
+You see the same buttons for starting a new track, marking a division, etc. However, above these buttons we have placed other buttons to help you track: they can take you
+to the places in the data you would annotate for best training results. 
+
+
+Once you are happy with the training, go the next applet and press the "Calculate Tracking Weights" button.
+To obtain a tracking solution press "Track!" button.
+
+<a href="fig/tracking_with_learning_track_top.png" data-toggle="lightbox"><img src="fig/tracking_with_learning_track_top.png" class="img-responsive" /></a>
+
+You can also directly input weights obtained from other similar datasets and bypass the learning procedure.
+
+The following two diagrams show the difference of automatic tracking using the default weights and weights obtained by structured learning.
+Example areas of change are circled in red.
+
+<div class="row" style="margin-bottom:10px" >
+ <div class="col-md-6">
+<a href="./fig/slt_compare_automatic_circled.png" data-toggle="lightbox"><img src="./fig/slt_compare_automatic_circled.png" class="img-responsive" /></a>
+</div>
+ <div class="col-md-6">
+<a href="./fig/slt_compare_slt_circled.png" data-toggle="lightbox"><img src="./fig/slt_compare_slt_circled.png" class="img-responsive" /></a>
+</div>
+</div>
+ 
 To export the tracking result for further analysis, the user can choose between different options described next.
 
 
 
-## 4. Export: {#sec_export}
+## 5.1 Export - Manual Tracking: <span class="hidden-in-sidebar" style="color:red">&#9679;</span> {#sec_export}
 
-To export the tracking results (either of manual tracking or automatic tracking), the **Tracking Result Export** applet
+To export the tracking results for manual tracking, the **Tracking Result Export** applet
 provides the same functionality as for other ilastik workflows. It exports the color-coded image from the *Tracking applet*
 as image/hdf-file/etc. 
 Recall that all objects get assigned random IDs (visualized as random colors) at the first frame of the image sequence
@@ -400,10 +539,42 @@ be accessed via the ilastik project file:
 
    * *Automatic Tracking*: In the Conservation Tracking folder, the events are stored as described in the table above.
 
+## 5.2 Export - Tracking: <span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_Plugin}
 
 
+All export options can be found in the **Tracking Result Export** applet. The export settings will bring up extra dialogs which allows to transform the image, cutout subregions and select the image file type. To dispatch the actual export, click on "Export All". The Source drop down menu lets the user decide which export functionality he/she wants to use: 
 
-## Tracking in 3D+time Data {#sec_3d}
+**Object-Identities**: Exports the unique object-IDs of every object as image file.
+
+**Tracking-Results**: Saves the tracking results as images where each object is assigned a gray value corresponding to its lineage ID. It is also possible to transform and select subregions. 
+
+**Merger-Results**: Will export only the detections where the optimization decided that it contains more than one object.
+
+<img href="./fig/Export_01.png" data-toggle="lightbox"><img src="./fig/Export_01.png" align="middle" />
+
+**Plugin**: When choosing Plugin as Source in the Export Settings, it is possible to export it in formats, which can be read by external plugins.
+A full list and detailed information about the plugin is available when pressing "Choose Export Image Settings".
+
+* **Contours**: Plugin to export the ilastik tracking results as contours for branson and Zlatics Lab in Janelia HHMI.
+
+* **Contours with head**: Plugin to export the ilastik tracking results as contours with the head location for Branson and Zlatics Lab in Janelia HHMI.
+
+* **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table. This format is most common for spreadsheets and databases.
+
+
+* **CellTrackingChallenge**: Format used in the ISBI Cell Tracking Challenge. Images will be saved as tiff and the additionaly information as txt. For more details see <a href="http://www.celltrackingchallenge.net/submission-of-results.html"></a>
+
+* **H5-Event Sequence** Plugin to export the ilastik tracking results as H5 event sequence. Detailed description in [Export Manual Tracking](#sec_export).
+
+* **JSON**: JSON export for use of some tracking analysis tools developed by the ilastik tracking guys. 
+
+* **Fiji/Mamut**: Splits the result in XML and hdf5 so it can be used by the MaMut plugin in Fiji/ImageJ.
+	The XML file contains the tracking information for every cell, the hdf5 files the image-data used. Both files needs to be in the same folder when opened with MaMut. 
+
+* **Multi Worm Tracker**: Plugin to export the ilastik tracking results in the Multi-Worm Tracker format for Branson and Zlatics Lab in Janelia HHMI.
+
+
+## Tracking in 3D+time Data <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_3d}
 
 One strength of the tracking workflows compared to similar programs available on the web is that 
 tracking in 3D+time (`txyz`) data is completely analogous to the tracking in 2D+time (`txy`) data
@@ -428,7 +599,7 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 
 
-## References
+## References <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span  class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 
 <a name="ref_conservation"> </a>
 \[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 

@@ -3,7 +3,7 @@ layout: documentation
 title: Animal Tracking
 tagline: Animal Tracking
 category: "Documentation"
-group: "workflow-documentation"
+group: "workflow-usecase"
 weight: 2
 ---
 

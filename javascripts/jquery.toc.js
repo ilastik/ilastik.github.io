@@ -53,7 +53,7 @@
                 levelHTML += createLevelHTML(anchorId,
                     tocLevel + 1,
                     tocSection + innerSection,
-                    $(this).text());
+                    $(this).html());
             });
             if (levelHTML) {
                 levelHTML = '<ul>' + levelHTML + '</ul>\n';
