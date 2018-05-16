@@ -97,16 +97,16 @@ After successful installation the *Automatic Tracking Workflow* is displayed on 
 If this workflow is not present, something went wrong with the CPLEX installation.
 To track down the problem, proceed like this:
 
-* Make sure that the environment variable `CPLEX_STUDIO_DIR1263` is set and points to the proper location.
-  You can check this by typing `echo %CPLEX_STUDIO_DIR1263%` at the DOS command prompt.
-  The output should be something like `C:\Program Files\IBM\ILOG\CPLEX_Studio1263`.
+* Make sure that the environment variable `CPLEX_STUDIO_DIR1280` is set and points to the proper location.
+  You can check this by typing `echo %CPLEX_STUDIO_DIR1280%` at the DOS command prompt.
+  The output should be something like `C:\Program Files\IBM\ILOG\CPLEX_Studio1280`.
 * Make sure that `cplex` is in the PATH.
   Type `where cplex` at a DOS prompt.
-  It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio1263\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR1263` variable).
-* Make sure that the directory containing `cplex.exe` also contains `cplex1263.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`.
+  It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio1280\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR1280` variable).
+* Make sure that the directory containing `cplex.exe` also contains `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`.
 
-The *Automatic Tracking Workflow* should now be displayed on the start screen.
-If it doesn't, you may copy the files `cplex1263.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`.
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
+If it isn't, you may copy the files `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`.
 If it still doesn't work, please [contact us]({{site.baseurl}}/community.html).
 
 
@@ -155,7 +155,7 @@ In the command above, `/path/to/your/cplex-root-dir` is the location of your cpl
 **Note:** The above script installs CPLEX directly into your ilastik installation.
 Once you've done that, you should not distribute your copy of ilastik to others, unless you have a license to distribute CPLEX.
 
-After a successful installation, the *Tracking with Learning Workflow* will appear on the Start-Screen of ilastik.
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
 
 ----------
 
