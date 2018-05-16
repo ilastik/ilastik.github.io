@@ -19,12 +19,11 @@ Some workflows, however, require the manual installation of a commercial solver.
 On *Windows*, the following workflows will only be available after installing the IBM CPLEX solver:
 
 + Boundary Segmentation with Multicut
-+ Tracking (all flavours)
 + Counting (better results with CPLEX)
 
 In order to enable these workflows, please follow the instructions in the section about [commercial solver installation](#solver-setup).
 
-On *Mac* and *Linux* only Learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
+On *Mac*, *Linux*, and *Windows* Learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
 Furthermore, the results of the Boundary Segmentation with Multicut Workflow and the Tracking Workflow tend to be more accurate using one of the two commercial solvers.
 
 
