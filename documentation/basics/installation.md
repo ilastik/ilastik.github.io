@@ -23,7 +23,7 @@ On *Windows*, the following workflows will only be available after installing th
 
 In order to enable these workflows, please follow the instructions in the section about [commercial solver installation](#solver-setup).
 
-On *Mac*, *Linux*, and *Windows* Learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
+On *Mac*, *Linux*, and *Windows* learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
 Furthermore, the results of the Boundary Segmentation with Multicut Workflow and the Tracking Workflow tend to be more accurate using one of the two commercial solvers.
 
 
@@ -92,9 +92,8 @@ The following sections contain platform-specific instructions for CPLEX installa
 Run the installer by double clicking the executable that you've downloaded.
 
 On Windows, there are typically no further modifications needed after installing CPLEX.
-After successful installation the *Automatic Tracking Workflow* is displayed on the Start-Screen of ilastik.
-
-If this workflow is not present, something went wrong with the CPLEX installation.
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
+If it isn't, something went wrong with the CPLEX installation.
 To track down the problem, proceed like this:
 
 * Make sure that the environment variable `CPLEX_STUDIO_DIR1280` is set and points to the proper location.
@@ -105,7 +104,7 @@ To track down the problem, proceed like this:
   It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio1280\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR1280` variable).
 * Make sure that the directory containing `cplex.exe` also contains `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`.
 
-After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
+Learning the weights in the *Tracking with Learning Workflow* should now be enabled.
 If it isn't, you may copy the files `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`.
 If it still doesn't work, please [contact us]({{site.baseurl}}/community.html).
 
