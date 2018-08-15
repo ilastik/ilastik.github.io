@@ -98,11 +98,14 @@ the command (as shown in the example above).
   - `{x_start}`, `{x_stop}`, `{y_start}`, `{y_stop}`, etc - Specific axis start/stop boundaries for the region-of-interest
   - `{slice_index}` - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
 - `--output_internal_path` (HDF5 only) Specifies the name of the HDF5 dataset to write to. (Default: `/exported_data`)
-- `--cutout_subregion` Subregion to export (start,stop), e.g. `--cutout_subregion="[(0,0,0,0,0), (1,100,200,20,3)]"`. As well, when either (or both) start or stop are indicated as `None`, the subregion range is automatically expanded to the starting or to the ending index of the corresponding dimension, e.g `--cutout_subregion="[(None,None,None), (None,None,10)]"` would yield a tridimensional array of size 10 in its last dimension.
+- `--cutout_subregion` Subregion to export (start,stop), e.g. `--cutout_subregion="[(0,0,0,0,0),(1,100,200,20,3)]"`.
+  As well, when either (or both) start or stop are indicated as `None`, the subregion range is automatically expanded to the starting or to the ending index of the corresponding dimension, e.g `--cutout_subregion="[(None,None,None,None,None), (None,None,None,None,10)]"` would yield a five-dimensional array of size 10 in its last dimension.
+  Please always specify the values in the _5D_ order `(t,c,z,y,x)`.
+  Use `None` for dimensions that are not present in your data.
 - `--export_dtype` The pixel type to convert your results to.  Choices are: `uint8`, `uint16`, `uint32`, `int8`, `int16`, `int32`, `float32`, `float64`.  Note that some formats don't support every pixel type.
 - `--output_axis_order` Transpose the storage order of the results. For example, this affects the sliced dimension for stack outputs.
-- `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0, 1.0)"`
-- `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0, 255)"`
+- `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0,1.0)"`
+- `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0,255)"`
 
 ## Headless Mode for Object Classification
 
@@ -148,6 +151,9 @@ So, the example command above produces 3 files:
 
 ### Important Notes:
 
+- Don't specify any values with space-characters (e.g. `"my file name.h5"`, or `"(10, 20)"`) in them.
+  Due to a bug in python those might be misinterpreted.
+  This applies to file names and any parameter values.
 - Just as in Pixel Classification, 3D object classification inputs may be provided as image stacks, but quotes are required around the argument, as shown in the above example.  (See the corresponding note above.)
 - For paths to hdf5 datasests (either input or output), ilastik uses the same conventions as the generic `h5ls` utility. That is, the hdf5 dataset name should be appended to the file path: `/path/to/my_file.h5/internal/path/to/dataset`.
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
