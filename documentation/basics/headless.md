@@ -152,7 +152,7 @@ So, the example command above produces 3 files:
 ### Important Notes:
 
 - Don't specify any values with space-characters (e.g. `"my file name.h5"`, or `"(10, 20)"`) in them.
-  Due to a bug in python those might be misinterpreted.
+  Due to a [bug in cpython](https://bugs.python.org/issue22433) those might be misinterpreted.
   This applies to file names and any parameter values.
 - Just as in Pixel Classification, 3D object classification inputs may be provided as image stacks, but quotes are required around the argument, as shown in the above example.  (See the corresponding note above.)
 - For paths to hdf5 datasests (either input or output), ilastik uses the same conventions as the generic `h5ls` utility. That is, the hdf5 dataset name should be appended to the file path: `/path/to/my_file.h5/internal/path/to/dataset`.
