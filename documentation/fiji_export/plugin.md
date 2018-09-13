@@ -11,7 +11,7 @@ weight: 1
 This plugin allows you to save images opened in FIJI directly to the hdf5 format preferred by ilastik. While this conversion is beneficial for any large dataset, we especially recommend it for _multipage tiffs_. After you save the file and process it with ilastik, you can use the same plugin to load the results for further post-processing in FIJI.
 
 ## Installation
-In FIJI, go to Help->Update... In the dialog that appeares, click the "Manage update sites" button. In the list of update sites, select "ilastik Import Export". You should now see ilastik_HDF5.jar in your updater window.
+In FIJI, go to Help->Update... In the dialog that appeares, click the "Manage update sites" button. In the list of update sites, select "ilastik". You should now see ilastik4ij.jar in your updater window.
 <div class="row">
 <div class="col-md-6">
 <a href="snapshots/update_sites.png" data-toggle="lightbox"><img src="snapshots/update_sites.png" width="100%" class="img-responsive" /></a>
@@ -27,7 +27,8 @@ In FIJI, go to Help->Update... In the dialog that appeares, click the "Manage up
 <a href="snapshots/fiji_export_cropped.png" data-toggle="lightbox"><img src="snapshots/fiji_export_cropped_scale2.png" width="100%" class="img-responsive" /></a>
 </div>
  <div class="col-md-6">
-This is how you find the right export option from within FIJI. It will warn you to be careful with the axes order, but don't worry, if you get it wrong you can still correct it on import in ilastik.
+This is how you find the right export option from within FIJI ("Plugins->ilastik->Export HDF5").
+It will warn you to be careful with the axes order, but don't worry, if you get it wrong you can still correct it on import in ilastik.
 </div>
 </div>
 
@@ -67,7 +68,7 @@ Depending on your post-processing, export **Probabilities** or **Simple Segmenta
 
 <div class="col-md-6">
 <p>
-Using the same plugin, you can now load your results into FIJI by selecting "ilastik HDF5" in the File->Import menu. Two options are available: load (and display) the raw pixel values or load and display the image with a lookup-table (LUT). 
+Using the same plugin, you can now load your results into FIJI by selecting "import HDF5" in the "Plugins->ilastik" menu. Two options are available: load (and display) the raw pixel values or load and display the image with a lookup-table (LUT).
 </p>
 <p>
 <a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="50%" class="img-responsive" /></a>
