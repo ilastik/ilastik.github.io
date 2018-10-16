@@ -54,6 +54,7 @@ Here the user can select from several different feature types and scales.
 
 All of these features can be selected on different scales. The scales correspond to the pixel diameter
 that is used to calculate the respective feature. I.e. if a typical textural pattern has a pixel size of 4, this should be selected as the scale.
+_New since version 1.3.2:_ In addition to the seven predefined scales, users can specify new scale values (sigmas) in the feature selection dialog by clicking on **add** in the rightmost column.
 
 In general we advise to initially select a wide range of feature types and scales. Later on, this selection
 can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
