@@ -68,10 +68,11 @@ eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
 <a href="snapshots/training_zoomed.png" data-toggle="lightbox"><img src="snapshots/training_zoomed.png" class="img-responsive" /></a>
 Each added label should correspond to a object type that we want to separate.
-In the simplest case, we add one label for the object class (in this example the object class would be cell)
-and an additional label fore the background class.
+In the _simplest case_, we train a classifier that differentiates between two classes.
+Accordingly, two labels are added per default (_since version 1.3.2_), e.g. one for the object class (in this example the object class would be cell)
+and and the second label fore the background class.
+More labels can be added by clicking the **Add label** button.
 
-After adding at least two labels, the user can begin to mark the objects and the background.
 To mark an object, the label corresponding to the object class has to be selected, then the user
 can draw a scribble over the image.
 The background can be annotated in the same way after selecting the background class label on the left.
@@ -81,6 +82,7 @@ The user can select the size of the brush, and switch between drawing and erasin
 To visualize the results of the classification, the **Live update** mode can now be switched on.
 The pixel classification result is displayed as an overlay on the image.
 Now classification errors can be corrected by giving additional annotations. The updated classification results will be displayed immediately in the main window.
+Note, that it is not possible to add and remove labels while in live update mode.
 <a href="snapshots/training2_zoomed.png" data-toggle="lightbox"><img src="snapshots/training2_zoomed.png" class="img-responsive" /></a>
 
 To display the hard classification results, i.e. the final class assignment the **Segmentation** overlays
