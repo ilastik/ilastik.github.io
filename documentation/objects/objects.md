@@ -32,6 +32,8 @@ This is a combined workflow, which lets you start from the raw data, perform pix
 in
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
 and then thresholding the probability maps to obtain a segmentation. 
+This workflow is primarily meant for demo purposes.
+For serious projects, we recommend to use the two workflows, [Pixel Classification]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) and Object Classification separately using the generated output form the former as an additional input in the latter one.
 
 <a href="figs/input_pixel_class.png" data-toggle="lightbox"><img src="figs/input_pixel_class.png" class="img-responsive" /></a>
 
