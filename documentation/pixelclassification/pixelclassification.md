@@ -56,6 +56,12 @@ All of these features can be selected on different scales. The scales correspond
 that is used to calculate the respective feature. I.e. if a typical textural pattern has a pixel size of 4, this should be selected as the scale.
 _New since version 1.3.2:_ In addition to the seven predefined scales, users can specify new scale values (sigmas) in the feature selection dialog by clicking on **add** in the rightmost column.
 
+When using 3D data, the user, furthermore, can choose whether to compute features in 3D (default), or 2D (slice-wise in the x-y plane).
+Using 2D features for 3D data is particularly useful when the resolution along the z-axis is a lot lower than the resolution in the x-y plane.
+This also speeds up feature computation.
+Toggling between 2D and 3D feature computation can be achieved by simply clicking the icon in the **Compute in 2D/3D** row of the feature selection table at the respective resolution.
+<a href="snapshots/feature_selection_2d3d.png" data-toggle="lightbox"><img src="snapshots/feature_selection_2d3d.png" class="img-responsive" /></a>
+
 In general we advise to initially select a wide range of feature types and scales. Later on, this selection
 can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
 <a href="snapshots/feature_selection4_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection4_zoomed.png" class="img-responsive" /></a>
