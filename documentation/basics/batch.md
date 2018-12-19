@@ -31,4 +31,4 @@ The next step is the actual batch processing itself. In the **Batch Prediction O
 After clicking on the **Export All** button, ilastik begins batch processing all images, and writes the resulting classification result to the specified output files. When the default settings are used, the output files are stored as hdf5 files in the same directory where the input file is located.
 The exported files have the same name with a `export.h5` suffix.
 
-The exported `.h5` files, contain the resulting prediction as a multidimensional dataset inside the file. Further details on this versatile file format (that is easily accessible from Matlab and Python) can be found <a href = "http://www.h5py.org/docs/"> here</a>.
+The exported `.h5` files, contain the resulting prediction as a multidimensional dataset inside the file. Further details on this versatile file format (that is easily accessible from Matlab and Python) can be found [here](http://docs.h5py.org/).
