@@ -1,10 +1,12 @@
 #generate site
 _site
+vendor
 
 *~
 *.kate-swp
 
 #misc.
+.bundle
 .directory
 .project
 .settings
