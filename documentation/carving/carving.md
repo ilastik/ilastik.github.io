@@ -16,14 +16,14 @@ weight: 4
 ## How it works, what it can and cannot do
 
 The seeded watershed algorithm is an image segmentation algorithm for
-interactive object carving from image data. The algorithm input are user given
+interactive object carving from image data. The algorithm input is user-defined
 object markers (see example below) for the inside (green) and outside (red) of
-an object.  From these markers an initial segmentation is calculated that can
+an object. From these markers, an initial segmentation is calculated that can
 be refined interactively. The seeded watershed relies on discernible object
-boundaries in the image data and not on inner appearance of an object like for
+boundaries in the image data and not on the inner appearance of an object like for
 example the classification workflow.
       
-<a href="carving_intro_overview.png" data-toggle="lightbox"><img src="carving_intro_overview.png" class="img-responsive" /></a>
+<a href="carving_intro_overview.png" data-toggle="lightbox"><img src="carving_intro_overview.png" class="img-responsive align-center" /></a>
 
 While the
 [Classification module]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
@@ -33,12 +33,12 @@ module's purpose is to aid in the extraction of objects from images that are
 only separable by their boundary - i.e. objects that do not differ from the
 rest of the image by their internal appearance.
 
-<a href="carving_good_bad.png" data-toggle="lightbox"><img src="carving_good_bad.png" class="img-responsive" /></a>
+<a href="carving_good_bad.png" data-toggle="lightbox"><img src="carving_good_bad.png" class="img-responsive align-center"/></a>
       
 From the two images displayed to the right, the left image is clearly
 more suitable for the classification module since the cell cores have a
 strong red color component in comparison to their surrounding. The right
-image on the other hand is a good example for the applicability of the
+image, on the other hand, is a good example for the applicability of the
 seeded watershed segmentation (the problem setting is the segmentation of
 a single cell from electron microscopy image of neural tissue) since the
 neural cells have similar color distributions but can be
@@ -48,7 +48,7 @@ in the left image interactively, but in such a case where there is a
 clear visible difference between the objects of interest and their
 surrounding the classification module is a better choice.)
 
-The algorithm is applicable for a wide range of segmentation problems that
+The algorithm is applicable to a wide range of segmentation problems that
 fulfill these properties. In the case of data where the boundaries are not
 clearly visible or in the case of very noisy data, a boundary detection filter
 can be applied to improve results - this is the topic of the following section.
@@ -83,7 +83,7 @@ until a satisfactory boundary map is obtained.
 When everything looks fine, the user can click on the **Run Preprocessing button** to calculate a sparse supervoxel graph of 
 the image and boundary map which will speed up segmentation times.
       
-**Note:** The preprocessing may take a long time depending on the the
+**Note:** The preprocessing may take a long time depending on the
 size of the dataset. On a i7 2.4GHz computer a 500*500*500 3D dataset requires
 15 minutes of preprocessing.
 
@@ -96,7 +96,7 @@ Two different types of seeds exist, **Object seeds** and **Background seeds** - 
 
 <a href="screenshots/carving-3.png" data-toggle="lightbox"><img src="screenshots/carving-3.png" class="img-responsive" /></a>
 
-After marking the objects of interest with a object seed and the outside
+After marking the objects of interest with an object seed and the outside
 with a background seed the button **Segment** can be clicked to obtain a seeded
 watershed segmentation starting from the seeds.
 
@@ -128,16 +128,16 @@ These additional options described below can be displayed by scrolling down
 in the labeling applet on the left side.
 
 - **BG priority** The bias is a parameter the affects how much the background is
-  preferred in comparison to the other labels. A value smaller then 1.0 will
+  preferred in comparison to the other labels. A value smaller than 1.0 will
   lower the detected boundaries for the background seeds. Since the normal
   seeds still work on the original boundaries the background is preferred in
-  case of ambiguity. Usually a value of around 0.95 yields good results, but
-  sometimes playing with the parameter is a good way to improve segmentations
+  case of ambiguity. Usually, a value of around 0.95 yields good results, but
+  sometimes playing with the parameter is a good way to improve segmentation
   without additional seeds.
 - **No bias below** The threshold is a value that affects when the **BG priority**
   for the background will be applied. Normally the background seed is only
   preferred when the boundaries are sufficiently strong, i.e. > 64 (the
-  boundaries in the image have values between 0 and 255). Usually it is not
+  boundaries in the image have values between 0 and 255). Usually, it is not
   necessary to change this parameter.
   
 <a href="screenshots/carving-4.png" data-toggle="lightbox"><img src="screenshots/carving-4.png" class="img-responsive" /></a>
@@ -145,9 +145,9 @@ in the labeling applet on the left side.
 
 ## Saving and loading segmented objects
 
-Once the user has successfully segmented an object, the segmentation result
+Once the user has successfully segmented an object, the result
 can be stored by clicking on the **Save As** button. A dialog will pop up that
-asks for the objects name:
+asks for the object name:
 
 <a href="screenshots/carving-5.png" data-toggle="lightbox"><img src="screenshots/carving-5.png" class="img-responsive" /></a>
 
