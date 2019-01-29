@@ -114,7 +114,7 @@ It works by evaluating the classifier predictions using different feature sets o
 
 <a href="snapshots/suggest_features_results_2.png" data-toggle="lightbox"><img src="snapshots/suggest_features_results_2.png" class="img-responsive" /></a>
 
-If you like one of the suggested features sets better than your current selection, you can replace your selection with the a new set by pressing the **Select Feature Set** button. 
+If you like one of the suggested features sets better than your current selection, you can replace your selection with the new set by pressing the **Select Feature Set** button. 
 
 
 ## Window Leveling {#window}
