@@ -29,7 +29,7 @@
     function createAnchorLink(anchorId) {
         var a = document.createElement('a');
         a.href = '#' + anchorId;
-        a.classList = 'header-link';
+        a.className = 'header-link';
         a.textContent = '§';
         return a;
     }
