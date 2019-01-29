@@ -24,8 +24,8 @@ _Segmentation (Label 1) _,
 _Uncertainty_, and
 _Labels_.
 
-<a href="screenshots/eye_active.png) (visible" data-toggle="lightbox"><img src="screenshots/eye_active.png) (visible" class="img-responsive" /></a>
-<a href="screenshots/eye_inactive.png) (invisible" data-toggle="lightbox"><img src="screenshots/eye_inactive.png) (inviable" class="img-responsive" /></a>
+<a href="screenshots/eye_active.png" data-toggle="lightbox"><img src="screenshots/eye_active.png" class="img-responsive" /></a>
+<a href="screenshots/eye_inactive.png" data-toggle="lightbox"><img src="screenshots/eye_inactive.png" class="img-responsive" /></a>
 shows whether this layer is visible or not. Invisible
 layers are ignored.
 
