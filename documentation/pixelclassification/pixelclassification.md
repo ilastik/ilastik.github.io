@@ -59,7 +59,7 @@ All of these features can be selected on different scales. The scales correspond
 
 <a href="snapshots/filter_examples_cropped.png" data-toggle="lightbox"><img src="snapshots/filter_examples_cropped.png" class="img-responsive" /></a>
 
-In general we advise to initially select a wide range of feature types and scales. In fact, for not-too-big 2D data where computation time is not a concern, one can simply select all. In the next step, after you start annotating the image, we can suggest you the most helpful features based on your labels. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
+In general we advise to initially select a wide range of feature types and scales. In fact, for not-too-big 2D data where computation time is not a concern, one can simply select all. In the next step, after you start annotating the image, we can suggest you the most helpful features based on your labels as described [here](#suggest). The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
 <a href="snapshots/feature_highlight.png" data-toggle="lightbox"><img src="snapshots/feature_highlight.png" class="img-responsive" /></a>
 
 ## Training the classifier
@@ -101,6 +101,21 @@ To access the "Import Labels" feature in the GUI, do the following:
 3. If your label image is the same size as your input data, and the label image pixels already have consecutive values 1..N, then the default settings may suffice.  Otherwise, you can modify the settings in that window to specify how to offset the label image relative to your input data, and also how to map label image pixel values to the label values ilastik needs (1..N).
 
 <a href="snapshots/labels_context_menu.png" data-toggle="lightbox"><img src="snapshots/labels_context_menu.png" class="img-responsive" /></a>
+
+## Automatic feature suggestion {#suggest}
+If you are not confident in your choice of pixel features, **Suggest Features** functionality might help. Press the button and a new dialog will pop up.
+
+<a href="snapshots/suggest_features_button.png" data-toggle="lightbox"><img src="snapshots/suggest_features_button.png" class="img-responsive" /></a>
+
+<a href="snapshots/suggest_features_dialog.png" data-toggle="lightbox"><img src="snapshots/suggest_features_dialog.png" class="img-responsive" /></a>
+
+
+It works by evaluating the classifier predictions using different feature sets on the pixels you have already annotated. The so called "out-of-bag" predictions are used, so for every tree in the Random Forest we only use the pixels it has not seen in training to estimate the error. Still, even though the pixels were not seen in training, randomization is done on the pixel level, so the tree has likely seen some similar pixels and the error estimate is overly optimistic. Besides the error, ilastik also reports the computing time which can be helpful when trying to find the balance between runtime and accuracy. By choosing the feature set in the lower left corner, you can also see the predictions ilastik would make with these features on the current field of view.
+
+<a href="snapshots/suggest_features_results_2.png" data-toggle="lightbox"><img src="snapshots/suggest_features_results_2.png" class="img-responsive" /></a>
+
+If you like one of the suggested features sets better than your current selection, you can replace your selection with the a new set by pressing the **Select Feature Set** button. 
+
 
 ## Window Leveling {#window}
 
