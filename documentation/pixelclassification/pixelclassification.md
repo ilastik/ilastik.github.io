@@ -60,34 +60,36 @@ All of these features can be selected on different scales. The scales correspond
 <a href="snapshots/filter_examples_cropped.png" data-toggle="lightbox"><img src="snapshots/filter_examples_cropped.png" class="img-responsive" /></a>
 
 In general we advise to initially select a wide range of feature types and scales. In fact, for not-too-big 2D data where computation time is not a concern, one can simply select all. In the next step, after you start annotating the image, we can suggest you the most helpful features based on your labels. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
-<a href="snapshots/feature_selection4_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection4_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/feature_highlight.png" data-toggle="lightbox"><img src="snapshots/feature_highlight.png" class="img-responsive" /></a>
 
 ## Training the classifier
 The next step in the pixel classification is the training of a classifier
 that can separate the object classes. This training is done in an iterative fashion,
-the user gives some labels, evaluates the interactive prediction and then gives additional labels to correct
+the user draws some annotations, evaluates the interactive prediction and then draws additional annotations to correct
 eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
-<a href="snapshots/training_zoomed.png" data-toggle="lightbox"><img src="snapshots/training_zoomed.png" class="img-responsive" /></a>
-Each added label should correspond to a object type that we want to separate.
-In the simplest case, we add one label for the object class (in this example the object class would be cell)
-and an additional label fore the background class.
+<a href="snapshots/add_label.png" data-toggle="lightbox"><img src="snapshots/add_label.png" class="img-responsive" /></a>
+Each added label should correspond to a pixel class that we want to separate. This can, for example, be "cell" and "background", or "sky", "grass" and "tree". Two labels are already added by default, add more if needed by pressing the "Add Label" button. You can change the color of the annotations or the names of the labels by double-clicking on the little color square or on the "Label x" text field.
 
-After adding at least two labels, the user can begin to mark the objects and the background.
-To mark an object, the label corresponding to the object class has to be selected, then the user
-can draw a scribble over the image.
-The background can be annotated in the same way after selecting the background class label on the left.
-<a href="snapshots/training1_zoomed.png" data-toggle="lightbox"><img src="snapshots/training1_zoomed.png" class="img-responsive" /></a>
-The user can select the size of the brush, and switch between drawing and erasing mode just below the label list on the left.
+You are now ready to give some training annotations! Select a class and scribble over pixels which belong to it. Then change to another class and add more scribbles for it. If you add a wrong scribble, use an eraser to remove it (eraser controls are shown below). You can also change the size of the brush in the next control. 
 
-To visualize the results of the classification, the **Live update** mode can now be switched on.
-The pixel classification result is displayed as an overlay on the image.
-Now classification errors can be corrected by giving additional annotations. The updated classification results will be displayed immediately in the main window.
-<a href="snapshots/training2_zoomed.png" data-toggle="lightbox"><img src="snapshots/training2_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/scribbles_1.png" data-toggle="lightbox"><img src="snapshots/scribbles_1.png" class="img-responsive" /></a>
+
+To train the classifier and see the predictions, press the **Live update** button. In the background, the features for the labeled pixels will be computed and the Random Forest classifier will be trained from your annotations. Then the features for all pixels in your field of view will be computed and their classes will be predicted by the trained classifier. The predictions will be displayed as an overlay on the image. 
+
+<a href="snapshots/first_prediction.png" data-toggle="lightbox"><img src="snapshots/first_prediction.png" class="img-responsive" /></a>
+
+Examine the results for errors and add more annotations to correct. Here, we will add two more scribbles to separate objects which got merged in the first prediction attempt.
+
+<a href="snapshots/correct_labels.png" data-toggle="lightbox"><img src="snapshots/correct_labels.png" class="img-responsive" /></a>
+
+The classification will be updated on-the-fly. Update is much faster than the first computation since the features are cached and not recomputed. As you can see, all objects are now correctly separated. Keep introducing more annotations until you see no more errors or the predictions stops improving. 
+
+<a href="snapshots/second_prediction.png" data-toggle="lightbox"><img src="snapshots/second_prediction.png" class="img-responsive" /></a>
 
 To display the hard classification results, i.e. the final class assignment the **Segmentation** overlays
 can be turned on by clicking on the **Segmentation** checkbox.
-<a href="snapshots/training3_zoomed.png" data-toggle="lightbox"><img src="snapshots/training3_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/segmentation.png" data-toggle="lightbox"><img src="snapshots/segmentation.png" class="img-responsive" /></a>
 
 ## How to import labels from an external file {#import}
 To access the "Import Labels" feature in the GUI, do the following:
