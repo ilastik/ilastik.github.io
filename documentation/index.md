@@ -35,7 +35,7 @@ There you can select one of the available workflows:
 
 **To get started**, load your data using the
 [data selection]({{site.baseurl}}/documentation/basics/dataselection.html)
-applet. We can load most common image formats and we also have a [Fiji plugin]({{site.baseurl}}/basics/fiji_export/plugin) to convert anything Fiji can read into ilastik favorite hdf5 data format.
+applet. We can load most common image formats and we also have a [Fiji plugin]({{site.baseurl}}/documentation/fiji_export/plugin) to convert anything Fiji can read into ilastik favorite hdf5 data format.
 To learn how to navigate and interact with you data, read the
 [navigation]({{site.baseurl}}/documentation/basics/navigation.html)
 documentation as well as the
@@ -52,7 +52,7 @@ documentation.
 [Boundary-based Segmentation with Multicut]({{site.baseurl}}/documentation/multicut/multicut) allows you to segment objects based on boundary information. This is especially useful for electron microscopy data or any other data with membrane staining. You need to provide boundary-level labels and the workflow solves an optimization problem to come up with closed-surface objects with no dangling edges.  
 
 ### Something is wrong or unclear?
-Check the [Common Problems section]({{site.baseurl}}/basics/common_problems), perhaps there is a workaround. And don't hesitate to [contact us]({{site.baseurl}}/community.html) with your complaints and feature requests.  
+Check the [Common Problems section]({{site.baseurl}}/documentation/basics/common_problems), perhaps there is a workaround. And don't hesitate to [contact us]({{site.baseurl}}/community.html) with your complaints and feature requests.
 
 
 
