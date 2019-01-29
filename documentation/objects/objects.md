@@ -58,7 +58,7 @@ Suppose we have a probability map for a 2-class classification, which looks like
 
 There are two ways to transform a probability map into a segmentation in ilastik and both are covered by the thresholding applet. To see the results of changing the parameter settings in this applet, press the "Apply" button.
 
-First, specify which channel of the probability map you want to threshold (we choose channel 1, as it corresponds to object rather than background probability). The "Selected input channel" layer will show you the channel you selected in the corresponding label color:
+First, specify which channel of the probability map you want to threshold (we choose the yellow channel, as it corresponds to object rather than background probability).
 
 <a href="figs/thresholding_channel.png" data-toggle="lightbox"><img src="figs/thresholding_channel.png" class="img-responsive" /></a>
 
@@ -66,13 +66,13 @@ After selecting the channel, choose a sigma to smooth the probability map with a
 
 <a href="figs/thresholding_sigmas.png" data-toggle="lightbox"><img src="figs/thresholding_sigmas.png" class="img-responsive" /></a>
 
-Now, two options are available for the actual thresholding, as shown in the little tab widget "One Threshold/Two Thresholds".
+Now, two options are available for the actual thresholding, which can be selected with the **Method** drop-down".
 
-The **"One Threshold"** tab performs regular thresholding, followed by the size filter. For debugging purposes, we also provide a view on the thresholded objects before size filtering. This layer is activated by checking the "Show intermediate results" checkbox.
+Selecting **"Simple"** will perform regular thresholding at one level, followed by the size filter. We also provide a view on the thresholded objects before size filtering. This layer is activated by checking the "Show intermediate results" checkbox.
 
 <a href="figs/thresholding_before_size_filter.png" data-toggle="lightbox"><img src="figs/thresholding_before_size_filter.png" class="img-responsive" /></a>
 
-The **"Two Thresholds"** tab performs hysteresis thresholding with two thresholds: high and low. The high threshold is applied first and the resulting objects are filtered by size. For the remaining objects the segmentation is then relaxed to the level of low threshold. The two levels of thresholding allow to separate the criteria for detection and segmentation of objects and select only objects of very high probability while better preserving their shape. As for the single threshold case, we provide a view on the intermediate results after the application of the high threshold, the size filter and the low threshold. The image below shows the results of the high (detection) threshold in multiple colors overlayed with the results of the low (segmentation) threshold in white:
+By selecting **Hystersis** in the method drop-down thresholding is performed at two levels: high and low. The high threshold is applied first and the resulting objects are filtered by size. For the remaining objects the segmentation is then relaxed to the level of low threshold. The two levels of thresholding allow to separate the criteria for detection and segmentation of objects and select only objects of very high probability while better preserving their shape. As for the single threshold case, we provide a view on the intermediate results after the application of the high threshold, the size filter and the low threshold. The image below shows the results of the high (detection) threshold in multiple colors overlayed with the results of the low (segmentation) threshold in white:
 
 <a href="figs/thresholding_two_thresholds.png" data-toggle="lightbox"><img src="figs/thresholding_two_thresholds.png" class="img-responsive" /></a>
 
@@ -94,6 +94,8 @@ The "Standard Object Features" refer to the built-in ilastik features, computed 
 <a href="figs/object_extraction_selection_dialog_neigh.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog_neigh.png" class="img-responsive" /></a>
 
 Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
+
+Note on spacial features: Features that are preceded with the "Coord" prefix produce features with absolute coordinate positions in the image. These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
 
 ## Prediction for objects - "Object Classification" applet
 This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
