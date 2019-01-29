@@ -68,7 +68,16 @@ label{font-weight:normal !important};
 }
 
 /* Handle offset for fixed position header */
-h1[id^=toc], h2[id^=toc], h3[id^=toc] {
+.docs-contents h1, h2, h3 {
     margin-top: -51px;
     padding-top: 51px;
+}
+
+.header-link {
+    visibility: hidden;
+    margin-left: 0.5em;
+}
+
+h2:hover .header-link {
+    visibility: visible;
 }
