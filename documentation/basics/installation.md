@@ -71,7 +71,9 @@ Alternatively, *GUROBI* can be used on Linux and Mac.
 IBM CPLEX is a commercial solver which is free for academic use.
 Details on the application for an academic license, may be found on
 [the IBM Academic Initiative website](https://developer.ibm.com/academic/).
-Please note that it might take some days until the application gets approved by IBM.
+In your institution is enrolled, you can download a copy at https://ibm.onthehub.com/.
+
+https://developer.ibm.com/academic/accessresources/#onthehub
 
 #### Download IBM CPLEX
 
@@ -110,6 +112,18 @@ If it still doesn't work, please [contact us]({{site.baseurl}}/community.html).
 
 
 #### Setup on Linux and Mac<a name="cplex-setup-linux-mac"></a>
+
+1. Remember the download directory (it is usually `Downloads`)
+1. Open terminal:
+1. Run
+```sh
+cd ~/Downloads
+chmod +x cplex_studio128.linux-x86-64.bin
+./cplex_studio128.linux-x86-64.bin
+```
+1. Follow the instructions on the screen
+1. As installation folder, type `/home/YOUR_NAME_HERE/cplex`, on macOS `/Users/YOUR_NAME_HERE/cplex`.
+
 
 On Linux and Mac, the CPLEX installer comes as a commandline executable (`cplex-someversion.sh` on Linux and `cplex-someversion.bin` on Mac).
 To install it, open a terminal and run `bash /path/to/your/cplex-someversion.sh` (or `bash /path/to/your/cplex-someversion.bin` on Mac).
