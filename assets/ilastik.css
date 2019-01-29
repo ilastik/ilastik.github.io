@@ -61,3 +61,14 @@ label{font-weight:normal !important};
 .form-horizontal .control-label {
     text-align: left;
 }
+
+.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Handle offset for fixed position header */
+h1[id^=toc], h2[id^=toc], h3[id^=toc] {
+    margin-top: -51px;
+    padding-top: 51px;
+}
