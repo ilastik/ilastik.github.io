@@ -46,7 +46,7 @@ A click on the **Select features** button brings up a feature selection dialog.
 
 <a href="snapshots/feature_selection_add.png" data-toggle="lightbox"><img src="snapshots/feature_selection_add.png" class="img-responsive" /></a>
 
-For 3D data the features can be computed either in 2D or 3D. 2D can be useful if data has thick slices and the information from a slice is not so relevant for the neighbors. It is also the only way to compute large-scale filters in think stacks. The following image shows the switch between 2D and 3D computation in the Feature Selection dialog.
+For 3D data the features can be computed either in 2D or 3D. 2D can be useful if data has thick slices and the information from a slice is not so relevant for the neighbors. It is also the only way to compute large-scale filters in thin stacks. The following image shows the switch between 2D and 3D computation in the Feature Selection dialog.
 
 <a href="snapshots/feature_selection_3d.png" data-toggle="lightbox"><img src="snapshots/feature_selection_3d.png" class="img-responsive" /></a>
 
