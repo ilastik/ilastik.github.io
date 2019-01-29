@@ -14,11 +14,14 @@ weight: 0
 
 ## How it works, what it can do
 
-The pixel classification workflow can classify the pixels of an image given
-user annotations. The classification of the image pixels can be used to segment
-the image into different objects, such as for example individual cells.
-The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their surrounding. The algorithm is applicable for a wide range of segmentation problems that
-fulfill these properties.
+The Pixel Classification workflow assigns labels to pixels based on pixel features and user annotations.
+The workflow offers a choice of generic pixel features, such as smoothed pixel intensity, edge filters and 
+texture descriptors. Once the features are selected, a Random Forest classifier is trained from user annotations
+interactively. The Random Forest is known for its excellent generalization properties, the overall workflow is
+applicable to a wide range of segmentation problems. Note that this workflow performs semantic, rather than 
+instance, segmentation and returns a probability map of each class, not individual objects. The probability map
+can be transformed into individual objects by a variety of methods. The simplest is, perhaps, thresholding and 
+connected component analysis which is provided in the ilastik [Object Classification Workflow]({{site.baseurl}}/documentation/objects/objects.html). Other alternatives include more sophisticated thresholding, watershed and agglomeration algorithms in Fiji and other popular image analysis tools. 
 
 In order to follow this tutorial, you can download the used example project <a href="http://data.ilastik.org/pixelClassification_2dcells.zip">here</a>.
 Used image data is courtesy of Daniel Gerlich.
@@ -35,28 +38,28 @@ Nice properties of the algorithm and workflow are
 
 ## Selecting good features
 
-Assuming the user has already created or loaded an existing
-ilastik project and added a dataset, the first step is to switch to the **Feature Selection Applet**
-where the filter selection and computation are performed.
-The selected features and scales will be used later on for the training of a classifier.
-The selected features and scales should roughly correspond to the visual attributes that separate the
-objects and the background.
+As usual, start by loading the data as described [in the basics]({{site.baseurl}}/documentation/basics/dataselection.html). 
+After the data is loaded, switch to the next applet **Feature Selection**.
+Here you will select the pixel features and their scales which in the next step will be used to discriminate between the different classes of pixels. 
+
 A click on the **Select features** button brings up a feature selection dialog.
 
-<a href="snapshots/feature_selection_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection_zoomed.png" class="img-responsive" /></a>
-<a href="snapshots/feature_selection2.png" data-toggle="lightbox"><img src="snapshots/feature_selection2.png" class="img-responsive" /></a>
+<a href="snapshots/feature_selection_add.png" data-toggle="lightbox"><img src="snapshots/feature_selection_add.png" class="img-responsive" /></a>
 
-Here the user can select from several different feature types and scales.
+For 3D data the features can be computed either in 2D or 3D. 2D can be useful if data has thick slices and the information from a slice is not so relevant for the neighbors. It is also the only way to compute large-scale filters in think stacks. The following image shows the switch between 2D and 3D computation in the Feature Selection dialog.
 
+<a href="snapshots/feature_selection_3d.png" data-toggle="lightbox"><img src="snapshots/feature_selection_3d.png" class="img-responsive" /></a>
+
+We provide the following feature types:
 - Color/Intensity: these features should be selected if the color or brightness can be used to discern objects
 - Edge: should be selected if brightness or color gradients can be used to discern objects.
 - Texture: this might be an important feature if the objects in the image have a special textural appearance.
 
-All of these features can be selected on different scales. The scales correspond to the pixel diameter
-that is used to calculate the respective feature. I.e. if a typical textural pattern has a pixel size of 4, this should be selected as the scale.
+All of these features can be selected on different scales. The scales correspond to the sigma of the Gaussian which is used to smooth the image before application of the filter. Filters with larger sigmas can thus pull in information from larger neighborhoods, but average out the fine details. If you feel that a certain value of the sigma would be particularly well suited to your data, you can also add your own sigmas in the last column, as shown above in red. The following image provides an example of the edge filter computed with 3 different sigma values. Note how the filter fits to the smallest edges at the very low sigma value and only finds the rough cell outlines at a high sigma.
 
-In general we advise to initially select a wide range of feature types and scales. Later on, this selection
-can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
+<a href="snapshots/filter_examples_cropped.png" data-toggle="lightbox"><img src="snapshots/filter_examples_cropped.png" class="img-responsive" /></a>
+
+In general we advise to initially select a wide range of feature types and scales. In fact, for not-too-big 2D data where computation time is not a concern, one can simply select all. In the next step, after you start annotating the image, we can suggest you the most helpful features based on your labels. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
 <a href="snapshots/feature_selection4_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection4_zoomed.png" class="img-responsive" /></a>
 
 ## Training the classifier
