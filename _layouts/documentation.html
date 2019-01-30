@@ -6,12 +6,11 @@ layout: base
 {% comment %} load the 'toc' macro to generate table of contents {% endcomment %}
 {% include toc %}
 
-
 <div class="row">
   <div class="col-xs-12">
     <div class="page-header">
       <h1>
-        <img src="/assets/ilastik-logo.png" alt="ilastik">
+        <img src="{{site.baseurl}}/assets/ilastik-logo.png" alt="ilastik">
         Documentation
       </h1>
     </div>
@@ -21,30 +20,19 @@ layout: base
 <div class="row">
   <div class="col-sm-3">
     <ul class="nav nav-pill nav-stacked well docunav" data-offset-top="130">
-        {% assign pages_list = site.pages %}
-        {% assign group = 'documentation-home' %}
-        {% assign active_hook = toc %}
-        {% include pages_list %}
-        <li class="nav-header disabled">ilastik Basics</li>
-        {% assign pages_list = site.pages %}
-        {% assign group = 'basic-documentation' %}
-        {% assign active_hook = toc %}
-        {% include weighted_pages_list %}
-        <li class="nav-header disabled">ilastik Workflows</li>
-        {% assign pages_list = site.pages %}
-        {% assign group = 'workflow-documentation' %}
-        {% assign active_hook = toc %}
-        {% include weighted_pages_list %}
-        <li class="nav-header disabled">Use Cases</li>
-        {% assign pages_list = site.pages %}
-        {% assign group = 'workflow-usecase' %}
-        {% assign active_hook = toc %}
-        {% include weighted_pages_list %}
+      {% include pages.html group='documentation-home' %}
+      <li class="nav-header disabled">ilastik Basics</li>
+      {% include pages.html group='basic-documentation' %}
+      <li class="nav-header disabled">ilastik Workflows</li>
+      {% include pages.html group='workflow-documentation' %}
+      <li class="nav-header disabled">Use Cases</li>
+      {% include pages.html group='workflow-usecase' %}
     </ul>
   </div>
+  
   <section id="tocMain">
-  <div class="col-sm-9 docs-contents">
-{{ content }}
-  </div>
+    <div class="col-sm-9 docs-contents">
+      {{ content }}
+    </div>
   </section>
 </div>
