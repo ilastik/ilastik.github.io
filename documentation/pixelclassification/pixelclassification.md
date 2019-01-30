@@ -14,11 +14,14 @@ weight: 0
 
 ## How it works, what it can do
 
-The pixel classification workflow can classify the pixels of an image given
-user annotations. The classification of the image pixels can be used to segment
-the image into different objects, such as for example individual cells.
-The workflow is especially suited if the objects of interests are visually (brightness, color, texture) distinct from their surrounding. The algorithm is applicable for a wide range of segmentation problems that
-fulfill these properties.
+The Pixel Classification workflow assigns labels to pixels based on pixel features and user annotations.
+The workflow offers a choice of generic pixel features, such as smoothed pixel intensity, edge filters and 
+texture descriptors. Once the features are selected, a Random Forest classifier is trained from user annotations
+interactively. The Random Forest is known for its excellent generalization properties, the overall workflow is
+applicable to a wide range of segmentation problems. Note that this workflow performs semantic, rather than 
+instance, segmentation and returns a probability map of each class, not individual objects. The probability map
+can be transformed into individual objects by a variety of methods. The simplest is, perhaps, thresholding and 
+connected component analysis which is provided in the ilastik [Object Classification Workflow]({{site.baseurl}}/documentation/objects/objects.html). Other alternatives include more sophisticated thresholding, watershed and agglomeration algorithms in Fiji and other popular image analysis tools. 
 
 In order to follow this tutorial, you can download the used example project <a href="http://data.ilastik.org/pixelClassification_2dcells.zip">here</a>.
 Used image data is courtesy of Daniel Gerlich.
@@ -35,56 +38,58 @@ Nice properties of the algorithm and workflow are
 
 ## Selecting good features
 
-Assuming the user has already created or loaded an existing
-ilastik project and added a dataset, the first step is to switch to the **Feature Selection Applet**
-where the filter selection and computation are performed.
-The selected features and scales will be used later on for the training of a classifier.
-The selected features and scales should roughly correspond to the visual attributes that separate the
-objects and the background.
+As usual, start by loading the data as described [in the basics]({{site.baseurl}}/documentation/basics/dataselection.html). 
+After the data is loaded, switch to the next applet **Feature Selection**.
+Here you will select the pixel features and their scales which in the next step will be used to discriminate between the different classes of pixels. 
+
 A click on the **Select features** button brings up a feature selection dialog.
 
-<a href="snapshots/feature_selection_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection_zoomed.png" class="img-responsive" /></a>
-<a href="snapshots/feature_selection2.png" data-toggle="lightbox"><img src="snapshots/feature_selection2.png" class="img-responsive" /></a>
+<a href="snapshots/feature_selection_add.png" data-toggle="lightbox"><img src="snapshots/feature_selection_add.png" class="img-responsive" /></a>
 
-Here the user can select from several different feature types and scales.
+For 3D data the features can be computed either in 2D or 3D. 2D can be useful if data has thick slices and the information from a slice is not so relevant for the neighbors. It is also the only way to compute large-scale filters in thin stacks. The following image shows the switch between 2D and 3D computation in the Feature Selection dialog.
 
+<a href="snapshots/feature_selection_3d.png" data-toggle="lightbox"><img src="snapshots/feature_selection_3d.png" class="img-responsive" /></a>
+
+We provide the following feature types:
 - Color/Intensity: these features should be selected if the color or brightness can be used to discern objects
 - Edge: should be selected if brightness or color gradients can be used to discern objects.
 - Texture: this might be an important feature if the objects in the image have a special textural appearance.
 
-All of these features can be selected on different scales. The scales correspond to the pixel diameter
-that is used to calculate the respective feature. I.e. if a typical textural pattern has a pixel size of 4, this should be selected as the scale.
+All of these features can be selected on different scales. The scales correspond to the sigma of the Gaussian which is used to smooth the image before application of the filter. Filters with larger sigmas can thus pull in information from larger neighborhoods, but average out the fine details. If you feel that a certain value of the sigma would be particularly well suited to your data, you can also add your own sigmas in the last column, as shown above in red. The following image provides an example of the edge filter computed with 3 different sigma values. Note how the filter fits to the smallest edges at the very low sigma value and only finds the rough cell outlines at a high sigma.
 
-In general we advise to initially select a wide range of feature types and scales. Later on, this selection
-can always be refined. The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
-<a href="snapshots/feature_selection4_zoomed.png" data-toggle="lightbox"><img src="snapshots/feature_selection4_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/filter_examples_cropped.png" data-toggle="lightbox"><img src="snapshots/filter_examples_cropped.png" class="img-responsive" /></a>
+
+In general we advise to initially select a wide range of feature types and scales. In fact, for not-too-big 2D data where computation time is not a concern, one can simply select all. In the next step, after you start annotating the image, we can suggest you the most helpful features based on your labels as described [here](#suggest). The selected features can be inspected in the bottom left after clicking **OK** in the feature selection dialog.
+<a href="snapshots/feature_highlight.png" data-toggle="lightbox"><img src="snapshots/feature_highlight.png" class="img-responsive" /></a>
 
 ## Training the classifier
 The next step in the pixel classification is the training of a classifier
 that can separate the object classes. This training is done in an iterative fashion,
-the user gives some labels, evaluates the interactive prediction and then gives additional labels to correct
+the user draws some annotations, evaluates the interactive prediction and then draws additional annotations to correct
 eventual mistakes.
 To begin with the training of the classifier, we switch to the **Training** applet and add some labels.
-<a href="snapshots/training_zoomed.png" data-toggle="lightbox"><img src="snapshots/training_zoomed.png" class="img-responsive" /></a>
-Each added label should correspond to a object type that we want to separate.
-In the simplest case, we add one label for the object class (in this example the object class would be cell)
-and an additional label fore the background class.
+<a href="snapshots/add_label.png" data-toggle="lightbox"><img src="snapshots/add_label.png" class="img-responsive" /></a>
+Each added label should correspond to a pixel class that we want to separate. This can, for example, be "cell" and "background", or "sky", "grass" and "tree". Two labels are already added by default, add more if needed by pressing the "Add Label" button. You can change the color of the annotations or the names of the labels by double-clicking on the little color square or on the "Label x" text field.
 
-After adding at least two labels, the user can begin to mark the objects and the background.
-To mark an object, the label corresponding to the object class has to be selected, then the user
-can draw a scribble over the image.
-The background can be annotated in the same way after selecting the background class label on the left.
-<a href="snapshots/training1_zoomed.png" data-toggle="lightbox"><img src="snapshots/training1_zoomed.png" class="img-responsive" /></a>
-The user can select the size of the brush, and switch between drawing and erasing mode just below the label list on the left.
+You are now ready to give some training annotations! Select a class and scribble over pixels which belong to it. Then change to another class and add more scribbles for it. If you add a wrong scribble, use an eraser to remove it (eraser controls are shown below). You can also change the size of the brush in the next control. 
 
-To visualize the results of the classification, the **Live update** mode can now be switched on.
-The pixel classification result is displayed as an overlay on the image.
-Now classification errors can be corrected by giving additional annotations. The updated classification results will be displayed immediately in the main window.
-<a href="snapshots/training2_zoomed.png" data-toggle="lightbox"><img src="snapshots/training2_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/scribbles_1.png" data-toggle="lightbox"><img src="snapshots/scribbles_1.png" class="img-responsive" /></a>
+
+To train the classifier and see the predictions, press the **Live update** button. In the background, the features for the labeled pixels will be computed and the Random Forest classifier will be trained from your annotations. Then the features for all pixels in your field of view will be computed and their classes will be predicted by the trained classifier. The predictions will be displayed as an overlay on the image. 
+
+<a href="snapshots/first_prediction.png" data-toggle="lightbox"><img src="snapshots/first_prediction.png" class="img-responsive" /></a>
+
+Examine the results for errors and add more annotations to correct. Here, we will add two more scribbles to separate objects which got merged in the first prediction attempt.
+
+<a href="snapshots/correct_labels.png" data-toggle="lightbox"><img src="snapshots/correct_labels.png" class="img-responsive" /></a>
+
+The classification will be updated on-the-fly. Update is much faster than the first computation since the features are cached and not recomputed. As you can see, all objects are now correctly separated. Keep introducing more annotations until you see no more errors or the predictions stops improving. 
+
+<a href="snapshots/second_prediction.png" data-toggle="lightbox"><img src="snapshots/second_prediction.png" class="img-responsive" /></a>
 
 To display the hard classification results, i.e. the final class assignment the **Segmentation** overlays
 can be turned on by clicking on the **Segmentation** checkbox.
-<a href="snapshots/training3_zoomed.png" data-toggle="lightbox"><img src="snapshots/training3_zoomed.png" class="img-responsive" /></a>
+<a href="snapshots/segmentation.png" data-toggle="lightbox"><img src="snapshots/segmentation.png" class="img-responsive" /></a>
 
 ## How to import labels from an external file {#import}
 To access the "Import Labels" feature in the GUI, do the following:
@@ -96,6 +101,21 @@ To access the "Import Labels" feature in the GUI, do the following:
 3. If your label image is the same size as your input data, and the label image pixels already have consecutive values 1..N, then the default settings may suffice.  Otherwise, you can modify the settings in that window to specify how to offset the label image relative to your input data, and also how to map label image pixel values to the label values ilastik needs (1..N).
 
 <a href="snapshots/labels_context_menu.png" data-toggle="lightbox"><img src="snapshots/labels_context_menu.png" class="img-responsive" /></a>
+
+## Automatic feature suggestion {#suggest}
+If you are not confident in your choice of pixel features, **Suggest Features** functionality might help. Press the button and a new dialog will pop up.
+
+<a href="snapshots/suggest_features_button.png" data-toggle="lightbox"><img src="snapshots/suggest_features_button.png" class="img-responsive" /></a>
+
+<a href="snapshots/suggest_features_dialog.png" data-toggle="lightbox"><img src="snapshots/suggest_features_dialog.png" class="img-responsive" /></a>
+
+
+It works by evaluating the classifier predictions using different feature sets on the pixels you have already annotated. The so called "out-of-bag" predictions are used, so for every tree in the Random Forest we only use the pixels it has not seen in training to estimate the error. Still, even though the pixels were not seen in training, randomization is done on the pixel level, so the tree has likely seen some similar pixels and the error estimate is overly optimistic. Besides the error, ilastik also reports the computing time which can be helpful when trying to find the balance between runtime and accuracy. By choosing the feature set in the lower left corner, you can also see the predictions ilastik would make with these features on the current field of view.
+
+<a href="snapshots/suggest_features_results_2.png" data-toggle="lightbox"><img src="snapshots/suggest_features_results_2.png" class="img-responsive" /></a>
+
+If you like one of the suggested features sets better than your current selection, you can replace your selection with the new set by pressing the **Select Feature Set** button. 
+
 
 ## Window Leveling {#window}
 
