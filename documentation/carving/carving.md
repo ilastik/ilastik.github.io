@@ -63,10 +63,10 @@ ilastik project and added a dataset, the first step is to switch to the **Prepro
 where the filter selection and computation are performed.
 
 <a href="screenshots/carving-01-preprocessing.png" data-toggle="lightbox"><img src="screenshots/carving-01-preprocessing.png" class="img-responsive" /></a>
-Here the user can select from several different boundary types.
-* Bright lines: this option should be selected if the boundaries in the image appear as bright lines.
-* Dark lines: this option should be selected if the boundaries in the image appear as dark lines.
-* Step edges: this option should be selected if the boundary in the image appears as a transition from a bright to a dark region.
+Here the user can select how boundaries are represented in the image.
+* Bright lines
+* Dark lines
+* Step edges: if the boundaries in the image appear as a transition from a bright to a dark region.
 * Original image: if the loaded image is already a boundary map, where bright pixels correspond to an image boundary.
 * Inverted Original image: if the loaded image is already a boundary map, where dark pixels correspond to an image boundary.
 
