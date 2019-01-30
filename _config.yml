@@ -1,11 +1,13 @@
 permalink: /:categories/:year/:month/:day/:title 
 
+plugins:
+  - jekyll-redirect-from
+
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor"]
 highlighter : rouge
 markdown: kramdown
 kramdown:
    input: GFM
-
 
 title : ilastik
 author :
