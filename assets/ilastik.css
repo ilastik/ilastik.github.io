@@ -70,7 +70,7 @@ label{font-weight:normal !important};
 /* Handle offset for fixed position header */
 .docs-contents h1, h2, h3 {
     margin-top: -51px;
-    padding-top: 51px;
+    padding-top: 61px;
 }
 
 .header-link {
@@ -80,4 +80,9 @@ label{font-weight:normal !important};
 
 h2:hover .header-link {
     visibility: visible;
+}
+
+.docs-contents .img-responsive {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
