@@ -45,6 +45,7 @@ Windows:
 - Except for options passed with the `--export_source` argument (see below), don't specify any values with space-characters in them, even if inside quotes (e.g. `"my file name.h5"`, or `"(10, 20)"`). Due to a [bug in cpython](https://bugs.python.org/issue22433) those might be misinterpreted.
 - For paths to hdf5 datasests (either input or output), ilastik uses the same conventions as the generic [h5ls](https://support.hdfgroup.org/HDF5/Tutor/cmdtoolview.html#h5ls) utility. That is, the hdf5 dataset name should be appended to the file path: `/path/to/my_file.h5/internal/path/to/dataset`.
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
+- ilastik's command line options use underlines rather than dashes to separate words (e.g.: `--cutout_subregion` and not `--cutout-subregion`). If you mix them up, you might get strange errors. See [Known Issues](#known-issues) for more info.
 
 ### Using stack input
 
@@ -179,3 +180,11 @@ For developers and power-users, you can run your own ilastik-dependent python sc
     # Mac
     $ ./ilastik-1.1.7-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
     1.1.7
+
+## Known Issues
+
+ilastik's headless mode will sometimes throw exceptions and output a stacktrace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
+
+### RuntimeError: Could not find one or more input files.  See logged errors.
+
+ilastik might be interpreting some arguments as files to be processed rather than command line flags. For example, if you use `--output-format png` (with a dash between 'output' and 'format') instead of `--output_format png` (with an underline), then the words `--output-format` and `png` might be interpreted as files to be processed by the workflow, and those probably won't be found in your machine.
