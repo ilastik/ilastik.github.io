@@ -156,7 +156,7 @@ asks for the object name, by default it will be generated from **Object name pre
 
 After saving an object, all existing markers will be removed to allow segmenting a new
 object from scratch. To see which objects have already been segmented and saved the **Completed Segments** overlay
-can be enabled by clicking on the little eye in that layer:
+can be enabled by clicking on the eye icon (<img src="/documentation/basics/screenshots/eye_active.png" />) in that layer:
 
 <a href="screenshots/carving-06-completed-segments.png" data-toggle="lightbox"><img src="screenshots/carving-06-completed-segments.png" class="img-responsive" /></a>
 
