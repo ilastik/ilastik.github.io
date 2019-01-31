@@ -26,7 +26,7 @@ example the classification workflow.
 <a href="carving_intro_overview.png" data-toggle="lightbox"><img src="carving_intro_overview.png" class="img-responsive align-center" /></a>
 
 While the
-[Classification module]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
+[Pixel Classification module]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
 is useful for segmenting objects with discernible brightness, color
 or textural differences in comparison to their surroundings, the carving
 module's purpose is to aid in the extraction of objects from images that are
@@ -35,7 +35,7 @@ rest of the image by their internal appearance.
 
 <a href="carving_good_bad.png" data-toggle="lightbox"><img src="carving_good_bad.png" class="img-responsive align-center"/></a>
       
-From the two images displayed to the right, the left image is clearly
+From the two example images above, the left image is clearly
 more suitable for the classification module since the cell cores have a
 strong red color component in comparison to their surrounding. The right
 image, on the other hand, is a good example for the applicability of the
@@ -46,7 +46,7 @@ separated by the dark cell membranes dividing them. (NOTE: the seeded
 watershed **could** also be applied to segment individual cell cores
 in the left image interactively, but in such a case where there is a
 clear visible difference between the objects of interest and their
-surrounding the classification module is a better choice.)
+surrounding the pixel classification module is a better choice.)
 
 The algorithm is applicable to a wide range of segmentation problems that
 fulfill these properties. In the case of data where the boundaries are not
@@ -70,7 +70,7 @@ Here the user can select how boundaries are represented in the image.
 * Original image: if the loaded image is already a boundary map, where bright pixels correspond to an image boundary.
 * Inverted Original image: if the loaded image is already a boundary map, where dark pixels correspond to an image boundary.
 
-In the example image above, a good boundary choice would clearly be **Dark lines**.
+In the example image above, a good boundary choice would clearly be **dark lines**.
 
 To check if the computed boundaries visually correspond with the edges in the image the visibility of the **Filtered Data** layer
 can be toggled by clicking on the small eye in that layer:
