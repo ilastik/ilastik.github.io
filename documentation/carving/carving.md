@@ -68,8 +68,8 @@ Here the user can select how boundaries are represented in the image.
 * Bright lines
 * Dark lines
 * Step edges: if the boundaries in the image appear as a transition from a bright to a dark region.
-* Original image: if the loaded image is already a boundary map, where bright pixels correspond to an image boundary.
-* Inverted Original image: if the loaded image is already a boundary map, where dark pixels correspond to an image boundary.
+* Bright lines (smoothed image): if the loaded image is already a boundary map, where bright pixels correspond to an image boundary.
+* Dark lines (smoothed image): if the loaded image is already a boundary map, where dark pixels correspond to an image boundary.
 
 In the example image above, a good boundary choice would clearly be **dark lines**.
 
@@ -111,6 +111,7 @@ Additional available interactions include:
 
 - **Updating the segmentation:** Left click on button **Segment**
 - **Erasing a brush stroke:** Change brush mode to eraser by clicking on the eraser button
+- **Window Leveling** Change brush mode by clicking on window leveling tool button <img src="/documentation/basics/screenshots/window_leveling.png" />
 - **Changing the active seed type:** Left Mouse click on seed in the left-hand side seed list.
 - **Changing the color of a seed type:** Right Mouse click on the corresponding seed in the seed list and select **Change Color**.
 - **Erasing all markers:** Click on the  **Clear**.button next to the segment button.
