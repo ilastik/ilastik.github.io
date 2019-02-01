@@ -2,56 +2,23 @@
 title: Gallery
 category: "Gallery"
 ---
-<div class="row">
-<a href="gallery/cubes_combined.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/cubes_combined.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure2abc_rawdata.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure2abc_rawdata.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-2-a.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-2-a.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure2a.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure2a.jpg" class="img-responsive" /></a>
-</div>
 
-<div class="row">
-<a href="gallery/Figure-2-b.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-2-b.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure2b.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure2b.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-2-c.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-2-c.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure2c.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure2c.jpg" class="img-responsive" /></a>
-</div>
+{%- assign rowsize = 4 %}
+{%- assign images = site.static_files | where: "gallery_full", true -%}
+{%- assign nrows = images.size | minus: 1 | divided_by: rowsize | plus: 1 -%}
 
-<div class="row">
-<a href="gallery/Figure3a_left.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure3a_left.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-3-a.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-3-a.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure3a_right.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure3a_right.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure3b.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure3b.jpg" class="img-responsive" /></a>
-</div>
+{% for i in (1..nrows) %}
+  <div class="row">
+    {%- assign offset = i | minus: 1 | times: rowsize -%}
+    {% for img in images offset: offset limit: rowsize %}
+      <a href="{{img.path}}" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3">
+        <img src="{{site.baseurl}}/gallery/thumb/{{img.basename}}.jpg" class="img-responsive">
+      </a>
+    {% endfor %}
+  </div>
+{% endfor %}
 
-<div class="row">
-<a href="gallery/Figure-3-c-ii.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-3-c-ii.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-3-c-i.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-3-c-i.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-4-a-iii.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-4-a-iii.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-4-a-ii.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-4-a-ii.jpg" class="img-responsive" /></a>
-</div>
-
-<div class="row">
-<a href="gallery/Figure-4-a-i.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-4-a-i.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-4-b-i.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-4-b-i.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-5-a.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-5-a.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure5b_manualTracking-3d.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure5b_manualTracking-3d.jpg" class="img-responsive" /></a>
-</div>
-
-<div class="row">
-<a href="gallery/Figure-5-b.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-5-b.jpg" class="img-responsive" /></a>
-<a href="gallery/Figure-7.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/Figure-7.jpg" class="img-responsive" /></a>
-<a href="gallery/janelia-pixelclass-00.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/janelia-pixelclass-00.jpg" class="img-responsive" /></a>
-<a href="gallery/janelia-pixelclass-01.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/janelia-pixelclass-01.jpg" class="img-responsive" /></a>
-</div>
-
-<div class="row">
-<a href="gallery/janelia-pixelclass-02.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/janelia-pixelclass-02.jpg" class="img-responsive" /></a>
-<a href="gallery/object-classification-prediction2.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/object-classification-prediction2.jpg" class="img-responsive" /></a>
-<a href="gallery/object-classification-prediction.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/object-classification-prediction.jpg" class="img-responsive" /></a>
-<a href="gallery/segmentation1.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/segmentation1.jpg" class="img-responsive" /></a>
-</div>
-
-<div class="row">
-<a href="gallery/volumina.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/volumina.jpg" class="img-responsive" /></a>
-<a href="gallery/volumina_screenshot.png" data-toggle="lightbox" data-gallery="gallery" class="col-sm-3"><img src="gallery/thumb/volumina_screenshot.jpg" class="img-responsive" /></a>
-</div>
+{%- assign rowsize = nil %}
+{%- assign images = nil -%}
+{%- assign nrows = nil -%}
+{%- assign offset = nil -%}
