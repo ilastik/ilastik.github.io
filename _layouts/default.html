@@ -1,9 +1,27 @@
 ---
-layout: base
+header_template: header_default.html
 ---
-<div class="row">
-  <div class="col-xs-12">
-    {% include page-header.html %}
-  </div>
-</div>
-{{ content }}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ilastik - {{ page.title }}</title>
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/lightbox/ekko-lightbox.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/ilastik.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Istok+Web">
+    <link rel="stylesheet" href="{{site.baseurl}}/stylesheets/toc.css">
+  </head>
+  <body>
+    <div class="container">
+      {% include navbar.html %}
+      {% include {{ layout.header_template }} %}
+      {{ content }}
+      {% include footer.html %}
+    </div>
+    {% include analytics.html %}
+  </body>
+</html>

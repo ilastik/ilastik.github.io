@@ -1,19 +1,9 @@
 ---
-layout: base
+layout: default
+header_template: header_documentation.html
 ---
-{% comment %} load the 'toc' macro to generate table of contents {% endcomment %}
-{% include toc %}
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="page-header">
-      <h1>
-        <img src="{{site.baseurl}}/assets/ilastik-logo.png" alt="ilastik">
-        Documentation
-      </h1>
-    </div>
-  </div>
-</div>
+{% include toc %}
 
 <div class="row">
   <div class="col-sm-3">
