@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Density Counting
 tagline: Interactive Counting
 category: "Documentation"

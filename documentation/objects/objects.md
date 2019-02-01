@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Object Classification
 tagline: Object Classification
 category: "Documentation"

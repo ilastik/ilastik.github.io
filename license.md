@@ -1,5 +1,4 @@
 ---
-layout: default
 title: ilastik License
 category: "About"
 ---

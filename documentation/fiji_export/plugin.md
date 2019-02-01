@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: FIJI import/export plugin
 tagline: Import and Export with a FIJI plugin
 category: "Documentation"
