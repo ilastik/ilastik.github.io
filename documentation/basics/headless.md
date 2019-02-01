@@ -6,13 +6,13 @@ category: "Documentation"
 group: "basic-documentation"
 weight: 6
 ---
-# Headless Mode Operation
+# Headless Mode Operation - Using ilastik as a command line tool
 
 ## General
 
-ilastik has an interactive graphical user interface for training a classifier and refining your results. However, once you're happy with your classifier, you may wish to apply it to other images without bothering with the graphical user interface at all. For that use case, ilastik provides a command-line interface to the [batch processing]({{site.baseurl}}/documentation/basics/batch) applet, a.k.a. "headless mode".
+ilastik has an interactive graphical user interface for training a classifier and refining your results. Once you're happy with your classifier, you may wish to apply it to several other images using the [Batch Processing Applet]({{site.baseurl}}/documentation/basics/batch). Still, if you wish to run ilastik from inside your automation scripts or in environments with no graphical capabilities (e.g.: HPC clusters), then you can use the "headless" mode, which will allow you to run ilastik as a command line tool.
 
-Except for the Carving Workflow, all workflows should be able to run in headless mode.
+Except for the Carving Workflow, all workflows are able to run in headless mode.
 
 In order to run ilastik in headless mode, you will need to use the graphical user interface to create a project and train a classifier by manually drawing annotations as usual (see, e.g. [Pixel Classification Workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) or [Object Classification Workflow] for instructions on how to train your classifier). Once you're done with the training, save your project and quit ilastik.
 
@@ -110,8 +110,8 @@ the command (as shown in the example above).
 
 When running the Pixel Classification Workflow in headless mode, the available options for the `--export_source` flag are:
 
-- `"Probabilities"`, which exports a multi-channel image where pixel values represent the probability that that pixel belongs to the label represented by that channel;
-- `"Simple Segmentation"`, which produces an image where pixel values indicate the class to which a pixel belongs. For this image, every pixel with the same value should belong to the same class of pixels;
+- `"Probabilities"`, which exports a multi-channel image where pixel values represent the probability that that pixel belongs to the class represented by that channel;
+- `"Simple Segmentation"`, which produces a single-channel image where the (integer) pixel values indicate the class to which a pixel belongs. For this image, every pixel with the same value should belong to the same class of pixels;
 - `Uncertainty`, which produces an image where pixel intensity is proportional to the uncertainty found when trying to classify that pixel;
 - `Features`, which outputs a multi-channel image where each channel represents one of the computed pixel features;
 - `Labels`, which outputs an image representing the users' manually created annotations.
@@ -122,7 +122,7 @@ When running the Object Classification Workflow in headless mode, the available 
 - `"Object Predictions"` (default when nothing is specified), which exports a label image of the object class predictions;
 - `"Object Probabilities"`, which exports a multi-channel image volume of object prediction probabilities instead of a label image (one channel for each prediction class);
 - `"Blockwise Object Predictions"` or `"Blockwise Object Probabilities"`, which is analogous to `"Object Predictions"` and `"Object Probabilities"` respectively, but the image will be processed in independent blocks, which is useful when your image won't fit in RAM. Note that the values for the block size and halo cannot be configured via command line parameters and must be set in yout `.ilp` project file via the graphical user interface. See [Blockwise Object Classification Applet]({{site.baseurl}}/documentation/objects/objects.html#preparing-for-large-scale-prediction---blockwise-object-classification-applet).
-- `"Pixel Probabilities"`, which exports the pixel prediction images of the pixel classification part of that workflow. Only valid if you specified an `.ilp` `--project` that was created with the  "Pixel Classification + Object Classification" workflow
+- `"Pixel Probabilities"`, which exports the pixel prediction images of the pixel classification part of that workflow. Only valid if you specified an `.ilp` `--project` that was created with the  "Pixel Classification + Object Classification" workflow.
 
 
 [Object Classification Workflow]: {{site.baseurl}}/documentation/objects/objects.html
@@ -153,7 +153,10 @@ If you are processing more than one volume in a single command, provide all inpu
 
 ## Headless Mode for Counting Workflow
 
-When running the Object Classification Workflow in headless mode, the only available option for the `--export_source` is `Probabilities`
+When running the Object Classification Workflow in headless mode, the only available option for the `--export_source` is `Probabilities`.
+
+Additional arguments:
+- `--csv-export-file` (optional): File path to which a .csv with total object counts should be exported.
 
 ## Controlling CPU and RAM resources
 
@@ -174,17 +177,17 @@ The RAM limit is not perfectly respected in all cases, so you may want to leave 
 For developers and power-users, you can run your own ilastik-dependent python scripts using the interpreter shipped within the ilastik install tree.  The interpreter is located in the `bin` directory:
 
     # Linux
-    $ ./ilastik-1.1.7-Linux/bin/python -c "import ilastik; print ilastik.__version__"
-    1.1.7
+    $ ./ilastik-1.3.2-Linux/bin/python -c "import ilastik; print ilastik.__version__"
+    1.3.2
     
     # Mac
-    $ ./ilastik-1.1.7-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
-    1.1.7
+    $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
+    1.3.2
 
 ## Known Issues
 
-ilastik's headless mode will sometimes throw exceptions and output a stacktrace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
+ilastik's headless mode will sometimes throw exceptions and output a stack trace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
 
-### RuntimeError: Could not find one or more input files.  See logged errors.
+* 'RuntimeError: Could not find one or more input files.  See logged errors.'
 
-ilastik might be interpreting some arguments as files to be processed rather than command line flags. For example, if you use `--output-format png` (with a dash between 'output' and 'format') instead of `--output_format png` (with an underline), then the words `--output-format` and `png` might be interpreted as files to be processed by the workflow, and those probably won't be found in your machine.
+    If you're sure that all files passed as arguments to ilastik actually exist, then ilastik might be misinterpreting some arguments as files to be processed rather than command line flags. For example, if you use `--output-format png` (with a dash between 'output' and 'format') instead of `--output_format png` (with an underline), then the words `--output-format` and `png` might be interpreted as files to be processed by the workflow, and those probably won't be found in your machine, which will trigger the error.
