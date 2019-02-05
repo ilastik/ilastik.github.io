@@ -116,6 +116,24 @@ When running the Pixel Classification Workflow in headless mode, the available o
 - `Features`, which outputs a multi-channel image where each channel represents one of the computed pixel features;
 - `Labels`, which outputs an image representing the users' manually created annotations.
 
+## Headless Mode for Autocontext Workflow
+
+The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workflow is essentially two runs of pixel classification, with the latter one using the output of the first one as an additional input. When running the Autocontext Workflow in headless mode, the available options for the `--export_source` are analogous to those of the simple Pixel Classification Workflow, but you can export the results of any of the two pixel classification stages involved in this workflow. Here's the full list of options:
+
+- `"Probabilities Stage 1"`;
+- `"Probabilities Stage 2"`;
+- `"Simple Segmentation Stage 1"`;
+- `"Simple Segmentation Stage 2"`;
+- `"Uncertainty Stage 1"`;
+- `"Uncertainty Stage 2"`;
+- `"Features Stage 1"`;
+- `"Features Stage 2"`;
+- `"Labels Stage 1"`;
+- `"Labels Stage 2"`;
+- `"Propabilities All Stages"`: equivalent to exporting both `"Probabilities Stage 1"` and `"Probabilities Stage 2"`;
+- `"Input Stage 1"`: output your raw input image that was fed into the first stage of the workflow;
+- `"Input Stage 2"`, wich is the input received by the second Pixel Classification stage in the workflow
+
 ## Headless Mode for Object Classification
 
 When running the Object Classification Workflow in headless mode, the available options for the `--export_source` flag are:
