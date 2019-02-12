@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Exporting Output
 tagline:
 category: "Documentation"

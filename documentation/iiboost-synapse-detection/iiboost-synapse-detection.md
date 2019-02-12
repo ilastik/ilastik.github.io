@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: IIBoost Synapse Detection
 tagline: IIBoost Synapse Detection
 category: "Documentation"

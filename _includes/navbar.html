@@ -1,6 +1,6 @@
-<!-- kate: space-indent: on; indent-width: 2; tab-width: 2; //-->
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -8,19 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index.html">ilastik</a>
+      <a class="navbar-brand" href="{{site.baseurl}}/index.html">ilastik</a>
     </div>
+
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-      <li {% if page.category == "About" %} class="active" {% endif %}><a href="/about.html">About</a></li>
-      <li {% if page.category == "Gallery" %} class="active" {% endif %}><a href="/gallery.html">Gallery</a></li>
-      <li {% if page.category == "Publications" %} class="active" {% endif %}><a href="/publications.html">Publications</a></li>
-      <li {% if page.category == "Download" %} class="active" {% endif %}><a href="/download.html">Download</a></li>
-      <li {% if page.category == "Documentation" %} class="active" {% endif %}><a href="/documentation/index.html">Documentation</a></li>
-      <li {% if page.category == "Development" %} class="active" {% endif %}><a href="/development.html">Development</a></li>
-      <li {% if page.category == "Community" %} class="active" {% endif %}><a href="/community.html">Community</a></li>
-      <!-- <li><a href="https://www.embl.de/jobs/searchjobs/index.php?ref=HD_01306&newlang=1&pos[]=0&loc[]=0">Jobs</a></li> -->
+        {% for cat in site.data.categories %}
+          <li class="{% if cat.name == page.category %}active{% endif %}">
+            <a href="{{site.baseurl}}/{{cat.root}}">{{cat.name}}</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
+
   </div>
 </div>
