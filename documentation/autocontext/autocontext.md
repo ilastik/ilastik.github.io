@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Autocontext
 tagline: Multi-stage pixel classification
 category: "Documentation"

@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Boundary-based Segmentation with Multicut
 tagline: Boundary-based segmentation
 category: "Documentation"

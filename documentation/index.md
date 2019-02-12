@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Overview
 category: "Documentation"
 group: "documentation-home"

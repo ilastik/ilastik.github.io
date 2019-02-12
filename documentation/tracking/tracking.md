@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Tracking 
 tagline: Tracking
 category: "Documentation"
