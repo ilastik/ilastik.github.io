@@ -28,70 +28,22 @@ redirect_from:
 
 <div class="row">
   <div class="col-sm-5 col-sm-offset-3">
-  
-<div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <!-- SLIDE 1 -->
-    <div class="item active">
-      <img src="/assets/img/carousel/crop_training1.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Classification</h4>
-        <p>Train using simple brush strokes</p>
+    <div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        {% for slide in site.data.slides %}
+          <div class="item {%- if forloop.first %} active {%- endif -%}">
+            <img src="{{site.baseurl}}/assets/img/carousel/{{slide.image}}">
+            <div class="carousel-caption">
+              <h4>{{slide.title}}</h4>
+              <p>{{slide.subtitle}}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
+      <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-    <!-- SLIDE 2 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_training3.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Classification</h4>
-        <p>Semantic segmentation using predicted class probabilities</p>
-      </div>
-    </div>
-    <!-- SLIDE 3 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_oc_prediction1.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Object classification</h4>
-        <p>Predict the semantic class of objects</p>
-      </div>
-    </div>
-    <!-- SLIDE 4 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_labeling2.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Carving</h4>
-        <p>Extract objects from a 3D volume semi-automatically</p>
-      </div>
-    </div>
-    <!-- SLIDE 5 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_feature_selection3.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Features</h4>
-        <p>Select from a simple set of predefined image features</p>
-      </div>
-    </div>
-    <!-- SLIDE 6 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_blue_totorial8.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Counting</h4>
-        <p>Count densely packed cells</p>
-      </div>
-    </div>
-    <!-- SLIDE 7 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_25_chaingraph-tracking-3d.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Tracking</h4>
-        <p>Automatic and manual tracking of dividing cells (2D+3D)</p>
-      </div>
-    </div>
-  </div><!-- /.carousel-inner -->
-  <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-</div><!-- /.carousel -->
-</br>
+  <br>
   </div>
 </div>
 

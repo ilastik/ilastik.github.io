@@ -1,0 +1,27 @@
+- title: Pixel Classification
+  subtitle: Train using simple brush strokes
+  image: crop_training1.jpg
+
+- title: Pixel Classification
+  subtitle: Semantic segmentation using predicted class probabilities
+  image: crop_training3.jpg
+
+- title: Object classification
+  subtitle: Predict the semantic class of objects
+  image: crop_oc_prediction1.jpg
+
+- title: Carving
+  subtitle: Extract objects from a 3D volume semi-automatically
+  image: crop_labeling2.jpg
+
+- title: Pixel Features
+  subtitle: Select from a simple set of predefined image features
+  image: crop_feature_selection3.jpg
+
+- title: Counting
+  subtitle: Count densely packed cells
+  image: crop_blue_totorial8.jpg
+
+- title: Tracking
+  subtitle: utomatic and manual tracking of dividing cells (2D+3D)
+  image: crop_25_chaingraph-tracking-3d.jpg
