@@ -3,8 +3,15 @@ permalink: /:categories/:year/:month/:day/:title
 plugins:
   - jekyll-redirect-from
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor"]
-highlighter : rouge
+exclude:
+  - .rvmrc
+  - .rbenv-version
+  - README.md
+  - Rakefile
+  - changelog.md
+  - vendor
+
+highlighter: rouge
 markdown: kramdown
 kramdown:
    input: GFM
@@ -17,12 +24,8 @@ defaults:
   - scope: {path: "gallery/full"}
     values: {gallery_full: true}
 
-title : ilastik
-author :
-  name : the ilastik developers 
-  email : team@ilastik.org
-  github : ilastik
-
-production_url : http://ilastik.org
-baseurl: http://ilastik.org
-relative_permalinks: false
+title: ilastik
+author:
+  name: the ilastik developers
+  email: team@ilastik.org
+  github: ilastik
