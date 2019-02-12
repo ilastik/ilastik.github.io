@@ -9,14 +9,6 @@ markdown: kramdown
 kramdown:
    input: GFM
 
-defaults:
-  - scope: {path: ""}
-    values: {layout: "default"}
-  - scope: {path: "documentation"}
-    values: {layout: "documentation"}
-  - scope: {path: "gallery/full"}
-    values: {gallery_full: true}
-
 title : ilastik
 author :
   name : the ilastik developers 

@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Carving
 tagline: Interactive Segmentation
 category: "Documentation"

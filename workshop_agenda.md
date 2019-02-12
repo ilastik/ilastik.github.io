@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Workshop
 tagline: July 2016, Heidelberg
 category: Home

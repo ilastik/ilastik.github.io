@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: FAQ / Common Problems 
 tagline: Tips, tricks and workarounds
 category: "Documentation"

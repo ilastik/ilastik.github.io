@@ -1,4 +1,5 @@
 <!-- ---
+layout: documentation
 title: Tracking with Learning
 tagline: Structured Learning Tracking
 category: "Documentation"
