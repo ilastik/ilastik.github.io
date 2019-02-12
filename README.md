@@ -23,4 +23,4 @@ Remember to check your links using [linkchecker](https://wummel.github.io/linkch
 
 * ilastik is spelled in lowercase everywhere, including beginnings of sentences
 
-* Zoom effects in the screenshots are made using the [zoom selection script](http://gimpchat.com/viewtopic.php?f=9&t=3374) for [GIMP](http://www.gimp.org).
+* Zoom effects in the screenshots are made using the [zoom selection script](https://gimpchat.com/viewtopic.php?f=9&t=3374) for [GIMP](https://www.gimp.org).

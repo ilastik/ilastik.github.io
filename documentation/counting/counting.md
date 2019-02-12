@@ -65,8 +65,8 @@ The image import procedure is detailed in [Data Selection]({{site.baseurl}}/docu
 Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing
 [Data Selection]({{site.baseurl}}/documentation/basics/batch.html#batchprocessing_unseen_images).
 In the following tutorial we will use a dataset of microscopic
-cell images generated with <a href = "http://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
-This dataset is publicly available at the following <a href = "http://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
+cell images generated with <a href = "https://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
+This dataset is publicly available at the following <a href = "https://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
 
 In this tutorial we have already imported an image in the project file <a href = "http://data.ilastik.org/counting/counting-tutorial.zip">counting-tutorial.ilp</a>.
 As a first step, let us just load this project. You should be able to start from the window below.
@@ -216,7 +216,7 @@ The most important parameters for our algorithms can be set by an advanced user 
 This approach uses a *Random Regression Forest* as regression algorithm.
 In general it requires more labels to give correct results over several images. However it is more robust to inhomogeneous background.
 
-The implementation of the random regression forest is based on <a href="http://scikit-learn.org/stable/">sklearn</a>.
+The implementation of the random regression forest is based on <a href="https://scikit-learn.org/stable/">sklearn</a>.
 
 
 

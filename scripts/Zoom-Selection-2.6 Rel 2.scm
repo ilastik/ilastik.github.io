@@ -1,5 +1,5 @@
 ; Zoom-Selection-2.6 Rel. 0.2 Created by graechan 
-; Comments directed to http://gimpchat.com or http://gimpscripts.com
+; Comments directed to https://gimpchat.com or https://gimpscripts.com
 ;
 ; License: GPLv3
 ;    This program is free software: you can redistribute it and/or modify
@@ -13,7 +13,7 @@
 ;    GNU General Public License for more details.
 ;
 ;    To view a copy of the GNU General Public License
-;    visit: http://www.gnu.org/licenses/gpl.html
+;    visit: https://www.gnu.org/licenses/gpl.html
 ;
 ; ------------
 ;| Change Log |

@@ -10,7 +10,7 @@ The workshop will take place at Mathematikon, Building A (INF 205), conference r
 ## Agenda
 
 This agenda is not final, come check it again for more details as we get closer to the workshop.  
-To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
+To sign up, fill out the form [here](https://goo.gl/forms/8IvSYd85Pq7bLROD3).
 
 **Monday 11.07.2016**: Beginner workshop (09:30 - 17:00).  
 
@@ -47,7 +47,7 @@ To sign up, fill out the form [here](http://goo.gl/forms/8IvSYd85Pq7bLROD3).
 * Hands-on: Track your own data. 
 
    * The participants are expected to be able to use pixel and object classification workflows already.  
-[Sign up](http://goo.gl/forms/8IvSYd85Pq7bLROD3) for the beginner workshop if you need guidance.
+[Sign up](https://goo.gl/forms/8IvSYd85Pq7bLROD3) for the beginner workshop if you need guidance.
 
 * 19:00 Join us for dinner!
 

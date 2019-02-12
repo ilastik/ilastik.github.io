@@ -173,6 +173,6 @@ The mesh of the object can be exported as well. Just right-click on the object y
 ## Post-processing
 Wonderful users of ilastik have created these tools to post-process carving results and made them available for all:
 
-1. [Neuromorph](http://cvlab.epfl.ch/NeuroMorph), for measuring and analyzing the segmented object properties. Featured in <br>
+1. [Neuromorph](https://cvlab.epfl.ch/NeuroMorph), for measuring and analyzing the segmented object properties. Featured in <br>
 A. Jorstad, B. Nigro, C. Cali, M. Wawrzyniak, P. Fua, G. Knott.  "NeuroMorph: A Toolset for the Morphometric Analysis and Visualization of 3D Models Derived from Electron Microscopy Image Stacks." Neuroinformatics, 2014.
-2. [StackObjectCombiner](http://wiki.imagej.net/StackObjectCombiner), for glueing together objects from datasets, which were carved blockwise.
+2. [StackObjectCombiner](https://wiki.imagej.net/StackObjectCombiner), for glueing together objects from datasets, which were carved blockwise.

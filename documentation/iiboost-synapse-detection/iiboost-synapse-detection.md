@@ -15,7 +15,7 @@ The **IIBoost Synapse Detection** workflow is a specialized variant of the gener
 Instead of using a random forest classifier with arbitrary label classes, it uses the [IIBoost][] classifier for identifying mammalian synapses in EM data.
 The classification technique is described in [*Learning Context Cues for Synapse Segmentation*][1]\[1\].
 
-[IIBoost]: http://github.com/cbecker/iiboost
+[IIBoost]: https://github.com/cbecker/iiboost
 
 The interface for the **IIBoost Synapse Detection** workflow has the following differences from the Pixel Classification Workflow:
 
@@ -33,4 +33,4 @@ The interface for the **IIBoost Synapse Detection** workflow has the following d
 
 \[1\]: C. J. Becker, K. Ali, G. Knott and P. Fua. [*Learning Context Cues for Synapse Segmentation*][1], in IEEE Transactions on Medical Imaging, vol. 32, num. 10, p. 1864--1877, 2013. 
 
-[1]: http://infoscience.epfl.ch/record/183638?ln=en
+[1]: https://infoscience.epfl.ch/record/183638?ln=en
