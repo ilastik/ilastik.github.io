@@ -122,6 +122,7 @@ The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workfl
 
 - `"Probabilities Stage 1"`;
 - `"Probabilities Stage 2"`;
+- `"Propabilities All Stages"`: exports both `"Probabilities Stage 1"` and `"Probabilities Stage 2"` into a single multi-channel image;
 - `"Simple Segmentation Stage 1"`;
 - `"Simple Segmentation Stage 2"`;
 - `"Uncertainty Stage 1"`;
@@ -130,9 +131,8 @@ The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workfl
 - `"Features Stage 2"`;
 - `"Labels Stage 1"`;
 - `"Labels Stage 2"`;
-- `"Propabilities All Stages"`: equivalent to exporting both `"Probabilities Stage 1"` and `"Probabilities Stage 2"`;
-- `"Input Stage 1"`: output your raw input image that was fed into the first stage of the workflow;
-- `"Input Stage 2"`, wich is the input received by the second Pixel Classification stage in the workflow
+- `"Input Stage 1"`: exports your raw input image that was fed into the first stage of the workflow;
+- `"Input Stage 2"`: exports the input received by the second Pixel Classification stage in the workflow.
 
 ## Headless Mode for Object Classification
 
@@ -145,7 +145,9 @@ When running the Object Classification Workflow in headless mode, the available 
 
 [Object Classification Workflow]: {{site.baseurl}}/documentation/objects/objects.html
 
-Depending on which variant of the [Object Classification Workflow] you used to create your `.ilp` project file, you may need to provide more than one input image for each volume of data you want to process (e.g. "Raw Data" and "Segmentation Image" for , or "Raw Data" and "Prediction Maps"). These input images correspond to the tabs in the `Input Data` applet of the Object Classification Workflow and must be provided on the command-line.  To specify which is which, prefix the list of input files with either `--raw_data`, `--segmentation_image`, or `--prediction_maps` accordingly. Here's an example of invoking ilastik with an Object Classification Workflow that takes a Segmentation Image as input:
+Depending on which variant of the [Object Classification Workflow] you used to create your `.ilp` project file, you may need to provide more than one input image for each volume of data you want to process (e.g. "Raw Data" and "Segmentation Image" for , or "Raw Data" and "Prediction Maps"). These input images correspond to the tabs in the `Input Data` applet of the Object Classification Workflow and must be provided on the command-line. They serve to provide the information necessary to segment the input image into objects which can then be classified by the trained classifier that was saved into your `.ilp` project file.
+
+To specify which is which, prefix the list of input files with either `--raw_data`, `--segmentation_image`, or `--prediction_maps` accordingly. Here's an example of invoking ilastik with an Object Classification Workflow that takes a Segmentation Image as input:
 
     $ ./run_ilastik.sh --headless \
                        --project=MyObjClassFromPredictMap.ilp \
