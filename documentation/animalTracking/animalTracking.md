@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Animal Tracking
 tagline: Animal Tracking
 category: "Documentation"

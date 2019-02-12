@@ -1,27 +1,27 @@
-<hr>
+      <hr>
+      <footer>
+        <small>&copy; 2010-{{ site.time | date: "%Y" }} <a href="mailto:team@ilastik.org">{{ site.author.name }}</a> </small>
+        <p class="pull-right"><a href="#">Back to top</a> </p>
+      </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/lightbox/ekko-lightbox.min.js"></script>
+    <script>
+        $('#ilastik-screenshots-carousel').carousel({ interval: 5000 })
+        
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) { event.preventDefault(); $(this).ekkoLightbox(); });
+    </script>
+    <script src="/javascripts/jquery.toc.js"></script>
 
-<footer>
-  <small>&copy; 2010-{{ site.time | date: "%Y" }} <a href="mailto:team@ilastik.org">{{ site.author.name }}</a></small>
-  <p class="pull-right"><a href="#">Back to top</a></p>
-</footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="{{site.baseurl}}/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="{{site.baseurl}}/assets/lightbox/ekko-lightbox.min.js"></script>
-
-<script>
-  $('#ilastik-screenshots-carousel').carousel({ interval: 5000 });
-
-  $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox();
-  });
-</script>
-
-<script src="{{site.baseurl}}/javascripts/jquery.toc.js"></script>
-
-<script>
-  $(function() {
-    $('#tocMain').toc({ showAlways: true, renderIn: '#renderIn' });
-  });
-</script>
+    <script type="text/javascript">
+    $(function() {
+      $('#tocMain').toc({
+        showAlways:true,
+        renderIn:'#renderIn'
+      });
+    });
+    </script>
+  </div>
+{% include analytics.html %}
+</body>
+</html>

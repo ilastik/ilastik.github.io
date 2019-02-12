@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Pixel Classification
 tagline: Pixel Classification
 category: "Documentation"

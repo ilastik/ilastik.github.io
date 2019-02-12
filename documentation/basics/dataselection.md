@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Data Selection
 tagline:
 category: "Documentation"

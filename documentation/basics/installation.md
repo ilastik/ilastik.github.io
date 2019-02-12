@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Installation
 tagline:
 category: "Documentation"
