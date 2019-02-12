@@ -45,11 +45,11 @@ is used to track multiple (dividing) objects in presumably big datasets, while t
 ground truth acquisition. To speed up this process, sub-tracks can be generated automatically for trivial
 assignments such that the user only has to link objects where the tracking is ambiguous. 
 [**Tracking with learning**](#sec_structured_learning) is an even more advanced version of the automatic tracking. It allows you to provide short ground truth sub-tracks to automatically adjust the parameters of automatic tracking using a structured learning approach as described [here](https://papers.nips.cc/paper/4484-structured-learning-for-cell-tracking) and [here](https://arxiv.org/abs/1206.6421). The ground truth sub-tracks are provided using the applets from the manual tracking workflow, while the rest of the training is performed as in the automatic tracking.
-Finally, [**animal tracking**](#sec_animal) workflow is the tool for tracking non-dividing objects.
+Finally, [**animal tracking**]({{site.baseurl}}/documentation/animalTracking/animalTracking) workflow is the tool for tracking non-dividing objects.
 
 **Please note that the _tracking with learning_ workflow only works on machines where CPLEX or GUROBI is installed
 additional to ilastik. Instructions on how to install CPLEX are given 
-[here]({{site.baseurl}}/documentation/basics/installation.html#cplex-setup).**
+[here]({{site.baseurl}}/documentation/basics/installation.html#cplex-installation-and-setup).**
 
 <!-- The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
@@ -600,7 +600,5 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 ## References <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span  class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 
-<a name="ref_conservation"> </a>
-\[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 
-**Conservation Tracking.**
+<span id="ref_conservation">\[1\]</span> M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. **Conservation Tracking.**
 *Proceedings of the IEEE International Conference on Computer Vision (ICCV 2013)*, 2013.

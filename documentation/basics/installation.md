@@ -26,7 +26,7 @@ On *Mac*, *Linux*, and *Windows* learning the weights in the Tracking with Learn
 Furthermore, the results of the Boundary Segmentation with Multicut Workflow and the Tracking Workflow tend to be more accurate using one of the two commercial solvers.
 
 
-## Basic Installation <a id="basic-installation"></a>
+## Basic Installation
 
 ### Installation on Windows
 
@@ -57,7 +57,7 @@ To run ilastik, use the included `run_ilastik.sh` script:
 
 -----------------
 
-## Commercial Solver Installation <a name="solver-setup"></a>
+## Commercial Solver Installation {#solver-setup}
 
 For some workflows in ilastik, installation of a commercial solver is required.
 *IBM CPLEX* is supported by ilastik on all platforms.
@@ -86,7 +86,7 @@ very small problem sizes. Please make sure, the correct version is downloaded as
 
 The following sections contain platform-specific instructions for CPLEX installation on [Windows](#cplex-setup-windows) as well as on [Linux and Mac](#cplex-setup-linux-mac).
 
-#### Setup on Windows <a name="cplex-setup-windows"></a>
+#### Setup on Windows {#cplex-setup-windows}
 
 Run the installer by double clicking the executable that you've downloaded.
 
@@ -108,7 +108,7 @@ If it isn't, you may copy the files `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG
 If it still doesn't work, please [contact us]({{site.baseurl}}/community.html).
 
 
-#### Setup on Linux and Mac<a name="cplex-setup-linux-mac"></a>
+#### Setup on Linux and Mac {#cplex-setup-linux-mac}
 
 On Linux and Mac, the CPLEX installer comes as a commandline executable (`cplex-someversion.sh` on Linux and `cplex-someversion.bin` on Mac).
 To install it, open a terminal and run `bash /path/to/your/cplex-someversion.sh` (or `bash /path/to/your/cplex-someversion.bin` on Mac).

@@ -63,12 +63,12 @@ Let's warm up with a small tutorial.
 Similarly to other ilastik workflows, you can provide either images (e.g. \*.png, \*.jpg and \*.tif) directly or pass hdf5 datasets.
 The image import procedure is detailed in [Data Selection]({{site.baseurl}}/documentation/basics/dataselection.html).
 Please note that the current version of the Counting module is limited to handling **2D data only**, for this reason hdf5-datasets with a z-axis or a temporal axis will not be accepted.  Only the training images required for the  manual labeling have to be added in this way, the full prediction on a large dataset can be done via Batch Processing
-[Data Selection]({{site.baseurl}}/documentation/basics/batch.html#batchprocessing_unseen_images).
+[Data Selection]({{site.baseurl}}/documentation/basics/batch.html).
 In the following tutorial we will use a dataset of microscopic
 cell images generated with <a href = "https://www.cs.tut.fi/sgn/csb/simcep/tool.html">SIMCEP</a>.
 This dataset is publicly available at the following <a href = "https://www.robots.ox.ac.uk/~vgg/research/counting/">link</a>.
 
-In this tutorial we have already imported an image in the project file <a href = "http://data.ilastik.org/counting/counting-tutorial.zip">counting-tutorial.ilp</a>.
+In this tutorial we have already imported an image in the project file [`counting-tutorial.ilp`](http://data.ilastik.org/counting/counting-data/counting-tutorial.ilp).
 As a first step, let us just load this project. You should be able to start from the window below.
 
 <a href="fig/blue_tutorial0.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial0.jpg" class="img-responsive" /></a>
@@ -85,7 +85,7 @@ The figure below shows the response of the *Laplacian of Gaussians* filter.
 
 It is appropriate to match the size of the object and of the cluster of objects with the scale of the features as shown in the figure below.
 For further details on feature selection please refer to [How to select good
-features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting_good_features).
+features]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting-good-features).
 
 <a href="fig/blue_tutorial_features.jpg" data-toggle="lightbox"><img src="fig/blue_tutorial_features.jpg" class="img-responsive" /></a>
 
@@ -158,8 +158,10 @@ This is explained in the next section.
 This interaction takes place **after** we have pressed the *Live Update* Button for the first time. The boxes are operator windows that integrate the density over a certain image region. Therefore they provide the predicted
 counts for the objects in that region.
 
+<!--
 Boxes can also be used to annotate the counts over image regions. This **advanced usage** of the boxes is explained in
 the [**Support Vector Regression section**](#sec_svr).
+-->
 
 <!-- ![alt text](fig/density2.png) -->
 
