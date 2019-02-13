@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Data Selection
 tagline:
 category: "Documentation"
@@ -71,7 +70,7 @@ Selecting this option will open a new dialog to select the files that will
 be included in the stack. The selection can be specified in three ways:
  * selecting multiple files using the standard system file open dialog,
  * selecting all files in a directory
- * using a filename pattern (with [Unix style patterns](http://docs.python.org/2/library/glob.html))
+ * using a filename pattern (with [Unix style patterns](https://docs.python.org/2/library/glob.html))
 
 A special case are image stacks saved in multiple .h5 files (HDF5, see paragraph
 [Supported File Formats](#formats)). HDF5 supports saving multiple datasets

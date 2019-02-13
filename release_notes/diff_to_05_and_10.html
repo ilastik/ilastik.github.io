@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Release notes
 tagline: what's new?
 
@@ -24,14 +23,14 @@ In short, everything, from the back-end to the user interface. But ilastik still
 <dt>Pixel Classification: </dt>
     <dd>The biggest change is that you are <strong>no longer limited by the RAM of your machine</strong>. Feature computation and pixel label prediction are now done lazily, so that only the field of view is predicted. Computations are cached and the older caches are discarded when the memory limit gets close.</dd>
 <dt>Carving:</dt>
-    <dd>All objects are now segmented separately, so that they can be be saved, edited and exported individually. This makes for much faster saving time and much smaller project files. We have added uncertainty estimates from <a href="http://scholar.google.com/citations?view_op=view_citation&hl=en&user=lO62bt0AAAAJ&cstart=20&sortby=pubdate&citation_for_view=lO62bt0AAAAJ:l7t_Zn2s7bgC">Straehle et al.</a> to allow you to place seeds more efficiently. We also simplified the preprocessing interface to make it easier to choose the right settings.</dd>
+    <dd>All objects are now segmented separately, so that they can be be saved, edited and exported individually. This makes for much faster saving time and much smaller project files. We have added uncertainty estimates from <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lO62bt0AAAAJ&cstart=20&sortby=pubdate&citation_for_view=lO62bt0AAAAJ:l7t_Zn2s7bgC">Straehle et al.</a> to allow you to place seeds more efficiently. We also simplified the preprocessing interface to make it easier to choose the right settings.</dd>
 </dl>
 <h4>New workflows</h4>
 <dl>
 <dt>Object Classification:</dt>
     <dd>Same as pixel classification, but for objects. You label objects by clicking on them and ilastik tries to classify them using object-level features. The main difference to pixel classification is that this workflow requires a probability map or a segmentation besides the raw data (obviously, you can acquire this map by running pixel classification first). On the other hand, it can use richer features, including shape, object summary statistics and properties of object neighborhoods.</dd>
 <dt>Tracking:</dt>
-    <dd>ilastik 1.1 includes two workflows for tracking: automatic and manual. The automatic tracking workflow implements the Conservation tracking algorithm (<a href="http://scholar.google.com/citations?view_op=view_citation&hl=en&user=lO62bt0AAAAJ&sortby=pubdate&citation_for_view=lO62bt0AAAAJ:ZuybSZzF8UAC">[Schiegg et al., ICCV 2013]</a>), which serves to track multiple dividing objects in presumably very large datasets. As in pixel classification, the algorithm expects you to provide sparse annotations to segment the tracked objects and to detect the divisions. In the manual tracking workflow, we provide a convenient interface to track manually. Simple sub-tracks are automatically extracted by ilastik and you only have to link the objects over the ambiguities.  </dd>
+    <dd>ilastik 1.1 includes two workflows for tracking: automatic and manual. The automatic tracking workflow implements the Conservation tracking algorithm (<a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lO62bt0AAAAJ&sortby=pubdate&citation_for_view=lO62bt0AAAAJ:ZuybSZzF8UAC">[Schiegg et al., ICCV 2013]</a>), which serves to track multiple dividing objects in presumably very large datasets. As in pixel classification, the algorithm expects you to provide sparse annotations to segment the tracked objects and to detect the divisions. In the manual tracking workflow, we provide a convenient interface to track manually. Simple sub-tracks are automatically extracted by ilastik and you only have to link the objects over the ambiguities.  </dd>
 <dt>Counting:</dt>
 This workflow allows you to count objects in crowded scenes without performing segmentation or object detection first. Under the hood, it implements the algorithm of <a href="">[Fiaschi et al., ICPR 2012]</a>. As usual in ilastik, you have to sparsely label the background and give the algorithm a few examples of object counts in rectangular bounding boxes.
 </p>

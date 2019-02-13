@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Headless Operation
 tagline:
 category: "Documentation"

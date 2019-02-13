@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Tracking 
 tagline: Tracking
 category: "Documentation"
@@ -45,12 +44,12 @@ The fully [**automatic tracking workflow**](#sec_automatic)
 is used to track multiple (dividing) objects in presumably big datasets, while the purpose of the [**manual tracking workflow**](#sec_manual) is to track *manually* or rather semi-automatically. The latter may be useful for high-quality tracking of small datasets or for
 ground truth acquisition. To speed up this process, sub-tracks can be generated automatically for trivial
 assignments such that the user only has to link objects where the tracking is ambiguous. 
-[**Tracking with learning**](#sec_structured_learning) is an even more advanced version of the automatic tracking. It allows you to provide short ground truth sub-tracks to automatically adjust the parameters of automatic tracking using a structured learning approach as described [here](http://papers.nips.cc/paper/4484-structured-learning-for-cell-tracking) and [here](http://arxiv.org/abs/1206.6421). The ground truth sub-tracks are provided using the applets from the manual tracking workflow, while the rest of the training is performed as in the automatic tracking.
-Finally, [**animal tracking**](#sec_animal) workflow is the tool for tracking non-dividing objects.
+[**Tracking with learning**](#sec_structured_learning) is an even more advanced version of the automatic tracking. It allows you to provide short ground truth sub-tracks to automatically adjust the parameters of automatic tracking using a structured learning approach as described [here](https://papers.nips.cc/paper/4484-structured-learning-for-cell-tracking) and [here](https://arxiv.org/abs/1206.6421). The ground truth sub-tracks are provided using the applets from the manual tracking workflow, while the rest of the training is performed as in the automatic tracking.
+Finally, [**animal tracking**]({{site.baseurl}}/documentation/animalTracking/animalTracking) workflow is the tool for tracking non-dividing objects.
 
 **Please note that the _tracking with learning_ workflow only works on machines where CPLEX or GUROBI is installed
 additional to ilastik. Instructions on how to install CPLEX are given 
-[here]({{site.baseurl}}/documentation/basics/installation.html#cplex-setup).**
+[here]({{site.baseurl}}/documentation/basics/installation.html#cplex-installation-and-setup).**
 
 <!-- The manual tracking and automatic tracking workflows both build on the results of the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
@@ -75,7 +74,7 @@ section.
 Before starting the tracking workflows, the objects to be tracked need to be segmented. To fully illustrate ilastik capabilities,
 we will walk through the common parts of the workflows with both cell and animal data. We use the mitocheck dataset, 
 `mitocheck_94570_2D+t_01-53.h5` kindly provided by the
-<a href="http://www.mitocheck.org">Mitocheck project</a>,
+<a href="https://www.mitocheck.org">Mitocheck project</a>,
 which is available in the <a href="../../download.html">Download</a> section, and a video of fruitflies in a bowl, kindly provided by the 
 Branson Lab at HHMI Janelia Research Campus. 
 
@@ -562,7 +561,7 @@ A full list and detailed information about the plugin is available when pressing
 * **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table. This format is most common for spreadsheets and databases.
 
 
-* **CellTrackingChallenge**: Format used in the ISBI Cell Tracking Challenge. Images will be saved as tiff and the additionaly information as txt. For more details see <a href="http://www.celltrackingchallenge.net/submission-of-results.html"></a>
+* **CellTrackingChallenge**: Format used in the ISBI Cell Tracking Challenge. Images will be saved as tiff and the additionaly information as txt. For more details see <a href="http://celltrackingchallenge.net/submission-of-results.html"></a>
 
 * **H5-Event Sequence** Plugin to export the ilastik tracking results as H5 event sequence. Detailed description in [Export Manual Tracking](#sec_export).
 
@@ -588,7 +587,7 @@ To get started with 3D+time data, we provide example data in the
 section. The file 
 `drosophila_00-49.h5` shows 50 time steps of a small excerpt of a developing *Drosophila* embryo, kindly
 provided by the 
-<a href="http://www.embl.de/research/units/cbb/hufnagel/">Hufnagel Group at EMBL Heidelberg</a>.
+<a href="https://www.embl.de/research/units/cbb/hufnagel/">Hufnagel Group at EMBL Heidelberg</a>.
 A sample segmentation of cell nuclei in this dataset is available in `drosophila_00-49_export.h5`.
 
 For both manual and automatic tracking, the steps of the 2D+time tutorial above may be followed analogously.
@@ -601,7 +600,5 @@ For both manual and automatic tracking, the steps of the 2D+time tutorial above 
 
 ## References <span class="hidden-in-sidebar" style="color:red">&#9679;</span><span  class="hidden-in-sidebar" style="color:blue">&#9679;</span><span class="hidden-in-sidebar" style="color:green">&#9679;</span><span class="hidden-in-sidebar" style="color:orange">&#9679;</span>
 
-<a name="ref_conservation"> </a>
-\[1\] M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. 
-**Conservation Tracking.**
+<span id="ref_conservation">\[1\]</span> M. Schiegg, P. Hanslovsky, B. X. Kausler, L. Hufnagel, F. A. Hamprecht. **Conservation Tracking.**
 *Proceedings of the IEEE International Conference on Computer Vision (ICCV 2013)*, 2013.

@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Exporting Output
 tagline:
 category: "Documentation"
@@ -21,7 +20,7 @@ Results of various ilastik workflows can be exported for later use by
 
 * other ilastik workflows such as using pixel classification outputs in object classification or tracking workflows or
 
-* analysis software such as [Fiji](http://fiji.sc/Fiji).
+* analysis software such as [Fiji](https://fiji.sc/Fiji).
 
 In all workflows, there is a designated applet to export results (see, for example the "Prediction Export" step in [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html) or "Density Export" step in [counting]({{baseurl}}/documentation/counting/counting.html)). Besides, individual layers in the layerstack can be exported by right-clicking on them and choosing the "Export..." item from the context menu. This page is a general introduction to the options of the export interface.
 

@@ -1,14 +1,13 @@
 ---
-layout: default
 title: ilastik License
 category: "About"
 ---
 
 The ilastik software suite is based on three Python packages licensed as follows:
 
-* [ilastik](http://github.com/ilastik/ilastik): [GNU General Public License version 2 or later with exception to allow non-GPL extensions](#ilastik-license)
-* [lazyflow](http://github.com/ilastik/lazyflow): [GNU Lesser Public License 2.1 or later](https://www.gnu.org/licenses/lgpl-2.1.html)
-* [volumina](http://github.com/ilastik/volumina): [GNU Lesser Public License 2.1 or later](https://www.gnu.org/licenses/lgpl-2.1.html)
+* [ilastik](https://github.com/ilastik/ilastik): [GNU General Public License version 2 or later with exception to allow non-GPL extensions](#ilastik-license)
+* [lazyflow](https://github.com/ilastik/lazyflow): [GNU Lesser Public License 2.1 or later](https://www.gnu.org/licenses/lgpl-2.1.html)
+* [volumina](https://github.com/ilastik/volumina): [GNU Lesser Public License 2.1 or later](https://www.gnu.org/licenses/lgpl-2.1.html)
 
 All packages are
 

@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Startup screen
 tagline: 
 category: "Documentation"
