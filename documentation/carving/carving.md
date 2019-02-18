@@ -171,7 +171,7 @@ on the **Browse objects** button and load the corresponding object.
 Right-clicking on the highlighted object in **Completed segments** overlay and navigating to a submenu with object name (in this case it's "Object 1")
 provides the following options:
 
-- Load _ObjectName_
+- Load _object name_ 
 - Delete _ObjectName_
 - Show 3D _ObjectName_ -- will display object in 3D view
 - Export mesh for _ObjectName_ -- will export mesh of the selected object
