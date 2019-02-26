@@ -1,4 +1,4 @@
-# ilastik.org
+# ilastik.org [![Netlify Status](https://api.netlify.com/api/v1/badges/eff31aab-733c-4301-919b-ace9c279097b/deploy-status)](https://app.netlify.com/sites/ilastik/deploys)
 
 The source for the [ilastik website](https://ilastik.org) served via GitHub pages.
 
