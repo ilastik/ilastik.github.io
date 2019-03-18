@@ -558,7 +558,24 @@ A full list and detailed information about the plugin is available when pressing
 
 * **Contours with head**: Plugin to export the ilastik tracking results as contours with the head location for Branson and Zlatics Lab in Janelia HHMI.
 
-* **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table. This format is most common for spreadsheets and databases.
+* **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table.
+This format is most common for spreadsheets and databases.
+Following columns are written to the csv:
+    - `frame`: time frame in the image sequence (starts at `0` and goes as far up as your number of time frames).
+    - `labelimageId`: id of the object in the current time frame.
+    Will range from `1 .. number_of_objects` in the current time frame.
+    - `lineageId`: id of the linage.
+    All cells that are children of a certain object should have the same lineageId.
+    A value of `-1` indicates a false detection.
+    - `trackId`: id of the part of the lineage tree.
+    A value of -1 indicates a false detection.
+    Events like appearance, disappearance and division will start a new track.
+    - `parentTrackId`: id of the track id of the parent object track (in the previous time frame).
+    If an object divides, there will be two new tracks belonging to the same lineage.
+    - `mergerId`: is the `labelimageId` of the object that is identified as a merger of multiple ones.
+    For those, new `labelImageIds` are generated.
+    The `mergerId` just points to the original one. Primary use is to group objects to the same “merge”.
+
 
 
 * **CellTrackingChallenge**: Format used in the ISBI Cell Tracking Challenge. Images will be saved as tiff and the additionaly information as txt. For more details see <a href="http://celltrackingchallenge.net/submission-of-results.html"></a>
