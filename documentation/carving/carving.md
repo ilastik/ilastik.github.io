@@ -149,7 +149,7 @@ in the labeling applet on the left side.
 
 Once the user has successfully segmented an object, the result
 can be stored by clicking on the **Save As** button. A dialog will pop up that
-asks for the object name, by default it will be generated from **Object name prefix** and sequential number:
+asks for the _object name_, by default it will be generated from **Object name prefix** and sequential number:
 
 <a href="screenshots/carving-05-labeling-save.png" data-toggle="lightbox"><img src="screenshots/carving-05-labeling-save.png" class="img-responsive" /></a>
 
@@ -167,13 +167,13 @@ on the **Browse objects** button and load the corresponding object.
 
 <a href="screenshots/carving-07-browse.png" data-toggle="lightbox"><img src="screenshots/carving-07-browse.png" class="img-responsive" /></a>
 
-Right-clicking on the highlighted object in **Completed segments** overlay and navigating to a submenu with object name (in this case it's "Object 1")
+Right-clicking on the highlighted object in **Completed segments** overlay and navigating to a submenu with _object name_ (in this case it's "Object 1")
 provides the following options:
 
 - Load _object name_ 
-- Delete _ObjectName_
-- Show 3D _ObjectName_ -- will display object in 3D view
-- Export mesh for _ObjectName_ -- will export mesh of the selected object
+- Delete _object name_
+- Show 3D _object name_ -- will display object in 3D view
+- Export mesh for _object name_ -- will export mesh of the selected object
 
 <a href="screenshots/carving-08-context-menu.png" data-toggle="lightbox"><img src="screenshots/carving-08-context-menu.png" class="img-responsive" /></a>
 
