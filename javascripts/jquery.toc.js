@@ -9,8 +9,8 @@
  * Copyright (c) 2013 Davide Ficano
  *
  * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
+ *   https://www.opensource.org/licenses/mit-license.php
+ *   https://www.gnu.org/licenses/gpl.html
  * 
  * Edited by Carsten Haubold @ IWR to fit the needs of the ilastik website
  */
@@ -24,6 +24,14 @@
             .replace('%1', tocLevel)
             .replace('%2', tocSection)
             .replace('%3', link);
+    }
+
+    function createAnchorLink(anchorId) {
+        var a = document.createElement('a');
+        a.href = '#' + anchorId;
+        a.className = 'header-link';
+        a.textContent = '§';
+        return a;
     }
 
     $.fn.toc = function(settings) {
@@ -48,8 +56,8 @@
 
             h1.nextUntil('h1').filter('h2').each(function() {
                 ++innerSection;
-                var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection + '-' +  + innerSection;
-                $(this).attr('id', anchorId);
+                var anchorId = $(this).attr('id');
+                this.appendChild(createAnchorLink(anchorId));
                 levelHTML += createLevelHTML(anchorId,
                     tocLevel + 1,
                     tocSection + innerSection,
@@ -61,7 +69,7 @@
             var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
             h1.attr('id', anchorId);
             if(tocSection == 1) {
-                tocHTML += levelHTML
+                tocHTML += levelHTML;
             }
             else {
                 tocHTML += createLevelHTML(anchorId,
@@ -83,5 +91,5 @@
             }
         }
         return this;
-    }
+    };
 })(jQuery);

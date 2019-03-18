@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Release notes for v1.2.2
 ---
 

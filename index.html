@@ -1,5 +1,5 @@
 ---
-layout: headerfooter
+layout: home
 title: ilastik
 tagline: the interactive learning and segmentation toolkit
 category: Home
@@ -9,18 +9,6 @@ redirect_from:
   - /sfn
   - /sfn/
 ---
-{% include navbar.html %}
-
-<div class="row">
-  <div class="col-sm-7 col-sm-offset-2">
-    <div class="page-header">
-      <img src="/assets/ilastik-logo.png" alt="ilastik"
-	   class="pull-left" id="main-logo">
-      <h1>{{ page.title }} {% if page.tagline %} <br /> <small>{{ page.tagline }}</small>{% endif %}</h1>
-    </div>
-  </div>
-</div>
-
 
 <div class="row">
  <div class="col-sm-7 col-sm-offset-2">
@@ -40,70 +28,22 @@ redirect_from:
 
 <div class="row">
   <div class="col-sm-5 col-sm-offset-3">
-  
-<div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <!-- SLIDE 1 -->
-    <div class="item active">
-      <img src="/assets/img/carousel/crop_training1.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Classification</h4>
-        <p>Train using simple brush strokes</p>
+    <div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        {% for slide in site.data.slides %}
+          <div class="item {%- if forloop.first %} active {%- endif -%}">
+            <img src="{{site.baseurl}}/assets/img/carousel/{{slide.image}}">
+            <div class="carousel-caption">
+              <h4>{{slide.title}}</h4>
+              <p>{{slide.subtitle}}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
+      <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-    <!-- SLIDE 2 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_training3.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Classification</h4>
-        <p>Semantic segmentation using predicted class probabilities</p>
-      </div>
-    </div>
-    <!-- SLIDE 3 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_oc_prediction1.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Object classification</h4>
-        <p>Predict the semantic class of objects</p>
-      </div>
-    </div>
-    <!-- SLIDE 4 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_labeling2.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Carving</h4>
-        <p>Extract objects from a 3D volume semi-automatically</p>
-      </div>
-    </div>
-    <!-- SLIDE 5 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_feature_selection3.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Pixel Features</h4>
-        <p>Select from a simple set of predefined image features</p>
-      </div>
-    </div>
-    <!-- SLIDE 6 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_blue_totorial8.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Counting</h4>
-        <p>Count densely packed cells</p>
-      </div>
-    </div>
-    <!-- SLIDE 7 -->
-    <div class="item">
-      <img src="/assets/img/carousel/crop_25_chaingraph-tracking-3d.jpg" alt="" />
-      <div class="carousel-caption">
-        <h4>Tracking</h4>
-        <p>Automatic and manual tracking of dividing cells (2D+3D)</p>
-      </div>
-    </div>
-  </div><!-- /.carousel-inner -->
-  <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-</div><!-- /.carousel -->
-</br>
+  <br>
   </div>
 </div>
 
@@ -160,16 +100,16 @@ redirect_from:
     <h4><a href="#">News</a></h4>
   </div>
      <div class="col-sm-6" align="left">
-          <h4><a href="/download.html">Release 1.3.0 is out of beta!</a></h4>
+          <h4><a href="/download.html">Release 1.3.2 is available!</a></h4>
      <p>
-          We are happy to announce a new ilastik release, based on Python3 and Qt5! Detailed release notes can be found <a href=https://github.com/ilastik/ilastik/wiki/Release-Notes#ilastik-130-26-january-2018>here</a>, in short, it's much better, go ahead and try! The GUI is faster, the tracking does not need CPLEX, we have new export formats, and much more.
+          We are happy to announce a new ilastik release. Detailed release notes can be found <a href=https://github.com/ilastik/ilastik/wiki/Release-Notes#ilastik-132-7-february-2019>here</a>, in short, it's much better, go ahead and try! We have new colors, 2D features for 3D data, training data is no longer required in batch processing, and much more.
      </p>
      </div>
 
   <div class="col-sm-6" align="left">
 	  <h4>New video tutorial</h4>
 	  <p>
-		  We started doing video tutorials again: <a href="http://youtu.be/5N0XYW9gRZY">Pixel Classification</a>. 
+		  We started doing video tutorials again: <a href="https://youtu.be/5N0XYW9gRZY">Pixel Classification</a>. 
 		  If you like it, get back to us and we'll do one on your favorite topic!
 	  </p>
   </div>
@@ -201,3 +141,19 @@ redirect_from:
   </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-12">
+    <hr />
+  </div>
+</div>
+
+{% comment %}
+  This badge is required for the Netlify open-source team account.
+{% endcomment %}
+<div class="row">
+  <div class="col-sm-12" align="center">
+    <a href="https://www.netlify.com">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg">
+    </a>
+  </div>
+</div>

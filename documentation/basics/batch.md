@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Batch Processing
 tagline:
 category: "Documentation"
