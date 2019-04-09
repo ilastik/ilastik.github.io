@@ -171,6 +171,31 @@ If you are processing more than one volume in a single command, provide all inpu
     --raw_data "my_grayscale_stack_1/*.png" "my_grayscale_stack_2/*.png" "my_grayscale_stack_3/*.png" \
     --segmentation_image my_unclassified_objects_1.h5/binary_segmentation_volume my_unclassified_objects_2.h5/binary_segmentation_volume my_unclassified_objects_3.h5/binary_segmentation_volume
 
+
+## Headless Mode for Boundary-based Segmentation with Multicut
+
+When running the headless mode for the [Multicut Workflow], the following flags define the input data to be used:
+
+* `--raw_data`: path to the raw data that should be processed.
+* `--probabilities`: path to boundary probability map.
+  Note that it should be generated in the same way as the probability map that was used to train the project (e.g. with the [Pixel Classification Workflow].
+  I.e. same number (and meaning) of channels.
+
+For the `--export_source` the only available option is `"Multicut Segmentation`.
+
+An example invocation is given below:
+
+    $ ./run_ilastik.sh
+    --headless \
+    --project="/path/to/project/MyProject.ilp" \
+    --raw_data="/path/to/raw/data.h5" \
+    --probabilities="/path/to/boundary/probability/data.h5" \
+    --export_source="Multicut Segmentation" \
+    --output_filename_format="/path/to/results/{nickname}_results.h5"
+
+
+[Multicut Workflow]: {{site.baseurl}}/documentation/multicut/multicut.html
+
 ## Headless Mode for Counting Workflow
 
 When running the Object Classification Workflow in headless mode, the only available option for the `--export_source` is `Probabilities`.
