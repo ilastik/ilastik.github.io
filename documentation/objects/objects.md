@@ -6,8 +6,14 @@ group: "workflow-documentation"
 weight: 1
 ---
 
+# Object Classification
 
-## Input
+## Object Classification Demo (3 minutes)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SQeRGvHeT3o?cc_load_policy=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## How it works, what it can do
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations.
 An *object* in this context is a set of pixels that belong to the same instance.
