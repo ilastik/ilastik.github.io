@@ -160,6 +160,23 @@ Adding a few more labels we get a much better uncertainty estimate:
 Assuming our labels were correct this will lead to a good object classification:
 <a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
 
+## Table Export
+
+In the [Export Applet][] you can export the following images: "Object Predictions", "Object Probabilities" "Blockwise Object Predictions".
+In addition to the image export, it is also possible to generate a table that encompasses all information about the objects used during classification.
+Table configuration can be accessed with the _Configure Feature Table Export_ button.
+In this new window there are three vertical tabs:
+
+ * _General_: Choose Filename and Format.
+ Note on formats: `csv` will export a table that can be read with common tools like LibreOffice, or Microsoft Excel.
+ Exporting a table to `h5` is most suitable for more involved post-processing, e.g. with Python.
+ In addition to the table data, images of the respective objects can be included in the `h5` file, see _Settings_.
+ * _Features_: Select the features to be included in the exported table.
+ * _Settings_: Only applicable for `h5` export.
+ Per default only the bounding box of each object is exported.
+ A margin can be configured to include context around this bounding box (size in pixels/voxels).
+ Alternatively, it is also possible to include the whole image instead of the individual object images.
+
 ## Preparing for large scale prediction - Blockwise Object Classification applet
 
 Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously.
@@ -186,11 +203,11 @@ In the upper right corner, an object is shown for which the blockwise object cla
 
 ## Large-scale prediction - Batch Prediction applets
 These two applets have the same interface and parameters as batch prediction in
-[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
+[Pixel Classification workflow][].
 The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
 
 <a href="figs/batch.png" data-toggle="lightbox"><img src="figs/batch.png" class="img-responsive" /></a>
 
-[Pixel Classification Workflow]: {{site.baseurl}}/documentation/pixelclassification/index.html
-
+[Pixel Classification Workflow]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html
+[Export Applet]: {{site.baseurl}}/documentation/basics/export.html
 
