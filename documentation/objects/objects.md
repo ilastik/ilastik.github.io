@@ -95,6 +95,7 @@ For both thresholding methods the end result is shown in the "Final output" laye
 Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
 ## From segmentation to objects - "Object Feature Selection" applet
+
 This applet finds the connected components (objects) in the provided binary segmentation image and computes user-defined features for each object. If you want to inspect the connected components, activate the "Objects (connected components) layer. If you select any object features, connected component analysis will be performed automatically.
 
 <a href="figs/object_extraction_cc.png" data-toggle="lightbox"><img src="figs/object_extraction_cc.png" class="img-responsive" /></a>
@@ -103,19 +104,27 @@ The following dialog will appear if you press the "Select features" button:
 
 <a href="figs/object_extraction_selection_dialog.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog.png" class="img-responsive" /></a>
 
-The "Standard Object Features" refer to the built-in ilastik features, computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
-Unless otherwise specified by the "Coord" prefix, the features are computed on the grayscale values of the pixels that belong to the object.
+Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Feautures" (2D only), and "Convex Hull Features".
+Those features are computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
+The features are subdivided into three groups: "Location", "Shape", and "Intensity Distribution".
+Location-based features take into account _absolute coordinate positions_ in the image.
+These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
+Shape-based features extract shape descriptors from the object masks.
+Lastly, "Intensity Distribution" features operate on image value statistics.
 You will also notice features, which can be computed "in the neighborhood".
 In that case, the neighborhood of the object (specified by the user at the bottom of the dialog) is found by distance transform and the feature is computed for the object itself and for the neighborhood including and excluding the object.
 Need more features?
 Object features are plugin-based and very easy to extend if you know a little Python.
-A detailed example of a user-defined plugin can be found in the $ILASTIK/examples directory, while [this page](https://ilastik.org/ilastik/applet_library.html#object-extraction) contains a higher-level description of the few functions you'd have to implement.
+A detailed example of a user-defined plugin can be found in the $ILASTIK/examples directory, while [this page](https://ilastik.github.io/ilastik/applet_library.html#object-extraction) contains a higher-level description of the few functions you'd have to implement.
 
+<!-- TODO: redo screenshot -->
 <a href="figs/object_extraction_selection_dialog_neigh.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog_neigh.png" class="img-responsive" /></a>
 
 Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
 
-Note on spacial features: Features that are preceded with the "Coord" prefix produce features with absolute coordinate positions in the image. These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
+<!-- TODO: extract table, embed somehow -->
+
+
 
 ## Prediction for objects - "Object Classification" applet
 This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
@@ -140,14 +149,17 @@ In the low right corner we see a cell (shown by the red ellipse), which was clas
 
 <a href="figs/oc_prediction2.png" data-toggle="lightbox"><img src="figs/oc_prediction2.png" class="img-responsive" /></a>
 
-All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background. ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
+All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background.
+Currently, all labels are lost when the threshold is changed!
+<!-- This has been deactivated for quite a while (at 1.3.3b1 now). Uncomment the following paragraph, once transfer-labels is back!-->
+<!-- ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
 
 <a href="figs/thresholding_final2.png" data-toggle="lightbox"><img src="figs/thresholding_final2.png" class="img-responsive" /></a>
 
 After a slight change in the segmentation (lower) threshold the objects indeed become separated. And the two independent objects are predicted correctly:
 
 <a href="figs/oc_prediction3.png" data-toggle="lightbox"><img src="figs/oc_prediction3.png" class="img-responsive" /></a>
-
+-->
 ## Uncertainty Layer
 Uncertainty Layer displays how uncertain prediction for an object is. Applying the minimum number of labels for classifying objects containing up to three cells we have a very uncertain classification:
 
