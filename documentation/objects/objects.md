@@ -161,7 +161,25 @@ Assuming our labels were correct this will lead to a good object classification:
 <a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
 
 ## Preparing for large scale prediction - Blockwise Object Classification applet
-Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously. While these operations and especially the hysteresis thresholding require a lot of memory, "whole image" processing is sufficient for most 2D images. However, for large 3D image volumes we have to resort to blockwise processing. This applet allows you to experiment with different block and halo sizes on the data you used in the interactive object prediction and, by comparing the "whole image" interactive prediction and blockwise prediction, find the optimal parameters for your data. Let us try to predict our image blockwise:
+
+Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously.
+While these operations and especially the hysteresis thresholding require a lot of RAM, *whole image* processing is sufficient for most 2D images.
+However, for large 3D image volumes we have to resort to a different strategy:
+Traning the classifier on a cutout of the whole image and subsequent blockwise processing of the whole dataset in batch mode.
+In blockwise processing, the whole dataset is automatically subdivided in a number of blocks that are processed independently.
+Two parameters control the total size of the blocks:
+
+ * _block size_: Defines size of the block in pixels/voxels in the respective spacial direction.
+   The larger this size, the more RAM will be needed for computation but the image will be subdivided into a smaller number of blocks.
+ * _halo size_: Objects might be cut off at the edges of the blocks such that the algorithm does not see the complete object.
+   Mis-classifications are likely in this situation.
+   The _halo_, with it's size given in pixels/voxels defines the area/volume around the block that is taken into account in addition to the current block.
+   Choose this parameter to be in the order of the size of the objects.
+
+
+The Blockwise Object Classification applet allows you to experiment with different _block_ and _halo sizes_ on the data you used in the interactive object prediction.
+By comparing the "whole image" interactive prediction and blockwise prediction, you can find the optimal parameters for your data.
+The following example illustrates the process.
 
 <a href="figs/block_oc_pred.png" data-toggle="lightbox"><img src="figs/block_oc_pred.png" class="img-responsive" /></a>
 In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
