@@ -62,39 +62,68 @@ If you already have binary segmentation images, skip this section.
 Suppose we have a probability map for a 2-class classification, which looks like this:
 <a href="figs/pixel_results.png" data-toggle="lightbox"><img src="figs/pixel_results.png" class="img-responsive" /></a>
 
-There are two ways to transform a probability map into a segmentation in ilastik and both are covered by the thresholding applet. To see the results of changing the parameter settings in this applet, press the "Apply" button.
+The basic idea of thresholding is to answer a question for _every pixel_ in an image:
+is the pixel value larger than the _threshold value_ or not?
+In ilastik probability maps (result of [Pixel Classification][Pixel Classification Workflow]) pixel values are in the continuous range from `0.0` to `1.0` in each channel and describe the probability that a pixel belongs into a class.
+In this applet this continuous range is transferred into a binary one, containing only `0`s and `1`s (so no values in between) by comparing it to a set threshold.
 
-First, specify which channel of the probability map you want to threshold (we choose the yellow channel, as it corresponds to object rather than background probability).
+**Note:** To see any the results of changing the parameter settings in this applet, press the "Apply" button.
+
+There are two algorithms you can choose from to threshold your data: _Simple_ and _Hysteresis_, which can be selected using the "Method" drop down.
+
+Both methods share the following parameters:
+ * _Input_ Channel(s): Select on which channel of the probability map to work on.
+ * _Smooth_: Configure sigmas for smoothing the probability map in order to reduce noise.
+   The Gaussian can be anisotropic, i.e. sigmas for all dimensions can be different.
+   If you do not want to smooth, just select a very small sigma (like 0.6).
+  * _Threshold_ value(s): Value to check each pixel/voxel against.
+  * Size filter: specify the minimum and maximum value (in terms of pixel/voxel counts for 2D/3D, respectively).
+
+For both thresholding methods the end result is shown in the "Final output" layer.
+
+
+### Simple Thresholding
+
+Selecting **"Simple"** in the _Method_ dropdown will perform regular thresholding at one level, followed by the size filter.
+
+You begin by selecting a channel with the _Input_ dropdown:
 
 <a href="figs/thresholding_channel.png" data-toggle="lightbox"><img src="figs/thresholding_channel.png" class="img-responsive" /></a>
 
-After selecting the channel, choose a sigma to smooth the probability map with a Gaussian. The Gaussian can be anisotropic, i.e. sigmas for all dimensions can be different. If you do not want to smooth, just select a very small sigma (like 0.6). You can check the results of the smoothing operation by first activating the "Show intermediate results" checkbox and then looking at the "Smoothed input" layer:
+Next, you can configure your sigmas for smoothing the probability image.
+You can check the results of the smoothing operation by first activating the "Show intermediate results" checkbox and then looking at the "Smoothed input" layer:
 
 <a href="figs/thresholding_sigmas.png" data-toggle="lightbox"><img src="figs/thresholding_sigmas.png" class="img-responsive" /></a>
 
-Now, two options are available for the actual thresholding, which can be selected with the **Method** drop-down.
-
-Selecting **"Simple"** will perform regular thresholding at one level, followed by the size filter.
 We also provide a view on the thresholded objects before size filtering.
-This layer is activated by checking the "Show intermediate results" checkbox.
+This layer is activated by checking the _Show intermediate results_ checkbox.
+In the example below, the result before size filter is shown in white.
+After application of the size filter, only the colored objects remain.
 
 <a href="figs/thresholding_before_size_filter.png" data-toggle="lightbox"><img src="figs/thresholding_before_size_filter.png" class="img-responsive" /></a>
 
-By selecting **Hystersis** in the method drop-down thresholding is performed at two levels: high and low.
+
+### Hysteresis Thresholding
+
+By selecting **Hystersis** in the method drop-down thresholding is performed at two levels: _core, or high threshold_, and _final, or low threshold_.
 The high threshold is applied first and the resulting objects are filtered by size.
-For the remaining objects the segmentation is then relaxed to the level of low threshold.
+These high probability areas act as seeds:
+For the remaining objects the segmentation is then relaxed to the level of low threshold starting from the seeds.
 The two levels of thresholding allow to separate the criteria for detection and segmentation of objects and select only objects of very high probability while better preserving their shape.
 As for the single threshold case, we provide a view on the intermediate results after the application of the high threshold, the size filter and the low threshold.
-The image below shows the results of the high (detection) threshold in multiple colors overlayed with the results of the low (segmentation) threshold in white:
+The image below shows the results of the high (detection) threshold after size filter in pink (<span style="color:#ff0aff">&#9679;</span>) overlayed on the final results of the low (segmentation) threshold multiple colors:
 
 <a href="figs/thresholding_two_thresholds.png" data-toggle="lightbox"><img src="figs/thresholding_two_thresholds.png" class="img-responsive" /></a>
 
-The last parameter of this applet is the size filter, for which you can specify the minimum and maximum value (in terms of pixel/voxel counts for 2D/3D, respectively).
-For both thresholding methods the end result is shown in the "Final output" layer.
+An additional setting is available with Hysteresis Thresholding:
+Two (or more) seeds (determined by the "core" threshold) might result in the same object when the segmentation is relaxed.
+With the _Don't merge objects_ checkbox, you can control this behavior:
+Checking it, will preserve one object per detection.
 
 Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
 ## From segmentation to objects - "Object Feature Selection" applet
+
 This applet finds the connected components (objects) in the provided binary segmentation image and computes user-defined features for each object. If you want to inspect the connected components, activate the "Objects (connected components) layer. If you select any object features, connected component analysis will be performed automatically.
 
 <a href="figs/object_extraction_cc.png" data-toggle="lightbox"><img src="figs/object_extraction_cc.png" class="img-responsive" /></a>
@@ -103,19 +132,26 @@ The following dialog will appear if you press the "Select features" button:
 
 <a href="figs/object_extraction_selection_dialog.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog.png" class="img-responsive" /></a>
 
-The "Standard Object Features" refer to the built-in ilastik features, computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
-Unless otherwise specified by the "Coord" prefix, the features are computed on the grayscale values of the pixels that belong to the object.
+The object feature calculation is plugin-based.
+Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Feautures" (2D only), and "Convex Hull Features".
+Those features are computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
+The features are subdivided into three groups: "Location", "Shape", and "Intensity Distribution".
+Location-based features take into account _absolute coordinate positions_ in the image.
+These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
+Shape-based features extract shape descriptors from the object masks.
+Lastly, "Intensity Distribution" features operate on image value statistics.
 You will also notice features, which can be computed "in the neighborhood".
-In that case, the neighborhood of the object (specified by the user at the bottom of the dialog) is found by distance transform and the feature is computed for the object itself and for the neighborhood including and excluding the object.
-Need more features?
-Object features are plugin-based and very easy to extend if you know a little Python.
-A detailed example of a user-defined plugin can be found in the $ILASTIK/examples directory, while [this page](https://ilastik.org/ilastik/applet_library.html#object-extraction) contains a higher-level description of the few functions you'd have to implement.
+In that case, the _neighborhood_ of the object (specified by the user at the bottom of the dialog) is found by distance transform and the feature is computed for the object itself and for the neighborhood including and excluding the object.
 
 <a href="figs/object_extraction_selection_dialog_neigh.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog_neigh.png" class="img-responsive" /></a>
 
+Need more features?
+Object features are plugin-based and very easy to extend if you know a little Python.
+A detailed example of a user-defined plugin can be found in the $ILASTIK/examples directory, while [this page](https://ilastik.github.io/ilastik/applet_library.html#object-extraction) contains a higher-level description of the few functions you'd have to implement.
+
 Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
 
-Note on spacial features: Features that are preceded with the "Coord" prefix produce features with absolute coordinate positions in the image. These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
+
 
 ## Prediction for objects - "Object Classification" applet
 This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
@@ -140,14 +176,17 @@ In the low right corner we see a cell (shown by the red ellipse), which was clas
 
 <a href="figs/oc_prediction2.png" data-toggle="lightbox"><img src="figs/oc_prediction2.png" class="img-responsive" /></a>
 
-All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background. ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
+All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background.
+Currently, all labels are lost when the threshold is changed!
+<!-- This has been deactivated for quite a while (at 1.3.3b1 now). Uncomment the following paragraph, once transfer-labels is back!-->
+<!-- ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
 
 <a href="figs/thresholding_final2.png" data-toggle="lightbox"><img src="figs/thresholding_final2.png" class="img-responsive" /></a>
 
 After a slight change in the segmentation (lower) threshold the objects indeed become separated. And the two independent objects are predicted correctly:
 
 <a href="figs/oc_prediction3.png" data-toggle="lightbox"><img src="figs/oc_prediction3.png" class="img-responsive" /></a>
-
+-->
 ## Uncertainty Layer
 Uncertainty Layer displays how uncertain prediction for an object is. Applying the minimum number of labels for classifying objects containing up to three cells we have a very uncertain classification:
 
