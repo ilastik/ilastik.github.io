@@ -103,7 +103,7 @@ the command (as shown in the example above).
 - `--output_axis_order` Transpose the storage order of the results. For example, this affects the sliced dimension for stack outputs.
 - `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0,1.0)"`
 - `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0,255)"`
-- `--readOnly=1` Open project in read-only mode to allow multiple processing accessing the same file.
+- `--readonly` Open the project in read-only mode; necessary for using a single project from multiple processes.
 
 [Data Export Applet]: {{site.baseurl}}/documentation/basics/export.html#data-export-applet-ss
 
