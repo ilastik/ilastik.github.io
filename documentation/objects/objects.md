@@ -154,30 +154,35 @@ Once you have selected the features you like, the applet will proceed to compute
 
 
 ## Prediction for objects - "Object Classification" applet
-This applet allows you to label the objects and classify them based on the features, computed in the previous applet. If you want to choose a subset of features, press the "Subset features" button. Adding labels and changing their color is done the same way as in the
+This applet allows you to label the objects and classify them based on the features, computed in the previous applet.
+If you want to choose a subset of features, press the "Subset features" button.
+Adding labels and changing their color is done the same way as in the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
-For a particular example, let us examine the data more closely by activating only the "Raw data" layer:
+For a particular example, let us examine the data more closely by activating only the "Raw data" layer (tip: you can toggle between the currently visible layers and only showing the "Raw data" layer by pressing `i`):
 
 <a href="figs/oc_raw.png" data-toggle="lightbox"><img src="figs/oc_raw.png" class="img-responsive" /></a>
 
-Clearly, two classes of cells are present in the image: one more bright but variable, the other darker and more homogeneous. Hopefully, the two classes can be separated by the grayscale mean and variance in the objects. Let us select these two features and add two labels. 
+Clearly, two classes of cells are present in the image: one more bright but variable, the other darker and more homogeneous. Hopefully, the two classes can be separated by the grayscale mean and variance in the objects. Let us select these two features.
+Two labels are already added to the workflow by default.
+If you need more labels you can click on "Add Label" to do so.
 
 <a href="figs/oc_subset.png" data-toggle="lightbox"><img src="figs/oc_subset.png" class="img-responsive" /></a>
 
-Note, that the list of features now only contains the few features that were selected in the previous applet. To label objects, either simply left-click on them or right-click and select the corresponding option. Right-clicking also allows you to print the object properties in the terminal. To trigger classification, check the "Live Update" checkbox.
+Note, that the list of features now only contains the few features that were selected in the previous applet. To label objects, either simply left-click on them or right-click and select the corresponding option. Right-clicking also allows you to print the object properties in the terminal. To trigger classification, press the "Live Update" button.
 
-<a href="figs/oc_add_labels.png" data-toggle="lightbox"><img src="figs/oc_add_labels.png" class="img-responsive" /></a>
+<a href="figs/oc_live_upd_labeled.png" data-toggle="lightbox"><img src="figs/oc_live_upd_labeled.png" class="img-responsive" /></a>
 
-If the "Live Update" checkbox is activated, the prediction is interactive and you can receive immediate feedback on your labels. Let us examine the prediction results:
+If the "Live Update" mode is activated, the prediction is interactive and you can receive immediate feedback on your labels. Let us examine the prediction results:
 
 <a href="figs/oc_prediction1.png" data-toggle="lightbox"><img src="figs/oc_prediction1.png" class="img-responsive" /></a>
 
-In the low right corner we see a cell (shown by the red ellipse), which was classified as "green", while it is most probably "red". Let's label it "red" and check the results again:
+In the low right corner we see a cell (shown by the red ellipse), which was classified as "blue", while it is most probably "yellow". Let's label it "yellow" and check the results again:
 
 <a href="figs/oc_prediction2.png" data-toggle="lightbox"><img src="figs/oc_prediction2.png" class="img-responsive" /></a>
 
 All cells seem to be classified correctly, except one segmentation error, where two cells were erroneously merged (shown by the red ellipse). How could we correct that? We'd have to go back to the thresholding applet, where we performed the segmentation. In the best case, you would have caught this error by examining the thresholding output at the first step. The problem with correcting the segmentation now is that with different thresholds the objects will most probably change shape and thus their features. Besides, some objects might disappear completely, while others appear from the background.
 Currently, all labels are lost when the threshold is changed!
+
 <!-- This has been deactivated for quite a while (at 1.3.3b1 now). Uncomment the following paragraph, once transfer-labels is back!-->
 <!-- ilastik will try to transfer your object labels from the old to the new segmentation, but it will fail in case of disappearance or object division, which is why it's recommended to not change the segmentation after labels are added. Nevertheless, let us try it for demonstration purposes:
 
