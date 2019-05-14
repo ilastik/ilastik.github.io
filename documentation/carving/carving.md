@@ -10,7 +10,7 @@ weight: 4
 
 ## Carving Demo (4 minutes)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xGyTriPQXHI?cc_load_policy=1" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xGyTriPQXHI?cc_load_policy=1&rel=0" frameborder="0" allowfullscreen></iframe>
 
 ## How it works, what it can and cannot do
 
