@@ -204,7 +204,7 @@ Adding a few more labels we get a much better uncertainty estimate:
 Assuming our labels were correct this will lead to a good object classification:
 <a href="figs/uncertainty_03.png" data-toggle="lightbox"><img src="figs/uncertainty_03.png" class="img-responsive" /></a>
 
-## Table Export
+## Export
 
 In the [Export Applet][] you can export the following images: "Object Predictions", "Object Probabilities" "Blockwise Object Predictions".
 In addition to the image export, it is also possible to generate a table that encompasses all information about the objects used during classification.
@@ -245,13 +245,17 @@ The following example illustrates the process.
 <a href="figs/block_oc_pred.png" data-toggle="lightbox"><img src="figs/block_oc_pred.png" class="img-responsive" /></a>
 In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
 
-## Large-scale prediction - Batch Prediction applet
+## Processing new images in batch mode
+After having trained the classifier on one, or a few datasets you can apply it conveniently to a large number of images in the Batch Processing Applet.
+Note, that for each of the images there, the same export options are applied that are configured in the Export Applet (make sure to use the “magic” placeholders in your output filename there, in order to generate a new result file for every input).
+Details on all export options can be found [on this page]({{site.baseurl}}/documentation/basics/export.html)
 These two applets have the same interface and parameters as batch prediction in
 [Pixel Classification workflow][].
-The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
+The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide these additional images here as well:
 
 <a href="figs/batch.png" data-toggle="lightbox"><img src="figs/batch.png" class="img-responsive" /></a>
 
 [Pixel Classification Workflow]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html
 [Export Applet]: {{site.baseurl}}/documentation/basics/export.html
 
+Alternatively you call ilastik without the graphical user interface in [headless mode]({{site.baseurl}}/documentation/basics/headless.html#headless-mode-for-object-classification) in order to process large numbers of files.
