@@ -20,9 +20,9 @@ An *object* in this context is a set of pixels that belong to the same instance.
 In order to do so, the workflow needs *segmentation* images besides the usual raw image data, that can e.g. be generated with the [Pixel Classification Workflow].
 Depending on the availability of these segmentation images, the user can choose between three flavors of object classification workflow, which differ by their input data:
 
-* Object Classification (from pixel classification)
-* Object Classification (from prediction image)
-* Object Classification (from binary image)
+* Pixel Classification + Object Classification
+* Object Classification [Inputs: Raw Data, Pixel Prediction Map]
+* Object Classification [Inputs: Raw Data, Segmentation]
 
 **Size Limitations:**
 
@@ -33,24 +33,24 @@ feature to run object classification on much larger images (prediction only -- n
 
 <a href="figs/ilastik_start_screen.png" data-toggle="lightbox"><img src="figs/ilastik_start_screen.png" class="img-responsive" /></a>
 
-### Object Classification (from pixel classification)
+### Pixel Classification + Object Classification
 This is a combined workflow, which lets you start from the raw data, perform pixel classification as described 
-in
-[Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
-and then thresholding the probability maps to obtain a segmentation. 
+in the
+[Pixel Classification workflow docs]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
+and then thresholding the probability maps to obtain a segmentation that you then use in Object Classification.
 This workflow is primarily meant for demo purposes.
 For serious projects, we recommend to use the two workflows, [Pixel Classification]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) and Object Classification separately using the generated output form the former as an additional input in the latter one.
 
 <a href="figs/input_pixel_class.png" data-toggle="lightbox"><img src="figs/input_pixel_class.png" class="img-responsive" /></a>
 
-### Object Classification (from prediction image)
+### Object Classification [Inputs: Raw Data, Pixel Prediction Map]
 You should choose this workflow if you have pre-computed probability
 maps.
 The data input applet of this workflow expects you to load the probability maps in addition to the raw data:
 
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
-### Object Classification (from binary image)
+### Object Classification [Inputs: Raw Data, Segmentation]
 This workflow should be used if you already have a binary segmentation image. 
 The image should be loaded in the data input applet:
 
@@ -245,7 +245,7 @@ The following example illustrates the process.
 <a href="figs/block_oc_pred.png" data-toggle="lightbox"><img src="figs/block_oc_pred.png" class="img-responsive" /></a>
 In the upper right corner, an object is shown for which the blockwise object classification clearly failed. This object, however, will be predicted correctly if we choose a more reasonable block and halo size. Supposing we found such sizes, let us proceed to batch prediction itself
 
-## Large-scale prediction - Batch Prediction applets
+## Large-scale prediction - Batch Prediction applet
 These two applets have the same interface and parameters as batch prediction in
 [Pixel Classification workflow][].
 The only difference is that you started the object classification workflow from binary images or prediction images, you'll have to provide them here as well:
