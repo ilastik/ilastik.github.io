@@ -67,14 +67,14 @@ is the pixel value larger than the _threshold value_ or not?
 In ilastik probability maps (result of [Pixel Classification][Pixel Classification Workflow]) pixel values are in the continuous range from `0.0` to `1.0` in each channel and describe the probability that a pixel belongs into a class.
 In this applet this continuous range is transferred into a binary one, containing only `0`s and `1`s (so no values in between) by comparing it to a set threshold.
 
-**Note:** To see any the results of changing the parameter settings in this applet, press the "Apply" button.
+**Note:** To see the results of changing the parameter settings in this applet, press the "Apply" button.
 
 There are two algorithms you can choose from to threshold your data: _Simple_ and _Hysteresis_, which can be selected using the "Method" drop down.
 
 Both methods share the following parameters:
- * _Input_ Channel(s): Select on which channel of the probability map to work on.
+ * _Input_ Channel(s): Select which channel of the probability map contains the objects
  * _Smooth_: Configure sigmas for smoothing the probability map in order to reduce noise.
-   The Gaussian can be anisotropic, i.e. sigmas for all dimensions can be different.
+   The Gaussian can be anisotropic, i.e. sigmas for all dimensions can be different. This setting is important for very anisotropic data where we recommend not to smooth across the low-resolution axis at all.
    If you do not want to smooth, just select a very small sigma (like 0.6).
   * _Threshold_ value(s): Value to check each pixel/voxel against.
   * Size filter: specify the minimum and maximum value (in terms of pixel/voxel counts for 2D/3D, respectively).
