@@ -46,6 +46,13 @@ Windows:
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
 - ilastik's command line options use underlines rather than dashes to separate words (e.g.: `--cutout_subregion` and not `--cutout-subregion`). If you mix them up, you might get strange errors. See [Known Issues](#known-issues) for more info.
 
+### Controlling RAM and CPU resources
+
+By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors) and all RAM available on your machine.
+CPU and RAM resources can be controlled with environment variables or a config file as described [here][controlling resources].
+
+[controlling resources]: {{site.baseurl}}/documentation/basics/installation#controlling-cpu-and-ram-resources
+
 ### Using stack input
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
@@ -202,20 +209,6 @@ When running the Object Classification Workflow in headless mode, the only avail
 
 Additional arguments:
 - `--csv-export-file` (optional): File path to which a .csv with total object counts should be exported.
-
-## Controlling CPU and RAM resources
-
-By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors).
-
-If you want to explicitly specify the number of parallel threads ilastik should use, you can do so via a special environment variable recognized by ilastik:
-
-    LAZYFLOW_THREADS=4 run_ilastik.sh --headless ...
-    
-There's an additional environment variable for specifying how much RAM to use during headless execution:
-
-    LAZYFLOW_THREADS=4 LAZYFLOW_TOTAL_RAM_MB=4000 run_ilastik.sh --headless ...
-    
-The RAM limit is not perfectly respected in all cases, so you may want to leave some buffer if your RAM budget is strict.
 
 ## Running your own Python scripts
 

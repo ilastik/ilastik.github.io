@@ -53,15 +53,58 @@ To run ilastik, use the included `run_ilastik.sh` script:
     ./run_ilastik.sh
 
 
+## Controlling CPU and RAM resources
+
+By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors).
+
+If you want to explicitly specify the number of parallel threads ilastik should use, you can do so either by
+
+* setting special environment variables, or
+* creating a configuration file for ilastik.
+
+### Using environment variables to control resources
+
+ilastik will check for two environment variables on startup that control resource usage: `LAZYFLOW_THREADS`, and `LAZYFLOW_TOTAL_RAM_MB`.
+Note, these environment variables overrule any settings made in a config file (see below).
+
+On linux and OSX you can specify the environment variables when starting ilastik from the command line:
+
+    LAZYFLOW_THREADS=4 run_ilastik.sh [...options]
+    
+There's an additional environment variable for specifying how much RAM to use during headless execution:
+
+    LAZYFLOW_THREADS=4 LAZYFLOW_TOTAL_RAM_MB=4000 run_ilastik.sh [...options]
+    
+The RAM limit is not perfectly respected in all cases, so you may want to leave some buffer if your RAM budget is strict.
+
+### Using a configuration file to control resources
+
+ilastik will check on each startup whether it can find its configuration file `.ilastikrc` in the home folder.
+In order to control RAM and CPU resources, use a text-editor to create the file at
+* `C:\Users\<YourUserName>\.ilastikrc` on windows,
+* `/Users/<YourUserName>/.ilastikrc` on OSX, and
+* `/home/<YourUserName>/.ilastikrc` on linux.
+
+In order to limit ilastik to use `4000` megabytes of RAM and `4` threads, the file should have the following content:
+
+```
+[lazyflow]
+total_ram_mb=4000
+threads=4
+```
+
+
 -----------------
 
 -----------------
 
 ## Commercial Solver Installation {#solver-setup}
 
-For some workflows in ilastik, installation of a commercial solver is required.
+In order to learn the tracking parameters in the [Tracking With Learning Workflow][tracking with learning], installation of a commercial solver is required.
 *IBM CPLEX* is supported by ilastik on all platforms.
 Alternatively, *GUROBI* can be used on Linux and Mac.
+
+[tracking with learning]: {{site.baseurl}}/documentation/tracking/tracking#sec_structured_learning
 
 ### CPLEX Installation and Setup
 
