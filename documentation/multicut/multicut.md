@@ -114,7 +114,11 @@ As usual in ilastik, pressing "Live Predict" will show you the edge probabilitie
 
 #### Multicut
 **Beta** - this parameter controls the under- or over-segmentation preference. With lower beta, the algorithm merges more aggressively. The default of 0.5 should handle most common situations correctly.
-**Solver** - the final segmentation is the result of solving an integer linear program (ILP). The available solvers are listed in this dropdown menu, the exact entries depend on whether some outside libraries are installed on your machine. The *Nifty_FmGreedy* solver is the most basic of them and should be available in all ilastik installations. If you have CPLEX or Gurobi installed (see [installation instructions]({{site.baseurl}}/documentation/basics/installation) for more details), you will see other solvers as well. Intersection-based approximate solvers have always worked very well for us in practice. The optimality gap is can not usually be noticed in the final results, but just in case we also provide an exact solver which solves the problem to global optimality.
+**Solver** - the final segmentation is the result of solving an integer linear program (ILP). The available solvers are listed in this dropdown menu, the exact entries depend on whether some outside libraries are installed on your machine. The *Nifty_FmGreedy* solver is the most basic of them and should be available in all ilastik installations.
+As of ilastik `1.3.2`, this is the only available solver.
+<!--
+If you have CPLEX or Gurobi installed (see [installation instructions]({{site.baseurl}}/documentation/basics/installation) for more details), you will see other solvers as well. Intersection-based approximate solvers have always worked very well for us in practice. The optimality gap is can not usually be noticed in the final results, but just in case we also provide an exact solver which solves the problem to global optimality.
+-->
 <div class="row">
 <div class="col-md-6">
 <a href="snapshots/mc_training_mc_result.png" data-toggle="lightbox"><img src="snapshots/mc_training_mc_result.png" width="100%" class="img-responsive" /></a>
