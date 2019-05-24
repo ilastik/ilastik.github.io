@@ -119,6 +119,8 @@ An additional setting is available with Hysteresis Thresholding:
 Two (or more) seeds (determined by the "core" threshold) might result in the same object when the segmentation is relaxed.
 With the _Don't merge objects_ checkbox, you can control this behavior:
 Checking it, will preserve one object per detection.
+This is indicated with the red ellipse in the above image:
+The pink and the yellow object would be merged without checking the _Don't merge objects_ checkbox.
 
 Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
