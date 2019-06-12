@@ -10,9 +10,8 @@ redirect_from:
 ---
 
 <div class="row">
- <div class="col-sm-7 col-sm-offset-2">
-  <p>
-
+  <div class="col-md-8 col-md-offset-1">
+    <p>
       ilastik is a simple, user-friendly tool for <b>interactive image classification,
       segmentation and analysis</b>. It is built as a modular software framework, which
       currently has <a href="/documentation/index.html">workflows</a> for automated (supervised) pixel- and object-level classification,
@@ -22,12 +21,8 @@ redirect_from:
       processing of data subvolumes, followed by complete volume analysis in offline batch mode. Using it
       requires no experience in image processing.
     </p>
- </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-5 col-sm-offset-3">
-    <div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel">
+    <div id="ilastik-screenshots-carousel" class="carousel slide" data-ride="carousel" align="center">
       <div class="carousel-inner">
         {% for slide in site.data.slides %}
           <div class="item {%- if forloop.first %} active {%- endif -%}">
@@ -42,54 +37,60 @@ redirect_from:
       <a class="left carousel-control"  href="#ilastik-screenshots-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#ilastik-screenshots-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
-  <br>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-3 col-sm-offset-1" align="center">
-    <p>
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-square-o fa-stack-2x"></i>
-        <i class="fa fa-download fa-stack-1x"></i>
-      </span>
-    </p>
-    <h4>
-    <a href="/download.html">Install ilastik</a></h4>
-    <p>Ready-made packages are available for Linux, Mac, and Windows.</p>
-  </div>
-  <div class="col-sm-3" align="center">
-    <p>
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-square-o fa-stack-2x"></i>
-        <i class="fa fa-book fa-stack-1x"></i>
-      </span>
-    </p>
-    <h4>
-    <a href="/documentation/index.html">Read documentation</a></h4>
-    <p>ilastik comes with an extensive user manual.</p>
-  </div>
-  <div class="col-sm-3" align="center">
-    <p>
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-square-o fa-stack-2x"></i>
-        <i class="fa fa-keyboard-o fa-stack-1x"></i>
-      </span>
-    </p>
-    <h4>
-    <a href="/development.html">Contribute</a></h4>
-    <p>View developer documentation and API docs. Report bugs and request features.</p>
-  </div>
-</div>
+    <div class="col-md-3" align="center">
+      <p>
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-download fa-stack-1x"></i>
+        </span>
+      </p>
+      <h4>
+      <a href="/download.html">Install ilastik</a></h4>
+      <p>Ready-made packages are available for Linux, Mac, and Windows.</p>
+    </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <hr />
-  </div>
-</div>
+    <div class="col-md-3" align="center">
+      <p>
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-book fa-stack-1x"></i>
+        </span>
+      </p>
+      <h4><a href="/documentation/index.html">Read documentation</a></h4>
+      <p>ilastik comes with an extensive user manual.</p>
+    </div>
 
-<div class="row">
-  <div class="col-sm-3 col-sm-offset-1" align="center">
+    <div class="col-md-3" align="center">
+      <p>
+        <span class="fa-stack fa-4x">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-keyboard-o fa-stack-1x"></i>
+        </span>
+      </p>
+      <h4><a href="/development.html">Contribute</a></h4>
+      <p>View developer documentation and API docs. Report bugs and request features.</p>
+    </div>
+
+    <div class="col-md-3" align="center">
+      <p>
+        <span class="fa fa-stack fa-4x">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-comments fa-inverse fa-stack-1x"></i>
+        </span>
+      </p>
+      <h4><a href="/community.html">Get in touch</a></h4>
+      <p>
+        Discuss with other users at <a href="https://forum.image.sc">forum.image.sc</a> or
+        contact the friendly ilastik team directly.
+      </p>
+      <p>
+        <a href="https://twitter.com/ilastik_team?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @ilastik_team</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-3" align="center">
     <p>
       <span class="fa fa-stack fa-4x">
         <i class="fa fa-square-o fa-stack-2x"></i>
@@ -97,51 +98,16 @@ redirect_from:
       </span>
     </p>
     <h4><a href="#">News</a></h4>
-  </div>
-     <div class="col-sm-6" align="left">
-          <h4><a href="/download.html">Release 1.3.2 is available!</a></h4>
-     <p>
-          We are happy to announce a new ilastik release. Detailed release notes can be found <a href=https://github.com/ilastik/ilastik/wiki/Release-Notes#ilastik-132-7-february-2019>here</a>, in short, it's much better, go ahead and try! We have new colors, 2D features for 3D data, training data is no longer required in batch processing, and much more.
-     </p>
-     </div>
 
-  <div class="col-sm-6" align="left">
-	  <h4>New video tutorial</h4>
-	  <p>
-		  We started doing video tutorials again: <a href="https://youtu.be/5N0XYW9gRZY">Pixel Classification</a>.
-		  If you like it, get back to us and we'll do one on your favorite topic!
-	  </p>
-  </div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <hr />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-3" align="center" >
+    <h4><a href="/download.html">Release 1.3.2 is available!</a></h4>
     <p>
-      <span class="fa fa-stack fa-4x">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-comments fa-inverse fa-stack-1x"></i>
-      </span>
-    </p>
-  </div>
-  <div class="col-sm-6">
-    <h4><a href="/community.html">Get in touch</a></h4>
-    <p>
-      Discuss with other users at <a href="https://forum.image.sc">forum.image.sc</a> or
-      contact the friendly ilastik team directly.
-    </p>
-    <p>
-      <a href="https://twitter.com/ilastik_team?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @ilastik_team</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      We are happy to announce a new ilastik release. Detailed release notes can be found <a href=https://github.com/ilastik/ilastik/wiki/Release-Notes#ilastik-132-7-february-2019>here</a>, in short, it's much better, go ahead and try! We have new colors, 2D features for 3D data, training data is no longer required in batch processing, and much more.
     </p>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     <hr />
   </div>
 </div>
@@ -150,7 +116,7 @@ redirect_from:
   This badge is required for the Netlify open-source team account.
 {% endcomment %}
 <div class="row">
-  <div class="col-sm-12" align="center">
+  <div class="col-xs-12" align="center">
     <a href="https://www.netlify.com">
       <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg">
     </a>
