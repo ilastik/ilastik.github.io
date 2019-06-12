@@ -44,10 +44,6 @@ body > .container {
     text-transform: uppercase;
 }
 
-#main-logo {
-    margin-right: 15px;
-}
-
 .maruku_toc ul {
     list-style: disc !important;
 }
