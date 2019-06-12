@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Istok Web', sans-serif;
 }
 
+.carousel {
+  margin-bottom: 20px;
+}
+
 .carousel-caption {
     position: relative;
     text-align: center;

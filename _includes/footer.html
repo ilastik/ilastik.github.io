@@ -1,8 +1,25 @@
 <hr>
 
 <footer>
-  <small>&copy; 2010-{{ site.time | date: "%Y" }} <a href="mailto:team@ilastik.org">{{ site.author.name }}</a></small>
-  <p class="pull-right"><a href="#">Back to top</a></p>
+  {% comment %}
+    This badge is required for the Netlify open-source team account.
+  {% endcomment %}
+  {% if page.category == "Home" %}
+    <div class="row" align="center">
+      <div class="col-xs-12">
+        <a href="https://www.netlify.com">
+          <img src="https://www.netlify.com/img/global/badges/netlify-light.svg">
+        </a>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="xol-xs-12">
+      <small>&copy; 2010-{{ site.time | date: "%Y" }} <a href="mailto:team@ilastik.org">{{ site.author.name }}</a></small>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+    </div>
+  </div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
