@@ -1,4 +1,4 @@
-permalink: /:categories/:year/:month/:day/:title 
+permalink: /:categories/:year/:month/:day/:title
 
 plugins:
   - jekyll-redirect-from
@@ -21,6 +21,8 @@ defaults:
     values: {layout: "default"}
   - scope: {path: "documentation"}
     values: {layout: "documentation"}
+  - scope: {path: "news"}
+    values: {layout: "news"}
   - scope: {path: "gallery/full"}
     values: {gallery_full: true}
 

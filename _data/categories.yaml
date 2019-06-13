@@ -1,3 +1,6 @@
+- name: News
+  root: news.html
+
 - name: About
   root: about.html
 
