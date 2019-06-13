@@ -15,6 +15,22 @@ Remember to check your links using [linkchecker](https://wummel.github.io/linkch
     linkchecker http://localhost:4000
     muffet http://localhost:4000
 
+## How to Add News
+
+Create a Markdown file `news/_posts/YYYY-MM-DD-your-hyphen-separated-title-here.md` with the desired publish date:
+```markdown
+---
+title: Answer to the Ultimate Question of Life, the Universe, and Everything
+---
+
+Write an article using simple Markdown.
+The first paragraph is special because it is used for article previews.
+```
+
+A work-in-progress article can be saved as `news/_drafts/your-hyphen-separated-title-here.md` and moved to `news/_posts` with the correct publish date later.
+
+Consult the [Jekyll documentation](https://jekyllrb.com/docs/posts/) for more details.
+
 ## Notes
 
 * Every page should have exactly **one** `<h1>` header at the top (in Markdown indicated by a single `#`),
