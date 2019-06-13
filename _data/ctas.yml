@@ -1,0 +1,27 @@
+- title: Install
+  link: /download.html
+  icon: fa-download
+  text: >
+    <p>Ready-made packages are available for Linux, Mac, and Windows</p>
+
+- title: Learn
+  link: /documentation/index.html
+  icon: fa-book
+  text: >
+    <p>ilastik comes with an extensive user manual.</p>
+
+- title: Contribute
+  link: /development.html
+  icon: fa-keyboard-o
+  text: >
+    <p>View developer documentation and API docs. Report bugs and request features.</p>
+
+- title: Discuss
+  link: /community.html
+  icon: fa-comments
+  text: >
+    <p>Get in touch with other users at <a href="https://forum.image.sc">forum.image.sc</a> or contact the friendly ilastik team directly.</p>
+    <p>
+      <a href="https://twitter.com/ilastik_team?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @ilastik_team</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </p>

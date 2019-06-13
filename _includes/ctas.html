@@ -1,0 +1,12 @@
+{% for cta in site.data.ctas %}
+  <div class="col-md-3 cta">
+    <p>
+      <span class="fa fa-stack fa-4x">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa {{ cta.icon }} fa-stack-1x"></i>
+      </span>
+    </p>
+    <h4><a href="{{ cta.link }}">{{ cta.title }}</a></h4>
+    {{ cta.text }}
+  </div>
+{% endfor %}

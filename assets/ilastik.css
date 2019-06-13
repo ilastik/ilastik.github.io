@@ -86,3 +86,27 @@ h2:hover .header-link {
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
+.news-list {
+  list-style-type: none;
+}
+
+.news-title {
+  font-size: 1.5em;
+}
+
+.news-date {
+  display: block;
+}
+
+.news-back {
+  margin-top: 2em;
+}
+
+.news-frontpage {
+  margin-top: 2em;
+}
+
+.cta {
+  text-align: center;
+}
