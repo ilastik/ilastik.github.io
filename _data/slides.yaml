@@ -20,8 +20,8 @@
 
 - title: Counting
   subtitle: Count densely packed cells
-  image: crop_blue_totorial8.jpg
+  image: crop_blue_tutorial8.jpg
 
 - title: Tracking
-  subtitle: utomatic and manual tracking of dividing cells (2D+3D)
+  subtitle: Automatic and manual tracking of dividing cells (2D+3D)
   image: crop_25_chaingraph-tracking-3d.jpg
