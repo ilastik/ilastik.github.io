@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Istok Web', sans-serif;
 }
 
+.carousel {
+  margin-bottom: 20px;
+}
+
 .carousel-caption {
     position: relative;
     text-align: center;
@@ -44,10 +48,6 @@ body > .container {
     text-transform: uppercase;
 }
 
-#main-logo {
-    margin-right: 15px;
-}
-
 .maruku_toc ul {
     list-style: disc !important;
 }
@@ -68,7 +68,7 @@ label{font-weight:normal !important};
 }
 
 /* Handle offset for fixed position header */
-.docs-contents h1, h2, h3 {
+.docs-contents h1, .docs-contents h2, .docs-contents h3 {
     margin-top: -51px;
     padding-top: 61px;
 }
@@ -85,4 +85,32 @@ h2:hover .header-link {
 .docs-contents .img-responsive {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.news-list {
+  list-style-type: none;
+}
+
+.news-title {
+  font-size: 1.5em;
+}
+
+.news-date {
+  display: block;
+}
+
+.news-back {
+  margin-top: 2em;
+}
+
+.news-frontpage {
+  margin-top: 2em;
+}
+
+.cta {
+  text-align: center;
+}
+
+.news-frontpage-badge {
+  text-align: center;
 }

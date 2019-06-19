@@ -1,7 +1,3 @@
----
-header_template: header_default.html
----
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +13,7 @@ header_template: header_default.html
   <body>
     <div class="container">
       {% include navbar.html %}
-      {% include {{ layout.header_template }} %}
+      {% include header.html %}
       {{ content }}
       {% include footer.html %}
     </div>

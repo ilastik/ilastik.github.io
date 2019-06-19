@@ -3,7 +3,11 @@
     <div class="page-header">
       <h1>
         <img src="{{site.baseurl}}/assets/ilastik-logo.png" alt="ilastik">
-        {{ page.title }}
+        {% if layout.layout_title %}
+          {{ layout.layout_title }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
         {% if page.tagline %}
           <small>{{ page.tagline }}</small>
         {% endif %}
