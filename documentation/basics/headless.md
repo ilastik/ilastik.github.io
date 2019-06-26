@@ -165,10 +165,9 @@ To specify which is which, prefix the list of input files with either `--raw_dat
 
 If you provide a path for the `--table_filename` output, ilastik will export a `.csv` file of the computed object features that were used during classification, indexed by object id.
 
-So, the example command above produces 3 files: 
+So, the example command above produces 2 files:
 
-- a prediction image (a label image), 
-- a floating-point "probability image" (with N channels -- one for each class), and 
+- a prediction image (a label image),
 - a .csv file containing a row for each object and columns for each of the features your project uses.  This file also contains the probability value for each object.
 
 If you are processing more than one volume in a single command, provide all inputs of a given type in sequence:
@@ -188,7 +187,7 @@ When running the headless mode for the [Multicut Workflow], the following flags 
   Note that it should be generated in the same way as the probability map that was used to train the project (e.g. with the [Pixel Classification Workflow].
   I.e. same number (and meaning) of channels.
 
-For the `--export_source` the only available option is `"Multicut Segmentation`.
+For the `--export_source` the only available option is `"Multicut Segmentation"`.
 
 An example invocation is given below:
 
