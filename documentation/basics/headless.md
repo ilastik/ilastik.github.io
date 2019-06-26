@@ -209,6 +209,47 @@ When running the Object Classification Workflow in headless mode, the only avail
 Additional arguments:
 - `--csv-export-file` (optional): File path to which a .csv with total object counts should be exported.
 
+
+## Headless Mode for Tracking
+
+Note: There is no headless mode for Manual Tracking.
+
+Depending on the type of [Tracking Workflow], the following flags are available to specify _input data_:
+
+* `--raw_data`: path to the raw data that should be processed.
+* `--probabilitie_maps`: path to boundary probability map.
+  Note that it should be generated in the same way as the probability map that was used to train the project (e.g. with the [Pixel Classification Workflow].
+  I.e. same number (and meaning) of channels.
+* `--binary_image`: segmentation image (single channel, integer image) where 0 is interpreted as background and values > 0 are interpreted as objects.
+
+For the `--export_source` the following values are available:
+
+* `Object-Identities`: Integer image with object-IDs of every object as image file
+* `Tracking-Result`: Tracking results as an integer image where each object is assigned a gray value corresponding to its lineage ID
+* `Merger-Result`: export only the detections where the optimization decided that it contains more than one object
+* `Plugin`: Specify Plugin export. Need to further specify `--export_plugin` which can be any of:
+  - `CSV-Table`: Plugin to export the ilastik tracking results to a CSV table
+  - `Fiji-MaMuT`: Plugin to export the ilastik tracking results to Fiji's MaMuT
+  - `Multi-Worm-Tracker`: Plugin to export the ilastik tracking results in the Multi-Worm Tracker format (.blobs and .summary files)
+  - `JSON`: JSON export for use of some tracking analysis tools developed by the ilastik tracking guys
+  - `CellTrackingChallenge`: Tracking format used in the ISBI Cell Tracking Challenges
+  - `H5-Event-Sequence`: H5 event sequence export for use of some tracking analysis tools developed by the ilastik tracking guys
+  - `Contours-With-Head`: Plugin to export the ilastik tracking results as contours with the head location (head index)
+  - `Contours`: Plugin to export the ilastik tracking results as contours (used mainly to export larvae contours for Zlatics Lab)
+
+See the following example invocation that produces a csv-table via the plugin export:
+
+```
+    $ ./run_ilastik.sh
+    --headless \
+    --project="/path/to/project/MyProject.ilp" \
+    --raw_data="/path/to/raw/data.h5" \
+    --prediction_maps="/path/to/boundary/probability/data.h5" \
+    --export_source="Plugin" \
+    --export_plugin="CSV-Table" \
+```
+
+
 ## Running your own Python scripts
 
 For developers and power-users, you can run your own ilastik-dependent python scripts using the interpreter shipped within the ilastik install tree.  The interpreter is located in the `bin` directory:
