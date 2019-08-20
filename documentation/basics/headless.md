@@ -110,6 +110,7 @@ the command (as shown in the example above).
 - `--output_axis_order` Transpose the storage order of the results. For example, this affects the sliced dimension for stack outputs.
 - `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0,1.0)"`
 - `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0,255)"`
+- `--readonly` Open the project in read-only mode; necessary for using a single project from multiple processes.
 
 [Data Export Applet]: {{site.baseurl}}/documentation/basics/export.html#data-export-applet-ss
 
@@ -261,7 +262,6 @@ For developers and power-users, you can run your own ilastik-dependent python sc
     # Mac
     $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
     1.3.2
-
 ## Known Issues
 
 ilastik's headless mode will sometimes throw exceptions and output a stack trace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
