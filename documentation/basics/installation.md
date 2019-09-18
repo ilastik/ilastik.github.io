@@ -8,9 +8,14 @@ weight: 0
 
 # Installation
 
+## Requirements
+
 ilastik binaries are provided for Windows, Linux, and Mac at our [download page]({{site.baseurl}}/download.html).
 
-**Note: ilastik requires a 64-bit machine.  We do not provide 32-bit binaries.**
+**Note:** ilastik requires a 64-bit machine. We do not provide 32-bit binaries.
+
+We recommend using ilastik only on systems with **at least 8 GB of RAM**.
+For using the Autocontext Workflow —our most memory-intensive workflow— on large 3D data your system should have at least 32 GB of RAM for smooth interaction.
 
 On *Mac*, *Linux*, and *Windows* learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
 In order to enable this the Tracking with Leaning Workflow, please follow the instructions in the section about [commercial solver installation](#solver-setup).
