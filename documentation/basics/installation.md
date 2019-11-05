@@ -33,8 +33,7 @@ You can find an entry for ilastik in the start menu and click it to launch the p
 ### Installation on Mac
 
 [Download]({{site.baseurl}}/download.html) the `.tar.bz2` file for your version of OSX and extract its contents with a simple double-click.
-Copy ilastik.app to the folder of your choice (usually your `Applications` folder), and double-click to begin.
-
+Copy ilastik.app to the folder of your choice (usually your `Applications` folder), Control-click the app icon and choose "Open" to begin (for more info, see https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
 
 ### Installation on Linux
 
