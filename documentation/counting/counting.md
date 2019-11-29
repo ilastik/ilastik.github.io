@@ -53,7 +53,7 @@ This workflow offers the possibility to interactively refine the learned density
 
 * placing more annotations for the foreground and background
 * monitoring the object counts over sub-image regions
-* constraining the number of objects in sub-image regions (requires CPLEX or GUROBI)
+<!--* constraining the number of objects in sub-image regions (requires CPLEX or GUROBI)-->
 
 ## Interactive Counting Tutorial {#sec_input_data}
 
@@ -275,13 +275,15 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 **NOTE:** the density can be exported also as a normal grayscale image (\*.png, \*.tiff, etc..). However, due to normalization, the intensity value of the image do not correspond anymore to the predicted density values (originally between 0,1).
 
+<!--
 ## 6. Installation of the 3rd-party plugins {#sec_advanced_installation}
 
 For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
 We provide simple [Instructions]({{site.baseurl}}/documentation/basics/installation.html) on doing so, note
-that it this is not required for the basic functionality of this workflow.
+that it this is not required for the basic functionality of this workflow
+-->
 
-## 7. References {#sec_reference}
+## 6. References {#sec_reference}
 
 \[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
 **Learning to Count with Regression Forest and Structured Labels.**
