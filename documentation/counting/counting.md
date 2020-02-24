@@ -53,7 +53,7 @@ This workflow offers the possibility to interactively refine the learned density
 
 * placing more annotations for the foreground and background
 * monitoring the object counts over sub-image regions
-* constraining the number of objects in sub-image regions (requires CPLEX or GUROBI)
+<!--* constraining the number of objects in sub-image regions (requires CPLEX or GUROBI)-->
 
 ## Interactive Counting Tutorial {#sec_input_data}
 
@@ -203,8 +203,9 @@ If the training labels are sufficient, we should obtain a count similar to what 
 Please continue to read if you want to know some advanced features.
 
 
-## The Algorithms {#sec_algorithms}
+## The Algorithm {#sec_algorithms}
 
+<!--
 **Two different regression algorithms** are currently supported by the Density Counting workflow depending on the
 availability of CPLEX (or GUROBI) on the machine where ilastik is installed. Note that for copyright reason we cannot
 provide the license (free for academic use) to this software that can be installed separately following the procedure
@@ -212,11 +213,14 @@ described in
 [**Advanced Installation**](#sec_advanced_installation).
 
 The most important parameters for our algorithms can be set by an advanced user with the menu on the left; details are given below.
+-->
 
 ### Random Forest {#sec_rf}
 
 This approach uses a *Random Regression Forest* as regression algorithm.
+<!--
 In general it requires more labels to give correct results over several images. However it is more robust to inhomogeneous background.
+-->
 
 The implementation of the random regression forest is based on <a href="https://scikit-learn.org/stable/">sklearn</a>.
 
@@ -271,13 +275,15 @@ This workflow supports the hdf5 format to store the density for the batch proces
 
 **NOTE:** the density can be exported also as a normal grayscale image (\*.png, \*.tiff, etc..). However, due to normalization, the intensity value of the image do not correspond anymore to the predicted density values (originally between 0,1).
 
+<!--
 ## 6. Installation of the 3rd-party plugins {#sec_advanced_installation}
 
 For the additional functionality of the [Support Vector Regression](#sec_rf_advanced), it is required to install the CPLEX-libraries.
 We provide simple [Instructions]({{site.baseurl}}/documentation/basics/installation.html) on doing so, note
-that it this is not required for the basic functionality of this workflow.
+that it this is not required for the basic functionality of this workflow
+-->
 
-## 7. References {#sec_reference}
+## 6. References {#sec_reference}
 
 \[1\] L Fiaschi, R. Nair, U. Koethe and F. A. Hamprecht.
 **Learning to Count with Regression Forest and Structured Labels.**
