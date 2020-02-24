@@ -114,7 +114,7 @@ Please note that it might take some days until the application gets approved by 
 Once the license has been approved by IBM, instructions for download will be provided.
 
 The current version of ilastik works with
-**IBM ILOG CPLEX Optimization Studio V12.6**.
+**IBM ILOG CPLEX Optimization Studio V12.9**.
 After choosing the appropriate platform, you have to agree with the IBM license.
 Finally, CPLEX may be downloaded and is ready to install.
 
@@ -132,16 +132,16 @@ After a successful installation, learning the weights in the *Tracking with Lear
 If it isn't, something went wrong with the CPLEX installation.
 To track down the problem, proceed like this:
 
-* Make sure that the environment variable `CPLEX_STUDIO_DIR1280` is set and points to the proper location.
-  You can check this by typing `echo %CPLEX_STUDIO_DIR1280%` at the DOS command prompt.
-  The output should be something like `C:\Program Files\IBM\ILOG\CPLEX_Studio1280`.
+* Make sure that the environment variable `CPLEX_STUDIO_DIR129` is set and points to the proper location.
+  You can check this by typing `echo %CPLEX_STUDIO_DIR129%` at the DOS command prompt.
+  The output should be something like `C:\Program Files\IBM\ILOG\CPLEX_Studio129`.
 * Make sure that `cplex` is in the PATH.
   Type `where cplex` at a DOS prompt.
-  It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio1280\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR1280` variable).
-* Make sure that the directory containing `cplex.exe` also contains `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`.
+  It should produce something like `C:\Program Files\ibm\ILOG\CPLEX_Studio129\cplex\bin\x64_win64\cplex.exe` (the path prefix should match the contents of the `CPLEX_STUDIO_DIR129` variable).
+* Make sure that the directory containing `cplex.exe` also contains `cplex129.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll`.
 
 Learning the weights in the *Tracking with Learning Workflow* should now be enabled.
-If it isn't, you may copy the files `cplex1280.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`.
+If it isn't, you may copy the files `cplex129.dll`, `ILOG.CPLEX.dll`, and `ILOG.Concert.dll` (if you can locate them somewhere) to the *binary* folder of the ilastik installation, usually located at `C:\Program Files\ilastik\bin`.
 If it still doesn't work, please [contact us]({{site.baseurl}}/community.html).
 
 
@@ -171,7 +171,7 @@ If no compiler is installed, choose what to do depending on your OS version:
   Then you need to accept the XCode licence by running "sudo gcc" once.
 
 Now you can run a script, that will convert your CPLEX static libraries into shared libraries, and install them into the appropriate directory of your ilastik directory.
-Starting with ilastik-1.1.7, this script can be found in ilastik-1.\*/ilastik-meta/ilastik/scripts.
+Starting with ilastik-1.1.7, this script can be found in ilastik-1.\*.\*/ilastik-meta/ilastik/scripts.
 Prior to that version the [script](https://github.com/ilastik/ilastik/blob/master/scripts/install-cplex-shared-libs.sh) needs to be downloaded manually in the terminal:
 
     wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-cplex-shared-libs.sh
@@ -213,7 +213,7 @@ You will need the license key to activate your GUROBI installation.
 Download the appropriate package from the [GUROBI download page](https://www.gurobi.com/downloads/gurobi-optimizer).
 Unpack the downloaded archive:
 
-    tar -xvf gurobi7.0.2_linux64.tar.gz -C /your/target/directory
+    tar -xvf gurobi8.1.1_linux64.tar.gz -C /your/target/directory
 
 And activate your installation by invoking `grbgetkey` with your license:
 
