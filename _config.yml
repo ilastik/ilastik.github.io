@@ -2,6 +2,7 @@ permalink: /:categories/:year/:month/:day/:title
 
 plugins:
   - jekyll-redirect-from
+  - jemoji
 
 exclude:
   - .rvmrc
