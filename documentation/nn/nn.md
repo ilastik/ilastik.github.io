@@ -18,4 +18,4 @@ The first step of using the Neural Network workflow is to find a network you wou
 ## Pre-requisites for running the workflow
 Unlike other ilastik workflows, the Neural Network workflow runs the back-end separately from the desktop application. The reason for this separation is to enable the use of GPUs which are usually not found on the user laptop. The back-end application where the neural network operations are running is called TikTorch. You have to install it at the server where you have the GPUs or ask your IT or facility administrators to install it for you. Luckily, the installation process is not difficult, just follow the instructions in the [github repo](https://github.com/ilastik/tiktorch). Concerning permissions, you need to be able to ssh to the machine where TikTorch will run. Of course, you can also install TikTorch on your powerful local desktop, then nothing needs to be done remotely.
 
-##Workflow step by step
+## Workflow step by step
