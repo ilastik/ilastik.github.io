@@ -3,7 +3,9 @@
 ## What it is and why you need it
 
 
-This workflow allows you to segment structures like cells or synapses in 3D image volumes (or 2D images) with a minimal amount of annotations. This workflow introduces an interactive labeling pipeline, where the labels produced by the annotator are immediately and seamlessly used to improve the predictor, which is then used to speed up further annotation. The main algorithm, known as Active Learning, was presented in [this paper](http://openaccess.thecvf.com/content_iccv_2015/papers/Konyushkova_Introducing_Geometry_in_ICCV_2015_paper.pdf) by K. Ksenia. This workflow can facilitate the reconstruction of complex 3D structures from any type of [image stacks](https://arxiv.org/abs/1606.09029), ranging from electron microscopy, through light microscopy, to MRI and CT scans.
+This workflow allows you to segment structures like cells or synapses in 3D image volumes (or 2D images) with a minimal amount of annotations. 
+This workflow introduces an interactive labeling pipeline, where the labels produced by the annotator are immediately and seamlessly used to improve the predictor, which is then used to speed up further annotation. The main algorithm, known as Active Learning, was presented in [this paper](http://openaccess.thecvf.com/content_iccv_2015/papers/Konyushkova_Introducing_Geometry_in_ICCV_2015_paper.pdf) by K. Ksenia.
+This workflow can facilitate the reconstruction of complex 3D structures from any type of [image stacks](https://arxiv.org/abs/1606.09029), ranging from electron microscopy, through light microscopy, to MRI and CT scans.
 
 
 ## How it works
