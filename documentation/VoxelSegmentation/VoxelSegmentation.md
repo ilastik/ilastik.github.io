@@ -1,5 +1,5 @@
 ---
-title: Voxel Segmentation Workflow
+title: Voxel Segmentation Workflow (beta)
 tagline: Voxel Segmentation with Active Learning
 category: "Documentation"
 group: "workflow-documentation"
@@ -7,8 +7,10 @@ weight: 1
 ---
 # Voxel Segmentation Workflow
 
-## What it is and why you need it
+The voxel segmentation workflow is currently included in ilastik as a beta version (as of 1.4.0).
+In order to access this workflow, supply the `--hbp` command line flag when starting ilastik.
 
+## What it is and why you need it
 
 This workflow allows you to segment structures like cells or synapses in 3D image volumes and 2D images with a minimal amount of annotations. 
 This workflow introduces an interactive labeling pipeline, where the labels produced by the annotator are immediately and seamlessly used to improve the predictor, which is then used to speed up further annotation. 
@@ -114,6 +116,7 @@ Examples of first prediction, topUncertainty regions, label update on suggested 
 
 
 #### Exporting results:
+
 To export the results, follow the standard ilastik procedure demonstrated [here]({{site.baseurl}}/documentation/basics/export.html).
 
 
