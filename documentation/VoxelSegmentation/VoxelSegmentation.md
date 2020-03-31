@@ -40,7 +40,7 @@ Start the Voxel Segmentation Workflow and load the input volume.
 You can move across the volume using the arrow buttons associated with x,y, and z-axes. 
 After loading the data, the user interface will look like this:
 
-![check](fig/data_input_applet_raw.png)
+<a href="./fig/data_input_applet_raw.png" data-toggle="lightbox"><img src="./fig/data_input_applet_raw.png" class="img-responsive" /></a>
 
 
 #### Compute supervoxels:
@@ -61,11 +61,9 @@ The algorithm typically converges in 4 to 10 iterations.
 Fine-tune the values of n_segments and Compactness to yield a near-perfect over-segmentation of the input volume. 
 Here are the examples to supervoxel-based over-segmentation results with different values of hyper-parameters.
 
-
-![](./fig/slic_500_p4.png)
-![](./fig/slic_1900_p4.png)
-![](./fig/slic_1900_p2.png)
-
+<a href="./fig/slic_500_p4.png" data-toggle="lightbox"><img src="./fig/slic_500_p4.png" class="img-responsive" /></a>
+<a href="./fig/slic_1900_p4.png" data-toggle="lightbox"><img src="./fig/slic_1900_p4.png" class="img-responsive" /></a>
+<a href="./fig/slic_1900_p2.png" data-toggle="lightbox"><img src="./fig/slic_1900_p2.png" class="img-responsive" /></a>
 
 Enable result layers for viewing by clicking the _eye_ icon for the input, super-pixel boundaries, and the over-segmentation output. 
 The best way to fine-tune supervoxel generation is to view the super-pixel boundaries by overlaying on the input and then adjust parameters to ensure that the supervoxel boundary is well aligned with respect to the boundaries of the objects that we would like to segment out.
@@ -84,8 +82,8 @@ The labeling can be done in a similar way, as explained in [Pixel Classification
 Since the input is a volume, the labeling can be repeated on a few randomly chosen slices as well. 
 Here is an example of annotation.
 
-![](./fig/annotate_init.png)
-![](./fig/annotate_init_supervoxels_overlaid.png)
+<a href="./fig/annotate_init.png" data-toggle="lightbox"><img src="./fig/annotate_init.png" class="img-responsive" /></a>
+<a href="./fig/annotate_init_supervoxels_overlaid.png" data-toggle="lightbox"><img src="./fig/annotate_init_supervoxels_overlaid.png" class="img-responsive" /></a>
 
 - After annotating a few voxels, switch Live update on (using the _Live Update_ button). 
 This trains an initial classifier and results in a first prediction. 
@@ -100,18 +98,19 @@ Alongside this, the regions that got misclassified should also be labeled.
 After modifying the labels turn on live update again to generate improved segmentation results. 
 The process of annotation and re-segmentation can be repeated until the segmentation results become satisfactory. 
 Examples of first prediction, topUncertainty regions, label update on suggested slices, and the final segmentation results are shown below.
+
 1. First prediction
-![](./fig/first_prediction.png)
+<a href="./fig/first_prediction.png" data-toggle="lightbox"><img src="./fig/first_prediction.png" class="img-responsive" /></a>
 2. Annotation on the first suggested slice
-![](./fig/first_prediction_label_0.png)
+<a href="./fig/first_prediction_label_0.png" data-toggle="lightbox"><img src="./fig/first_prediction_label_0.png" class="img-responsive" /></a>
 3. Find the next suggested slice
-![](./fig/first_prediction_suggested_slice_1.png)
+<a href="./fig/first_prediction_suggested_slice_1.png" data-toggle="lightbox"><img src="./fig/first_prediction_suggested_slice_1.png" class="img-responsive" /></a>
 4. Annotation on the second suggested slice
-![](./fig/first_prediction_label_1.png)
+<a href="./fig/first_prediction_label_1.png" data-toggle="lightbox"><img src="./fig/first_prediction_label_1.png" class="img-responsive" /></a>
 5. Second prediction
-![](./fig/second_prediction.png)
+<a href="./fig/second_prediction.png" data-toggle="lightbox"><img src="./fig/second_prediction.png" class="img-responsive" /></a>
 6. Final segmentation
-![](./fig/final_segmentation.png)
+<a href="./fig/final_segmentation.png" data-toggle="lightbox"><img src="./fig/final_segmentation.png" class="img-responsive" /></a>
 
 
 #### Exporting results:
