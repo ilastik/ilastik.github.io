@@ -34,7 +34,8 @@ This process of annotation and re-segmentation is repeated until the segmentatio
 ## How to use it
 
 To demonstrate the usage of this workflow, segmentation of mitochondria is presented as an application. 
-The input is a small portion of the electron microscopy volume of rat neural tissue (data from Pascal Fua’s CV lab, EPFL). 
+The input is a small portion of the electron microscopy volume of rat neural tissue (data courtesy of [Pascal Fua’s CV lab, EPFL](https://www.epfl.ch/labs/cvlab/) and [Graham Knott's EM facility, EPFL](https://www.epfl.ch/research/facilities/biological-electron-microscopy/)).
+If you want to follow this tutorial you can download the data [here](https://data.ilastik.org/hipp-train-data-smaller.h5).
 Segmentation of the given input volume involves the following steps:
 
 #### Load the data:
