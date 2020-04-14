@@ -32,7 +32,7 @@ Mac:
 
     $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/run_ilastik.sh  --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
 
-Windows:
+Windows ([click here for a more detailed guide]({{site.baseurl}}/documentation/basics/cmdflags_win.html)):
 
     $ cd "\Program Files\ilastik-1.3.2"
     $ .\ilastik.bat --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
