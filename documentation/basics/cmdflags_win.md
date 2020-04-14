@@ -24,7 +24,7 @@ Using the command line interface is especially useful for running ilastik in [he
 
 1) __Start the command prompt (`cmd.exe`)__: type `cmd` into the search field, click on "Command Prompt" to start a terminal window. (A new window should pop up):
 
-<!-- TODO: insert image -->
+<a href="screenshots/cmdflags_win-01.png" alt="Screenshot of command line window with annotations indicating location and cursor" data-toggle="lightbox"><img src="screenshots/cmdflags_win-01.png" class="img-responsive" /></a>
 
 Note that there is a blinking indicator (the cursor) where text commands will appear whe you type.
 To the left of the cursor, the current location is shown (here: `C:\Users\kutra`).
@@ -54,13 +54,13 @@ This currently (ilastik `1.4.0b3`) enables the [Voxel Segmentation Workflow]({{s
 
 1) __locate ilastik in your start menu__:
 
-<!-- TODO: insert image -->
+![Screenshot of ilastik entry in start menu](screenshots/cmdflags_win-02.png)
 
 2) __create a link on the desktop__: click on it with the left mouse button and hold the button while dragging it to the desktop.
 You have created a link (visible by the little curved arrow in the lower-left corner):
 
-<!-- TODO: add image -->
+![Screenshot of link-icon to ilastik](screenshots/cmdflags_win-03.png)
 
 * __Add the command line option__: edit the properties (right click - Properties) of the link to include the command line flag (highlighted in yellow in the following screenshot):
 
-<!-- TODO: Add image -->
+<a href="screenshots/cmdflags_win-04.png" alt="Screenshot of properties dialog for ilastik link" data-toggle="lightbox"><img src="screenshots/cmdflags_win-04.png" class="img-responsive" /></a>
