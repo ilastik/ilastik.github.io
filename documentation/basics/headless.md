@@ -53,6 +53,18 @@ CPU and RAM resources can be controlled with environment variables or a config f
 
 [controlling resources]: {{site.baseurl}}/documentation/basics/installation#controlling-cpu-and-ram-resources
 
+## Input options
+
+**Required settings:**
+
+- `--headless` Invokes headless classification mode.
+- `--project` The path to your project file, which you have already used to train a classifier.
+
+**Optional input settings:**
+
+- `--readonly` Open the project in read-only mode; necessary for using a single project from multiple processes.
+- `--input_axes` specify meaning of your axes. In some cases ilastik's default guess for the axes is not correct. In such cases, supply the axes explicitly (e.g. `--input_axes=zcyx` for a 3D dataset with channels and the axes in the "zcyx" order).
+
 ### Using stack input
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
@@ -69,7 +81,7 @@ then use globstring syntax to tell ilastik which images to combine for each volu
 **Note:** The use of quotation marks in the above example is critical.  The `*` in each input argument must 
 be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
 
-### Output Options
+## Output Options
 
 By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.  
 However, you can customize the output location and format with extra parameters. For example:
@@ -87,12 +99,7 @@ the command (as shown in the example above).
 
 [Data Export Settings Window]: {{site.baseurl}}/documentation/basics/export.html#settings
 
-**Required settings:**
-
-- `--headless` Invokes headless classification mode.
-- `--project` The path to your project file, which you have already used to train a classifier.
-
-**Optional settings:**
+**Optional output settings:**
 
 - `--export_source` The data to export, which in general should be an option from the 'Source' dropdown in the [Data Export Applet][] for your workflow. See the individual section of this page for the workflow you're interested in.
 - `--output_format` The file format to store your results in. Some formats are less flexible than others and therefore cannot be combined with every option here. Choices are: `bmp`, `gif`, `hdr`, `jpeg`, `jpg`, `pbm`, `pgm`, `png`, `pnm`, `ppm`, `ras`, `tif`, `tiff`, `xv`, `bmp sequence`, `gif sequence`, `hdr sequence`, `jpeg sequence`, `jpg sequence`, `pbm sequence`, `pgm sequence`, `png sequence`, `pnm sequence`, `ppm sequence`, `ras sequence`, `tif sequence`, `tiff sequence`, `xv sequence`, `multipage tiff`, `multipage tiff sequence`, `hdf5`, `compressed hdf5`, `numpy`, `dvid`.
@@ -110,7 +117,6 @@ the command (as shown in the example above).
 - `--output_axis_order` Transpose the storage order of the results. For example, this affects the sliced dimension for stack outputs.
 - `--pipeline_result_drange` Pipeline result data range (min,max) BEFORE normalization, e.g. `"(0.0,1.0)"`
 - `--export_drange` Exported data range (min,max) AFTER normalization, e.g. `"(0,255)"`
-- `--readonly` Open the project in read-only mode; necessary for using a single project from multiple processes.
 
 [Data Export Applet]: {{site.baseurl}}/documentation/basics/export.html#data-export-applet-ss
 
