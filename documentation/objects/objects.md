@@ -223,6 +223,15 @@ In this new window there are three vertical tabs:
  A margin can be configured to include context around this bounding box (size in pixels/voxels).
  Alternatively, it is also possible to include the whole image instead of the individual object images.
 
+Some information on processing the exported `h5` tables in Python:
+The file contains two items at the root level, `images` and `table`.
+In the `images` group you will find a subgroup for each object (identifiable by `object_id`) which contains two datasets:
+`labeling` (cutout of the segmentation showing the object) and `raw` (cutout of the raw data showing the object).
+The `table` is saved as a [numpy structured array](https://numpy.org/doc/stable/user/basics.rec.html?highlight=structured#module-numpy.doc.structured_arrays) and holds the selected feature values for each object.
+The "columns" are saved as dtypes (you can see all column names in your table: `f["table"].dtype.names`).
+Individual fields can be accessed by name and index: `f["table"]["User Label"][10]` gives you the user label of the 10th object.
+
+
 ## Preparing for large scale prediction - Blockwise Object Classification applet
 
 Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously.
