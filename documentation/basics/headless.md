@@ -72,6 +72,9 @@ CPU and RAM resources can be controlled with environment variables or a config f
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
 then use globstring syntax to tell ilastik which images to combine for each volume.
+Furthermore, the axis along which should be stacked must be given with the `--stack_along` command line parameter.
+You can stack either over the channel, time, or the z-axis.
+So valid values for this option are `c`, `t`, and `z`, respectively.
 
     $ ls ~/mydata/
     my_stack_1.png        my_stack_2.png        my_stack_3.png        my_stack_4.png
@@ -79,10 +82,12 @@ then use globstring syntax to tell ilastik which images to combine for each volu
     
     $ ./run_ilastik.sh --headless \
                        --project=MyProject.ilp \
+                       --stack_along="c" \
                        "~/mydata/my_stack_*.png" "~/mydata/my_other_stack_*.png"
 
-**Note:** The use of quotation marks in the above example is critical.  The `*` in each input argument must 
-be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
+**Note:** The use of quotation marks around file names in the above example are critical.
+The `*` in each input argument must be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
+
 
 ## Output Options
 
