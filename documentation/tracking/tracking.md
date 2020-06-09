@@ -560,7 +560,8 @@ A full list and detailed information about the plugin is available when pressing
 
 * **CSV Table**: Plugin to export the ilastik tracking results to a CSV (comma seperated value) table.
 This format is most common for spreadsheets and databases.
-Following columns are written to the csv:
+The table is similar to the csv table that can be exported in the [Object Classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
+In addition to the features (includes positional information) that were used in classification, the table includes the following columns:
     - `frame`: time frame in the image sequence (starts at `0` and goes as far up as your number of time frames).
     - `labelimageId`: id of the object in the current time frame.
     Will range from `1 .. number_of_objects` in the current time frame.
