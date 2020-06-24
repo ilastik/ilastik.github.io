@@ -233,25 +233,25 @@ The `h5` file contains two items at the root level, `images` and `table`. Using 
 import h5py
 data = h5py.File("path/to/data.h5", "r")
 data.keys()
-# <KeysViewHDF5 ['images', 'table']>
+# <KeysViewHDF5 ["images", "table"]>
 ```
 
 In the `images` group you will find a subgroup for each object (identifiable by `object_id`) which contains two datasets:
 `labeling` (cutout of the segmentation showing the object) and `raw` (cutout of the raw data showing the object).
 
 ```python
-data['images'].keys()
-# <KeysViewHDF5 ['0', '1', '2', '3', ...]>
+data["images"].keys()
+# <KeysViewHDF5 ["0", "1", "2", "3", ...]>
 ```
 Access individual the `raw` and `labeling` images for each object using the key for the object:
 
 ```python
-data['images']['1'].keys()
-# <KeysViewHDF5 ['labeling', 'raw']>
-data['images']['1']['labeling']
+data["images"]["1"].keys()
+# <KeysViewHDF5 ["labeling", "raw"]>
+data["images"]["1"]["labeling"]
 # <HDF5 dataset "labeling": shape (28, 26, 13), type "|u1">
 # stored as a numpy array, access the data using numpy indexing:
-data['images']['1']['labeling'][:]
+data["images"]["1"]["labeling"][:]
 # image data...
 ```
 
@@ -259,20 +259,20 @@ The measurements `table` is saved as a [numpy structured array](https://numpy.or
 The "columns" are saved as dtypes (you can see all column names in your table:
 
 ```python
-data['table'].dtype.names
-#('object_id', 'timestep', 'Predicted Class' ...)
+data["table"].dtype.names
+#("object_id", "timestep", "Predicted Class" ...)
 ```
 
 Individual fields can be accessed by name:
 
 ```python
-data['table']['Mean Intensity']
+data["table"]["Mean Intensity"]
 # array([1551.2393, 1420.5,...], dtype=float32)
 ```
 Returning a numpy array of all the detected objects. You can access an individual object's measurements using an index:
 
 ```python
-data['table']['Mean Intensity'][0]
+data["table"]["Mean Intensity"][0]
 # 1551.2393
 ```
 Returning the `Mean Intensity` of the first object.
