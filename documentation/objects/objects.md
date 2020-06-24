@@ -239,7 +239,23 @@ data.keys()
 In the `images` group you will find a subgroup for each object (identifiable by `object_id`) which contains two datasets:
 `labeling` (cutout of the segmentation showing the object) and `raw` (cutout of the raw data showing the object).
 
-The `table` is saved as a [numpy structured array](https://numpy.org/doc/stable/user/basics.rec.html?highlight=structured#module-numpy.doc.structured_arrays) and holds the selected feature values for each object.
+```python
+data['images'].keys()
+# <KeysViewHDF5 ['0', '1', '2', '3', ...]>
+```
+Access individual the `raw` and `labeling` images for each object using the key for the object:
+
+```python
+data['images']['1'].keys()
+# <KeysViewHDF5 ['labeling', 'raw']>
+data['images']['1']['labeling']
+# <HDF5 dataset "labeling": shape (28, 26, 13), type "|u1">
+# stored as a numpy array, access the data using numpy indexing:
+data['images']['1']['labeling'][:]
+# image data...
+```
+
+The measurements `table` is saved as a [numpy structured array](https://numpy.org/doc/stable/user/basics.rec.html?highlight=structured#module-numpy.doc.structured_arrays) and holds the selected feature values for each object.
 The "columns" are saved as dtypes (you can see all column names in your table:
 
 ```python
