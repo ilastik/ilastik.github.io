@@ -269,7 +269,7 @@ Individual fields can be accessed by name:
 data["table"]["Mean Intensity"]
 # array([1551.2393, 1420.5,...], dtype=float32)
 ```
-Returning a numpy array of all the detected objects. You can access an individual object's measurements using an index:
+Returning a numpy array of `Mean Intensity` values for all the detected objects. You can access an individual object's measurements using an index:
 
 ```python
 data["table"]["Mean Intensity"][0]
