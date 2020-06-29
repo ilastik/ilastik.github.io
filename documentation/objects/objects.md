@@ -256,7 +256,7 @@ data["images"]["1"]["labeling"][:]
 ```
 
 The measurements `table` is saved as a [numpy structured array](https://numpy.org/doc/stable/user/basics.rec.html?highlight=structured#module-numpy.doc.structured_arrays) and holds the selected feature values for each object.
-The "columns" are saved as dtypes (you can see all column names in your table:
+The "columns" are saved as dtypes (you can see all column names in your table):
 
 ```python
 data["table"].dtype.names
