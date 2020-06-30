@@ -1,6 +1,6 @@
 ---
 title: Neural Network Classification
-tagline: Neural Netowrk Classification
+tagline: Neural Network Classification
 category: "Documentation"
 group: "workflow-documentation"
 weight: 0
