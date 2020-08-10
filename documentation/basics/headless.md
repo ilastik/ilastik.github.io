@@ -53,6 +53,15 @@ CPU and RAM resources can be controlled with environment variables or a config f
 
 [controlling resources]: {{site.baseurl}}/documentation/basics/installation#controlling-cpu-and-ram-resources
 
+### Using hdf5 for memory efficiency
+
+We recommend to use hdf5 for input and output over, for example, TIF stacks. Indeed, TIF stacks cannot be written/read block-wise, hence the whole data has to be loaded and kept in memory. This can lead to excessive memory usage and slowness.
+
+In order to convert your TIF slices into hdf5 datasets, you can check the dedicated [Fiji Plugin][fiji_plugin].
+
+[fiji_plugin]: {{site.baseurl}}/documentation/fiji_export/plugin
+
+
 ### Using stack input
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
