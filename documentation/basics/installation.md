@@ -119,20 +119,17 @@ You will need the license key to activate your GUROBI installation.
 Download the appropriate package from the [GUROBI download page](https://www.gurobi.com/downloads/gurobi-optimizer).
 Unpack the downloaded archive:
 
-    tar -xvf gurobi8.1.1_linux64.tar.gz -C /your/target/directory
+    tar -xvf gurobi9.0.3_linux64.tar.gz -C /your/target/directory
 
 And activate your installation by invoking `grbgetkey` with your license:
 
-    cd /your/target/directory/gurobi702/linux64/bin
+    cd /your/target/directory/gurobi903/linux64/bin
     # use the obtained license key here
     ./grbgetkey your-license-key-here
     # Follow the instructions and take note of the license path.
 
 In the next step you have to execute a script that will link your GUROBI libraries to your ilastik installation.
 The script can be found in `your-ilastik-installation-folder/ilastik-meta/ilastik/scripts`.
-With versions prior to ilastik-1.1.7, this [script](https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh) is not included and has to be downloaded manually:
-
-    wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh
 
 Navigate to the script directory and run it:
 
@@ -143,9 +140,9 @@ Navigate to the script directory and run it:
     # navigate to the script location, e.g. /path/to/ilastik-1.*-Linux/ilastik-meta/ilastik/scripts
     cd /path/to/script
     # Linux:
-    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi702/linux64 /path/to/ilastik-1.*-Linux
+    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/linux64 /path/to/ilastik-1.*-Linux
     # Mac:
-    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi702/linux64/ /path/to/ilastik-1.*-OSX.app
+    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/linux64/ /path/to/ilastik-1.*-OSX.app
 
 In order to run ilastik with GUROBI support, make sure to always set the path to the license file (in case of a non-standard location):
 
@@ -157,6 +154,10 @@ In order to run ilastik with GUROBI support, make sure to always set the path to
     ./run_ilastik.sh
 
 After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
+
+Note: With versions prior to ilastik-1.1.7, this [script](https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh) is not included and has to be downloaded manually:
+
+    wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh
 
 Should you run into any problems, please [contact us]({{site.baseurl}}/community.html).
 
