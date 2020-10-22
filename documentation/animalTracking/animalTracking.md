@@ -120,12 +120,13 @@ Unlike the pixel classification workflow, you will not draw labels will the brus
 
 Try to find and label a few of these objects on your video. You can also check the `Live Update` option to get live feedback of the object predictions. Here's a few examples of labelled objects:
 
-| Object Label | Screenshot |
-| ---- | ---------- |
+{:.table.table-striped}
+| Object Label    | Screenshot                                                                                                    |
+|-----------------|---------------------------------------------------------------------------------------------------------------|
 | False Detection | <a href="./fig/0merger.png" data-toggle="lightbox"><img src="./fig/0merger.png" class="img-responsive" /></a> |
-| 1 Object | <a href="./fig/1merger.png" data-toggle="lightbox"><img src="./fig/1merger.png" class="img-responsive" /></a> |
-| 2 Objects | <a href="./fig/2merger.png" data-toggle="lightbox"><img src="./fig/2merger.png" class="img-responsive" /></a> |
-| 3 OBjects | <a href="./fig/3merger.png" data-toggle="lightbox"><img src="./fig/3merger.png" class="img-responsive" /></a> |    
+| 1 Object        | <a href="./fig/1merger.png" data-toggle="lightbox"><img src="./fig/1merger.png" class="img-responsive" /></a> |
+| 2 Objects       | <a href="./fig/2merger.png" data-toggle="lightbox"><img src="./fig/2merger.png" class="img-responsive" /></a> |
+| 3 Objects       | <a href="./fig/3merger.png" data-toggle="lightbox"><img src="./fig/3merger.png" class="img-responsive" /></a> |
   
 Sometimes it's difficult to find clusters of 2 or more objects, since these can be very sparse. 
 For these cases, click on the `Label Assist` button, and then click on the `Compute Object Info` button which will display a table where you can sort frames by maximum and minimum object area.
@@ -137,17 +138,18 @@ After you trained the object count classifier, click on the `Tracking` section o
 This is the main section of the tracking workflow, where the object IDs will be assigned. 
 Here's a list of relevant parameters with a brief explanation:    
 
-| Parameter | Description |
-| ---------- | ----------- |
-| Max Distance | Maximum distance to consider when finding nearest neighbors (for frame-to-frame transitions). |
-| Max Object per Merger | Maximum number of objects allowed on a cluster (this value is set automatically, don't change it if you don't have to) |
-| Transition Weight | Weight based on the distance between objects (for frame-to-frame transitions). |
-| Appearance Cost | Costs to allow object IDs to appear (to start a new track). High values (>5000) forbid objects appearances, and could be helpful with a high-quality segmentation and the same number of objects in all frames. |
-| Disappearance Cost | Cost to allow object Ids to dissapear (to terminate an existing track). High values (>5000) will forbid object disappearances. |
-| Transition Neighbours | Number of neighbors to be considered as potential transition candiadates. Less neighbors speed up running-time, but the results might be of a lesser quality. |
-| Frames per Split | When the videos have too many frames (eg. > 10000), it is heplful to split the video in parts in order to improve the running-time. The recommended value would be ~1000 frames. Use 0 if you don't want to use splits. | 
-| With Tracklets | Compress stable tracks to improve the running-time (objects with only one transition possiblity) |
-| Filters | Range filters for time, X, Y, and Z axes, and for size. Objects outside of these ranges will be ignored. |
+{:.table.table-striped}
+| Parameter             | Description                                                                                                                                                                                                             |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Max Distance          | Maximum distance to consider when finding nearest neighbors (for frame-to-frame transitions).                                                                                                                           |
+| Max Object per Merger | Maximum number of objects allowed on a cluster (this value is set automatically, don't change it if you don't have to)                                                                                                  |
+| Transition Weight     | Weight based on the distance between objects (for frame-to-frame transitions).                                                                                                                                          |
+| Appearance Cost       | Costs to allow object IDs to appear (to start a new track). High values (>5000) forbid objects appearances, and could be helpful with a high-quality segmentation and the same number of objects in all frames.         |
+| Disappearance Cost    | Cost to allow object Ids to dissapear (to terminate an existing track). High values (>5000) will forbid object disappearances.                                                                                          |
+| Transition Neighbours | Number of neighbors to be considered as potential transition candiadates. Less neighbors speed up running-time, but the results might be of a lesser quality.                                                           |
+| Frames per Split      | When the videos have too many frames (eg. > 10000), it is heplful to split the video in parts in order to improve the running-time. The recommended value would be ~1000 frames. Use 0 if you don't want to use splits. |
+| With Tracklets        | Compress stable tracks to improve the running-time (objects with only one transition possiblity)                                                                                                                        |
+| Filters               | Range filters for time, X, Y, and Z axes, and for size. Objects outside of these ranges will be ignored.                                                                                                                |
 
 <a href="./fig/trackingTracking.png" data-toggle="lightbox"><img src="./fig/trackingTracking.png" class="img-responsive" /></a>
 
@@ -156,21 +158,22 @@ Here's a list of relevant parameters with a brief explanation:
 You could start with the default parameter values, or experiment with different values for difficult cases with multiple appearances, disappearances, and mergers.
 Here is a table with the values that are recommended for this example (most are left with their default values):
 
-| Parameter | Value |
-| --------- | ----- |
-| Max Distance | 200 (default) |
-| Max Object per Merger | 3 (automatic) |
-| Transition Weight | 10.0 (default) |
-| Appearance Cost | 500 (default) |
-| Disappearance Cost | 500 (default) |
-| Transition Neighbours | 1 (default) |
-| Frames per Split | 0 (default) |
-| With Tracklets | False |  
-| Filters>Time | 0 to 100 |
-| Filters>X | 0 to 1023 (default) |
-| Filters>Y | 0 to 1023 (default) |
-| Filters>Z | 0 to 0 (default) |
-| Filters>Size | 15 to 10000 |  
+{:.table.table-striped}
+| Parameter             | Value               |
+|-----------------------|---------------------|
+| Max Distance          | 200 (default)       |
+| Max Object per Merger | 3 (automatic)       |
+| Transition Weight     | 10.0 (default)      |
+| Appearance Cost       | 500 (default)       |
+| Disappearance Cost    | 500 (default)       |
+| Transition Neighbours | 1 (default)         |
+| Frames per Split      | 0 (default)         |
+| With Tracklets        | False               |
+| Filters>Time          | 0 to 100            |
+| Filters>X             | 0 to 1023 (default) |
+| Filters>Y             | 0 to 1023 (default) |
+| Filters>Z             | 0 to 0 (default)    |
+| Filters>Size          | 15 to 10000         |
   
 The video will be running optimization based on the transition, appearance, and disappearance costs across frames in order to assign the correct IDs for each object. 
 

@@ -291,20 +291,20 @@ the most probable tracking solution for the model constructed, i.e. it tries to 
 Although the tracking result should usually be already sufficient with the default values, we now briefly give explanations
 for the **parameters** our tracking algorithm uses (see [\[1\]](#ref_conservation) for more details). 
 
-| Parameter       | Description
-|:---------------| :-------------------------
-| Max. Object per Merger | Defines how many objects could be contained in a single cluster. Should correspond to the max label in the Object Count applet.
-| Division weight | Cost to allow one object to divide
-| Transition weight | Costs to allow one object to be assigned to another
-| Appearance cost  | Costs to allow one object to appear, i.e. to start a new track other than at the beginning of the time range or the borders of the field of view. High values (&ge;1000) forbid object appearances if possible.
-| Disappearance cost  | Costs to allow one object to disappear, i.e. to terminate an existing track other than at the end of the time range or the borders of the field of view. High values (&ge;1000) forbid object disappearances if possible.
-| Timeout in sec.  | Timeout in seconds for the optimization. Leave empty for not specifying a timeout (then, the best solution will be found no matter how long it takes).
-| Border width | The border pixels have to be treated in a special way for appearance/disappearance
-| Transition neighborhood | How far can an object move
-| Frames per split | By default (0) the tracking is done globally over the whole time range. By specifying a non-zero number here, you break your video up into pieces of this length and then solve hierarchically and in parallel. This is much faster than no splitting for long videos
-| Solver | Flow-based, as described [here](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_35) or ILP, which requires commercial solvers. Flow-based gives excellent tracking solutions and is much faster than ILP, which we keep for consistency with older projects
-| Divisible Objects | Check if the objects may divide over time, e.g. when tracking proliferating cells. Consider using the animal tracking workflow if they don't.
-
+{:.table.table-striped}
+| Parameter               | Description                                                                                                                                                                                                                                                             |
+|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Max. Object per Merger  | Defines how many objects could be contained in a single cluster. Should correspond to the max label in the Object Count applet.                                                                                                                                         |
+| Division weight         | Cost to allow one object to divide                                                                                                                                                                                                                                      |
+| Transition weight       | Costs to allow one object to be assigned to another                                                                                                                                                                                                                     |
+| Appearance cost         | Costs to allow one object to appear, i.e. to start a new track other than at the beginning of the time range or the borders of the field of view. High values (&ge;1000) forbid object appearances if possible.                                                         |
+| Disappearance cost      | Costs to allow one object to disappear, i.e. to terminate an existing track other than at the end of the time range or the borders of the field of view. High values (&ge;1000) forbid object disappearances if possible.                                               |
+| Timeout in sec.         | Timeout in seconds for the optimization. Leave empty for not specifying a timeout (then, the best solution will be found no matter how long it takes).                                                                                                                  |
+| Border width            | The border pixels have to be treated in a special way for appearance/disappearance                                                                                                                                                                                      |
+| Transition neighborhood | How far can an object move                                                                                                                                                                                                                                              |
+| Frames per split        | By default (0) the tracking is done globally over the whole time range. By specifying a non-zero number here, you break your video up into pieces of this length and then solve hierarchically and in parallel. This is much faster than no splitting for long videos   |
+| Solver                  | Flow-based, as described [here](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_35) or ILP, which requires commercial solvers. Flow-based gives excellent tracking solutions and is much faster than ILP, which we keep for consistency with older projects |
+| Divisible Objects       | Check if the objects may divide over time, e.g. when tracking proliferating cells. Consider using the animal tracking workflow if they don't.                                                                                                                           |
 
 Furthermore, a **Field of View** may be specified for the tracking. Restricting the field of view to less time steps 
 or a smaller volume may lead to significant speed-ups of the tracking. Moreover, a **Size** range can be set to filter out objects which are smaller or larger than the number of pixels specified.
@@ -431,21 +431,19 @@ this procedure is similar to the export of the fully automatic tracking.
 #### Shortcuts
 To most efficiently use the features described above, there are multiple shortcuts available:
 
-| Shortcut       | Description   
-|:--------------:| :-----------------------------
-| `Shift + Scroll` | Scroll image through time
-| `Ctrl + Scroll`| Zoom
-| `s`            | Start new track
-| `d`            | Mark division event
-| `f`            | Mark false detection
-| `q`            | Increment active track ID
-| `a`            | Decrement active track ID
-| `g`            | Go to next unlabeled object
-| `e`            | Toggle manual tracking layer visibility
-| `r`            | Toggle objects layer visibility
-
-
-
+{:.table.table-striped}
+| Shortcut         | Description                             |
+|:----------------:|:----------------------------------------|
+| `Shift + Scroll` | Scroll image through time               |
+| `Ctrl + Scroll`  | Zoom                                    |
+| `s`              | Start new track                         |
+| `d`              | Mark division event                     |
+| `f`              | Mark false detection                    |
+| `q`              | Increment active track ID               |
+| `a`              | Decrement active track ID               |
+| `g`              | Go to next unlabeled object             |
+| `e`              | Toggle manual tracking layer visibility |
+| `r`              | Toggle objects layer visibility         |
 
 ## 4.3 Structured Learning: <span class="hidden-in-sidebar" style="color:orange">&#9679;</span> {#sec_structured_learning}
 
@@ -514,14 +512,14 @@ The `object_ids` can be exported separately by right-clicking on the **Objects**
    division, merger). In each of these hdf5 files (except the one for the first time step), detected events
    between object identifiers (stored in the volume `/segmentation/labels`) are stored in the following format:
 
-| Event      | Dataset Name | Object IDs 
-|:----------|:------------| :-------------------------
-| Move      | `/tracking/Moves` | `from (previous timestep), to (current timestep)`
-| Division | `/tracking/Splits` | `ancestor (prev. timestep), descendant (cur. timestep), descendant (cur. timestep)`
-| Appearance | `/tracking/Appearances` | `object_id appeared in current timestep`
-| Disappearance | `/tracking/Disappearances` | `object_id disappeared in current timestep`
-| Merger | `/tracking/Mergers` | `object_id, number_of_contained_objects` 
-
+{:.table.table-striped}
+| Event         | Dataset Name               | Object IDs                                                            |
+|:--------------|:---------------------------|:----------------------------------------------------------------------|
+| Move          | `/tracking/Moves`          | `from` *previous timestep* &bull; `to` *current timestep*             |
+| Division      | `/tracking/Splits`         | `ancestor` *previous timestep* &bull; `descendant` *current timestep* |
+| Appearance    | `/tracking/Appearances`    | `object_id` appeared in current timestep                              |
+| Disappearance | `/tracking/Disappearances` | `object_id` disappeared in current timestep                           |
+| Merger        | `/tracking/Mergers`        | `object_id` &bull; `number_of_contained_objects`                      |
 
 We would recommend to use the methods described above, but additionally, the results of the manual **and** automatic tracking may also 
 be accessed via the ilastik project file:
