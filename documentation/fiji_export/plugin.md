@@ -67,15 +67,13 @@ Depending on your post-processing, export **Probabilities** or **Simple Segmenta
 
 <div class="col-md-6">
 <p>
-Using the same plugin, you can now load your results into FIJI by selecting "import HDF5" in the "Plugins->ilastik" menu. Two options are available: load (and display) the raw pixel values or load and display the image with a lookup-table (LUT).
+Using the same plugin, you can now load your results into FIJI by selecting "import HDF5" in the _Plugins->ilastik_ menu.
 </p>
 <p>
 <a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="50%" class="img-responsive" /></a>
 </p>
 <p>
-For <b>Probabilities</b>, choose <b>Load Raw</b>. <br>
-For <b>Segmentation</b>, choose <b>Load LUT</b>.<br>
-If you loaded the segmentation and the image looks black, you probably loaded it as raw. Try again with a LUT.
+For **Segmentation/Label images**, you should select a suitable lookup-table in Fiji (e.g. glasbey) after importing the data: _Image->Lookup Tables->glasbey_.
 </p>
 </div>
 </div>
