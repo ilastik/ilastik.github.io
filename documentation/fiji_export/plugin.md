@@ -70,7 +70,7 @@ Depending on your post-processing, export <b>Probabilities</b> or <b>Simple Segm
 Using the same plugin, you can now load your results into FIJI by selecting "import HDF5" in the <em>Plugins->ilastik</em> menu.
 </p>
 <p>
-<a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="50%" class="img-responsive" /></a>
+<a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="100%" class="img-responsive" /></a>
 </p>
 <p>
 For <b>Segmentation/Label images</b>, you should select a suitable lookup-table in Fiji (e.g. glasbey) after importing the data: <em>Image->Lookup Tables->glasbey</em>.
