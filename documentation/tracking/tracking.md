@@ -513,13 +513,16 @@ The `object_ids` can be exported separately by right-clicking on the **Objects**
    between object identifiers (stored in the volume `/segmentation/labels`) are stored in the following format:
 
 {:.table.table-striped}
-| Event         | Dataset Name               | Object IDs                                                            |
-|:--------------|:---------------------------|:----------------------------------------------------------------------|
-| Move          | `/tracking/Moves`          | `from` *previous timestep* &bull; `to` *current timestep*             |
-| Division      | `/tracking/Splits`         | `ancestor` *previous timestep* &bull; `descendant` *current timestep* |
-| Appearance    | `/tracking/Appearances`    | `object_id` appeared in current timestep                              |
-| Disappearance | `/tracking/Disappearances` | `object_id` disappeared in current timestep                           |
-| Merger        | `/tracking/Mergers`        | `object_id` &bull; `number_of_contained_objects`                      |
+| Event           | Dataset Name                | Columns                                                                        |
+|-----------------|-----------------------------|--------------------------------------------------------------------------------|
+| Appearances     | `/tracking/Appearances`     | cell label appeared in current file                                            |
+| Disappearances  | `/tracking/Disappearances`  | cell label disappeared in current file                                         |
+| Moves           | `/tracking/Moves`           | from (previous file), to (current file)                                        |
+| Splits          | `/tracking/Splits`          | ancestor (previous file), descendant (current file), descendant (current file) |
+| Mergers         | `/tracking/Mergers`         | descendant (current file), number of objects                                   |
+| MultiFrameMoves | `/tracking/MultiFrameMoves` | from (file at t_from), to (current file), t_from                               |
+
+Each dataset `/tracking/EVENT` from the table above also has a corresponding `/tracking/EVENT-Energy` dataset, where lower energy &rarr; high confidence.
 
 We would recommend to use the methods described above, but additionally, the results of the manual **and** automatic tracking may also 
 be accessed via the ilastik project file:
