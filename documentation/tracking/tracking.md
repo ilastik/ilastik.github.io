@@ -513,16 +513,13 @@ The `object_ids` can be exported separately by right-clicking on the **Objects**
    between object identifiers (stored in the volume `/segmentation/labels`) are stored in the following format:
 
 {:.table.table-striped}
-| Event           | Dataset Name                | Columns                                                                        |
-|-----------------|-----------------------------|--------------------------------------------------------------------------------|
-| Appearances     | `/tracking/Appearances`     | cell label appeared in current file                                            |
-| Disappearances  | `/tracking/Disappearances`  | cell label disappeared in current file                                         |
-| Moves           | `/tracking/Moves`           | from (previous file), to (current file)                                        |
-| Splits          | `/tracking/Splits`          | ancestor (previous file), descendant (current file), descendant (current file) |
-| Mergers         | `/tracking/Mergers`         | descendant (current file), number of objects                                   |
-| MultiFrameMoves | `/tracking/MultiFrameMoves` | from (file at t_from), to (current file), t_from                               |
-
-Each `/tracking/EVENT` dataset from the table above has a corresponding `/tracking/EVENT-Energy` dataset, where lower energy &rarr; higher confidence.
+| Event           | Dataset Name                | Columns                                                                                        |
+|-----------------|-----------------------------|------------------------------------------------------------------------------------------------|
+| Appearances     | `/tracking/Appearances`     | cell label appeared in current file                                                            |
+| Disappearances  | `/tracking/Disappearances`  | cell label disappeared in current file                                                         |
+| Moves           | `/tracking/Moves`           | from (previous file) &bull; to (current file)                                                  |
+| Splits          | `/tracking/Splits`          | ancestor (previous file) &bull; descendant 1 (current file) &bull; descendant 2 (current file) |
+| Mergers         | `/tracking/Mergers`         | descendant (current file) &bull; number of objects                                             |
 
 We would recommend to use the methods described above, but additionally, the results of the manual **and** automatic tracking may also 
 be accessed via the ilastik project file:
