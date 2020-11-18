@@ -522,7 +522,7 @@ The `object_ids` can be exported separately by right-clicking on the **Objects**
 | Mergers         | `/tracking/Mergers`         | descendant (current file), number of objects                                   |
 | MultiFrameMoves | `/tracking/MultiFrameMoves` | from (file at t_from), to (current file), t_from                               |
 
-Each dataset `/tracking/EVENT` from the table above also has a corresponding `/tracking/EVENT-Energy` dataset, where lower energy &rarr; high confidence.
+Each `/tracking/EVENT` dataset from the table above has a corresponding `/tracking/EVENT-Energy` dataset, where lower energy &rarr; higher confidence.
 
 We would recommend to use the methods described above, but additionally, the results of the manual **and** automatic tracking may also 
 be accessed via the ilastik project file:
