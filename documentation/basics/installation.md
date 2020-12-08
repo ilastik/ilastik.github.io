@@ -95,17 +95,24 @@ threads=4
 ## Commercial Solver Installation {#solver-setup}
 
 In order to learn the tracking parameters in the [Tracking With Learning Workflow][tracking with learning], installation of a commercial solver is required.
-ilastik currently supports *GUROBI*, and *IBM CPLEX*.
+
+History of supported solver versions
+
+{:.table.table-striped}
+| ilastik version | GUROBI version | CPLEX version |
+|:----------------|:---------------|:--------------|
+| 1.4.0 (planned) | 9.1.0 | not supported |
+| 1.3.3 | 8.1.1 | 1290 |
+| 1.3.2 | 8.0.1 | 1280 |
+| 1.3.0 | 7.5.2 | 1260 |
+
 We'll go through the installation in the following sections.
 
 [tracking with learning]: {{site.baseurl}}/documentation/tracking/tracking#sec_structured_learning
 
 ### GUROBI Installation and Setup
 
-Gurobi is supported on Linux, MacOSX and Windows.
-A free academic license can be obtained for GUROBI.
-
-#### Application for Academic License at GUROBI
+#### Application for a free Academic License at GUROBI
 
 Application for an academic license is available after registration with your institution email address at the [GUROBI website][gurobi-info].
 Details can be found [here](https://www.gurobi.com/academia/academic-program-and-licenses/).
@@ -146,7 +153,7 @@ With that you should be able to use the "Calculate Tracking Weights" functionali
 In case of problems, please take a look at the [GUROBI installation documentation][gurobi-install-win].
 
 Note: Due to a bug in ilastik `1.3.3` the solver library is not recognized.
-If you absolutely have to use this version then a solution is to manually copy `:\gurobi811\win64\bin\gurobi811.dll` to your ilastik installation folder, e.g. `C:\Program Files\ilastik-1.3.3post3\Library\bin`.
+If you absolutely have to use this version then a solution is to manually copy `C:\gurobi811\win64\bin\gurobi811.dll` to your ilastik installation folder, e.g. `C:\Program Files\ilastik-1.3.3post3\Library\bin`.
 
 #### Installation on MacOSX and Linux {#gurobi-setup-linux-mac}
 
