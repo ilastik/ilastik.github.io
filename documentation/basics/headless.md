@@ -63,10 +63,12 @@ CPU and RAM resources can be controlled with environment variables or a config f
 **Optional input settings:**
 
 - `--readonly` Open the project in read-only mode; necessary for using a single project from multiple processes.
-- `--input_axes` specify meaning of your axes. In some cases ilastik's default guess for the axes is not correct.
+- `--input_axes` specify meaning of your axes.
+  In some cases ilastik's default guess for the axes is not correct.
   In such cases, supply the axes explicitly (e.g. `--input_axes=zcyx` for a 3D dataset with channels and the axes in the "zcyx" order).
   Note that the order should be given in "C-order", so the fastest varying axes comes last.
   It should be the same order that you would give in the [dataset properties]({{ site.baseurl }}/documentation/basics/dataselection#properties).
+  Furthermore, if stack input is used, the input_axes define axes per slice.
 
 ### Using stack input
 
