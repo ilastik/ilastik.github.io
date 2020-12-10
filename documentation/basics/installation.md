@@ -95,10 +95,150 @@ threads=4
 ## Commercial Solver Installation {#solver-setup}
 
 In order to learn the tracking parameters in the [Tracking With Learning Workflow][tracking with learning], installation of a commercial solver is required.
-*IBM CPLEX* is supported by ilastik on all platforms.
-Alternatively, *GUROBI* can be used on Linux and Mac.
+
+History of supported solver versions
+
+{:.table.table-striped}
+| ilastik version | GUROBI version | CPLEX version |
+|:----------------|:---------------|:--------------|
+| 1.4.0 (planned) | 9.1.0 | not supported |
+| 1.3.3 | 8.1.1 | 1290 |
+| 1.3.2 | 8.0.1 | 1280 |
+| 1.3.0 | 7.5.2 | 1260 |
+
+We'll go through the installation in the following sections.
 
 [tracking with learning]: {{site.baseurl}}/documentation/tracking/tracking#sec_structured_learning
+
+### GUROBI Installation and Setup
+
+#### Application for a free Academic License at GUROBI
+
+Application for an academic license is available after registration with your institution email address at the [GUROBI website][gurobi-info].
+Details can be found [here](https://www.gurobi.com/academia/academic-program-and-licenses/).
+The easiest way is to obtain a free named-user academic license.
+Instructions are provided on [this page][gurobi-info].
+At the end of the process, you will be provided with your license key.
+Note that this license is only valid for a limited amount of time (currently this period is two months, but this could be subject to change).
+You will need the license key to activate your GUROBI installation.
+
+Download the appropriate package for your operating system from the [GUROBI download page][gurobi-download].
+Visit our [download-page][ilastik-download] to find information about compatibility of the different GUROBI versions with ilastik.
+
+The following sections contain platform-specific instructions for GUROBI installation on [Windows](#gurobi-setup-windows) as well as on [Linux and MacOSX](#gurobi-setup-linux-mac).
+
+#### Installation on Windows {#gurobi-setup-windows}
+
+Double click the `Gurobi-9.0.3-win64.msi` installer to go through the installation process.
+Restart your computer to complete the installation.
+Once the installation is complete, you need to activate the license.
+You can review all your current licenses [here][gurobi-licenses].
+Licenses without an entry in the `Host Name` column have not been assigned a computer yet.
+Click on one of those to get to a new page with instructions.
+On the bottom of this page you will find a line like:
+
+```
+grbgetkey aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+```
+
+copy the whole line and paste it into the windows search bar and click on run command in the search bar.
+
+<a href="screenshots/gurobi-activate-win.png" data-toggle="lightbox"><img src="screenshots/gurobi-activate-win.png" class="img-responsive align-center" alt="Gurobi activattion on windows." /></a>
+
+This will pop up a terminal window and ask you for the location to store the license.
+The default location is usually fine - press enter to finish the process.
+
+With that you should be able to use the "Calculate Tracking Weights" functionality in [Tracking with Learning][tracking-with-learning].
+
+In case of problems, please take a look at the [GUROBI installation documentation][gurobi-install-win].
+
+Note: Due to a bug in ilastik `1.3.3` the solver library is not recognized.
+If you absolutely have to use this version then a solution is to manually copy `C:\gurobi811\win64\bin\gurobi811.dll` to your ilastik installation folder, e.g. `C:\Program Files\ilastik-1.3.3post3\Library\bin`.
+
+#### Installation on MacOSX and Linux {#gurobi-setup-linux-mac}
+
+On MacOSX you can start the installation process by clicking on the downloaded file `gurobi9.0.3_mac64.pkg`.
+
+On linux you have to unpack the downloaded archive:
+
+```bash
+tar -xvf gurobi9.0.3_linux64.tar.gz -C /your/target/directory
+```
+
+
+Activate your installation by invoking `grbgetkey` with your license.
+You can review all your current licenses [here][gurobi-licenses].
+Licenses without an entry in the `Host Name` column have not been assigned a computer yet.
+Click on one of those to get to a new page with instructions.
+On the bottom of this page you will find a line like:
+
+```
+grbgetkey aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+```
+
+For the activation you'll have to open a terminal and follow this sequence of commands:
+
+
+```bash
+# Linux
+cd /your/target/directory/gurobi903/linux64/bin
+# OSX
+# on OSX gurobi is installed to /Library/ per default.
+cd /Libary/gurobi903/mac64/bin
+
+ # use the obtained license key here
+./grbgetkey aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+# Follow the instructions and take note of the license path.
+```
+
+In the next step you have to execute a script that will link your GUROBI libraries to your ilastik installation.
+The script can be found in `your-ilastik-installation-folder/ilastik-meta/ilastik/scripts`.
+
+Navigate to the script directory and run it:
+
+``` bash
+# the following line is _only necessary_ if you have used a custom location for the
+# license file when invoking `grbgetkey`
+export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
+
+# navigate to the script location,
+# on Linux this could be /path/to/ilastik-1.*-Linux/ilastik-meta/ilastik/scripts
+# on OSX this could be /Applications/ilastik-1.*-OSX/Contents/ilastik-release/ilastik-meta/ilastik
+cd /path/to/script
+# Linux:
+bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/linux64 /path/to/ilastik-1.*-Linux
+# Mac:
+bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/mac64/ /path/to/ilastik-1.*-OSX.app
+```
+
+
+In order to run ilastik with GUROBI support, make sure to always set the path to the license file (in case of a non-standard location):
+
+```bash
+# set-up environment
+export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
+
+# run ilastik
+cd /path/to/ilastik-1.*-Linux
+./run_ilastik.sh
+```
+
+
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
+
+Note: With versions prior to ilastik-1.1.7, this [script](https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh) is not included and has to be downloaded manually:
+
+    wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh
+
+Should you run into any problems, please [contact us]({{site.baseurl}}/community.html).
+
+[gurobi-info]: https://www.gurobi.com/academia/for-universities
+[gurobi-download]: https://www.gurobi.com/downloads/gurobi-optimizer
+[gurobi-licenses]: https://www.gurobi.com/downloads/licenses/
+[gurobi-install-win]: https://www.gurobi.com/documentation/9.0/quickstart_windows/software_installation_guid.html
+[ilastik-download]: {{site.baseurl}}/download.html
+
+--------
 
 ### CPLEX Installation and Setup
 
@@ -193,63 +333,3 @@ Once you've done that, you should not distribute your copy of ilastik to others,
 After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
 
 ----------
-
-### GUROBI Installation and Setup
-
-On Linux and Mac, a second commercial solver, GUROBI, is supported.
-As with CPLEX, a free academic license can be obtained for GUROBI.
-
-#### Application for Academic License at GUROBI
-
-Application for an academic license is available after registration with your institution email address at the [GUROBI website](https://www.gurobi.com/).
-Details can be found [here](https://www.gurobi.com/academia/for-universities).
-The easiest way is to obtain a free named-user academic license.
-Instructions are provided on [this page](https://www.gurobi.com/academia/for-universities).
-At the end of the process, you will be provided with your license key.
-You will need the license key to activate your GUROBI installation.
-
-#### Installation
-
-Download the appropriate package from the [GUROBI download page](https://www.gurobi.com/downloads/gurobi-optimizer).
-Unpack the downloaded archive:
-
-    tar -xvf gurobi8.1.1_linux64.tar.gz -C /your/target/directory
-
-And activate your installation by invoking `grbgetkey` with your license:
-
-    cd /your/target/directory/gurobi702/linux64/bin
-    # use the obtained license key here
-    ./grbgetkey your-license-key-here
-    # Follow the instructions and take note of the license path.
-
-In the next step you have to execute a script that will link your GUROBI libraries to your ilastik installation.
-The script can be found in `your-ilastik-installation-folder/ilastik-meta/ilastik/scripts`.
-With versions prior to ilastik-1.1.7, this [script](https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh) is not included and has to be downloaded manually:
-
-    wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh
-
-Navigate to the script directory and run it:
-
-    # the following line is only necessary if you have used a custom location for the
-    # license file when invoking `grbgetkey`
-    export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
-
-    # navigate to the script location, e.g. /path/to/ilastik-1.*-Linux/ilastik-meta/ilastik/scripts
-    cd /path/to/script
-    # Linux:
-    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi702/linux64 /path/to/ilastik-1.*-Linux
-    # Mac:
-    bash install-gurobi-symlinks.sh /your/target/directoy/gurobi702/linux64/ /path/to/ilastik-1.*-OSX.app
-
-In order to run ilastik with GUROBI support, make sure to always set the path to the license file (in case of a non-standard location):
-
-    # set-up environment
-    export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
-
-    # run ilastik
-    cd /path/to/ilastik-1.*-Linux
-    ./run_ilastik.sh
-
-After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
-
-Should you run into any problems, please [contact us]({{site.baseurl}}/community.html).
