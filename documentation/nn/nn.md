@@ -1,6 +1,6 @@
 ---
 title: Neural Network Classification
-tagline: Neural Netowrk Classification
+tagline: Neural Network Classification
 category: "Documentation"
 group: "workflow-documentation"
 weight: 0
@@ -12,7 +12,7 @@ This is the newest workflow of ilastik, which is still, in many ways, work in pr
 This workflow allows one to execute (run inference) for pre-trained convolutional neural networks (CNNs) on the data loaded into ilastik. Training of CNNs is also being developed and is now available in debug mode, with absolutely no guarantees of working at all. Inference is fully released, please complain if it doesn't work!
 
 ## The Model Zoo
-How do you find the pre-trained models? Together with community partners, we have already put some in the Model Zoo at [https://bioimage.io](https://bioimage.io). We will keep updating it with our networks, the format is also open so please get in touch with us if you want to contribute models.
+How do you find the pre-trained models? Together with community partners, we have already put some in the [ilastik Model Zoo at BioImage.IO](https://bioimage.io/#/?partner=ilastik). We will keep updating it with our networks, the format is also open so please get in touch with us if you want to contribute models.
 The first step of using the Neural Network workflow is to find a network you would like to use in the Zoo.
 
 ## Pre-requisites for running the workflow

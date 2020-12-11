@@ -223,6 +223,60 @@ In this new window there are three vertical tabs:
  A margin can be configured to include context around this bounding box (size in pixels/voxels).
  Alternatively, it is also possible to include the whole image instead of the individual object images.
 
+## HDF5 export format
+
+[HDF5](https://www.hdfgroup.org/) is a flexible cross platform binary data format. Using Python, you can access the data inside the `h5` files using the [h5py](https://www.h5py.org/) library.
+
+The `h5` file contains two items at the root level, `images` and `table`. Using h5py, you can access them like a python dictionary:
+
+```python
+import h5py
+data = h5py.File("path/to/data.h5", "r")
+data.keys()
+# <KeysViewHDF5 ["images", "table"]>
+```
+
+In the `images` group you will find a subgroup for each object (identifiable by `object_id`) which contains two datasets:
+`labeling` (cutout of the segmentation showing the object) and `raw` (cutout of the raw data showing the object).
+
+```python
+data["images"].keys()
+# <KeysViewHDF5 ["0", "1", "2", "3", ...]>
+```
+Access individual the `raw` and `labeling` images for each object using the key for the object:
+
+```python
+data["images"]["1"].keys()
+# <KeysViewHDF5 ["labeling", "raw"]>
+data["images"]["1"]["labeling"]
+# <HDF5 dataset "labeling": shape (28, 26, 13), type "|u1">
+# stored as a numpy array, access the data using numpy indexing:
+data["images"]["1"]["labeling"][:]
+# image data...
+```
+
+The measurements `table` is saved as a [numpy structured array](https://numpy.org/doc/stable/user/basics.rec.html?highlight=structured#module-numpy.doc.structured_arrays) and holds the selected feature values for each object.
+The "columns" are saved as dtypes (you can see all column names in your table):
+
+```python
+data["table"].dtype.names
+#("object_id", "timestep", "Predicted Class" ...)
+```
+
+Individual fields can be accessed by name:
+
+```python
+data["table"]["Mean Intensity"]
+# array([1551.2393, 1420.5,...], dtype=float32)
+```
+Returning a numpy array of `Mean Intensity` values for all the detected objects. You can access an individual object's measurements using an index:
+
+```python
+data["table"]["Mean Intensity"][0]
+# 1551.2393
+```
+Returning the `Mean Intensity` of the first object.
+
 ## Preparing for large scale prediction - Blockwise Object Classification applet
 
 Segmentation and connected components analysis in the applets above is performed on the *whole dataset* simultaneously.

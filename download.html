@@ -13,11 +13,23 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
 <br>
 </p>
 
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">macOS Big Sur is not supported</h3>
+  </div>
+  <div class="panel-body">
+    If you use ilastik on macOS, please <em>do not upgrade to macOS 11 (Big Sur).
+    ilastik 1.4.0b9 offers limited Big Sur support - no guarantees!</em>.
+    This message will disappear when we start supporting macOS Big Sur in the latest release.
+  </div>
+</div>
+
 <h3 id="stable">Version 1.3.3</h3>
 Includes various improvements and bug fixes.
 <br>
 <b> A few highlights:</b>
 <ul>
+  <li> 1.3.3post3, projects are opened readonly in headless mode per default
   <li>Support for n5 volumes (https://github.com/saalfeldlab/n5)</li>
   <li>Support for masks in Pixel Classification (an additional dataset can be supplied that disables computation of probabilities wherever it is 0 -> speeds up computation in cases with a lot of background</li>
   <li>Atlas Mask overlays for Object classification (an additional dataset can be supplied. Pixel values of this additional mask are included in result tables but not used in classification.)</li>
@@ -39,19 +51,19 @@ Commercial solver support for cplex version 1290 and gurobi 811 for tracking wit
     <tr>
         <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
         <td>
-          <a href="https://files.ilastik.org/ilastik-1.3.3post2-win64.exe">version 1.3.3post2 (2019-12-13)</a>
-          (<a href="https://oc.embl.de/index.php/s/padjdkr2UGU8wFC/download">mirror</a>)</td>
+          <a href="https://files.ilastik.org/ilastik-1.3.3post3-win64.exe">version 1.3.3post3 (2020-05-03)</a>
+          (<a href="https://oc.embl.de/index.php/s/KKg8RSCXVZNwavf/download">mirror</a>)</td>
         <td><b>Supported Versions:</b> Windows 7 and later</td>
     </tr>
     <tr>
         <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.3.3post2-Linux.tar.bz2">version 1.3.3post2 (2019-12-13)</a>
-          (<a href="https://oc.embl.de/index.php/s/YQCuml3y9asFsN9/download">mirror</a>)</td>
+        <td><a href="https://files.ilastik.org/ilastik-1.3.3post3-Linux.tar.bz2">version 1.3.3post3 (2020-05-03)</a>
+          (<a href="https://oc.embl.de/index.php/s/Hp7k4qa04LAekSk/download">mirror</a>)</td>
         <td><b>Supported Versions:</b> glibc 2.5 and up</td>
     </tr>
         <th><i class="fa fa-apple fa-lg"></i>&nbsp;Mac (64-bit), OSX</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.3.3post2-OSX.tar.bz2">version 1.3.3post2 (2019-12-13)</a>
-          (<a href="https://oc.embl.de/index.php/s/Z1BGUzFEd4iDdJ2/download">mirror</a>)</td>
+        <td><a href="https://files.ilastik.org/ilastik-1.3.3post3-OSX.tar.bz2">version 1.3.3post3 (2020-05-03)</a>
+          (<a href="https://oc.embl.de/index.php/s/uHCriC5Sh2XxxpW/download">mirror</a>)</td>
         <td><b>Supported Versions:</b> 10.9 and up</td>
     </tr>
 </tbody>
@@ -62,7 +74,8 @@ Commercial solver support for cplex version 1290 and gurobi 811 for tracking wit
 
 
 <h3 id="beta">Latest Beta Version</h3>
-<h4>Version 1.4.0b1 (2. March 2020)</h4>
+<h4>Version 1.4.0b9 (02. December 2020)</h4>
+
 Release Summary:
 <ul>
   <li>Neural Network Classification workflow :rocket: :rocket: :rocket: see <a href="documentation/nn/nn.html">the docs</a> for more instructions </li>
@@ -71,38 +84,49 @@ Release Summary:
 <br>
 For more details, see the <a href="https://github.com/ilastik/ilastik/wiki/Release-Notes">Release Notes</a>.
 
-Commercial solver support for cplex version 1290 and gurobi 811 for tracking with learning.
+Commercial solver support for cplex version 1290 and gurobi 903 for tracking with learning.
 
 <table class="table">
 <tbody>
     <tr>
         <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.0b3-win64.exe">version 1.4.0b3 (2020-03-13)</a></td>
-        <td><b>Supported Versions:</b> Windows 7 and later</td>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.0b9-win64.exe">version 1.4.0b9</a></td>
+        <td><b>Supported Versions:</b> Windows 10</td>
     </tr>
     <tr>
         <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.0b1-Linux.tar.bz2">version 1.4.0b1 (2020-03-02)</a></td>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.0b9-Linux.tar.bz2">version 1.4.0b9</a></td>
         <td><b>Supported Versions:</b> Ubuntu 14 and up </td>
     </tr>
     <tr>
         <th><i class="fa fa-apple fa-lg"></i>&nbsp;Mac (64-bit), OSX</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.0b1-OSX.tar.bz2">version 1.4.0b1 (2020-03-02) </a></td>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.0b9-OSX.tar.bz2">version 1.4.0b9</a></td>
         <td><b>Supported Versions:</b> 10.9 and up</td>
     </tr>
 </tbody>
 </table>
 
-<h4>Tiktorch server version 20.3</h4>
+<h4>Tiktorch server version 20.9</h4>
 <table class="table">
 <tbody>
     <tr>
-        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-        <td><a href="https://files.ilastik.org/tiktorch-20.3-linux-x64.tar.gz">version 20.3 (2020-03-09)</a></td>
-        <td><b>Supported Versions:</b> Ubuntu 14 and up </td>
+        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux</th>
+        <td><a href="https://files.ilastik.org/tiktorch-20.09.04-linux.tar.bz2">version 20.9 (2020-10-12)</a></td>
+        <td><b>Supported Versions:</b> Ubuntu 18.04 and up</td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
+        <td><a href="https://files.ilastik.org/tiktorch-20.09.04-win64.exe">version 20.9 (2020-10-12)</a></td>
+        <td><b>Supported Versions:</b>Windows 8 and up</td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-apple fa-lg"></i>&nbsp;MacOS CPU(64-bit)</th>
+        <td><a href="https://files.ilastik.org/tiktorch-cpu-20.09.04-macos.tar.bz2">version 20.9 (2020-10-12)</a></td>
+        <td><b>Supported Versions:</b>MacOS 10.11 and up</td>
     </tr>
 </tbody>
 </table>
+
 <br>
 <br>
 
