@@ -35,7 +35,7 @@ Mac:
 Windows:
 
     $ cd "\Program Files\ilastik-1.3.2"
-    $ .\ilastik.bat --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
+    $ .\ilastik.exe --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
 
 **Note:** the following examples use linux shell syntax, but the options are the same for all platforms.
 
