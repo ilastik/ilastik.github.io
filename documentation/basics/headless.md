@@ -276,6 +276,44 @@ See the following example invocation that produces a csv-table via the plugin ex
     --export_plugin="CSV-Table" \
 ```
 
+## Running distributed ilastik via MPI (potentially trough SLURM)
+
+You can run some ilastik headless workflows as a distributed MPI application. This is functionally equivalent to (though far more efficient than) invoking ilastik multiple times, each time with a different `--cutout_subregion`, and saving all those executions as tiles of a single `.n5` dataset.
+
+### Limitations
+
+Not all workflows can be sensibly run in parallel like this; `Pixel Classification` is a perfect candidate, because each tile can be processed independent of its neighbors. On the other hand, a workflow like `Tracking`, in which objects of interest often migrate between tiles, would not work at all in this implementation of the distributed operation.
+
+At the moment, only `.n5` files can be output from a `--distributed` invocation; Setting `--output_format` to anything different than `n5` will be ignored.
+
+### Requirements
+
+In order to run ilastik distributed, you will need:
+
+- Either the `mpiexec` executable in your `PATH` or acess to a SLURM installation that is backed by MPI (which is the case for most HPC clusters);
+- the `mpi4py` python library; Note that if you're running ilastik in an HPC cluster, you should NOT install `mpi4py` via conda, since that installation will come with its own precompiled MPI binaries, which will probably not work optimally (if at all) with the MPI installation of your HPC. Instead, install `mpi4py` via `pip`, and allow the binaries to be compiled using the MPI headers and C compilers made available in your particular HPC cluster.
+
+### Invoking
+
+When running distributed, you can make use of the following command line options:
+
+- `--distributed` Required. This directs ilastik to distribute its workload among its workers. Failing to set this flag will launch independent instances of ilastik in each of your workers, each of which processing the entirety of the input file;
+- `--distributed-block-roi` Optional. Determines the dimensions of the blocks used to split the input data in distributed mode. Values can be either:
+    - An `integer`, which will be interpreted as if the following dict was passed in: `{'x': value, 'y': value, 'z': value, 't': 1, 'c': None}`
+    - or a literal python `Dict[str, Optional[int]]`, with keys `in 'xyztc'`. Missing keys will default like so: `{'x': 256, 'y': 256, 'z': 256, 't': 1, 'c': None}`. Use `None` anywhere in the dict to mean "the whole dimension".
+
+    Though optional, it is recommended to set `--distributed-block-roi` to a sensible value - ideally one that matches the natural tiling of your `--raw-data` and that can fit in your worker memory.
+
+To run ilastik distributed, you must invoke it either through `mpiexec` or `srun` (or `sbatch`), and pass it the `--distributed` flag. Following is an exemple of running ilastik via `mpiexec` using `4` workers and processing blocks of `150px` in length, `300px` in height and `3` channels. Note the quoting when specifying `--distributed-block-roi`; to prevent the quotes around the axis names to be removed by the shell, the entirety of the dict is surrounded by single quotes:
+
+    $ mpiexec -n 4 ./run_ilastik.sh --headless \
+                                    --distributed \
+                                    --distributed-block-roi '{"x": 150, "y": 300, "z": 1, "c": 3}' \
+                                    --output_filename_format=/tmp/results.n5 \
+                                    --output_format=n5 \
+                                    --project=MyPixelClassificationProject.ilp \
+                                    --raw-data=my_very_big_tiled_dataset.h5
+
 
 ## Running your own Python scripts
 
