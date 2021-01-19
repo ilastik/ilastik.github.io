@@ -82,7 +82,7 @@ In order to convert your TIF slices into hdf5 datasets, you can check the dedica
 
 ### Using stack input
 
-If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack), 
+If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack),
 then use globstring syntax to tell ilastik which images to combine for each volume.
 Furthermore, the axis along which should be stacked must be given with the `--stack_along` command line parameter.
 You can stack either over the channel, time, or the z-axis.
@@ -91,7 +91,7 @@ So valid values for this option are `c`, `t`, and `z`, respectively.
     $ ls ~/mydata/
     my_stack_1.png        my_stack_2.png        my_stack_3.png        my_stack_4.png
     my_other_stack_1.png  my_other_stack_2.png  my_other_stack_3.png  my_other_stack_4.png
-    
+
     $ ./run_ilastik.sh --headless \
                        --project=MyProject.ilp \
                        --stack_along="c" \
@@ -103,7 +103,7 @@ The `*` in each input argument must be provided to ilastik, NOT auto-expanded by
 
 ## Output Options
 
-By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.  
+By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.
 However, you can customize the output location and format with extra parameters. For example:
 
     $ ./run_ilastik.sh --headless \
@@ -114,7 +114,7 @@ However, you can customize the output location and format with extra parameters.
 
 Here's a quick summary of each command-line option provided by the headless interface.
 For the most part, these map directly to the corresponding controls in the [Data Export Settings Window][].
-No matter what settings you use, the list of input files to process must come after all other items in 
+No matter what settings you use, the list of input files to process must come after all other items in
 the command (as shown in the example above).
 
 [Data Export Settings Window]: {{site.baseurl}}/documentation/basics/export.html#settings
@@ -284,7 +284,7 @@ For developers and power-users, you can run your own ilastik-dependent python sc
     # Linux
     $ ./ilastik-1.3.2-Linux/bin/python -c "import ilastik; print ilastik.__version__"
     1.3.2
-    
+
     # Mac
     $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
     1.3.2
