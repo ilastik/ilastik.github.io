@@ -13,7 +13,7 @@ group: "documentation-home"
 for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
 training course organized by CellNetworks in Heidelberg. 
 
-An in-depth tutorial for ilastik tracking can be found in [this book chapter](https://hciweb.iwr.uni-heidelberg.de/node/6055).
+An in-depth tutorial for ilastik tracking can be found in [this book chapter](https://hci.iwr.uni-heidelberg.de/sites/default/files/publications/files/2025823904/haubold_16_segmenting.pdf).
 This tutorial also includes pixel and object classification.
 
 The [CellProfiler Blog](https://blog.cellprofiler.org/) has a [helpful post](https://blog.cellprofiler.org/2017/01/19/cellprofiler-ilastik-superpowered-segmentation/)
