@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{site.baseurl}}/assets/lightbox/ekko-lightbox.min.css">
     <link rel="stylesheet" href="{{site.baseurl}}/assets/ilastik.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Istok+Web">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
   </head>
   <body>
     <div class="container">
@@ -18,5 +19,13 @@
       {% include footer.html %}
     </div>
     {% include analytics.html %}
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script>
+    docsearch({
+      apiKey: 'a1ffe0be610b8b72764b2c41af0e23de',
+      indexName: 'ilastik',
+      inputSelector: '#docsearch',
+    });
+    </script>
   </body>
 </html>
