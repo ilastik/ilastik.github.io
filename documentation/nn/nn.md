@@ -16,10 +16,10 @@ How do you find the pre-trained models? Together with community partners, we hav
 The first step of using the Neural Network workflow is to find a network you would like to use in the Zoo. The best way is to put keywords into the search and visually check if any of the networks that come up do the task you need - we always show before/after images in the model preview cards. 
 <a href="fig/bioimage_io_screenshot.png" data-toggle="lightbox"><img src="fig/bioimage_io_screenshot.png" class="img-responsive" /></a>
 
-If you found a model you like, click the Download icon in the top left corner. A new window will appear, looking similar to this one: 
-<a href="fig/download_window_2.png" data-toggle="lightbox"><img src="fig/download_window_2.png" class="img-responsive" /></a>
+If you found a model you like, click the ilastik icon in the top left corner. A new window will appear, looking similar to this one: 
+<a href="fig/download_window_4.png" data-toggle="lightbox"><img src="fig/download_window_4.png" class="img-responsive" /></a>
 
-To download a model for use in ilastik, click the ilastik icon. The server will then package the model with the correct weight format for ilastik consumption.  
+Click on "Download (format)". The server will then package the model with the correct weight format for ilastik consumption.  
 
 ## Running locally or remotely
 Unlike other ilastik workflows, the Neural Network workflow provides the possibility to run the computations on a different machine (presumably, on a remote machine with GPUs). If you only want to run locally, on the CPUs or GPUs of the machine were ilastik is installed, you don't need anything else, just skip to the next section. 
