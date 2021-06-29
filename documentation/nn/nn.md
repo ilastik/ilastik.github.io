@@ -21,7 +21,22 @@ If you found a model you like, click the Download icon in the top left corner. A
 
 To download a model for use in ilastik, click the ilastik icon. The server will then package the model with the correct weight format for ilastik consumption.  
 
-## Pre-requisites for running the workflow
-Unlike other ilastik workflows, the Neural Network workflow runs the back-end separately from the desktop application. The reason for this separation is to enable the use of GPUs which are usually not found on the user laptop. The back-end application where the neural network operations are running is called TikTorch. You have to install it at the server where you have the GPUs or ask your IT or facility administrators to install it for you. Luckily, the installation process is not difficult, just follow the instructions in the [github repo](https://github.com/ilastik/tiktorch). Concerning permissions, you need to be able to ssh to the machine where TikTorch will run. Of course, you can also install TikTorch on your powerful local desktop, then nothing needs to be done remotely.
+## Running locally or remotely
+Unlike other ilastik workflows, the Neural Network workflow provides the possibility to run the computations on a different machine (presumably, on a remote machine with GPUs). If you only want to run locally, on the CPUs or GPUs of the machine were ilastik is installed, you don't need anything else, just skip to the next section. 
 
-##Workflow step by step
+If you want to execute the neural network predictions on a different machine, you need to install a special back-end called TikTorch (for ilastik+PyTorch). You have to install it on the server where you have the GPUs or ask your IT or facility administrators to install it for you. Luckily, the installation process is not difficult, just follow the instructions in the [github repo](https://github.com/ilastik/tiktorch). Concerning permissions, you need to be able to ssh to the machine where TikTorch will run. 
+
+## Workflow step by step
+### Running locally
+1. Load your raw data into ilastik as usual in the [Data Selection applet]({{site.baseurl}}/documentation/basics/dataselection):
+<a href="fig/Data_input.png" data-toggle="lightbox"><img src="fig/Data_input.png" class="img-responsive" /></a>
+
+2. Proceed to the next applet and press the "Load Model" button:
+<a href="fig/load_model_button.png" data-toggle="lightbox"><img src="fig/load_model_button.png" class="img-responsive" /></a>
+Select the .zip file that you downloaded from the BioImage Model Zoo. Once it loads, its name will replace the text on the "Load Model" button.
+
+3. Only one thing left to do: press the "Live Predict" button to make the network predict:
+<a href="fig/predicted.png" data-toggle="lightbox"><img src="fig/predicted.png" class="img-responsive" /></a>
+
+4. If you like the results, proceed to export them in the [Data Export applet]({{site.baseurl}}/documentation/basics/export). If you don't, unload this model by pressing the red cross and try out another one. 
+
