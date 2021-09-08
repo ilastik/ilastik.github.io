@@ -244,10 +244,10 @@ Note: There is no headless mode for Manual Tracking.
 Depending on the type of [Tracking Workflow], the following flags are available to specify _input data_:
 
 * `--raw_data`: path to the raw data that should be processed.
-* `--probabilitie_maps`: path to boundary probability map.
+* `--prediction_maps`: path to probability map for the objects you want to track.
   Note that it should be generated in the same way as the probability map that was used to train the project (e.g. with the [Pixel Classification Workflow].
   I.e. same number (and meaning) of channels.
-* `--binary_image`: segmentation image (single channel, integer image) where 0 is interpreted as background and values > 0 are interpreted as objects.
+* `--segmentation_image`: segmentation image (single channel, integer image) where 0 is interpreted as background and values > 0 are interpreted as objects.
 
 For the `--export_source` the following values are available:
 
