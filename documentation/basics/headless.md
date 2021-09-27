@@ -326,6 +326,7 @@ For developers and power-users, you can run your own ilastik-dependent python sc
     # Mac
     $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
     1.3.2
+
 ## Known Issues
 
 ilastik's headless mode will sometimes throw exceptions and output a stack trace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
