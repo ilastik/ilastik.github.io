@@ -78,12 +78,13 @@ Commercial solver support for cplex version 1290 and gurobi 811 for tracking wit
 <h4>Version 1.4.0b20 (26. October 2021)</h4>
 
 From 1.4.0b20 on we distribute ilastik in two versions for Windows and Linux.
-In addition to our regular build, you can download gpu-enabled builds.
-With these you can <a href="documentation/nn/nn.html">run pre-trained neural network models</a> from the <a href="https://bioimage.io/#/?partner=ilastik">bioimageio Model Zoo</a> faster, if you have a compatible nvidia GPU on your system.
-All other workflows, besides the Neural Network Workflow (local) work as in the regular build.
+In addition to our regular build, you can download GPU-enabled builds.
+With these you can <a href="documentation/nn/nn.html">run pre-trained neural network models</a> from the <a href="https://bioimage.io/#/?partner=ilastik">bioimage.io Model Zoo</a> faster, if you have a compatible nvidia GPU on your system.
+All other workflows, besides the <i>Neural Network Workflow (local)</i> will work exactly like before.
 
-If you are interested in running a tiktorch inference server on a GPU machine to enable the Neural Network Workflow, please see our documentation in the <a href="https://github.com/ilastik/tiktorch">tiktorch repository</a>.
-
+If you are interested in running ilastik on a <i>remote</i> GPU, e.g. if you have a powerful server in your facility, you have to check for additional installation instructions for the server part in the <a href="https://github.com/ilastik/tiktorch">tiktorch repository</a>.
+After you install the server part, you can use your regular ilastik installation as a client with the <i>Neural Network Workflow (remote)</i>, ilastik will take care of the communication with the server.
+<br>
 Commercial solver support for cplex version 1290 and gurobi 903 for tracking with learning.
 
 <h5>Regular builds</h5>

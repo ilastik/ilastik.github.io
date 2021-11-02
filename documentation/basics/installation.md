@@ -17,6 +17,13 @@ ilastik binaries are provided for Windows, Linux, and Mac at our [download page]
 We recommend using ilastik only on systems with **at least 8 GB of RAM**.
 For using the Autocontext Workflow —our most memory-intensive workflow— on large 3D data your system should have at least 32 GB of RAM for smooth interaction.
 
+From *1.4.0b20* on we distribute ilastik with additional GPU-enabled builds for Windows and Linux.
+With these you can [run pre-trained neural network models]({{site.baseurl}}/documentation/nn/nn.html) from the [bioimage.io Model Zoo](https://bioimage.io/#/?partner=ilastik) faster, if you have a compatible nvidia GPU on your system.
+All other workflows, besides the *Neural Network Workflow (local)* will work exactly like before.
+
+If you are interested in running ilastik on a *remote* GPU, e.g. if you have a powerful server in your facility, you have to check for additional installation instructions for the server part in the [tiktorch repository](https://github.com/ilastik/tiktorch).
+After you install the server part, you can use your regular ilastik installation as a client with the *Neural Network Workflow (remote)*, ilastik will take care of the communication with the server.
+
 On *Mac*, *Linux*, and *Windows* learning the weights in the Tracking with Learning Workflow *requires* a commercial solver (CPLEX or Gurobi).
 In order to enable this the Tracking with Leaning Workflow, please follow the instructions in the section about [commercial solver installation](#solver-setup).
 
