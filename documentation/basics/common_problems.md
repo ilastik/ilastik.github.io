@@ -59,4 +59,8 @@ Yes, there is a workaround for this. The trick is treating the dataset as a time
 
 If it is only Pixel Classification you are interested in, then you can do this since ilastik `1.3.2` by selecting 2D instead of 3D for the respective feature in the [Feature Selection applet]({{site.baseurl}}/documentation/pixelclassification/pixelclassification#selecting-good-features).
 
- 
+#### 12) Where is the log file?
+
+Older ilastik versions used to write log into `<home directory>/ilastik_log.txt`. Starting with version _1.4.0b8_, ilastik puts log files into a separate, platform-defined log folder. You can open it via `Settings -> Open Log Folder...` menu entry.
+
+_Implementation detail: the exact locations are defined by the [`appdirs`](https://github.com/ActiveState/appdirs) package_.
