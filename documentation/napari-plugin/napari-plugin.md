@@ -12,7 +12,7 @@ weight: 1
   </div>
   <div class="panel-body">
     This plugin is not stable yet.
-    Please do not expect backwards compatibility.
+    The look and feel is expected to change.
   </div>
 </div>
 
