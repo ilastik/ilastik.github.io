@@ -9,6 +9,10 @@ group: "documentation-home"
 ## User documentation
 
 ### Complete tutorials
+
+A good starting point is [the ilastik tutorial at i2k 2022](https://youtu.be/F6KbJ487iiU), which gives introductory overview and detailed practical instructions for using the Pixel Classification and the Object Classification Workflow.
+More advanced topics are covered in [our NEUBIAS tutorial from 2020](https://youtu.be/_ValtSLeAr0).
+
 [Here]({{site.baseurl}}/documentation/ilastik_manual.pdf) you can find a detailed manual 
 for using ilastik together with FiJi, written by Chong Zhang for the bioimage analysis
 training course organized by CellNetworks in Heidelberg. 
