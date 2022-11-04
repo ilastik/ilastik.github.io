@@ -137,6 +137,7 @@ The following dialog will appear if you press the "Select features" button:
 The object feature calculation is plugin-based.
 Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Feautures" (2D only), and "Convex Hull Features".
 Those features are computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
+An overview of available features can be found in [here]({{site.baseurl}}/documentation/objects/objectfeatures.html).
 The features are subdivided into three groups: "Location", "Shape", and "Intensity Distribution".
 Location-based features take into account _absolute coordinate positions_ in the image.
 These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
