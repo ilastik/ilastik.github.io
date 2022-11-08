@@ -115,6 +115,14 @@ h2:hover .header-link {
   text-align: center;
 }
 
+.feature-card {
+    margin-bottom: 7px;
+}
+
+.feature-header {
+  font-weight: bold;
+}
+
 /*
  * Collapse the navbar on wider screens to avoid wrapping it's contents to the second row.
  * See https://stackoverflow.com/a/20249415.
