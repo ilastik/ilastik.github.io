@@ -10,7 +10,7 @@ weight: 1
 
 ilastik object features describe objects in terms of numbers.
 These are used in classification to differentiate between different types of objects (classes).
-Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Feautures" (2D only), and "Convex Hull Features".
+Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Features" (2D only), and "Convex Hull Features".
 
 A short overview of available object features is given in the following segment of the webinar [ilastik beyond pixel classification - [NEUBIASAcademy@Home]](https://youtu.be/_ValtSLeAr0):
 
@@ -22,10 +22,10 @@ Some practical advice on selecting features can be found in our i2k ilastik tuto
 
 Following here is a list of all available object features along with their description.
 
-{% for plugin in site.data.objectfeatures.features %}
 
-## {{ plugin[0] }}
-{% for feature in plugin[1] -%}
+## Standard Object Features
+
+{% for feature in site.data.objectfeatures.features["Standard Object Features"] -%}
 {% unless feature.advanced or (feature.advanced == nil) -%}
 {% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
 <div class="feature-card">
@@ -35,4 +35,29 @@ Following here is a list of all available object features along with their descr
 
 {% endunless %}
 {% endfor %}
+
+## Convex Hull Features
+
+{% for feature in site.data.objectfeatures.features["2D Convex Hull Features"] -%}
+{% unless feature.advanced or (feature.advanced == nil) -%}
+{% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
+<div class="feature-card">
+    <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
+    <div class="feature-description">{{ feature.detailtext }}</div>
+</div>
+
+{% endunless %}
+{% endfor %}
+
+## Skeleton Features
+
+{% for feature in site.data.objectfeatures.features["2D Skeleton Features"] -%}
+{% unless feature.advanced or (feature.advanced == nil) -%}
+{% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
+<div class="feature-card">
+    <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
+    <div class="feature-description">{{ feature.detailtext }}</div>
+</div>
+
+{% endunless %}
 {% endfor %}
