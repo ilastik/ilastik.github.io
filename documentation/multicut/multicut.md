@@ -9,10 +9,10 @@ weight: 2
 
 ## What it is and why you need it
 
-This workflow allows you to segment images based on boundary information. Given a boundary probability map, it breaks the image up into superpixels and then merges them to recover segments limited by closed surfaces (no dangling edges). The main algorithm, known as multicut or correlation clustering, was presented in [this paper](https://ieeexplore.ieee.org/document/6126550/) by B. Andres. Its applications to biological image analysis can be found in, for example, [connectomics data](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56) or [bright field and phase contrast images](https://link.springer.com/chapter/10.1007/978-3-319-10404-1_2) or any other kind of imaging which uses membrane staining.  
+This workflow allows you to segment images based on boundary information. Given a boundary probability map, it breaks the image up into superpixels and then merges them to recover segments limited by closed surfaces (no dangling edges). The main algorithm, known as multicut or correlation clustering, was presented in [this paper](https://ieeexplore.ieee.org/document/6126550/) by B. Andres. Its applications to biological image analysis can be found in, for example, [connectomics data](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56), [bright field and phase contrast images](https://link.springer.com/chapter/10.1007/978-3-319-10404-1_2), [light microscopy tissue images](https://elifesciences.org/articles/57613) or any other kind of imaging which uses membrane staining.  
 
 ## Boundary evidence
-Start by creating a boundary probability map. This can be done with ilastik's [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) or by an outside program. The images below illustrate the boundary map creation in ilastik for a very small stack of electron microscopy images of a mouse brain (data from Graham Knott's lab, EPFL). 
+Start by creating a boundary probability map. This can be done with ilastik's [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html), [Autocontext workflow]({{site.baseurl}}/documentation/autocontext/autocontext), [Neural Network workflow]({{site.baseurl}}/documentation/nn/nn) or by an external program. The images below illustrate the boundary map creation in ilastik for a very small stack of electron microscopy images of a mouse brain (data from Graham Knott's lab, EPFL). 
 <div class="row">
  <div class="col-md-4">
     <a href="snapshots/membrane_labels.png" data-toggle="lightbox"><img src="snapshots/membrane_labels.png" width="100%" class="img-responsive" /></a>
@@ -42,11 +42,11 @@ We compute superpixels by the watershed algorithm, running it on the distance tr
 Commonly used superpixel algorithms, for example [SLIC](https://ieeexplore.ieee.org/document/6205760/), group pixels based
 on their similarity in brightness. This is, however, not desired here since it would result in superpixels which lie on the boundaries rather then be separated by them. Instead, for our use case, superpixels should group pixels based on which object they belong to. To achieve this, the high-contrast boundaries can be used. Here, the technique of choice is a *watershed*. 
 
-The most common approach is to calculate the watershed directly on the boundary prediction.  However, this only works if the boundary prediction perfectly separates each object from its neighbors.  The smallest hole in the prediction can lead to merging different objects into the same superpixel. Obtaining a perfect edge prediction is hard in itself and is often further complicated by boundary gaps due to errors in the sample preparation procedure. Consequently, we would prefer an algorithm which is robust to boundary holes.
+The most common approach is to calculate the watershed directly on the boundary prediction.  However, this only works if the boundary prediction perfectly separates each object from its neighbors.  The smallest hole in the prediction can lead to merging different objects into the same superpixel. Obtaining a perfect edge prediction is hard in itself and is often further complicated by boundary gaps due to noise or errors in the sample preparation procedure. Consequently, we would prefer an algorithm which is robust to boundary holes.
 
-This  can  be  achieved  by  performing  the  watershed  on  the  distance  transformation of the boundary prediction.  Similar concepts have been used for a long time to deal with missing edge information in other applications 
+This  can  be  achieved  by  performing  the  watershed  on  the  distance  transform of the boundary prediction.  Similar concepts have been used for a long time to deal with missing edge information in other applications 
 (for example in [here](https://www.researchgate.net/publication/230837870_The_morphological_approach_to_segmentation_The_watershed_transformation)). Performing the
-watershed on the distance transformation ensures that all gaps smaller than the object diameter are closed by the superpixels. In practice this is almost always the case, therefore high quality segmentations can be obtained  even  for  a  low  number  of
+watershed on the distance transform ensures that all gaps smaller than the object diameter are closed by the superpixels. In practice this is almost always the case, therefore high quality segmentations can be obtained  even  for  a  low  number  of
 superpixels.
 
 Our approach is further described in the Supplementary materials of [this publication](https://www.nature.com/nmeth/journal/v14/n2/full/nmeth.4151.html) and, in great detail, in [this Master thesis](https://hciweb.iwr.uni-heidelberg.de/node/6029). 
@@ -62,31 +62,16 @@ Let's go throught the controls of this applet from top to bottom:
 
 3. **Min Boundary Size** -- size filter to get rid of single pixel noise or tiny fake boundary pieces.
 
-4. **Presmooth before Seeds** -- how much to smooth the distance transform map before computing the seeds - specify the sigma. The more you smooth, the less seeds you will have. With less seeds you get less superpixels, but they are bigger.
+4. **Smooth** -- how much to smooth the distance transform map before computing the seeds - specify the sigma. The more you smooth, the less seeds you will have. With less seeds you get less superpixels, but they are bigger.
 
-5. **Seed Labeling** -- when local maxima pixels are merged into seeds, which neighborhood is used? *Connected* corresponds to direct 4-neighborhood in 2D and 6-neighborhood in 3D. *Clustered* option groups pixels together based on a distance heuristic.
+5. **Alpha** -- distance transform and boundary prediction are combined with this weight to serve as boundary strength indicator.
 
-6. **Min Superpixel Size** -- the resulting superpixels should be at least that big, measured in pixels.
+6. **Show Debug Layers** -- show intermediate layers of superpixel computation. This setting is useful if you want to understand the algorithm in detail, but it's not necessary for casual use.
 
-7. **Preserve Thin Structures** -- this checkbox activates a trick to deal with large connected areas of high boundary probability. While not dangerous in general, such areas can lead to wrong seeding and partitioning of thin structures. If you data has long thin objects or objects connected by long thin "tentacles" and your boundary probability map is wide, we recommend putting this setting on. If, however, your foreground objects are roundish and the long thin areas between them belong to the background, don't activate this setting. The images below attempt to illustrate the difference. The thin corridor inside the black rectangle is partitioned between its neighbors in the superpixel creation procedure (middle image). There is no way clustering of these superpixels will recover the corridor. On the right, however, purple, yellow and grey superpixels in the black rectangle can be combined to reconstruct the corridor. The superpixels on the right, produced with this option "on", are thus better than in the middle where it was not activated.
 
-8. **Show Debug Layers** -- show intermediate layers of superpixel computation. This setting is useful if you want to understand the algorithm in detail, but it's not necessary for casual use.
-
-<div class="row">
-<div class="col-md-4">
-<a href="snapshots/export_raw_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_raw_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-4">
-<a href="snapshots/export_not_preserved_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_not_preserved_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-4">
-<a href="snapshots/export_sp_resolved_z12_cropped_with_sel.png" data-toggle="lightbox"><img src="snapshots/export_sp_resolved_z12_cropped_with_sel.png" width="100%" class="img-responsive" /></a>
-</div>
-
-</div>
-
-## Edge training and multicut
-Now that we have superpixels, we need to train the algorithm how to decide which of them should be merged and which not. The general approach we use was first described in [this publication](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels. These features include, for example, the summed intensity of the edge and the minimal and maximal intensity along it, as well as statisitics of the probability map and of the intensity inside the superpixels ("Select Features" button brings up a dialog which lets you choose features). After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but for highly structured graphs, such as our superpixel region adjacency graphs, it usually converges fairly fast. Besides, excellent approximate solvers exist and are also accessible through this applet.
+## Training and multicut
+Now that we have superpixels, we can combine them into objects. If your boundary probability maps are of high quality (e.g. they come from a neural network that was trained on very similar data), you can apply the Multicut partitioning directly on the maps. For this case, leave the "Train edge classifier" checkbox unchecked.
+If you are not fully satisfied with your boundary predictions, we can further improve them by training a Random Forest to predict good and bad edges. The general approach we use was first described in [this publication](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels. These features include, for example, the summed intensity of the edge and the minimal and maximal intensity along it, as well as statisitics of the probability map and of the intensity inside the superpixels ("Select Features" button brings up a dialog which lets you choose features). After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but this applet uses excellent approximate solvers to deliver a solution quickly.
 
 ### Training
 If you already have a groundtruth segmentation, you can load it in the "Input Data" applet and then it will be used here as labels if you click the "Auto-label" button. If not, you can label interactively, as described below.  
@@ -114,9 +99,9 @@ As usual in ilastik, pressing "Live Predict" will show you the edge probabilitie
 
 #### Multicut
 **Beta** - this parameter controls the under- or over-segmentation preference. With lower beta, the algorithm merges more aggressively. The default of 0.5 should handle most common situations correctly.
+<!--
 **Solver** - the final segmentation is the result of solving an integer linear program (ILP). The available solvers are listed in this dropdown menu, the exact entries depend on whether some outside libraries are installed on your machine. The *Nifty_FmGreedy* solver is the most basic of them and should be available in all ilastik installations.
 As of ilastik `1.3.2`, this is the only available solver.
-<!--
 If you have CPLEX or Gurobi installed (see [installation instructions]({{site.baseurl}}/documentation/basics/installation) for more details), you will see other solvers as well. Intersection-based approximate solvers have always worked very well for us in practice. The optimality gap is can not usually be noticed in the final results, but just in case we also provide an exact solver which solves the problem to global optimality.
 -->
 <div class="row">
