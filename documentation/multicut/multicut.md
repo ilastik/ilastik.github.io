@@ -12,7 +12,15 @@ weight: 2
 This workflow allows you to segment images based on boundary information. Given a boundary probability map, it breaks the image up into superpixels and then merges them to recover segments limited by closed surfaces (no dangling edges). The main algorithm, known as multicut or correlation clustering, was presented in [this paper](https://ieeexplore.ieee.org/document/6126550/) by B. Andres. Its applications to biological image analysis can be found in, for example, [connectomics data](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56), [bright field and phase contrast images](https://link.springer.com/chapter/10.1007/978-3-319-10404-1_2), [light microscopy tissue images](https://elifesciences.org/articles/57613) or any other kind of imaging which uses membrane staining.  
 
 ## Boundary evidence
-Start by creating a boundary probability map. This can be done with ilastik's [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html), [Autocontext workflow]({{site.baseurl}}/documentation/autocontext/autocontext), [Neural Network workflow]({{site.baseurl}}/documentation/nn/nn) or by an external program. The images below illustrate the boundary map creation in ilastik for a very small stack of electron microscopy images of a mouse brain (data from Graham Knott's lab, EPFL). 
+Start by creating a boundary probability map.
+This can be done with
+  * ilastik's [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html),
+  * [Autocontext Workflow]({{site.baseurl}}/documentation/autocontext/autocontext.html),
+  * [Neural Network Classification Workflow]({{site.baseurl}}/documentation/nn/nn.html) with an appropriate pre-trained network,
+  * or by an external program.
+
+The images below illustrate the boundary map creation in ilastik for a very small stack of electron microscopy images of a mouse brain (data from Graham Knott's lab, EPFL).
+
 <div class="row">
  <div class="col-md-4">
     <a href="snapshots/membrane_labels.png" data-toggle="lightbox"><img src="snapshots/membrane_labels.png" width="100%" class="img-responsive" /></a>
@@ -71,7 +79,10 @@ Let's go throught the controls of this applet from top to bottom:
 
 ## Training and multicut
 Now that we have superpixels, we can combine them into objects. If your boundary probability maps are of high quality (e.g. they come from a neural network that was trained on very similar data), you can apply the Multicut partitioning directly on the maps. For this case, leave the "Train edge classifier" checkbox unchecked.
-If you are not fully satisfied with your boundary predictions, we can further improve them by training a Random Forest to predict good and bad edges. The general approach we use was first described in [this publication](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels. These features include, for example, the summed intensity of the edge and the minimal and maximal intensity along it, as well as statisitics of the probability map and of the intensity inside the superpixels ("Select Features" button brings up a dialog which lets you choose features). After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but this applet uses excellent approximate solvers to deliver a solution quickly.
+If you are not fully satisfied with your boundary predictions, we can further improve them by training a Random Forest to predict good and bad edges. The general approach we use was first described in [this publication](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels.
+These features include the shape of the superpixel boundaries, and intensity statistics computed on the superpixel area/volume as well as along the boundaries.
+"Select Features" button brings up a dialog which lets you choose features.
+After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but this applet uses excellent approximate solvers to deliver a solution quickly.
 
 ### Training
 If you already have a groundtruth segmentation, you can load it in the "Input Data" applet and then it will be used here as labels if you click the "Auto-label" button. If not, you can label interactively, as described below.  
@@ -87,32 +98,33 @@ If you already have a groundtruth segmentation, you can load it in the "Input Da
 <p>
 You can do it in this applet by clicking on the edges between superpixels. Left click, making edge <span style="color: green">green</span>, corresponds to edges which should be <span style="color: green">dropped</span> and right click, making edges <span style="color: red">red</span>, corresponds to true segmentation edges which should be <span style="color: red">preserved</span>. The initial view is shown on the left, while on the right you can see the same image with some edges labeled. To label multiple edges in one sweep, brush across them with either mouse button pressed.
 </p>
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/mc_training_applet_predictions.png" data-toggle="lightbox"><img src="snapshots/mc_training_applet_predictions.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-6">
-<a href="snapshots/mc_training_naive.png" data-toggle="lightbox"><img src="snapshots/mc_training_naive.png" width="100%" class="img-responsive" /></a>
-</div>
-</div>
-As usual in ilastik, pressing "Live Predict" will show you the edge probabilities and update them live as you click more edges (left figure). The right figure above shows the naive segmentation obtained by simply preserving all red edges. Now let's apply the multicut and get a consistent segmentation.
+
+<a href="snapshots/mc_training_applet_predictions.png" data-toggle="lightbox"><img src="snapshots/mc_training_applet_predictions.png" width="100%" class="img-responsive" alt="Edge predictions from trained edge classifier." /></a>
+
+As usual in ilastik, pressing "Live Predict" will show you the edge probabilities and update them live as you click more edges (left figure).
+Now let's apply the multicut and get a consistent segmentation.
 
 #### Multicut
-**Beta** - this parameter controls the under- or over-segmentation preference. With lower beta, the algorithm merges more aggressively. The default of 0.5 should handle most common situations correctly.
+
+The multicut algorithm uses boundary evidence to connect superpixels in to larger objects - the multicut segmentation.
+Whether the boundary evidence is taken directly from the boundary probability map, or from a trained Random Forest, it will indicate strength of evidence with values between 0.0 (weak) and 1.0 (strong).
+
+**Threshold** - threshold boundary evidence for the multicut algorithm.
+You can try lowering this parameter if you find that too many edges are dropped from the multicut solution (undersegmentation).
+Similarly, if you see too many edges remaining in your multicut solution (oversegmentation), you can try setting the threshold to a higher value.
+
 <!--
+**Beta** - this parameter controls the under- or over-segmentation preference. With lower beta, the algorithm merges more aggressively. The default of 0.5 should handle most common situations correctly.
 **Solver** - the final segmentation is the result of solving an integer linear program (ILP). The available solvers are listed in this dropdown menu, the exact entries depend on whether some outside libraries are installed on your machine. The *Nifty_FmGreedy* solver is the most basic of them and should be available in all ilastik installations.
 As of ilastik `1.3.2`, this is the only available solver.
 If you have CPLEX or Gurobi installed (see [installation instructions]({{site.baseurl}}/documentation/basics/installation) for more details), you will see other solvers as well. Intersection-based approximate solvers have always worked very well for us in practice. The optimality gap is can not usually be noticed in the final results, but just in case we also provide an exact solver which solves the problem to global optimality.
 -->
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/mc_training_mc_result.png" data-toggle="lightbox"><img src="snapshots/mc_training_mc_result.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-6">
-<a href="snapshots/mc_training_disagreements.png" data-toggle="lightbox"><img src="snapshots/mc_training_disagreements.png" width="100%" class="img-responsive" /></a>
-</div>
-</div>
-On the left you see the results of multicut, edges of the final segmentation are shown in blue. On the right, you see another interesting view into the segmentation algorithm -- in cyan we show the edges where the results of the multicut disagree with predictions of the edge classifier. If you press the "Live Multicut" button, segmentation will be recomputed every time the edge probabilities change following your labels. To only update occasionally, press the "Update Now" button.
+
+<a href="snapshots/mc_training_mc_result.png" data-toggle="lightbox"><img src="snapshots/mc_training_mc_result.png" width="100%" class="img-responsive" alt="Multicut result after training a Random Forest edge classifier."/></a>
+
+
+The above image shows the result of the multicut.
+Edges of the final segmentation are shown in blue.
+If you find that the segmentation can be improved, you can try to train a better Random Forest classifier by adding additional annotations, or changing the threshold and rerunning the multicut
 
 Once you are happy with the segmentation, export it and/or use the classifier you trained in the Batch Processing applet or in headless mode. 
-
