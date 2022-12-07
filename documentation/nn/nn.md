@@ -22,16 +22,19 @@ Concerning permissions, you need to be able to ssh to the machine where TikTorch
 
 ## Running the workflow locally - step by step
 
+### 0. Create Your Project
+
+After starting up ilastik click on _Neural Network Classification (local)_ and save the project file.
+
 ### 1. Load Your Data
 
 Load your raw data into ilastik as usual in the [Data Selection applet]({{site.baseurl}}/documentation/basics/dataselection):
-   <a href="fig/Data_input.png" data-toggle="lightbox"><img src="fig/Data_input.png" class="img-responsive" /></a>
+<a href="fig/Data_input.png" data-toggle="lightbox"><img src="fig/Data_input.png" class="img-responsive" /></a>
 
 ### 2. Load a Pre-trained Neural Network
 
 Proceed to the next applet (NN Prediction).
 Pre-trained models can be found in the [ilastik Model Zoo at BioImage.IO](https://bioimage.io/#/?partner=ilastik).
-
 
 #### The Bioimage Model Zoo
 
@@ -43,21 +46,22 @@ If you found a model you like, there are multiple ways to get it into ilastik.
 
 The easiest way to load a model from the model zoo in ilastik is to click on the model title (1) to open the detail view of the model card and copy either the doi, or the nickname (2) of the model.
 <a href="fig/doi_nickname_window.png" data-toggle="lightbox"><img src="fig/doi_nickname_window.png" class="img-responsive" alt="How to load a Bioimage Model Zoo model in ilastik by copying either nickname or doi."/></a>
-Then in ilastik, paste the doi, or nickname to the model text field and press the arrow-button.
+
+Then in ilastik, paste the doi, or nickname to the model text field (1) and press the arrow-button (2).
 This will initiate the download and initialization of the network.
+
+<a href="fig/load_model_01.png" data-toggle="lightbox"><img src="fig/load_model_01.png" class="img-responsive" alt="Screenshot that illustrates loading a pre-trained neural network from the Bioimage Model Zoo by specifying the doi or the nickname of the model."/></a>
 
 Alternatively, you can download a zip archive of the model by clicking on "Download (format)".
 The server will then package the model with the correct weight format for ilastik consumption.  
 Once the file is downloaded you can either drag and drop the model zip file from your file explorer window into the text field, or click the arrow button while the text field is empty to bring up a load file dialog.
 
-<a href="fig/load_model_button.png" data-toggle="lightbox"><img src="fig/load_model_button.png" class="img-responsive" /></a>
-Select the .zip file that you downloaded from the BioImage Model Zoo. Once it loads, its name will replace the text on the "Load Model" button.
-
-
 ### 3. Run the Network
 
 Only one thing left to do: press the "Live Predict" button to make the network predict:
 <a href="fig/predicted.png" data-toggle="lightbox"><img src="fig/predicted.png" class="img-responsive" /></a>
+
+If you prefer a different color for the display of the predictions you can right click on the corresponding layer [in the layerstack]({{site.baseurl}}/documentation/basics/layers) and select _Change color_.
 
 
 ### 4. Export the Result
