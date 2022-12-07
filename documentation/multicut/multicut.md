@@ -81,7 +81,7 @@ Let's go throught the controls of this applet from top to bottom:
 Now that we have superpixels, we can combine them into objects. If your boundary probability maps are of high quality (e.g. they come from a neural network that was trained on very similar data), you can apply the Multicut partitioning directly on the maps. For this case, leave the "Train edge classifier" checkbox unchecked.
 If you are not fully satisfied with your boundary predictions, we can further improve them by training a Random Forest to predict good and bad edges. The general approach we use was first described in [this publication](https://link.springer.com/chapter/10.1007%2F978-3-642-33712-3_56). Briefly, given the superpixels computed in the previous step, we now compute features on the edges of adjacent superpixels.
 These features include the shape of the superpixel boundaries, and intensity statistics computed on the superpixel area/volume as well as along the boundaries.
-"Select Features" button brings up a dialog which lets you choose features.
+The "Select Features" button brings up a dialog which lets you choose features.
 After the features are computed, we predict -- for every edge independently -- if this edge should be dropped or preserved to achieve a correct segmentation. The "naive" way to proceed would be to then only take the edges which are classified as "to preserve" and use those as the final segmentation. This, however, would lead to an inconsistent segmentation with dangling edges inside the objects. Instead, we formulate a so-called multicut problem, where special constraints ensure no dangling edges are present and all segmented objects are closed surfaces, while following the classifier preferences for which edges to keep. This problem is NP-hard in general, but this applet uses excellent approximate solvers to deliver a solution quickly.
 
 ### Training
@@ -106,7 +106,7 @@ Now let's apply the multicut and get a consistent segmentation.
 
 #### Multicut
 
-The multicut algorithm uses boundary evidence to connect superpixels in to larger objects - the multicut segmentation.
+The multicut algorithm uses boundary evidence to connect superpixels into larger objects - the multicut segmentation.
 Whether the boundary evidence is taken directly from the boundary probability map, or from a trained Random Forest, it will indicate strength of evidence with values between 0.0 (weak) and 1.0 (strong).
 
 **Threshold** - threshold boundary evidence for the multicut algorithm.
@@ -125,6 +125,6 @@ If you have CPLEX or Gurobi installed (see [installation instructions]({{site.ba
 
 The above image shows the result of the multicut.
 Edges of the final segmentation are shown in blue.
-If you find that the segmentation can be improved, you can try to train a better Random Forest classifier by adding additional annotations, or changing the threshold and rerunning the multicut
+If you find that the segmentation needs improvement, you can try to train a better Random Forest classifier by adding additional annotations, or changing the threshold and rerunning the multicut.
 
 Once you are happy with the segmentation, export it and/or use the classifier you trained in the Batch Processing applet or in headless mode. 
