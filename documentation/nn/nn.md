@@ -20,7 +20,9 @@ Luckily, the installation process is not difficult, just follow the instructions
 Concerning permissions, you need to be able to ssh to the machine where TikTorch will run. 
 
 
-## Running the workflow locally - step by step
+## _Neural Network Classification (local)_ - step by step
+
+To run the local workflow, start up ilastik as you usually would.
 
 ### 0. Create Your Project
 
@@ -67,3 +69,25 @@ If you prefer a different color for the display of the predictions you can right
 ### 4. Export the Result
 
 If you like the results, proceed to export them in the [Data Export applet]({{site.baseurl}}/documentation/basics/export). If you don't, unload this model by pressing the red cross and try out another one. 
+
+## _Neural Network Classification (remote)_
+
+When running remotely, the heavy lifting of neural network computations will happen on a remote machine, while you are loading the data and selecting the network on your local machine.
+
+### On the remote machine
+
+1. Make sure the tiktorch server and neural network framework you want to run are installed via mamba.
+   Installation instructions can be found [in the tiktorch github repository](https://github.com/ilastik/tiktorch#installation).
+2. Activate the tiktorch environment and start the server giving the `--addr 0.0.0.0` flag to make it accessible.
+3. Take note of the ip/hostname of the remote machine, and the port (what out for the `Starting server on 0.0.0.0:<port>` output).
+
+### On your local machine/laptop
+
+The steps are similar to the ones of the local workflow, except:
+
+0. Create Your Project with the _Neural Network Classification (remote)_ workflow.
+1. Connect to the server.
+   In the _Server Configuration_ applet, enter the address in the form `<ip/hostname>:<port>`, e.g. `myserver.mydomain.edu:5567` and give it a descriptive name.
+   Click on _Get Devices_ and select the device you want to run on (often you will have the choice between _cpu_ or _cuda_ devices, if the server has a gpu).
+   Click on _save_ to finish the configuration.
+2. From here on you can proceed to load the data and go through the rest of the workflow like in the local variant.
