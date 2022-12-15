@@ -7,12 +7,12 @@ weight: 0
 ---
 # Neural Network Classification
 
-This workflow allows one to execute (run inference) for pre-trained convolutional neural networks (CNNs) on the data loaded into ilastik.
+This workflow allows one to execute (run inference for) pre-trained convolutional neural networks (CNNs) on the data loaded into ilastik.
 
 ## Prerequisites: Running locally or remotely
 
 Unlike other ilastik workflows, the Neural Network workflow provides the possibility to run the computations on a different machine (presumably, on a remote machine with GPUs).
-If you only want to run locally, on the CPUs or GPUs of the machine were ilastik is installed, you don't need anything else, just skip to the next section. 
+If you only want to run locally, on the CPUs or GPUs of the machine where ilastik is installed, you don't need anything else, just skip to the next section. 
 
 If you want to execute the neural network predictions on a different machine, you need to install a special back-end called TikTorch (for ilastik+PyTorch).
 You have to install it on the server where you have the GPUs or ask your IT or facility administrators to install it for you.
@@ -68,7 +68,7 @@ If you prefer a different color for the display of the predictions you can right
 
 ### 4. Export the Result
 
-If you like the results, proceed to export them in the [Data Export applet]({{site.baseurl}}/documentation/basics/export). If you don't, unload this model by pressing the red cross and try out another one. 
+If you like the results, proceed to export them in the [Data Export applet]({{site.baseurl}}/documentation/basics/export). If you don't, try out another model. You can do so by first pressing the red cross below the text box to unload the model, and then the red cross inside the text box to clear your previously selected model.
 
 ## _Neural Network Classification (remote)_
 
@@ -79,7 +79,7 @@ When running remotely, the heavy lifting of neural network computations will hap
 1. Make sure the tiktorch server and neural network framework you want to run are installed via mamba.
    Installation instructions can be found [in the tiktorch github repository](https://github.com/ilastik/tiktorch#installation).
 2. Activate the tiktorch environment and start the server giving the `--addr 0.0.0.0` flag to make it accessible.
-3. Take note of the ip/hostname of the remote machine, and the port (what out for the `Starting server on 0.0.0.0:<port>` output).
+3. Take note of the ip/hostname of the remote machine, and the port (watch out for the `Starting server on 0.0.0.0:<port>` output).
 
 ### On your local machine/laptop
 
