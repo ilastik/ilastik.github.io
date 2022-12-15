@@ -13,13 +13,11 @@ We are seeking a full time <a href="https://hci.iwr.uni-heidelberg.de/Jobs/#soft
 to enhance ilastik's capabilities, especially in the area of tracking.
 -->
 
-<h1>Code</h1>
+<h2>ilastik code-base</h2>
 All code is open source and can be found on <a href="https://github.com/ilastik">Github</a>.<br />
-It is divided into the three main repositories: <i>ilastik</i>,
-<i>lazyflow</i> and <i>volumina</i>.
+It is divided into the two main repositories: <i>ilastik</i> (with <i>lazyflow</i>, the underlying lazy execution framework), and our 5D-viewer <i>volumina</i>.
 <ul>
   <li><a href="https://github.com/ilastik/ilastik">ilastik code</a></li>
-  <li><a href="https://github.com/ilastik/lazyflow">lazyflow code</a></li>
   <li><a href="https://github.com/ilastik/volumina">volumina code</a></li>
 </ul>
 
@@ -35,15 +33,19 @@ provided interpreter.
 See the note in the <a href="{{site.baseurl}}/documentation/basics/headless.html">Headless Mode</a>
 documentation for details.
 
-<h3>Building from source</h3>
+<h3>Development environment</h3>  
+<p>
+Instruction on setting-up a development environment can be found in our <a href="https://github.com/ilastik/ilastik/blob/main/CONTRIBUTING.md">contributing guidelines</a> in our main repository.
+</p>
+  
+<h3>Building ilastik-specific dependencies</h3>
 <p>
 Furthermore, there are repositories for a comprehensive build system for 
-<a href="https://github.com/ilastik/ilastik-publish-packages">Linux, Mac, and Windows</a>, based on the
-<a href="https://conda.pydata.org/docs/">conda</a>
+<a href="https://github.com/ilastik/ilastik-conda-recipes">Linux, Mac, and Windows</a>, based on the <a href="https://github.com/conda/conda">conda</a>/<a href="https://github.com/mamba-org/mamba">mamba</a>
 and <a href="https://github.com/conda/conda-build">conda-build</a> tools.
 </p>
 
-<h1>Developer documentation</h1>
+<h2>Developer documentation</h2>
 Introduction into programming ilastik, ilastik's design and API documentation is
 available as
 <a href="http://sphinx-doc.org">Sphinx</a>
