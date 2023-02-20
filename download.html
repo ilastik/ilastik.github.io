@@ -15,11 +15,20 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
 
 <h3 id="stable">Version 1.4.0 (20. February 2023)</h3>
 
+<b> A few highlights:</b>
+<ul>
+  <li><a href="{{site.baseurl}}/documentation/nn/nn.html">Neural Network Workflow</a>: run pre-trained neural networks from <a href="https://bioimage.io">Bioimage.io Model Zoo</a> in ilastik</li>
+  <li>Better default features in the <a href="{{site.baseurl}}/documentation/multicut/multicut.html">Multicut Workflow</a></li>
+  <li>redo/undo for brush-strokes</li>
+  <li>many bugfixes throughout</li>
+</ul>
+
+<br>
 ilastik 1.4.0 is distributed in two versions for Windows and Linux.
 In addition to our regular build, you can download GPU-enabled builds.
-With these you can <a href="documentation/nn/nn.html">run pre-trained neural network models</a> from the <a href="https://bioimage.io/#/?partner=ilastik">bioimage.io Model Zoo</a> faster, if you have a compatible nvidia GPU on your system.
-All other workflows, besides the <i>Neural Network Workflow (local)</i> will work on the CPU, ike before.
-
+With these you can <a href="{{site.baseurl}}/documentation/nn/nn.html">run pre-trained neural network models</a> from the <a href="https://bioimage.io/#/?partner=ilastik">bioimage.io Model Zoo</a> faster, if you have a compatible nvidia GPU on your system.
+All other workflows, besides the <i>Neural Network Workflow (local)</i> will work on the CPU, like before.
+<br>
 If you are interested in running the ilastik Neural Network Workflow on a <i>remote</i> GPU, e.g. if you have a powerful server in your facility, you have to check for additional installation instructions for the server part in the <a href="https://github.com/ilastik/tiktorch">tiktorch repository</a>.
 After you install the server part, you can use your regular ilastik installation as a client with the <i>Neural Network Workflow (remote)</i>, ilastik will take care of the communication with the server.
 <br>
