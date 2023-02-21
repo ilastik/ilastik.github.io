@@ -55,15 +55,15 @@ On the right you can see all your datasets listed by their nickname, as defined 
   - *Renormalize \[min,max\] from:* Use this setting to scale the range of your results.  For example, prediction data is typically given a range of \[0.0,1.0\], but you can scale it to the range of \[0,255\] for easy viewing with other software.
   - *Transpose to Axis Order:* This setting sets "outermost" and "innermost" axes (and so on). For some formats, this doesn't matter so much (e.g. hdf5).  For others, you may care.  For example, when exporting a stack of pngs across the Z dimension, make sure 'z' appears on the left (the outer dimension). If you aren't sure, tzyxc is typically a good choice.
 
-**Note:** if you export probability maps (pixelwise prediction results) and want to view them in other software, **convert them to data type "uint8"** and check the "Renormalize" check box to change the range. 
+**Note:** if you export probability maps (pixelwise prediction results) and want to view them in other software, **convert them to data type "integer 8-bit"** and check the "Renormalize" check box to change the range. 
 
-- **Output File Info:** Use these controls to select an output file format and location.  A few "magic" placeholders can be used in these settings.  These are useful when you are exporting multiple datasets:
-  - *{dataset_dir}* - the directory containing the original raw dataset
-  - *{nickname}* - the ilastik nickname of the raw dataset (usually the input file name for single file datasets and a combination of input file names for stacks)
-  - *{result_type}* - the selected ilastik result source
-  - *{roi}* - The region-of-interest as specified in the "Cutout Subregion" settings.
-  - *{x_start}*, *{x_stop}*, *{y_start}*, *{y_stop}*, etc - Specific axis start/stop boundaries for the region-of-interest
-  - *{slice_index}* - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
+- **Output File Info:** Use these controls to select an output file format and location.  A few _"magic" placeholders_ can be used in these settings.  These are useful when you are exporting multiple datasets:
+  - `{dataset_dir}` - the directory containing the original raw dataset
+  - `{nickname}` - the ilastik nickname of the raw dataset (usually the input file name for single file datasets and a combination of input file names for stacks)
+  - `{result_type}` - the selected ilastik result source
+  - `{roi}` - The region-of-interest as specified in the "Cutout Subregion" settings.
+  - `{x_start}`, `{x_stop}`, `{y_start}`, `{y_stop}`, etc - Specific axis start/stop boundaries for the region-of-interest
+  - `{slice_index}` - The index of each slice in an exported image sequence (required for all image sequence formats, not allowed with any other format).
 
 - **Exporting sequences:** When a 3D, 4D or 5D dataset is exported as a sequence, ilastik chooses the first axis as the slicing one. For example, if your dataset is 1001x1002x1003 pixels and you choose to export it as an image sequence, it will export 1001 images, 1002x1003 pixels each. This information is displayed in the dialogue if you select a "sequence" output format. To change the slicing axis, use the "Transpose to Axis Order" control to bring the axis you need to the front. Continuing on the 1001x1002x1003 example, assume it had "xyz" as axis order. Now if you want to slice on the z axis (of size 1003), type "zxy" in the "Transpose to Axis Order" control. Now ilastik will export 1003 images, 1001x1002 pixels each. 
 
@@ -76,13 +76,15 @@ On the right you can see all your datasets listed by their nickname, as defined 
 </div>
 </div>
 
+<br>
+
 ## Previewing export results
 
 Your export results can be previewed in the viewer.  Typically, three layers are shown:
 - **Raw Data**: The raw dataset associated with the selected export results
-- **Live Preview**: A preview of your export results.  Note that the data for this preview is computed on-the-fly and therefore may be slow to generate!
-- **Exported Image (from disk)**: Once you have exported your results to disk, they are shown in this layer.  Navigation will be as fast as the data format allows. **Note:** Some formats (e.g. stack output) cannot be viewed in this window.
+- **Live Preview**: A preview of your export results.
+  Note that the data for this preview is computed on-the-fly and therefore may be slow to generate!
 
 ## Exporting tracks and objects
 
-Besides exporting the images you see in the viewer, ilastik allows to save the results of tracking and object classification in the form of csv tables or hdf5 files.
+Besides exporting the images you see in the viewer, ilastik allows to save the results of [tracking]({{site.baseurl}}/documentation/tracking/tracking#sec_Plugin) and [object classification]({{site.baseurl}}/https://deploy-preview-229--ilastik.netlify.app/documentation/objects/objects#export) in the form of csv tables or hdf5 files.
