@@ -7,23 +7,32 @@ weight: 6
 ---
 # Batch Processing
 
-In the machine learning based ilastik workflows such as the
-[pixel classification workflow]({{site.baseurl}}/documentation/objects/objects.html) and the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html), the user interactively trains a classifier on a representative set of images. After that training step, the generated classifier can be used for batch processing.
-
-<!-- The following documentation applies to the [Density Counting workflow]({{site.baseurl}}/documentation/counting/counting.html) and to the [Pixel Classification workflow]({{site.baseurl}}/documentation/objects/objects.html). -->
+In the machine learning based ilastik workflows such as the [Pixel Classification Workflow]({{site.baseurl}}/documentation/objects/objects.html), the user interactively trains a classifier on a representative set of images.
+After that training step, the generated classifier can be applied to more data by using batch processing.
 
 ## Example Usage (Pixel Classification)
 
-The following tutorial demonstrates the batch prediction for the [pixel classification workflow]({{site.baseurl}}/documentation/objects/objects.html) the same procedure applies also to the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html).
+The following tutorial demonstrates the batch prediction for the [pixel classification workflow]({{site.baseurl}}/documentation/objects/objects.html).
+The procedure is the same in the other workflows (with the exception of Carving, where there is no batch processing available).
 
-The first step in batch prediction is the selection of the input files. This uses the same mechanism as [data selection]({{baseurl}}/documentation/basics/dataselection.html).
+### Configuring Output File Names
 
-<a href="screenshots/batch1_zoomed.png" data-toggle="lightbox"><img src="screenshots/batch1_zoomed.png" class="img-responsive" /></a>
+Before getting to the batch processing part, you first have to set up the file export settings.
+Batch processing uses the same settings as in the [Prediction Export]({{site.baseurl}}/documentation/basics/export#settings) step.
+Here it is crucial to use the _magic placeholders_, denoted by curly braces (e.g. `{nickname}`), to ensure a unique export filename for each file.
+Also make sure to configure the export source, file format, and other properties.
 
-When clicking on the **Add files** button, the user can choose between adding
-single or multiple files from the File selection dialog, or adding files matching a pattern from a directory (last option). This is especially useful when large amounts of images have to be processed.
+### Selecting files
 
-The next step is the actual batch processing itself. In the **Batch Prediction Output Locations** applet, the user can configure the output format using the **Choose Settings** button. This allow for example to save the results of the workflow as `.png` images rather than `.tiff` or `.h5` files. For novice users the default settings should be fine, however the results of some workflows such as the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html) cannot be exported in some of these formats (**hdf5 file format is supported by all workflows**).
+You can add files either by drag-and-drop from your file browser, or use the **Select Raw Data Files...** button.
+
+<a href="screenshots/batch_processing_01.png" data-toggle="lightbox"><img src="screenshots/batch_processing_01.png" class="img-responsive" /></a>
+
+When clicking on the **Select Raw Data Files...** button, you can choose between adding single or multiple files from the File selection dialog.
+
+
+The next step is the actual batch processing itself.
+In the **Batch Prediction Output Locations** applet, the user can configure the output format using the **Choose Settings** button. This allow for example to save the results of the workflow as `.png` images rather than `.tiff` or `.h5` files. For novice users the default settings should be fine, however the results of some workflows such as the [density counting workflow]({{site.baseurl}}/documentation/counting/counting.html) cannot be exported in some of these formats (**hdf5 file format is supported by all workflows**).
 
 <a href="screenshots/batch2_zoomed.png" data-toggle="lightbox"><img src="screenshots/batch2_zoomed.png" class="img-responsive" /></a>
 
