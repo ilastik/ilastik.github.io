@@ -52,7 +52,6 @@ Alternatively you could also convert your stack to a single file and use the bat
 
 #### How do I specify the internal dataset in a `.hdf5`/`.z5`-file?
 It is currently not possible to specify the internal dataset with the graphical user interface, use the [headless mode][headless], or [Fiji plugin](https://github.com/ilastik/ilastik4ij#ilastik-imagej-modules) to process that data.
-Alternatively you could create `hdf5` files with only single virtual dataset each, that point to the file that has multiple ones.
 
 #### Batch processing is slow, how to make it faster?
 In batch processing, ilastik processes only one file at a time.
