@@ -7,8 +7,8 @@ weight: 6
 ---
 # Batch Processing
 
-In the machine learning based ilastik workflows such as the [Pixel Classification Workflow][pixelclass], the user interactively trains a classifier on a representative set of images.
-After that training step, the generated classifier can be applied to more data by using batch processing.
+In most ilastik workflows, such as the [Pixel Classification Workflow][pixelclass], the user interactively trains a classifier on a representative set of images.
+The trained classifier can be applied to more data by using batch processing.
 
 ## Example Usage (Pixel Classification)
 
@@ -40,13 +40,13 @@ After clicking on the **Process all files** button, ilastik begins batch process
 With default export settings, the output files are stored as hdf5 files in the same directory where the input file is located.
 Their file names will be the same as the original files, plus one or two words indicating the export source (e.g. "Probabilities") and the file extension `.h5`.
 
-The exported `.h5` files, contain the resulting prediction as a multidimensional dataset inside the file.
-Further details on this versatile file format (that is easily accessible from Matlab and Python) can be found [here](http://docs.h5py.org/).
+The exported `.h5` files contain the resulting prediction as a multidimensional dataset inside the file.
+Further details on this versatile file format (that is easily accessible from Matlab and Python) can be found [in the hdf5 documentation](http://docs.h5py.org/).
 
 ### Batch Processing FAQ
 
 #### I have multiple image stacks I want to process, is it possible to load those in batch?
-Image stacks are currently not supported in batch: Whenever your image is spread across multiple files, use the [headless mode][headless], or the [Fiji plugin][fijiplugin] to process those.
+Stacks with one image file per slice are currently not supported in batch. If your image is spread across multiple files, you can use the [headless mode][headless], or the [Fiji plugin][fijiplugin] to process those.
 Alternatively you could also convert your stack to a single file and use the batch processing graphical user interface in ilastik.
 
 
@@ -56,7 +56,7 @@ Alternatively you could create `hdf5` files with only single virtual dataset eac
 
 #### Batch processing is slow, how to make it faster?
 In batch processing, ilastik processes only one file at a time.
-If you have the resources in your machine (number of cores >> 8), you could run multiple instances of ilastik in [headless mode][headless] which work on parts of the full set of images.
+If you have the resources in your machine (number of cores >> 8), you could run multiple instances of ilastik in [headless mode][headless] and have each instance process a subset of the images.
 
 
 [pixelclass]: {{site.baseurl}}/documentation/objects/objects.html
