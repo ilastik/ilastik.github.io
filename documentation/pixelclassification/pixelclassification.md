@@ -131,23 +131,3 @@ The results of this workflow (probability maps or segmentations) can be exported
 
 ### Processing new images in headless mode
 Actually, after the classifier is trained, you don't need the GUI anymore. If you'd rather run without it, ilastik has a special [headless]({{site.baseurl}}/documentation/basics/headless.html) mode. This can be convenient for running on a cluster or on a remote machine.
-
-<!-- After the training step the generated classifier can be used to classify and segment other images.
-The first step in batch prediction is the selection of the input files.
-<a href="snapshots/batch1_zoomed.png" data-toggle="lightbox"><img src="snapshots/batch1_zoomed.png" class="img-responsive" /></a>
-When clicking on the **Add files** button, the user can choose between adding
-single or multiple files from the File selection dialog, or adding files matching a pattern from a directory (last option). This is especially useful when large amounts of images have to be processed.
-
-The next step is the actual batch processing itself. In the **Batch Prediction output location** applet, the
-user can configure the output format using the **Choose Settings** button.
-For novice users the default settings should be fine.
-<a href="snapshots/batch2_zoomed.png" data-toggle="lightbox"><img src="snapshots/batch2_zoomed.png" class="img-responsive" /></a>
-
-After clicking on the **Export all** button, ilastik begins batch processing all images, and writes
-the resulting classification result to the specified output files. When the default settings are used, the output files are stored as hdf5 files in the same directory where the input file is located.
-The exported files have the same name with a "export.h5" suffix.
-
-The exported .h5 files, contain the resulting prediction as a multidimensional image. The images have the same
-shape as the input image, but a different number of channels. Each channel contains the probability of the corresponding label. Example: channel 0 contains at each position the probability of that pixel having label class 1. Channel 1 contains the probabilities of label class 2 etc..
- -->
-
