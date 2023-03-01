@@ -87,4 +87,4 @@ Your export results can be previewed in the viewer.  Typically, three layers are
 
 ## Exporting tracks and objects
 
-Besides exporting the images you see in the viewer, ilastik allows to save the results of [tracking]({{site.baseurl}}/documentation/tracking/tracking#sec_Plugin) and [object classification]({{site.baseurl}}/https://deploy-preview-229--ilastik.netlify.app/documentation/objects/objects#export) in the form of csv tables or hdf5 files.
+Besides exporting the images you see in the viewer, ilastik allows to save the results of [tracking]({{site.baseurl}}/documentation/tracking/tracking#sec_Plugin) and [object classification]({{site.baseurl}}/documentation/objects/objects#export) in the form of csv tables or hdf5 files.
