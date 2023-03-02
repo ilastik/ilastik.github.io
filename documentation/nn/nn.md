@@ -9,6 +9,10 @@ weight: 0
 
 This workflow allows one to execute (run inference for) pre-trained convolutional neural networks (CNNs) on the data loaded into ilastik.
 
+## Neural Network Classification Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PfXCKNhsOLw?rel=0" frameborder="0" allowfullscreen></iframe> 
+
 ## Prerequisites: Running locally or remotely
 
 Unlike other ilastik workflows, the Neural Network workflow provides the possibility to run the computations on a different machine (presumably, on a remote machine with GPUs).
