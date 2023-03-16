@@ -56,7 +56,7 @@ body > .container {
     margin-bottom: 5px;
 }
 
-label{font-weight:normal !important};
+label{font-weight:normal !important}
 
 .form-horizontal .control-label {
     text-align: left;
@@ -105,6 +105,22 @@ h2:hover .header-link {
 
 .news-frontpage {
   margin-top: 2em;
+}
+
+.social-panel {
+  display:flex;
+  justify-content:center
+}
+
+.social-link {
+  height: 48px;
+  margin-right: 8px;
+}
+
+.social-icon {
+  flex: auto;
+  width: 48px;
+  height: 48px;
 }
 
 .cta {
