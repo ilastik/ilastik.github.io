@@ -98,7 +98,7 @@ the names of the files that will be imported as an image stack.
 
 ## Supported File Formats {#formats}
 
-The main file format used by ilastik is [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5.
+The main file formats used by ilastik are [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5) and [N5](https://github.com/saalfeldlab/n5#n5--). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5, folders with a `attributes.json` file will be recognized as `N5`.
 
 Widely used image formats such as
  * Microsoft Windows bitmap image file (`bmp`),
@@ -121,9 +121,7 @@ files with extension `npy`.
 
 ## Dataset Properties Editor {#properties}
 
-<div style="float: right;" markdown="1">
 <a href="screenshots/data_selection-file_properties.png" data-toggle="lightbox"><img src="screenshots/data_selection-file_properties.png" class="img-responsive" /></a>
-</div>
 
 You can review and/or change the way ilastik interprets your dataset using the Dataset Properties Editor.
 For example, to specify that a stack of images should be interpreted as having a t-axis (for time) instead of a z-axis, use this editor.
@@ -133,16 +131,16 @@ Read on for a description of each field in this window.
 - **Nickname:** short name used to identify the data
 - **Shape:** specifies the sizes of each dimension
 - **Data type:** data type used to interpret the binary data in the file. This is selected automatically based on the file type.
-- **Axes:** Axes tags indicating how each dimension should be interpreted.
+- **Interpret axes as:** Axes tags indicating how each dimension should be interpreted.
 The letters `t` and `c` correspond to time and color dimensions
 respectively. ilastik differentiates 2D + time data from 3D data, computing
 temporal features for the former. Marking a dimension as time changes
 ilastik behavior.
+- **Normalize Display:** If you would like your data to be displayed with a contrast adjustment using the minimum and maximum pixel values, set this to 'True'.
 - **Range:** If you know your data's minimum and maximum pixel values, you can use this field to help ilastik interpret and display your data.
-- **Normalize:** If you would like your data to be displayed with a contrast adjustment using the minimum and maximum pixel values, set this to 'True'.
-- **Internal Dataset Name:** Several volumes may exist within a single HDF5 file.  Use this field to choose which internal volume ilastik should load from your file. 
+- **Internal Dataset Name:** Several volumes may exist within a single HDF5/N5 file. Use this field to choose which internal volume ilastik should load from your file. 
 - **Storage:** Specifies how ilastik should locate your data the next time your project is opened.
   - Absolute Link: Your data always resides in the same place on disk, even if you moved your project file since it was last opened.
   - Relative Link: Your data is in the same parent directory tree as your project file.  You may move your project file and data files simultaneously, but their relative locations must be fixed.
   - Copied to Project File: If you select this, your data will be copied to the project file the next time your project is saved.  Pro: Your project file will always be valid, even if you move your data.  Con: This creates a copy of your data.
-- **Channel Display:** If your raw data has multiple channels, use this setting to tell ilastik whether it should be displayed as a composite RGB image or as separate grayscale channels.
+- **Display Mode:** If your raw data has multiple channels, use this setting to tell ilastik whether it should be displayed as a composite RGB image or as separate grayscale channels.
