@@ -108,7 +108,8 @@ History of supported solver versions
 {:.table.table-striped}
 | ilastik version | GUROBI version | CPLEX version |
 |:----------------|:---------------|:--------------|
-| 1.4.0 (planned) | 9.1.0 | not supported |
+| 1.4.1 (in beta) | 9.5.1 | not supported |
+| 1.4.0 | 9.5.1 | not supported |
 | 1.3.3 | 8.1.1 | 1290 |
 | 1.3.2 | 8.0.1 | 1280 |
 | 1.3.0 | 7.5.2 | 1260 |
