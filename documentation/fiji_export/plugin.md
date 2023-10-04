@@ -1,16 +1,28 @@
 ---
-title: FIJI import/export plugin
-tagline: Import and Export with a FIJI plugin
+title: ilastik FIJI plugin
+tagline: Import/export for ilastik results and running trained ilastik workflows in Fiji
 category: "Documentation"
 group: "basic-documentation"
 weight: 1
 ---
 
-# ilastik Import Export plugin in FIJI
-This plugin allows you to save images opened in FIJI directly to the hdf5 format preferred by ilastik. While this conversion is beneficial for any large dataset, we especially recommend it for _multipage tiffs_. After you save the file and process it with ilastik, you can use the same plugin to load the results for further post-processing in FIJI.
+# ilastik Fiji plugin
+
+This plugin allows you integrate ilastik with Fiji.
+The main functionality of the plugin is [import][docs-import] and [export][docs-export] to HDF5 format and running trained ilastik workflows from within Fiji.
+
+HDF5 is a format that allows ilastik efficient block-wise processing of data.
+You will get the best performance in ilastik using this format.
+While the conversion to HDF5 is beneficial for any large dataset, we especially recommend it for _multipage tiffs_.
+
+ilastik workflows currently supported by the plugin are [Pixel Classification, Autocontext][docs-pc-ac], [Object Classification][docs-oc], [Multicut][docs-mc], and [Tracking][docs-tr] Workflows. 
+
+All features the plugin provides can be automated via Fiji macros (see [our examples][docs-examples].)
 
 ## Installation
-In FIJI, go to _Help->Update..._ In the dialog that appears, click the "Manage update sites" button. In the list of update sites, select "ilastik". You should now see ilastik4ij.jar in your updater window.
+
+In FIJI, go to _Help->Update..._ In the dialog that appears, click the "Manage update sites" button. In the list of update sites, select "ilastik".
+You should now see `ilastik4ij.jar` in your updater window.
 <div class="row">
 <div class="col-md-6">
 <a href="snapshots/update_sites.png" data-toggle="lightbox"><img src="snapshots/update_sites.png" width="100%" class="img-responsive" /></a>
@@ -20,68 +32,18 @@ In FIJI, go to _Help->Update..._ In the dialog that appears, click the "Manage u
 </div>
 </div>
 
-## From FIJI to ilastik
-<div class="row">
- <div class="col-md-6">
-<a href="snapshots/fiji_export_cropped.png" data-toggle="lightbox"><img src="snapshots/fiji_export_cropped_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
- <div class="col-md-6">
-This is how you find the right export option from within FIJI (<em>Plugins->ilastik->Export HDF5</em>).
-It will warn you to be careful with the axes order, but don't worry, if you get it wrong you can still correct it on import in ilastik.
-</div>
-</div>
+After restarting Fiji you should see an _ilastik_ entry in the _Plugins_ menu:
 
-## ilastik
-<p>
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/ilastik_import_cropped_full.png" data-toggle="lightbox"><img src="snapshots/ilastik_import_cropped_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-6">
-Open the file as usual. If the axis order is wrong, as shown in this figure (tzyxc instead of txyzc), change it in this dialog.
-</div>
-</div>
-</p>
-
-Train the classifier in ilastik as you usually would (see [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) docs if you are not sure how to proceed). Once you are happy with the results, switch to the export applet. 
-
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/pc_training.png" data-toggle="lightbox"><img src="snapshots/pc_training_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-6">
-<a href="snapshots/pc_export.png" data-toggle="lightbox"><img src="snapshots/pc_export_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
-</div>
-<br>
-
-Depending on your post-processing, export <b>Probabilities</b> or <b>Simple Segmentation</b>. You can control the export source by the "Source" drop-down menu. For probability maps you can either leave all settings at default, or, if you need to save space, convert the results to unsigned int 8-bit and rescale them from [0.0, 1.0] interval to [0, 255].
-
-## From ilastik to FIJI
-
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/fiji_import_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_import_cropped_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
+<a href="./snapshots/fiji_plugin_menu.png" data-toggle="lightbox"><img src="./snapshots/fiji_plugin_menu.png" class="img-responsive" /></a>
 
 
-<div class="col-md-6">
-<p>
-Using the same plugin, you can now load your results into FIJI by selecting "import HDF5" in the <em>Plugins->ilastik</em> menu.
-</p>
-<p>
-<a href="snapshots/fiji_load_dialogue_only.png" data-toggle="lightbox"><img src="snapshots/fiji_load_dialogue_only.png" width="100%" class="img-responsive" /></a>
-</p>
-<p>
-For <b>Segmentation/Label images</b>, you should select a suitable lookup-table in Fiji (e.g. glasbey) after importing the data: <em>Image->Lookup Tables->glasbey</em>.
-</p>
-</div>
-</div>
-If you load Probabilities, you should see something like the left image. For Simple Segmentation with a lookup-table you should see the right image.
-<div class="row">
-<div class="col-md-6">
-<a href="snapshots/fiji_loaded_pmaps_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_loaded_pmaps_cropped_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
-<div class="col-md-6">
-<a href="snapshots/fiji_loaded_ss_cropped_full.png" data-toggle="lightbox"><img src="snapshots/fiji_loaded_ss_cropped_scale2.png" width="100%" class="img-responsive" /></a>
-</div>
+Please visit the [plugin documentation][docs] if you want to know more about the plugin usage.
+
+[docs]: https://github.com/ilastik/ilastik4ij#ilastik-imagej-modules
+[docs-import]: https://github.com/ilastik/ilastik4ij#import
+[docs-export]: https://github.com/ilastik/ilastik4ij#export
+[docs-pc-ac]: https://github.com/ilastik/ilastik4ij#pixel-classification-and-autocontext
+[docs-oc]: https://github.com/ilastik/ilastik4ij#object-classification
+[docs-mc]: https://github.com/ilastik/ilastik4ij#boundary-based-segmentation-with-multicut
+[docs-tr]: https://github.com/ilastik/ilastik4ij#tracking
+[docs-examples]: https://github.com/ilastik/ilastik4ij/tree/main/examples

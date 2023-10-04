@@ -10,3 +10,4 @@ vendor
 .directory
 .project
 .settings
+.DS_Store
