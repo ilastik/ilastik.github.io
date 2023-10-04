@@ -9,7 +9,7 @@ weight: 1
 # ilastik Fiji plugin
 
 This plugin allows you integrate ilastik with Fiji.
-The main functionality of the plugin is [import][docs-import]/[export][docs-export] to HDF5 format and running trained ilastik workflows from within Fiji.
+The main functionality of the plugin is [import][docs-import] and [export][docs-export] to HDF5 format and running trained ilastik workflows from within Fiji.
 
 HDF5 is a format that allows ilastik efficient block-wise processing of data.
 You will get the best performance in ilastik using this format.
