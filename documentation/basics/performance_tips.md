@@ -41,7 +41,7 @@ Use our [Fiji Plugin][fiji-plugin] (can be done efficiently in [a macro][fiji-h5
 ### CPU
 
 Computations in ilastik are done in parallel whenever possible.
-Having a CPU with multiple cores will result in faster performance.k
+Having a CPU with multiple cores will result in faster performance.
 
 ### Memory/RAM
 
