@@ -17,9 +17,9 @@ weight: 1
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations.
 An *object* in this context is a set of pixels that belong to the same instance.
-Object classification requires a second input besides the usual raw image data: an image that classifies the pixels as either belonging to an object or not, i.e. object predictions or labels.
+Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. object predictions or a binary segmentation.
 This can be obtained e.g. using the [Pixel Classification Workflow].
-Ilastik has separate workflows to handle different formats of object labels:
+The workflow exists in two variants to handle different types for the second input:
 
 * Object Classification [Inputs: Raw Data, Pixel Prediction Map]
 * Object Classification [Inputs: Raw Data, Segmentation]
@@ -45,8 +45,7 @@ Load the probability maps in addition to the raw data in the Input Data step:
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
 ### Object Classification [Inputs: Raw Data, Segmentation]
-This workflow should be used if you already have a binary segmentation image, or an object identity map (object labels).
-You could use a "Simple segmentation" export from the Pixel Classification workflow if this is sufficient for your use case, and thereby skip the thresholding step mentioned above.
+This workflow should be used if you already have a binary segmentation image.
 
 The image should be loaded in the data input applet:
 
@@ -214,7 +213,7 @@ Assuming our labels were correct this will lead to a good object classification:
 
 In the [Export Applet][] you can export:
 * Object Predictions: An image where all pixels belonging to an object have the value of the object's most probable category (1 for the first label category, 2 for the second, etc.)
-* Object Probabilities: An image where all pixels belonging to an object have the probability of the object belonging into its most probable category.
+* Object Probabilities: A multichannel image with one channel per object (label) class. In each channel, pixels belonging to an object hold the probability value for the respective class.
 * Blockwise Object Predictions/Probabilities: Same as above, but perform the computation on the input images in blocks of the size specified in the "Blockwise" applet ([see below][Blockwise Applet]). This makes it possible to process images that are larger than the machine's RAM.
 * Object Identities: An image where all pixels belonging to an object have the value of the object's id (1 for the first object, 2 for the second, etc.)
 
@@ -226,7 +225,7 @@ In addition to the image export, it is also possible to generate a table that en
 3. Choose the features you want to include in the table.
 4. Confirm with OK.
 
-Any regular image export (predictions, probabilities) will now also generate the table file according to the table export settings.
+Once the table export has been configured, any regular image export (predictions, probabilities) will also generate the table file according to the chosen settings.
 
 The table export can be configured in three sections:
 
