@@ -17,7 +17,7 @@ weight: 1
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations.
 An *object* in this context is a set of pixels that belong to the same instance.
-Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. object predictions or a binary segmentation.
+Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. pixel predictions, a segmentation or a label image.
 This can be obtained e.g. using the [Pixel Classification Workflow].
 The workflow exists in two variants to handle different types for the second input:
 
@@ -45,7 +45,8 @@ Load the probability maps in addition to the raw data in the Input Data step:
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
 ### Object Classification [Inputs: Raw Data, Segmentation]
-This workflow should be used if you already have a binary segmentation image.
+This workflow should be used if you already have a binary segmentation or a label image.
+Note that background pixels must have the value 0.
 
 The image should be loaded in the data input applet:
 
