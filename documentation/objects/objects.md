@@ -17,49 +17,46 @@ weight: 1
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations.
 An *object* in this context is a set of pixels that belong to the same instance.
-In order to do so, the workflow needs *segmentation* images besides the usual raw image data, that can e.g. be generated with the [Pixel Classification Workflow].
-Depending on the availability of these segmentation images, the user can choose between three flavors of object classification workflow, which differ by their input data:
+Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. pixel predictions, a segmentation or a label image.
+This can be obtained e.g. using the [Pixel Classification Workflow].
+The workflow exists in two variants to handle different types for the second input:
 
-* Pixel Classification + Object Classification
 * Object Classification [Inputs: Raw Data, Pixel Prediction Map]
 * Object Classification [Inputs: Raw Data, Segmentation]
 
-**Size Limitations:**
+The combined "Pixel Classification + Object Classification" workflow (found under "Other Workflows") is primarily intended for demonstration purposes and its use in real projects is discouraged.
+We instead recommend to use the two workflows separately, exporting probability maps from the Pixel Classification workflow and using them as input for the Object Classification workflow.
 
-In the current version of ilastik, computations on the **training** images are not performed lazily -- the entire image is processed at once.  
-This means you can't use enormous images for training the object classifier.  
-However, once you have created a satisfactory classifier using one or more small images, you can use the "Blockwise Object Classification" 
-feature to run object classification on much larger images (prediction only -- no training.)
+**Size Limitation:**
+
+For object classification, images used in _training_ have to be small enough to fit entirely into your machine's RAM.
+However, once you have created a satisfactory classifier using one or more small images (or cutouts from your complete dataset), you can use the "Blockwise Object Classification"
+feature to run object classification on much larger images (prediction only - no training).
 
 <a href="figs/ilastik_start_screen.png" data-toggle="lightbox"><img src="figs/ilastik_start_screen.png" class="img-responsive" /></a>
 
-### Pixel Classification + Object Classification
-This is a combined workflow, which lets you start from the raw data, perform pixel classification as described 
-in the
-[Pixel Classification workflow docs]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html)
-and then thresholding the probability maps to obtain a segmentation that you then use in Object Classification.
-This workflow is primarily meant for demo purposes.
-For serious projects, we recommend to use the two workflows, [Pixel Classification]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html) and Object Classification separately using the generated output form the former as an additional input in the latter one.
-
-<a href="figs/input_pixel_class.png" data-toggle="lightbox"><img src="figs/input_pixel_class.png" class="img-responsive" /></a>
-
 ### Object Classification [Inputs: Raw Data, Pixel Prediction Map]
-You should choose this workflow if you have pre-computed probability
-maps.
-The data input applet of this workflow expects you to load the probability maps in addition to the raw data:
+You should choose this workflow if you have a probability map, i.e. each pixel value is the pixel's probability to belong to an object.
+To obtain a segmentation from this input, the workflow includes a step for thresholding the probabilities.
+If you use the Pixel Classification workflow to identify objects, we recommend you export the probability maps there and then continue with this object classification workflow.
+
+Load the probability maps in addition to the raw data in the Input Data step:
 
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
 ### Object Classification [Inputs: Raw Data, Segmentation]
-This workflow should be used if you already have a binary segmentation image. 
+This workflow should be used if you already have a binary segmentation or a label image.
+Note that background pixels must have the value 0.
+
 The image should be loaded in the data input applet:
 
 <a href="figs/input_segmentation_image.png" data-toggle="lightbox"><img src="figs/input_segmentation_image.png" class="img-responsive" /></a>
 
 ## From probabilities to a segmentation - "Threshold and Size Filter" applet
-If you already have binary segmentation images, skip this section.
+This section only applies if you are in the "Object Classification [Inputs: Raw Data, Pixel Prediction Map]" workflow.
 
 Suppose we have a probability map for a 2-class classification, which looks like this:
+
 <a href="figs/pixel_results.png" data-toggle="lightbox"><img src="figs/pixel_results.png" class="img-responsive" /></a>
 
 The basic idea of thresholding is to answer a question for _every pixel_ in an image:
@@ -70,6 +67,7 @@ In this applet this continuous range is transferred into a binary one, containin
 **Note:** To see the results of changing the parameter settings in this applet, press the "Apply" button.
 
 There are two algorithms you can choose from to threshold your data: _Simple_ and _Hysteresis_, which can be selected using the "Method" drop down.
+The most important difference between the two is that hysteresis thresholding makes it possible to separate connected objects.
 
 Both methods share the following parameters:
  * _Input_ Channel(s): Select which channel of the probability map contains the objects
@@ -140,7 +138,7 @@ Those features are computed by the [vigra library](https://ukoethe.github.io/vig
 An overview of available features can be found in [here]({{site.baseurl}}/documentation/objects/objectfeatures.html).
 The features are subdivided into three groups: "Location", "Shape", and "Intensity Distribution".
 Location-based features take into account _absolute coordinate positions_ in the image.
-These are only useful in special cases when the position of the object in the image can be used to infer the object type. 
+These are only useful in special cases when the position of the object in the image can be used to infer the object type.
 Shape-based features extract shape descriptors from the object masks.
 Lastly, "Intensity Distribution" features operate on image value statistics.
 You will also notice features, which can be computed "in the neighborhood".
@@ -196,11 +194,14 @@ After a slight change in the segmentation (lower) threshold the objects indeed b
 <a href="figs/oc_prediction3.png" data-toggle="lightbox"><img src="figs/oc_prediction3.png" class="img-responsive" /></a>
 -->
 ## Uncertainty Layer
-Uncertainty Layer displays how uncertain prediction for an object is. Applying the minimum number of labels for classifying objects containing up to three cells we have a very uncertain classification:
+The Uncertainty layer displays how uncertain the prediction for each object is.
+As in other workflows, this can be used to identify where the classifier needs more labels to improve the quality of the classification results.
+
+Applying the minimum number of labels for classifying objects containing up to three cells we have a very uncertain classification:
 
 <a href="figs/uncertainty_01.png" data-toggle="lightbox"><img src="figs/uncertainty_01.png" class="img-responsive" /></a>
 
-Adding a few more labels we get a much better uncertainty estimate:
+Adding a few more labels reduces the uncertainty for most objects:
 
 <a href="figs/uncertainty_02.png" data-toggle="lightbox"><img src="figs/uncertainty_02.png" class="img-responsive" /></a>
 
@@ -209,10 +210,25 @@ Assuming our labels were correct this will lead to a good object classification:
 
 ## Export
 
-In the [Export Applet][] you can export the following images: "Object Predictions", "Object Probabilities" "Blockwise Object Predictions".
-In addition to the image export, it is also possible to generate a table that encompasses all information about the objects used during classification.
-Table configuration can be accessed with the _Configure Feature Table Export_ button.
-In this new window there are three vertical tabs:
+### Regular image exports
+
+In the [Export Applet][] you can export:
+* Object Predictions: An image where all pixels belonging to an object have the value of the object's most probable category (1 for the first label category, 2 for the second, etc.)
+* Object Probabilities: A multichannel image with one channel per object (label) class. In each channel, pixels belonging to an object hold the probability value for the respective class.
+* Blockwise Object Predictions/Probabilities: Same as above, but perform the computation on the input images in blocks of the size specified in the "Blockwise" applet ([see below][Blockwise Applet]). This makes it possible to process images that are larger than the machine's RAM.
+* Object Identities: An image where all pixels belonging to an object have the value of the object's id (1 for the first object, 2 for the second, etc.)
+
+### Object feature table export
+
+In addition to the image export, it is also possible to generate a table that encompasses all information about the objects used during classification. To activate this export:
+1. Access the table configuration with the _Configure Feature Table Export_ button. See below for more details on the configuration options.
+2. Change the file name and choose your preferred format.
+3. Choose the features you want to include in the table.
+4. Confirm with OK.
+
+Once the table export has been configured, any regular image export (predictions, probabilities) will also generate the table file according to the chosen settings.
+
+The table export can be configured in three sections:
 
  * _General_: Choose Filename and Format.
  Note on formats: `csv` will export a table that can be read with common tools like LibreOffice, or Microsoft Excel.
@@ -314,5 +330,6 @@ The only difference is that you started the object classification workflow from 
 
 [Pixel Classification Workflow]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html
 [Export Applet]: {{site.baseurl}}/documentation/basics/export.html
+[Blockwise Applet]: #preparing-for-large-scale-prediction---blockwise-object-classification-applet
 
 Alternatively you call ilastik without the graphical user interface in [headless mode]({{site.baseurl}}/documentation/basics/headless.html#headless-mode-for-object-classification) in order to process large numbers of files.
