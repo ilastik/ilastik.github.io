@@ -94,7 +94,7 @@ Once a selection has been made, the `File List` box can be used to review
 the names of the files that will be imported as an image stack.
 
 _Note: Data that is loaded from image stacks (multiple files) will be copied to the project file (`.ilp`).
-This ensures faster computations and enables processing of stacks larger than RAM by converting the date to chunked hdf5._
+This ensures faster computations and enables processing of stacks larger than RAM by converting the data to chunked hdf5._
 
 <div style="clear: right;" />
 
