@@ -35,6 +35,17 @@ in ilastik we support `.h5` (hdf5) for small/medium data, `.n5` for large data.
 How to convert your data?
 Use our [Fiji Plugin][fiji-plugin] (can be done efficiently in [a macro][fiji-h5-conv]), from Python using a [Jupyter notebook][jupyter-h5-conv].
 
+## Workflow-specific tips
+
+### Pixel classification / Autocontext - Exporting probabilities
+
+When exporting Probabilities, go to Export Image Settings, tick `Convert to Data Type` (choose integer 8-bit), as well as `Renormalize [min,max]` (from `0 ... 1.0` to `0 ... 255`).
+Intuitively, we think of probabilities as values between 0 and 1, or maybe we multiply those values by 100 to obtain percentages.
+Fractions are represented for computations as 32-bit floating point values.
+The output of the random forest classifier is not continuous between 0 and 1, however.
+It can only take discrete values corresponding to integer percentages: `0.00` (0%), `0.01` (1%), `0.02` (2%) etc. Not for example `0.015` (1.5%) or anything else that would correspond to a fractional percentage.
+This means the values can be converted to 8-bit integers without losing information.
+Working with 8-bit integers instead of 32-bit floating point numbers is faster, and the resulting exported files are smaller to store.
 
 ## Hardware considerations
 
@@ -53,7 +64,7 @@ E.g. we would not recommend to attempt processing 3D data in the [Autocontext][a
 ### GPU
 
 Currently only workflows that use deep neural networks ([Neural Network Workflow][nnwf], [Trainable Domain Adaptation][tda]) support doing calculations on a GPU.
-If you have an NVidia graphics card, download and install the `-gpu` builds from [our download page][downloads] to profit vastly improved performance in these workflows.
+If you have an NVidia graphics card, download and install the `-gpu` builds from [our download page][downloads] to gain vastly improved performance in these workflows.
 
 Other workflows, like Pixel- or Object Classification do not use the GPU for calculations.
 
