@@ -96,6 +96,40 @@ the names of the files that will be imported as an image stack.
 _Note: Data that is loaded from image stacks (multiple files) will be copied to the project file (`.ilp`).
 This ensures faster computations and enables processing of stacks larger than RAM by converting the data to chunked hdf5._
 
+## Loading multiscale data {#multiscale}
+
+Multiscale datasets are currently supported in the formats OME-Zarr (URLs containing `.zarr`) and Neuroglancer Precomputed (URLs starting with `precomputed://`).
+
+<div style="float: right;" markdown="1">
+<a href="screenshots/data_selection-multiscale.png" data-toggle="lightbox"><img src="screenshots/data_selection-multiscale.png" class="img-responsive" /></a>
+</div>
+
+You can use "Add multiscale dataset" to load multiscale, a.k.a. pyramidal images.
+The dialog will ask for an address.
+This must be a full URL including protocol.
+When you click "Check", ilastik will try to obtain image metadata from the given address, and display the results of the request.
+If the dataset is stored on the local filesystem, you can paste the path into the address field, e.g. `C:\Users\me\Downloads\tissue-gfp.zarr`.
+The "Check" button will test whether the path exists on the filesystem and automatically convert it to a `file:///` URL if successful.
+Note that this has to be the path to the root of the dataset, i.e. the folder containing the `.zattrs` file, and the folder name has to contain ".zarr".
+
+_Note: ilastik will freeze while waiting for a response. If the server is slow or the connection is bad, it may take a while and your computer might warn that ilastik is not responding._
+
+If the check is successful, you can confirm by clicking "Add to project". You can then select which scale /
+resolution level to load using the drop-down box in the input data table.
+
+To inspect more than one scale at a time, you can add multiple instances of the same dataset using "Add New".
+Simply paste the same address again, click "Check", and then "Add to project".
+
+When navigating the dataset, remember that downloading the image data can take some time.
+It is recommended to use the lowest resolution possible for exploration.
+At larger resolutions, zoom in to the area of interest, as suggested in the [performance tips][performance-tips] section.
+This way, ilastik can avoid loading data outside the viewer area.
+
+Once you continue to the next step in the workflow, your choice of scale will be locked for all multiscale entries in the table.
+This is because ilastik can currently not handle changing pixel dimensions once a dataset is loaded into the workflow beyond "Input Data".
+If you want to inspect a different scale later, you can use "Add new" and paste the same address again.
+
+
 <div style="clear: right;" />
 
 ## Supported File Formats {#formats}
@@ -120,6 +154,12 @@ Widely used image formats such as
 can be imported directly into a project, as well as NumPy binary array
 files with extension `npy`.
 
+The multiscale image formats
+* OME-Zarr (URLs containing `.zarr`), i.e. Zarr stores compliant with Open Microscopy Environment's next-generation file format specification
+* Neuroglancer Precomputed (URLs starting with `precomputed://`)
+
+can be imported into projects using the "Add multiscale dataset" option, more detail in the [multiscale](#multiscale) section.
+
 
 ## Dataset Properties Editor {#properties}
 
@@ -140,9 +180,12 @@ temporal features for the former. Marking a dimension as time changes
 ilastik behavior.
 - **Normalize Display:** If you would like your data to be displayed with a contrast adjustment using the minimum and maximum pixel values, set this to 'True'.
 - **Range:** If you know your data's minimum and maximum pixel values, you can use this field to help ilastik interpret and display your data.
-- **Internal Dataset Name:** Several volumes may exist within a single HDF5/N5 file. Use this field to choose which internal volume ilastik should load from your file. 
+- **Internal Dataset Name:** Several volumes may exist within a single HDF5/N5 file. Use this field to choose which internal volume ilastik should load from your file.
 - **Storage:** Specifies how ilastik should locate your data the next time your project is opened.
   - Absolute Link: Your data always resides in the same place on disk, even if you moved your project file since it was last opened.
   - Relative Link: Your data is in the same parent directory tree as your project file.  You may move your project file and data files simultaneously, but their relative locations must be fixed.
   - Copied to Project File: If you select this, your data will be copied to the project file the next time your project is saved.  Pro: Your project file will always be valid, even if you move your data.  Con: This creates a copy of your data.
 - **Display Mode:** If your raw data has multiple channels, use this setting to tell ilastik whether it should be displayed as a composite RGB image or as separate grayscale channels.
+
+
+[performance-tips]: {{site.baseurl}}/documentation/basics/preformance_tips
