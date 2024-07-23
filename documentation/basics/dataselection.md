@@ -98,7 +98,7 @@ This ensures faster computations and enables processing of stacks larger than RA
 
 ## Loading multiscale data {#multiscale}
 
-Multiscale datasets are currently supported in the formats OME-Zarr (URLs containing `.zarr`) and Neuroglancer Precomputed (URLs starting with `precomputed://`).
+Starting in version 1.4.1, multiscale datasets are supported in the formats OME-Zarr (URLs containing `.zarr`) and Neuroglancer Precomputed (URLs starting with `precomputed://`).
 
 <div style="float: right;" markdown="1">
 <a href="screenshots/data_selection-multiscale.png" data-toggle="lightbox"><img src="screenshots/data_selection-multiscale.png" class="img-responsive" /></a>
@@ -188,4 +188,4 @@ ilastik behavior.
 - **Display Mode:** If your raw data has multiple channels, use this setting to tell ilastik whether it should be displayed as a composite RGB image or as separate grayscale channels.
 
 
-[performance-tips]: {{site.baseurl}}/documentation/basics/preformance_tips
+[performance-tips]: {{site.baseurl}}/documentation/basics/performance_tips
