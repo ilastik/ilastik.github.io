@@ -25,16 +25,16 @@ For example, this command will run your classifier over 2 additional images (her
 
 Linux:
 
-    $ cd ilastik-1.3.2-Linux/
+    $ cd ilastik-1.4.0-Linux/
     $ ./run_ilastik.sh --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
 
 Mac:
 
-    $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/run_ilastik.sh  --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
+    $ ./ilastik-1.4.0-OSX.app/Contents/MacOS/ilastik --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
 
 Windows:
 
-    $ cd "\Program Files\ilastik-1.3.2"
+    $ cd "\Program Files\ilastik-1.4.0"
     $ .\ilastik.exe --headless --project=MyProject.ilp my_next_image1.png my_next_image2.png
 
 **Note:** the following examples use linux shell syntax, but the options are the same for all platforms.
