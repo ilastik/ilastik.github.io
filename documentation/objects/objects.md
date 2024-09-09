@@ -65,6 +65,7 @@ In ilastik probability maps (result of [Pixel Classification][Pixel Classificati
 In this applet this continuous range is transferred into a binary one, containing only `0`s and `1`s (so no values in between) by comparing it to a set threshold.
 
 **Note:** To see the results of changing the parameter settings in this applet, press the "Apply" button.
+**Also be aware that if you already continued in the workflow, changing parameters here will delete any object labelling you have done.**
 
 There are two algorithms you can choose from to threshold your data: _Simple_ and _Hysteresis_, which can be selected using the "Method" drop down.
 The most important difference between the two is that hysteresis thresholding makes it possible to separate connected objects.
@@ -103,7 +104,7 @@ After application of the size filter, only the colored objects remain.
 
 ### Hysteresis Thresholding
 
-By selecting **Hystersis** in the method drop-down thresholding is performed at two levels: _core, or high threshold_, and _final, or low threshold_.
+By selecting **Hysteresis** in the method drop-down thresholding is performed at two levels: _core, or high threshold_, and _final, or low threshold_.
 The high threshold is applied first and the resulting objects are filtered by size.
 These high probability areas act as seeds:
 For the remaining objects the segmentation is then relaxed to the level of low threshold starting from the seeds.
@@ -122,9 +123,8 @@ The pink and the yellow object would be merged without checking the _Don't merge
 
 Now that we have obtained a segmentation, we are ready to proceed to the "Object Feature Selection" applet.
 
-## From segmentation to objects - "Object Feature Selection" applet
-
-This applet finds the connected components (objects) in the provided binary segmentation image and computes user-defined features for each object. If you want to inspect the connected components, activate the "Objects (connected components) layer. If you select any object features, connected component analysis will be performed automatically.
+## From segmentation to object descriptions - "Object Feature Selection" applet
+This applet allows you to choose the features that will be used to classify objects.
 
 <a href="figs/object_extraction_cc.png" data-toggle="lightbox"><img src="figs/object_extraction_cc.png" class="img-responsive" /></a>
 
@@ -150,13 +150,16 @@ Need more features?
 Object features are plugin-based and very easy to extend if you know a little Python.
 A detailed example of a user-defined plugin can be found in the $ILASTIK/examples directory, while [this page](https://ilastik.github.io/ilastik/applet_library.html#object-extraction) contains a higher-level description of the few functions you'd have to implement.
 
-Once you have selected the features you like, the applet will proceed to compute them. For large 3D datasets this step can take quite a while. However, keep in mind that most of the time selecting more features at this step is not more expensive computationally. We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
+Once you confirm the feature selection, the applet finds the connected components (objects) in the provided binary segmentation image and computes the selected features on them.
+If you want to inspect the connected components, activate the "Objects (connected components)" layer.
+For large 3D datasets this step can take quite a while.
+However, keep in mind that most of the time selecting more features at this step is not more expensive computationally.
+We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
 
 
 
 ## Prediction for objects - "Object Classification" applet
 This applet allows you to label the objects and classify them based on the features, computed in the previous applet.
-If you want to choose a subset of features, press the "Subset features" button.
 Adding labels and changing their color is done the same way as in the
 [Pixel Classification workflow]({{site.baseurl}}/documentation/pixelclassification/pixelclassification.html).
 For a particular example, let us examine the data more closely by activating only the "Raw data" layer (tip: you can toggle between the currently visible layers and only showing the "Raw data" layer by pressing `i`):
@@ -169,7 +172,14 @@ If you need more labels you can click on "Add Label" to do so.
 
 <a href="figs/oc_subset.png" data-toggle="lightbox"><img src="figs/oc_subset.png" class="img-responsive" /></a>
 
-Note, that the list of features now only contains the few features that were selected in the previous applet. To label objects, either simply left-click on them or right-click and select the corresponding option. Right-clicking also allows you to print the object properties in the terminal. To trigger classification, press the "Live Update" button.
+You can subset the features used by the classifier by pressing the "Subset features" button.
+Note, that the list of features now only contains the few features that were selected in the previous applet.
+The main purpose for this is to remove features that turn out unhelpful for classification while you are labelling.
+If you instead go back to Object Feature Selection and remove them, ilastik will recompute the connected components and all features, which can be quite time-consuming.
+It is also useful if you want to compute and export some features for downstream analysis, even though they should not be used for classification.
+In that case, you can select all features of interest in the Object Feature Selection applet, and then choose the subset for the classifier here.
+
+To label objects, either simply left-click on them or right-click and select the corresponding option. Right-clicking also allows you to print the object properties in the terminal. To trigger classification, press the "Live Update" button.
 
 <a href="figs/oc_live_upd_labeled.png" data-toggle="lightbox"><img src="figs/oc_live_upd_labeled.png" class="img-responsive" /></a>
 
