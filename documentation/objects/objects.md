@@ -154,7 +154,7 @@ Once you confirm the feature selection, the applet finds the connected component
 If you want to inspect the connected components, activate the "Objects (connected components)" layer.
 For large 3D datasets this step can take quite a while.
 However, keep in mind that most of the time selecting more features at this step is not more expensive computationally.
-We therefore recommend that you select all features you think you might try for classification and then choose a subset of these features in the next applet.
+We therefore recommend that you select all features you think you might try for classification or want to export later and then choose a subset of these features for classification in the next applet.
 
 
 
