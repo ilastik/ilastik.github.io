@@ -180,3 +180,11 @@ h2:hover .header-link {
       overflow: hidden!important;
   }
 }
+
+/* correct sizing on mobile devices */
+iframe[src*=youtube] {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    padding-bottom: 8px;
+}
