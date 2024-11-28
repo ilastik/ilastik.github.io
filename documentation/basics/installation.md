@@ -165,12 +165,12 @@ If you absolutely have to use this version then a solution is to manually copy `
 
 #### Installation on MacOSX and Linux {#gurobi-setup-linux-mac}
 
-On MacOSX you can start the installation process by clicking on the downloaded file `gurobi9.0.3_mac64.pkg`.
+On MacOSX you can start the installation process by clicking on the downloaded file `gurobi9.5.1_macos_universal2.pkg`.
 
 On linux you have to unpack the downloaded archive:
 
 ```bash
-tar -xvf gurobi9.0.3_linux64.tar.gz -C /your/target/directory
+tar -xvf gurobi9.5.1_linux64.tar.gz -C /your/target/directory
 ```
 
 
@@ -189,10 +189,10 @@ For the activation you'll have to open a terminal and follow this sequence of co
 
 ```bash
 # Linux
-cd /your/target/directory/gurobi903/linux64/bin
+cd /your/target/directory/gurobi951/linux64/bin
 # OSX
 # on OSX gurobi is installed to /Library/ per default.
-cd /Libary/gurobi903/mac64/bin
+cd /Libary/gurobi951/macos_universal2/bin
 
  # use the obtained license key here
 ./grbgetkey aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
@@ -200,30 +200,34 @@ cd /Libary/gurobi903/mac64/bin
 ```
 
 In the next step you have to execute a script that will link your GUROBI libraries to your ilastik installation.
-The script can be found in `your-ilastik-installation-folder/ilastik-meta/ilastik/scripts`.
+In a terminal, download the [script][gurobi-install-link-script] for linking gurobi to the ilastik installation:
 
-Navigate to the script directory and run it:
-
-``` bash
-# the following line is _only necessary_ if you have used a custom location for the
-# license file when invoking `grbgetkey`
+```bash
+# set-up environment, only necessary if gurobi.lic is not in the home folder
 export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
 
-# navigate to the script location,
-# on Linux this could be /path/to/ilastik-1.*-Linux/ilastik-meta/ilastik/scripts
-# on OSX this could be /Applications/ilastik-1.*-OSX/Contents/ilastik-release/ilastik-meta/ilastik
-cd /path/to/script
-# Linux:
-bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/linux64 /path/to/ilastik-1.*-Linux
-# Mac:
-bash install-gurobi-symlinks.sh /your/target/directoy/gurobi903/mac64/ /path/to/ilastik-1.*-OSX.app
+# Linux
+wget https://raw.githubusercontent.com/ilastik/ilastik/main/scripts/install-gurobi-symlinks.sh
+
+# Mac
+curl -O https://raw.githubusercontent.com/ilastik/ilastik/main/scripts/install-gurobi-symlinks.sh
+
+# once the download is finished, make the script executable
+chmod +x install-gurobi-symlinks.sh
+
+# link the installed gurobi libraries to the ilastik installation
+# Linux
+bash install-gurobi-symlinks.sh /your/target/directoy/gurobi951/linux64 /path/to/ilastik-1.*-Linux
+# Mac
+bash install-gurobi-symlinks.sh /your/target/directoy/gurobi951/macos_universal2/ /path/to/ilastik-1.*-OSX.app
 ```
 
+After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
 
 In order to run ilastik with GUROBI support, make sure to always set the path to the license file (in case of a non-standard location):
 
 ```bash
-# set-up environment
+# set-up environment, only necessary if gurobi.lic is not in the home folder
 export GRB_LICENSE_FILE=/path/to/license/gurobi.lic
 
 # run ilastik
@@ -231,19 +235,13 @@ cd /path/to/ilastik-1.*-Linux
 ./run_ilastik.sh
 ```
 
-
-After a successful installation, learning the weights in the *Tracking with Learning Workflow* will be enabled.
-
-Note: With versions prior to ilastik-1.1.7, this [script](https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh) is not included and has to be downloaded manually:
-
-    wget https://raw.githubusercontent.com/ilastik/ilastik/master/scripts/install-gurobi-symlinks.sh
-
 Should you run into any problems, please [contact us]({{site.baseurl}}/community.html).
 
 [gurobi-info]: https://www.gurobi.com/academia/for-universities
 [gurobi-download]: https://www.gurobi.com/downloads/gurobi-optimizer
 [gurobi-licenses]: https://www.gurobi.com/downloads/licenses/
 [gurobi-install-win]: https://www.gurobi.com/documentation/9.0/quickstart_windows/software_installation_guid.html
+[gurobi-install-link-script]: https://raw.githubusercontent.com/ilastik/ilastik/main/scripts/install-gurobi-symlinks.sh
 [ilastik-download]: {{site.baseurl}}/download.html
 
 --------
