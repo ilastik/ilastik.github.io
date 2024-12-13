@@ -133,8 +133,15 @@ The following dialog will appear if you press the "Select features" button:
 <a href="figs/object_extraction_selection_dialog.png" data-toggle="lightbox"><img src="figs/object_extraction_selection_dialog.png" class="img-responsive" /></a>
 
 The object feature calculation is plugin-based.
-Per default ilastik comes with 3 feature plugins: "Standard Object Features", "Skeleton Feautures" (2D only), and "Convex Hull Features".
-Those features are computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
+Per default ilastik comes with 4 feature plugins:
+
+* "Standard Object Features"
+* "Skeleton Features" (2D only)
+* "Convex Hull Features"
+* "Spherical Texture Features"
+
+The first three mentioned features are computed by the [vigra library](https://ukoethe.github.io/vigra/doc-release/vigra/group__FeatureAccumulators.html).
+The "Spherical Texture Features" are computed using the [SphericalTexture library](https://github.com/KoehlerLab/SphericalTexture).
 An overview of available features can be found in [here]({{site.baseurl}}/documentation/objects/objectfeatures.html).
 The features are subdivided into three groups: "Location", "Shape", and "Intensity Distribution".
 Location-based features take into account _absolute coordinate positions_ in the image.

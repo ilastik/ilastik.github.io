@@ -65,7 +65,7 @@ Following here is a list of all available object features along with their descr
 
 ## Spherical Texture Features
 
-Extracts Spherical Textures: Angular mean projections of 2D or 3D image objects, as descriped in [this preprint](https://www.biorxiv.org/content/10.1101/2024.07.25.605050v1.full).
+Extracts Spherical Textures: Angular mean projections of 2D or 3D image objects, as described in [this preprint](https://www.biorxiv.org/content/10.1101/2024.07.25.605050v1.full).
 
 {% for feature in site.data.objectfeatures.features["Spherical Texture"] -%}
 {% unless feature.advanced or (feature.advanced == nil) -%}
