@@ -13,7 +13,7 @@ HAS_PLUGIN_MANAGER_IN_ENV = True
 import ilastik
 
 try:
-    from ilastik.plugins import pluginManager
+    from ilastik.plugins.manager import pluginManager
 except ImportError:
     HAS_PLUGIN_MANAGER_IN_ENV = False
 
