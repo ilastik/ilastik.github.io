@@ -61,3 +61,20 @@ Following here is a list of all available object features along with their descr
 
 {% endunless %}
 {% endfor %}
+
+
+## Spherical Texture Features
+
+Extracts Spherical Textures: Angular mean projections of 2D or 3D image objects, as described in [this preprint](https://www.biorxiv.org/content/10.1101/2024.07.25.605050v1.full).
+Spherical Texture features were first incorporated into ilastik in version `1.4.1b19`.
+
+{% for feature in site.data.objectfeatures.features["Spherical Texture"] -%}
+{% unless feature.advanced or (feature.advanced == nil) -%}
+{% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
+<div class="feature-card">
+    <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
+    <div class="feature-description">{{ feature.detailtext }}</div>
+</div>
+
+{% endunless %}
+{% endfor %}
