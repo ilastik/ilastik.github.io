@@ -113,14 +113,14 @@ h2:hover .header-link {
 }
 
 .social-link {
-  height: 48px;
+  height: 28.5px;
   margin-right: 8px;
 }
 
 .social-icon {
   flex: auto;
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 28.5px;
 }
 
 .cta {
