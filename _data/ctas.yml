@@ -21,4 +21,4 @@
   icon: fa-comments
   text: >
     <p>Get in touch with other users at <a href="https://forum.image.sc">forum.image.sc</a> or contact the friendly ilastik team directly.</p>
-    <p><a href="https://twitter.com/ilastik_team?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @ilastik_team</a></p>
+    <p><a href="https://bsky.app/profile/ilastik-team.bsky.social" class="bluesky-follow-button" data-show-count="false">Follow @ilastik-team.bsky.social</a></p>
