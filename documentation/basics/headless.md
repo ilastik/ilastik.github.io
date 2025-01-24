@@ -101,6 +101,23 @@ So valid values for this option are `c`, `t`, and `z`, respectively.
 The `*` in each input argument must be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
 
 
+### Using OME-Zarr input
+
+OME-Zarr URIs are typically shared or provided pointing to the root of a multiscale dataset.
+The computations in any ilastik workflow can only run on a single scale, however.
+To use an OME-Zarr dataset in headless mode, you have to provide the full path to an individual scale, for example:
+
+    $ ./run_ilastik.sh --headless \
+                       --project=MyProject.ilp \
+                       https://s3.embl.de/i2k-2020/platy-raw.ome.zarr/s6
+
+If you don't know the scale name, you can use the Input Data set of any ilastik workflow in the GUI to access the "Add multiscale" dialog.
+Paste the root address and click "Check" to see the available scales.
+Alternatively, the specific dataset path for each scale is documented in the metadata found in the `.zattrs` file at the multiscale root.
+In the above example, this is at `https://s3.embl.de/i2k-2020/platy-raw.ome.zarr/.zattrs`.
+If there is no `.zattrs` file in your case, the dataset may be OME-Zarr version 0.5.
+In this case, the file is called `zarr.json` instead. OME-Zarr stores in this version are currently not supported by ilastik, however.
+
 ## Output Options
 
 By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.
