@@ -173,6 +173,10 @@ The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workfl
 When running the Object Classification Workflow in headless mode, the available options for the `--export_source` flag are:
 - `"Object Predictions"` (default when nothing is specified), which exports a label image of the object class predictions;
 - `"Object Probabilities"`, which exports a multi-channel image volume of object prediction probabilities instead of a label image (one channel for each prediction class);
+- `"Object Identities"`, a single channel integer value image where the all pixels belonging to the same object have the same value.
+  For example, pixels of the first object would all have the value 1.
+  Background pixels are assigned the value 0.
+  This type of image is also known as a 'label image' in other software.
 - `"Blockwise Object Predictions"` or `"Blockwise Object Probabilities"`, which is analogous to `"Object Predictions"` and `"Object Probabilities"` respectively, but the image will be processed in independent blocks, which is useful when your image won't fit in RAM. Note that the values for the block size and halo cannot be configured via command line parameters and must be set in yout `.ilp` project file via the graphical user interface. See [Blockwise Object Classification Applet]({{site.baseurl}}/documentation/objects/objects.html#preparing-for-large-scale-prediction---blockwise-object-classification-applet).
 - `"Pixel Probabilities"`, which exports the pixel prediction images of the pixel classification part of that workflow. Only valid if you specified an `.ilp` `--project` that was created with the  "Pixel Classification + Object Classification" workflow.
 
@@ -181,7 +185,12 @@ When running the Object Classification Workflow in headless mode, the available 
 
 Depending on which variant of the [Object Classification Workflow] you used to create your `.ilp` project file, you may need to provide more than one input image for each volume of data you want to process (e.g. "Raw Data" and "Segmentation Image" for , or "Raw Data" and "Prediction Maps"). These input images correspond to the tabs in the `Input Data` applet of the Object Classification Workflow and must be provided on the command-line. They serve to provide the information necessary to segment the input image into objects which can then be classified by the trained classifier that was saved into your `.ilp` project file.
 
-To specify which is which, prefix the list of input files with either `--raw_data`, `--segmentation_image`, or `--prediction_maps` accordingly. Here's an example of invoking ilastik with an Object Classification Workflow that takes a Segmentation Image as input:
+To specify which is which, prefix the list of input files with either
+* `--raw_data`
+* `--prediction_maps` (Object Classification [Inputs: Raw Data, Pixel Prediction Map])
+* `--segmentation_image` (Object Classification [Inputs: Raw Data, Segmentation])
+
+Here's an example of invoking ilastik with an Object Classification Workflow that takes a Segmentation Image as input:
 
     $ ./run_ilastik.sh --headless \
                        --project=MyObjClassFromPredictMap.ilp \
