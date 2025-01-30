@@ -110,9 +110,9 @@ This must be a full URL including protocol.
 When you click "Check", ilastik will try to obtain image metadata from the given address, and display the results of the request.
 If the dataset is stored on the local filesystem, you can paste the path into the address field, e.g. `C:\Users\me\Downloads\tissue-gfp.zarr`.
 The "Check" button will test whether the path exists on the filesystem and automatically convert it to a `file:///` URL if successful.
-Note that this has to be the path to the root of the dataset, i.e. the folder containing the `.zattrs` file, and the folder name has to contain ".zarr".
-
-_Note: ilastik will freeze while waiting for a response. If the server is slow or the connection is bad, it may take a while and your computer might warn that ilastik is not responding._
+Note that the URL has to contain ".zarr", or for Neuroglancer Precomputed it has to include the "precomputed://" prefix.
+Some tools unfortunately nest the actual multiscale image inside a folder named with the ".zarr" suffix.
+If ilastik cannot find any dataset at the ".zarr" level, you may need to inspect the folder yourself and try the subfolders inside it.
 
 If the check is successful, you can confirm by clicking "Add to project". You can then select which scale /
 resolution level to load using the drop-down box in the input data table.
