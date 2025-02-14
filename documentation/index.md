@@ -33,7 +33,7 @@ There you can select one of the available workflows:
 [Tracking]({{site.baseurl}}/documentation/tracking/tracking.html),
 [Animal Tracking]({{site.baseurl}}/documentation/animalTracking/animalTracking.html),
 [Density Counting]({{site.baseurl}}/documentation/counting/counting.html),
-[Carving]({{site.baseurl}}/documentation/carving/carving.html)),
+[Carving]({{site.baseurl}}/documentation/carving/carving.html),
 [Boundary-based Segmentation with Multicut]({{site.baseurl}}/documentation/multicut/multicut).
 
 **To get started**, load your data using the
