@@ -13,7 +13,101 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
 <br>
 </p>
 
-<h3 id="stable">Version 1.4.0.post1 (10. November 2023)</h3>
+<h3 id="stable">Release Candidate 1.4.1rc2 (27. February 2025)</h3>
+
+<p><strong>Release Highlights:</strong></p>
+<ul>
+  <li>Introduces support for the OME-Zarr file format</li>
+  <li>Added Trainable Domain Adaptation Workflow</li>
+  <li>Native build for Apple Silicon (M1, M2, M3, M4) and Intel Macs</li>
+  <li>Tiff reading improvements</li>
+  <li>Added spherical texture features, contributed by Oane Gros (<a href="https://www.biorxiv.org/content/10.1101/2024.07.25.605050v1">preprint</a>)</li>
+  <li>Better user interface in dark mode</li>
+</ul>
+
+<br>
+
+<p><strong>Notes:</strong></p>
+<ul>
+    <li>Commercial solver support with gurobi <code>12.0.*</code> for tracking with learning.</li>
+    <li>Native builds for Apple Silicon (M1, M2, M3, M4) and Intel Macs are available, which means better performance on these machines overall.
+    Notes for the silicon version:
+        <ul>
+            <li>Currently only 2D networks are supported in the Neural Network and Trainable Domain Adaptation Workflows.
+            These, however, run accelerated leveraging Metal Performance Shaders (mps).</li>
+        </ul>
+    </li>
+</ul>
+
+<h5>Regular builds</h5>
+
+<table class="table">
+<tbody>
+    <tr>
+        <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-win64.exe">version 1.4.1rc2 (528 MB)</a></td>
+        <td><b>Supported Versions:</b> Windows 10 and up</td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-Linux.tar.bz2">version 1.4.1rc2 (804 MB)</a></td>
+        <td><b>Supported Versions:</b> Ubuntu 14 and up </td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple intel (64-bit), OSX</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-OSX.zip">version 1.4.1rc2 (620 MB)</a></td>
+        <td><b>Supported Versions:</b> 10.9 and up</td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple Silicon (arm64), OSX</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-arm64-OSX.zip">version 1.4.1rc2 (432 MB)</a></td>
+        <td><b>Supported Versions:</b> 11 and up</td>
+    </tr>
+</tbody>
+</table>
+
+<h5>GPU-enabled builds</h5>
+
+For faster neural network prediction.
+
+ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downloading and using these builds, you accept the terms and conditions of the <a href="https://docs.nvidia.com/cuda/eula/index.html">CUDA End User License Agreement (EULA)</a>.
+
+<table class="table">
+<tbody>
+    <tr>
+        <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-gpu-win64.exe">version 1.4.1rc2-gpu (1.9 GB)</a></td>
+        </td>
+        <td><b>Supported Versions:</b> Windows 10 and up, comes with cudatoolkit 11.8</td>
+    </tr>
+    <tr>
+        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
+        <td><a href="https://files.ilastik.org/ilastik-1.4.1rc2-gpu-Linux.tar.bz2">version 1.4.1rc2-gpu (3.4 GB)</a></td>
+        <td><b>Supported Versions:</b> Ubuntu 14 and up, comes with cudatoolkit 11.8</td>
+    </tr>
+</tbody>
+</table>
+
+<br>
+<br>
+
+
+<h3 id="previous">Previous stable versions</h3>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">macOS Big Sur and Monterey users please download ilastik 1.4.0 or newer</a></h3>
+  </div>
+  <div class="panel-body">
+    Dear macOS users, you are running macOS 11 (Big Sur), or newer <em>please download
+    the latest ilastik version (1.4.0 or newer).</em>
+    Older versions don't run anymore on OSX.
+  </div>
+</div>
+
+
+
+<h4 id="140">Version 1.4.0.post1 (10. November 2023)</h3>
 
 <p><strong>Release Highlights:</strong></p>
 <ul>
@@ -92,100 +186,6 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
 <br>
 <br>
 
-
-<h3 id="beta">Beta Version 1.4.1b23 (14. January 2025)</h3>
-
-<p><strong>Release Highlights:</strong></p>
-<ul>
-  <li>Added Trainable Domain Adaptation Workflow</li>
-  <li>Native build for Apple Silicon (M1, M2, M3)</li>
-  <li>Tiff reading improvements</li>
-  <li>More responsive user interface in Multicut</li>
-  <li>Added spherical texture features, contributed by Oane Gros (<a href="https://www.biorxiv.org/content/10.1101/2024.07.25.605050v1">preprint</a>)</li>
-  <li>Better user interface in dark mode</li>
-  <li>Introduces support for the OME-Zarr file format</li>
-</ul>
-
-<br>
-
-<p><strong>Notes:</strong></p>
-<ul>
-    <li>Commercial solver support with gurobi 951 for tracking with learning.</li>
-    <li>This beta version is currently distributed without tensorflow</li>
-    <li>Experimental native build for Apple Silicon (M1, M2, M3) is available, which means better performance on these machines overall.
-    Notes for the silicon version:
-        <ul>
-            <li>Currently only 2D networks are supported in the Neural Network and Trainable Domain Adaptation Workflows.
-            These, however, run accelerated leveraging Metal Performance Shaders (mps).</li>
-        </ul>
-    </li>
-</ul>
-
-<h5>Regular builds</h5>
-
-<table class="table">
-<tbody>
-    <tr>
-        <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-win64.exe">version 1.4.1b23 (528 MB)</a></td>
-        <td><b>Supported Versions:</b> Windows 10 and up</td>
-    </tr>
-    <tr>
-        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-Linux.tar.bz2">version 1.4.1b23 (804 MB)</a></td>
-        <td><b>Supported Versions:</b> Ubuntu 14 and up </td>
-    </tr>
-    <tr>
-        <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple intel (64-bit), OSX</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-OSX.tar.bz2">version 1.4.1b23 (620 MB)</a></td>
-        <td><b>Supported Versions:</b> 10.9 and up</td>
-    </tr>
-    <tr>
-        <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple Silicon (arm64), OSX</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-arm64-OSX.tar.bz2">version 1.4.1b23 (432 MB)</a></td>
-        <td><b>Supported Versions:</b> 11 and up</td>
-    </tr>
-</tbody>
-</table>
-
-<h5>GPU-enabled builds</h5>
-
-For faster neural network prediction.
-
-ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downloading and using these builds, you accept the terms and conditions of the <a href="https://docs.nvidia.com/cuda/eula/index.html">CUDA End User License Agreement (EULA)</a>.
-
-<table class="table">
-<tbody>
-    <tr>
-        <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-gpu-win64.exe">version 1.4.1b23-gpu (1.9 GB)</a></td>
-        </td>
-        <td><b>Supported Versions:</b> Windows 10 and up, comes with cudatoolkit 11.8</td>
-    </tr>
-    <tr>
-        <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-        <td><a href="https://files.ilastik.org/ilastik-1.4.1b23-gpu-Linux.tar.bz2">version 1.4.1b23-gpu (3.4 GB)</a></td>
-        <td><b>Supported Versions:</b> Ubuntu 14 and up, comes with cudatoolkit 11.8</td>
-    </tr>
-</tbody>
-</table>
-
-<br>
-<br>
-
-
-<h3 id="previous">Previous stable versions</h3>
-
-<div class="panel panel-danger">
-  <div class="panel-heading">
-    <h3 class="panel-title">macOS Big Sur and Monterey users please download ilastik 1.4.</a></h3>
-  </div>
-  <div class="panel-body">
-    Dear macOS users, you are running macOS 11 (Big Sur), or newer <em>please download
-    the latest ilastik version (1.4.0 or newer).</em>
-    Older versions don't run anymore on OSX.
-  </div>
-</div>
 
 
 <h4 id="133">Version 1.3.3</h4>
