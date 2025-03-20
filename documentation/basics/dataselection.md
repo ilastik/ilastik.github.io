@@ -134,7 +134,7 @@ If you want to inspect a different scale later, you can use "Add new" and paste 
 
 ## Supported File Formats {#formats}
 
-The main file formats used by ilastik are [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5) and [N5](https://github.com/saalfeldlab/n5#n5--). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5, folders with a `attributes.json` file will be recognized as `N5`.
+The main file formats used by ilastik are [HDF5](https://www.hdfgroup.org/solutions/hdf5/) and [N5](https://github.com/saalfeldlab/n5#n5--). Files with extensions `h5`, `hdf5`, `ilp` (ilastik project files) will be recognized as HDF5, folders with a `attributes.json` file will be recognized as `N5`.
 
 Widely used image formats such as
  * Microsoft Windows bitmap image file (`bmp`),
