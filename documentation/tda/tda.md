@@ -1,6 +1,6 @@
 ---
-title: Trainable Domain Adaptation (beta)
-tagline: Trainable Domain Adaptation (beta)
+title: Trainable Domain Adaptation
+tagline: Trainable Domain Adaptation
 category: "Documentation"
 group: "workflow-documentation"
 weight: 0
