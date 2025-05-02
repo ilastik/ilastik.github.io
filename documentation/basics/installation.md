@@ -164,7 +164,7 @@ With that you should be able to use the "Calculate Tracking Weights" functionali
 In case of problems, please take a look at the [GUROBI installation documentation][gurobi-install-win].
 
 Note: Due to a bug in ilastik `1.3.3` the solver library is not recognized.
-If you absolutely have to use this version then a solution is to manually copy `C:\gurobi811\win64\bin\gurobi1200.dll` to your ilastik installation folder, e.g. `C:\Program Files\ilastik-1.4.1\Library\bin`.
+If you absolutely have to use this version then a solution is to manually copy `C:\gurobi811\win64\bin\gurobi811.dll` to your ilastik installation folder, e.g. `C:\Program Files\ilastik-1.3.3\Library\bin`.
 
 #### Installation on MacOSX and Linux {#gurobi-setup-linux-mac}
 
