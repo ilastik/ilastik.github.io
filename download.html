@@ -29,13 +29,13 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
 
 <p><strong>Notes:</strong></p>
 <ul>
-    <li>Commercial solver support with gurobi <code>12.0.0</code> for tracking with learning.</li>
     <li>Native builds for Apple Silicon (M1, M2, M3, M4) and Intel Macs are available, which means better performance on these machines overall.
     Notes for the silicon version:
         <ul>
-            <li>Currently only 2D networks are supported in the Neural Network and Trainable Domain Adaptation Workflows.
-            These, however, run accelerated leveraging Metal Performance Shaders (mps).</li>
+            <li>Currently only 2D networks are run accelerated on apple hardware, leveraging Metal Performance Shaders (mps), in the Neural Network and Trainable Domain Adaptation Workflows.
+            3D networks will fallback to CPU execution.</li>
         </ul>
+    <li>Commercial solver support with gurobi <code>12.0.0</code> for tracking with learning.</li>
     </li>
 </ul>
 
