@@ -169,14 +169,14 @@ If you absolutely have to use this version then a solution is to manually copy `
 #### Installation on MacOSX and Linux {#gurobi-setup-linux-mac}
 
 On MacOSX you can start the installation process by clicking on the downloaded file `gurobi12.0.0_macos_universal2.pkg`.
+Note: on MacOSX, starting from ilastik 1.4.1, gurobi will only be found if it is installed into the `/Libary/gurobi1200/` directory (default).
+
 
 On linux you have to unpack the downloaded archive:
 
 ```bash
-tar -xvf gurobi9.5.1_linux64.tar.gz -C /your/target/directory
+tar -xvf gurobi12.0.0_linux64.tar.gz -C /your/target/directory
 ```
-
-
 Activate your installation by invoking `grbgetkey` with your license.
 You can review all your current licenses [here][gurobi-licenses].
 Licenses without an entry in the `Host Name` column have not been assigned a computer yet.
@@ -204,6 +204,12 @@ cd /Libary/gurobi1200/macos_universal2/bin
 
 In the next step you have to execute a script that will link your GUROBI libraries to your ilastik installation.
 In a terminal, download the [script][gurobi-install-link-script] for linking gurobi to the ilastik installation:
+
+
+##### Linking the gurobi libaries to the ilastik binary
+
+This section only applies to Linux.
+On MacOSX using ilastik 1.4.1 or newer, the gurobi solver will be found if it is installed into the default location.
 
 ```bash
 # set-up environment, only necessary if gurobi.lic is not in the home folder
