@@ -111,12 +111,12 @@ To use an OME-Zarr dataset in headless mode, you have to provide the full path t
                        --project=MyProject.ilp \
                        https://s3.embl.de/i2k-2020/platy-raw.ome.zarr/s6
 
-If you don't know the scale name, you can use the Input Data set of any ilastik workflow in the GUI to access the "Add multiscale" dialog.
+If you don't know the scale name, you can use the Input Data step of any ilastik workflow in the GUI to access the "Add multiscale" dialog.
 Paste the root address and click "Check" to see the available scales.
 Alternatively, the specific dataset path for each scale is documented in the metadata found in the `.zattrs` file at the multiscale root.
 In the above example, this is at `https://s3.embl.de/i2k-2020/platy-raw.ome.zarr/.zattrs`.
 If there is no `.zattrs` file in your case, the dataset may be OME-Zarr version 0.5.
-In this case, the file is called `zarr.json` instead. OME-Zarr stores in this version are currently not supported by ilastik, however.
+This version of the format is not supported in ilastik yet, unfortunately.
 
 ## Output Options
 
