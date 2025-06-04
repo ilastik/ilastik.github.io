@@ -7,7 +7,16 @@ weight: 1
 ---
 # Voxel Segmentation Workflow
 
-The voxel segmentation workflow is currently included in ilastik as a beta version (as of 1.4.0).
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Deprecation Notice</h3>
+  </div>
+  <div class="panel-body">
+    This workflow has been deprecated.
+    Last ilastik version containing this workflow: <code>1.4.1</code>
+  </div>
+</div>
+
 In order to access this workflow, supply the `--hbp` command line flag when starting ilastik.
 
 ## What it is and why you need it
