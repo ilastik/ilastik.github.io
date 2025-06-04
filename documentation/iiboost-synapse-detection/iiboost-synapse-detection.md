@@ -2,11 +2,21 @@
 title: IIBoost Synapse Detection
 tagline: IIBoost Synapse Detection
 category: "Documentation"
-group: "workflow-documentation"
+group: "workflow-documentation-deprecated"
 weight: 5
 ---
 
 # IIBoost Synapse Detection
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Deprecation Notice</h3>
+  </div>
+  <div class="panel-body">
+    This workflow has been deprecated.
+    Last ilastik version containing this workflow: <code>1.3.3</code>
+  </div>
+</div>
 
 The **IIBoost Synapse Detection** workflow is a specialized variant of the generic **[Pixel Classification Workflow][]** aimed at detecting synapses in EM data from mammalian neuropil.
 
