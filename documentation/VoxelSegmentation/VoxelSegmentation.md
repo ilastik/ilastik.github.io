@@ -2,7 +2,7 @@
 title: Voxel Segmentation Workflow (beta)
 tagline: Voxel Segmentation with Active Learning
 category: "Documentation"
-group: "workflow-documentation"
+group: "workflow-documentation-deprecated"
 weight: 1
 ---
 # Voxel Segmentation Workflow

@@ -2,7 +2,7 @@
 title: IIBoost Synapse Detection
 tagline: IIBoost Synapse Detection
 category: "Documentation"
-group: "workflow-documentation"
+group: "workflow-documentation-deprecated"
 weight: 5
 ---
 
