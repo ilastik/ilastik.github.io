@@ -100,3 +100,19 @@ This means that if you continue using the exported data in other workflows, the 
 When you take these results into other tools, they may be able to match the data from ilastik to the corresponding scale of the source dataset.
 
 Additionally, if the source dataset was OME-Zarr, ilastik will carry over all pixel resolution metadata from the source dataset to the exported dataset.
+
+## Exporting OME-Zarr to cloud storage
+Exporting to cloud storage is possible, but this is in experimental stage and untested.
+Please proceed with caution.
+
+To export to cloud storage, simply open [the export settings dialog](#settings), select the OME-Zarr export format, and change the export path to the target URL.
+Magic placeholders like `{nickname}` and `{result_type}` will be replaced as usual for each dataset.
+
+For this to work, you must have write access to the target.
+We do not recommend opening a bucket for public write access.
+Instead, you should set up write permission for a specific user and then set up that user's credentials on your system as described in the [section on OME-Zarr access with authentication]({{baseurl}}/documentation/basics/dataselection.html#multiscale-ome-zarr-auth).
+Writing to AWS S3 with `s3://` URLs should generally work; writing to S3-like servers is not implemented yet (you will receive a "Forbidden" error).
+Please get in touch if you require this.
+
+As warned above, this is untested and not hardened to the various risks that come with uploading files over HTTPS.
+If any problems occur during the export, such as interruptions in the connection to the server, this will likely lead to unpredictable results.
