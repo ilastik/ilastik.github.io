@@ -39,21 +39,21 @@ Windows:
 
 **Note:** the following examples use linux shell syntax, but the options are the same for all platforms.
 
-### Important Notes:
+### Important Notes: {#notes}
 
 - Except for options passed with the `--export_source` argument (see below), don't specify any values with space-characters in them, even if inside quotes (e.g. `"my file name.h5"`, or `"(10, 20)"`). Due to a [bug in cpython](https://bugs.python.org/issue22433) those might be misinterpreted.
 - For paths to hdf5 datasests (either input or output), ilastik uses the same conventions as the generic [h5ls](https://support.hdfgroup.org/HDF5/Tutor/cmdtoolview.html#h5ls) utility. That is, the hdf5 dataset name should be appended to the file path: `/path/to/my_file.h5/internal/path/to/dataset`.
 - In the current "headless" implementation of object classification, the entire image is loaded into RAM in one go, and then object classification is run on it.  Therefore, there is a limit to how large your input image can be.
 - ilastik's command line options use underlines rather than dashes to separate words (e.g.: `--cutout_subregion` and not `--cutout-subregion`). If you mix them up, you might get strange errors. See [Known Issues](#known-issues) for more info.
 
-### Controlling RAM and CPU resources
+### Controlling RAM and CPU resources {#resources}
 
 By default, ilastik will use all available CPU cores (as detected by Python's "multiprocessing" module), including "virtual" cores if your CPU supports hyperthreading (like most modern Intel processors) and all RAM available on your machine.
 CPU and RAM resources can be controlled with environment variables or a config file as described [here][controlling resources].
 
 [controlling resources]: {{site.baseurl}}/documentation/basics/installation#controlling-cpu-and-ram-resources
 
-## Input options
+## Input options {#options}
 
 **Required settings:**
 
@@ -71,7 +71,7 @@ CPU and RAM resources can be controlled with environment variables or a config f
   Furthermore, if stack input is used, the input_axes define axes per slice.
 
 
-### Using hdf5 for memory efficiency
+### Using hdf5 for memory efficiency {#hdf5}
 
 We recommend to use hdf5 for input and output over, for example, TIF stacks. Indeed, TIF stacks cannot be written/read block-wise, hence the whole data has to be loaded and kept in memory. This can lead to excessive memory usage and slowness.
 
@@ -80,7 +80,7 @@ In order to convert your TIF slices into hdf5 datasets, you can check the dedica
 [fiji_plugin]: {{site.baseurl}}/documentation/fiji_export/plugin
 
 
-### Using stack input
+### Using stack input {#stack-input}
 
 If you are dealing with 3D data in the form of an image sequence (e.g. a tiff stack),
 then use globstring syntax to tell ilastik which images to combine for each volume.
@@ -101,7 +101,7 @@ So valid values for this option are `c`, `t`, and `z`, respectively.
 The `*` in each input argument must be provided to ilastik, NOT auto-expanded by the shell before ilastik sees the command!
 
 
-### Using OME-Zarr input
+### Using OME-Zarr input {#ome-zarr-input}
 
 OME-Zarr URIs are typically shared or provided pointing to the root of a multiscale dataset.
 The computations in any ilastik workflow can only run on a single scale, however.
@@ -118,7 +118,7 @@ In the above example, this is at `https://s3.embl.de/i2k-2020/platy-raw.ome.zarr
 If there is no `.zattrs` file in your case, the dataset may be OME-Zarr version 0.5.
 In this case, the file is called `zarr.json` instead. OME-Zarr stores in this version are currently not supported by ilastik, however.
 
-## Output Options
+## Output Options {#output-options}
 
 By default, ilastik will export the results in hdf5 format, stored to the same directory as the input image.
 However, you can customize the output location and format with extra parameters. For example:
@@ -157,7 +157,7 @@ the command (as shown in the example above).
 
 [Data Export Applet]: {{site.baseurl}}/documentation/basics/export.html#data-export-applet-ss
 
-## Headless Mode for Pixel Classification
+## Headless Mode for Pixel Classification {#pixel-classification}
 
 When running the Pixel Classification Workflow in headless mode, the available options for the `--export_source` flag are:
 
@@ -167,7 +167,7 @@ When running the Pixel Classification Workflow in headless mode, the available o
 - `Features`, which outputs a multi-channel image where each channel represents one of the computed pixel features;
 - `Labels`, which outputs an image representing the users' manually created annotations.
 
-## Headless Mode for Autocontext Workflow
+## Headless Mode for Autocontext Workflow {#autocontext}
 
 The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workflow is essentially two runs of pixel classification, with the latter one using the output of the first one as an additional input. When running the Autocontext Workflow in headless mode, the available options for the `--export_source` are analogous to those of the simple Pixel Classification Workflow, but you can export the results of any of the two pixel classification stages involved in this workflow. Here's the full list of options:
 
@@ -185,7 +185,7 @@ The [Autocontext]({{site.baseurl}}/documentation/autocontext/autocontext) workfl
 - `"Input Stage 1"`: exports your raw input image that was fed into the first stage of the workflow;
 - `"Input Stage 2"`: exports the input received by the second Pixel Classification stage in the workflow.
 
-## Headless Mode for Object Classification
+## Headless Mode for Object Classification {#object-classification}
 
 When running the Object Classification Workflow in headless mode, the available options for the `--export_source` flag are:
 - `"Object Predictions"` (default when nothing is specified), which exports a label image of the object class predictions;
@@ -231,7 +231,7 @@ If you are processing more than one volume in a single command, provide all inpu
     --segmentation_image my_unclassified_objects_1.h5/binary_segmentation_volume my_unclassified_objects_2.h5/binary_segmentation_volume my_unclassified_objects_3.h5/binary_segmentation_volume
 
 
-## Headless Mode for Boundary-based Segmentation with Multicut
+## Headless Mode for Boundary-based Segmentation with Multicut {#multicut}
 
 When running the headless mode for the [Multicut Workflow], the following flags define the input data to be used:
 
@@ -255,7 +255,7 @@ An example invocation is given below:
 
 [Multicut Workflow]: {{site.baseurl}}/documentation/multicut/multicut.html
 
-## Headless Mode for Counting Workflow
+## Headless Mode for Counting Workflow {#counting}
 
 When running the Object Classification Workflow in headless mode, the only available option for the `--export_source` is `Probabilities`.
 
@@ -302,7 +302,7 @@ See the following example invocation that produces a csv-table via the plugin ex
     --export_plugin="CSV-Table" \
 ```
 
-## Running distributed ilastik via MPI (potentially trough SLURM)
+## Running distributed ilastik via MPI (potentially trough SLURM) {#mpi}
 
 You can run some ilastik headless workflows as a distributed MPI application. This is functionally equivalent to (though far more efficient than) invoking ilastik multiple times, each time with a different `--cutout_subregion`, and saving all those executions as tiles of a single `.n5` dataset.
 
@@ -341,7 +341,7 @@ To run ilastik distributed, you must invoke it either through `mpiexec` or `srun
                                     --raw-data=my_very_big_tiled_dataset.h5
 
 
-## Running your own Python scripts
+## Running your own Python scripts {#python}
 
 For developers and power-users, you can run your own ilastik-dependent python scripts using the interpreter shipped within the ilastik install tree.  The interpreter is located in the `bin` directory:
 
@@ -353,7 +353,7 @@ For developers and power-users, you can run your own ilastik-dependent python sc
     $ ./ilastik-1.3.2-OSX.app/Contents/ilastik-release/bin/python -c "import ilastik; print ilastik.__version__"
     1.3.2
 
-## Known Issues
+## Known Issues {#issues}
 
 ilastik's headless mode will sometimes throw exceptions and output a stack trace instead of letting you known why your command line arguments are wrong. Though those issues are being worked on, here are some hints and workarounds you can use to get by:
 
