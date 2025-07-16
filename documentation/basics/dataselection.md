@@ -30,6 +30,7 @@ New data can be imported in a project with the "Add New..." button.
 Clicking this will present two options,
  * Add separate image(s)...
  * Add a single 3D/4D Volume from Stack...
+ * Add multiscale dataset...
 
 These can be used to [load a 2D/3D/4D image from a single file](#single_file) or [load
 a single 2D/3D/4D image from a stack of 2D images](#image_stack) respectively.
@@ -114,9 +115,23 @@ Note that the URL has to contain ".zarr", or for Neuroglancer Precomputed it has
 Some tools unfortunately nest the actual multiscale image inside a folder named with the ".zarr" suffix.
 If ilastik cannot find any dataset at the ".zarr" level, you may need to inspect the folder yourself and try the subfolders inside it.
 
-If the check is successful, you can confirm by clicking "Add to project". You can then select which scale /
-resolution level to load using the drop-down box in the input data table.
+### Accessing OME-Zarr datasets with authentication {#ome-zarr-auth}
+Datasets stored on Amazon Web Service's S3, or on S3-like servers, can be accessed in ilastik with authentication.
+If the dataset is publicly accessible, simply pasting the `https://` or `s3://` URL should be sufficient.
+When anonymous/public access fails, ilastik automatically tries authenticated access.
+For this to work, your credentials must be set up before you start ilastik.
+Changes to credentials while ilastik is running will not be picked up.
 
+For authentication, ilastik uses the module s3fs, which builds on Amazon's boto.
+You can find instructions on how to set up credentials in [the boto documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+We recommend following the "shared credential file" approach.
+If authentication via shared credential file does not work, you can try using environment variables as described in the boto reference if you are trying to access an AWS S3 server.
+If you are trying to access an S3-like server (but not AWS), s3fs additionally supports authentication via environment variables named `FSSPEC_...`, see the [s3fs docs](https://s3fs.readthedocs.io/en/latest/#s3-compatible-storage).
+If the connection fails, the error messages in ilastik should indicate whether the problem is with access/authentication, or something else.
+
+If you cannot access your dataset from ilastik, but you are able to access it from other tools, please report this to us (`Help > Report issue`).
+
+### Browsing and working with multiscale datasets {#multiscale-browsing}
 To inspect more than one scale at a time, you can add multiple instances of the same dataset using "Add New".
 Simply paste the same address again, click "Check", and then "Add to project".
 
