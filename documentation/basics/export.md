@@ -27,7 +27,7 @@ In all workflows, there is a designated applet to export results (see, for examp
 ## Data Export Applet
 
 <div style="float: right; width: 60%" markdown="1">
-<a name="data-export-applet-ss" href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
+<a name="data-export-applet-ss" href="screenshots/export_applet_with_source.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
 </div>
 
 The export step is handled through the data export applet in ilastik. In [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html), for example, the applet is called "Prediction Export".
