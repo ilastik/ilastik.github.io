@@ -9,7 +9,7 @@ weight: 0
 
 ## Pixel Classification Demo (3 minutes)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5N0XYW9gRZY?rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="5N0XYW9gRZY" %}
 
 ## How it works, what it can do
 

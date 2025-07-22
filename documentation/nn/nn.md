@@ -11,7 +11,7 @@ This workflow allows one to execute (run inference for) pre-trained convolutiona
 
 ## Neural Network Classification Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PfXCKNhsOLw?rel=0" frameborder="0" allowfullscreen></iframe> 
+{% include lazy_yt.html video_id="PfXCKNhsOLw" %}
 
 ## Prerequisites: Running locally or remotely
 

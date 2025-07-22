@@ -17,11 +17,11 @@ These labels and parameters will also be stored in a `.ilp` project file, which 
 This tracking workflow can account for appearances or disappearances, over-segmentation and mergers (clusters of objects), and has already been used successfully to track flies, mice, larvae, and zebrafish. 
 Some examples of the results can be observed in the following videos:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kwDtmxBd5nM?rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="kwDtmxBd5nM" %}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gQUrABQo6ow?rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="gQUrABQo6ow" %}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HpeCzQhOOPM?rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="HpeCzQhOOPM" %}
 
 The following tutorial shows a step-by-step guide to setup a tracking pipeline for your experiments. 
 To follow the tutorial, you can download the sample files `flyBowlMovie200.h5` and `flyBowlMovie200_Probabilties.h5` [here]({{site.baseurl}}/download.html) (scroll down to the Example Data and Projects section).
