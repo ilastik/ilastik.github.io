@@ -5,6 +5,17 @@ The source for the [ilastik website](https://www.ilastik.org) served via [Netlif
 ## Development Instructions
 
 To develop these pages locally, follow the instructions [here](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/) to get set up.
+
+alternatively, setup jekyll via conda:
+
+```bash
+conda create -n jekyll c-compiler compilers cxx-compiler ruby
+
+conda activate jekyll
+gem install jekyll bundler
+bundle install
+```
+
 To serve the site locally, run:
 
     bundle exec jekyll serve

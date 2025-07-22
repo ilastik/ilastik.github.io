@@ -10,8 +10,8 @@ weight: 1
 
 ## Object Classification Demo (3 minutes)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SQeRGvHeT3o?cc_load_policy=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+{% include lazy_yt.html video_id="SQeRGvHeT3o" params="cc_load_policy=1" %}
 
 ## How it works, what it can do
 

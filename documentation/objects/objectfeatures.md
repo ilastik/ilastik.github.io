@@ -14,14 +14,13 @@ Per default ilastik comes with 3 feature plugins: "Standard Object Features", "S
 
 A short overview of available object features is given in the following segment of the webinar [ilastik beyond pixel classification - [NEUBIASAcademy@Home]](https://youtu.be/_ValtSLeAr0):
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_ValtSLeAr0?start=840&end=1367;?cc_load_policy=1&rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="\_ValtSLeAr0" params="start=840&end=1367" %}
 
 Some practical advice on selecting features can be found in our i2k ilastik tutorial:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F6KbJ487iiU?start=3519&end=3700;?cc_load_policy=1&rel=0" frameborder="0" allowfullscreen></iframe>
+{% include lazy_yt.html video_id="F6KbJ487iiU" params="start=3519&end=3700" %}
 
 Following here is a list of all available object features along with their description.
-
 
 ## Standard Object Features
 
