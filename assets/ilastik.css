@@ -194,11 +194,12 @@ iframe[src*=youtube] {
   margin: 0 auto;
   position: relative;
   cursor: pointer;
-  width: 480px;
-  height: 360px;
+  width: 100%;
+  max-width: 480px;
   aspect-ratio: 16 / 9;
   background-color: #000;
 }
+
 .yt-thumbnail {
   width: 100%;
   height: 100%;

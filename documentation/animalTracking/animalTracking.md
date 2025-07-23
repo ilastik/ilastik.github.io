@@ -19,7 +19,11 @@ Some examples of the results can be observed in the following videos:
 
 {% include lazy_yt.html video_id="kwDtmxBd5nM" %}
 
+<br>
+
 {% include lazy_yt.html video_id="gQUrABQo6ow" %}
+
+<br>
 
 {% include lazy_yt.html video_id="HpeCzQhOOPM" %}
 
