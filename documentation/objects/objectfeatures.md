@@ -25,7 +25,7 @@ Following here is a list of all available object features along with their descr
 ## Standard Object Features
 
 {% for feature in site.data.objectfeatures.features["Standard Object Features"] -%}
-{% unless feature.advanced or (feature.advanced == nil) -%}
+{% unless feature.advanced or feature.advanced == nil -%}
 {% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
 <div class="feature-card">
     <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
@@ -38,7 +38,7 @@ Following here is a list of all available object features along with their descr
 ## Convex Hull Features
 
 {% for feature in site.data.objectfeatures.features["2D Convex Hull Features"] -%}
-{% unless feature.advanced or (feature.advanced == nil) -%}
+{% unless feature.advanced or feature.advanced == nil -%}
 {% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
 <div class="feature-card">
     <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
@@ -51,7 +51,7 @@ Following here is a list of all available object features along with their descr
 ## Skeleton Features
 
 {% for feature in site.data.objectfeatures.features["2D Skeleton Features"] -%}
-{% unless feature.advanced or (feature.advanced == nil) -%}
+{% unless feature.advanced or feature.advanced == nil -%}
 {% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
 <div class="feature-card">
     <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
@@ -68,7 +68,7 @@ Extracts Spherical Textures: Angular mean projections of 2D or 3D image objects,
 Spherical Texture features were first incorporated into ilastik in version `1.4.1b19`.
 
 {% for feature in site.data.objectfeatures.features["Spherical Texture"] -%}
-{% unless feature.advanced or (feature.advanced == nil) -%}
+{% unless feature.advanced or feature.advanced == nil -%}
 {% assign anchor = feature.displaytext | downcase | replace: " ", "-" -%}
 <div class="feature-card">
     <div class="feature-header" id="{{ anchor }}">{{ feature.displaytext }}</div>
