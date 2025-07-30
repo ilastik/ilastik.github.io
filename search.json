@@ -1,0 +1,43 @@
+---
+layout: none
+permalink: /search.json
+---
+
+[
+{%- assign first = true -%}
+{%- assign docs = site.pages | concat: site.posts -%}
+{%- for doc in docs -%}
+  {%- if doc.content and doc.url and doc.url != "/search.json" -%}
+    {%- capture rendered -%}{{ doc.content | markdownify }}{%- endcapture -%}
+    
+    {%- assign blocks = rendered | split: '<h' -%}
+    {%- for i in (1..blocks.size) -%}
+      {%- assign block = '<h' | append: blocks[i] -%}
+      {%- assign tag = block | slice: 2, 1 -%}
+      {%- if tag == "2" or tag == "3" -%}
+        {%- assign close_tag = "</h" | append: tag | append: ">" -%}
+        {%- assign heading_html = block | split: close_tag | first | append: close_tag -%}
+        {%- assign rest = block | remove_first: heading_html -%}
+        {%- assign text = heading_html | strip_html | strip -%}
+        {%- assign id = "" -%}
+        {%- if heading_html contains 'id="' -%}
+          {%- assign id = heading_html | split: 'id="' | last | split: '"' | first -%}
+        {%- endif -%}
+
+        {%- if id != "" and text != "" -%}
+          {%- capture content_block -%}{{ heading_html }}{{ rest }}{%- endcapture -%}
+          {%- assign content_text = content_block | strip_html | normalize_whitespace -%}
+          {%- unless first -%},{%- endunless -%}
+          {
+            "title": {{ doc.title | default: "Untitled" | jsonify }},
+            "section": {{ text | jsonify }},
+            "url": {{ doc.url | append: '#' | append: id | jsonify }},
+            "content": {{ content_text | jsonify }}
+          }
+          {%- assign first = false -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+]

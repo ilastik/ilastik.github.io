@@ -19,7 +19,14 @@
           </li>
         {% endfor %}
       </ul>
-    </div>
 
+      <!-- Search bar -->
+      <form class="navbar-form navbar-right" role="search" style="position: relative; max-width: 300px;">
+        <div class="form-group" style="width: 100%;">
+          <input type="text" id="search-box" class="form-control" placeholder="Search" autocomplete="off">
+        </div>
+        <ul id="search-results" />
+      </form>
+    </div>
   </div>
 </div>
