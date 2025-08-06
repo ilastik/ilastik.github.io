@@ -5,6 +5,9 @@ vendor
 *~
 *.kate-swp
 
+#generated search index
+search.json
+
 #misc.
 .bundle
 .directory
