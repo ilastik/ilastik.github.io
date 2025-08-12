@@ -96,9 +96,15 @@ Since version 1.4.1, ilastik can export to the OME-Zarr format, and since versio
 ### Multiscale
 
 When choosing the multiscale export option, the export dialog previews the sizes of the individual scales that will be generated.
-The sizes depend on the input dataset and the data type.
+Note that the preview applies to the dataset that was currently selected when you open the export settings dialog.
+If you export several datasets to multi-scale OME-Zarr at once (using Export All), the scales are independently determined for each dataset by the rules explained below - essentially, 2x downscaling or matching the respective source scales.
+
+For the default 2x downscaling, the scale shapes depend on the input dataset and the data type.
 Generally, ilastik will generate downscales by a factor of 2 along x, y and z.
-The smallest scale is aimed to be roughly 500kB in size before compression (i.e. the entire image fits into one zarr chunk file, with a chunk size aimed at being roughly 500kB).
+The smallest scale is aimed to be roughly 1 MB in size before compression (i.e. the entire image fits into one zarr chunk file, with a chunk size aimed at being roughly 1 MB).
+As a consequence, the smallest scale for data types with fewer bits per value (e.g. 8-bit integer) will have a larger shape than for data types with more bits.
+
+If the export is derived from a multiscale dataset (raw data or segmentation were already multiscale), ilastik will match the input as described below.
 
 ### Input-matching and metadata carryover
 
@@ -107,15 +113,16 @@ When exporting to OME-Zarr, ilastik will carry over all metadata from the source
 ilastik will do its best to maintain compatibility with multiscale workflows by matching properties of the exported dataset to the source dataset where possible.
 
 If the source dataset was multiscale (Neuroglancer Precomputed or OME-Zarr), behind the scenes ilastik will match the internal names of the exported scales to the names of the corresponding scales in the input dataset.
-When exporting in multiscale OME-Zarr, the scale sizes will match the input dataset's scales.
-If you export only a subregion in multiscale using the "Cutout Subregion" settings, the cutout will be scaled by the same factors as the input dataset.
-
 This means that if you continue using the exported data in other workflows, the scale names and proportions will remain consistent across all exports.
 When you take these results into other tools, they may be able to match the data from ilastik to the corresponding scale(s) of the source dataset.
 
 Additionally, if the source dataset was OME-Zarr, ilastik will carry over all pixel resolution metadata from the source dataset to the exported dataset.
 
+The exported scale levels/factors will match the input if the input was also multiscale, even if you export only a subregion of the whole dataset.
+However, ilastik will only downscale, not upscale the exported data.
+Example: If the input raw data was downscaled to a total of 5 levels (called e.g. 1, 2, 3, 4 and 5, with level 1 being the raw data), you run Pixel Classification on level 3, and then export in "multi-scale OME-Zarr", the exported multiscale will contain scale levels 3, 4 and 5.
+
 ### Interpolation
 
-By default, downscaling is done using antialiasing and linear interpolation.
+By default, downscaling is done using linear interpolation.
 For certain export types where the exact pixel values need to be maintained, nearest-neighbor interpolation is used instead (e.g. for segmentations and labels).
