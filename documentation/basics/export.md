@@ -89,6 +89,10 @@ Your export results can be previewed in the viewer.  Typically, three layers are
 
 Besides exporting the images you see in the viewer, ilastik allows to save the results of [tracking]({{site.baseurl}}/documentation/tracking/tracking#sec_Plugin) and [object classification]({{site.baseurl}}/documentation/objects/objects#export) in the form of csv tables or hdf5 files.
 
+## Exporting multipage TIFFs
+
+ilastik exports multipage TIFFs as OME-TIFFs, and as such follows the OME XML standard for metadata. Therefore, additional metadata exported (such as pixel sizes) will need processing via an OME reader, e.g. Bio-Formats.
+
 ## Scaling and metadata carryover in OME-Zarr
 
 Since version 1.4.1b22, ilastik can export to the OME-Zarr format.
