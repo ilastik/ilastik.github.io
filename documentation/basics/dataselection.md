@@ -30,6 +30,7 @@ New data can be imported in a project with the "Add New..." button.
 Clicking this will present two options,
  * Add separate image(s)...
  * Add a single 3D/4D Volume from Stack...
+ * Add multiscale dataset...
 
 These can be used to [load a 2D/3D/4D image from a single file](#single_file) or [load
 a single 2D/3D/4D image from a stack of 2D images](#image_stack) respectively.
@@ -110,13 +111,47 @@ This must be a full URL including protocol.
 When you click "Check", ilastik will try to obtain image metadata from the given address, and display the results of the request.
 If the dataset is stored on the local filesystem, you can paste the path into the address field, e.g. `C:\Users\me\Downloads\tissue-gfp.zarr`.
 The "Check" button will test whether the path exists on the filesystem and automatically convert it to a `file:///` URL if successful.
-Note that this has to be the path to the root of the dataset, i.e. the folder containing the `.zattrs` file, and the folder name has to contain ".zarr".
+
+If the check is successful, you can confirm by clicking "Add to project".
+You can then select which scale / resolution level to load using the drop-down box in the input data table.
 
 _Note: ilastik will freeze while waiting for a response. If the server is slow or the connection is bad, it may take a while and your computer might warn that ilastik is not responding._
 
-If the check is successful, you can confirm by clicking "Add to project". You can then select which scale /
-resolution level to load using the drop-down box in the input data table.
+### Finding the right URL for OME-Zarr datasets {#ome-zarr}
+Zarr is a generic container format that uses regular folders on the file system.
+The OME standard does not prescribe a certain folder structure for how to store images in Zarr containers.
+This means that "the multiscale dataset", and the individual scales, are just folders, and they might be stored inside higher-level containers.
+The folder naming does not always make it clear which is which.
 
+For ilastik, the address has to contain ".zarr".
+It doesn't matter which folder contains ".zarr" in its name, but it has to appear somewhere in the address.
+
+Additionally, the path or address pasted in the dialog in ilastik has to be the root of the dataset, i.e. the folder containing the `.zattrs` file.
+If in doubt, you can navigate deeper into the folder structure and try a lower-level address in ilastik.
+
+### Using multiscale datasets for secondary roles {#multiscale-secondary-role}
+Warning: The GUI is as of version 1.4.1 not optimized to deal with this.
+
+When choosing datasets for secondary roles, such as prediction maps or segmentation in Object Classification, the chosen dataset must match the shape of the Raw Data.
+The multiscale loader always defaults to the lowest-resolution scale.
+This means that unless you were working and exporting the lowest resolution of the raw data, the shape of the multiscale segmentation will mismatch.
+
+The current best way to work around this is to select the direct URL to the matching scale in the "Add multiscale dataset" dialog
+  ([instructions for finding the direct scale URL]({{site.baseurl}}/documentation/basics/headless#ome-zarr-input)).
+  For example: `https://s3.myserver.org/segmentations/tissue1-seg.zarr/s3`.
+
+### Accessing OME-Zarr datasets with authentication {#ome-zarr-auth}
+Datasets stored on Amazon Web Service's S3, or on S3-like servers, can be accessed in ilastik with or without authentication.
+If the dataset is publicly accessible, simply pasting the `https://` or `s3://` URL should be sufficient.
+
+For buckets requiring authentication, ilastik uses the module s3fs, which builds on Amazon's boto.
+You can find instructions on how to set up credentials in [the boto documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+S3fs additionally implements authentication for S3-like servers via environment variables named `FSSPEC_...`, see the [s3fs docs](https://s3fs.readthedocs.io/en/latest/#s3-compatible-storage).
+
+When anonymous/public access fails, ilastik automatically tries AWS authentication for `s3://` URLs, and more generic s3fs authentication for `https://` URLs.
+If you cannot access your dataset from ilastik, but you are able to access it from other tools, please report this to us (`Help > Report issue`).
+
+### Browsing and working with multiscale datasets {#multiscale-browsing}
 To inspect more than one scale at a time, you can add multiple instances of the same dataset using "Add New".
 Simply paste the same address again, click "Check", and then "Add to project".
 
