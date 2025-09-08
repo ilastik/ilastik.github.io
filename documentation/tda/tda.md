@@ -55,7 +55,7 @@ The user interactions are very similar to the ones in Pixel Classification
 [bioimageio]: https://bioimage.io
 [pixelclass]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html
 [dataselection]: {{site.baseurl}}/documentation/basics/dataselection.html
-[featureselection]: [pixelclass]#selecting-good-features
-[training]: [pixelclass]#training-the-classifier
+[featureselection]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#selecting-good-features
+[training]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification.html#training-the-classifier
 [fullpaper]: https://www.frontiersin.org/articles/10.3389/fcomp.2022.805166/full
 [preprint]: https://www.biorxiv.org/content/10.1101/2021.11.09.467925v1
