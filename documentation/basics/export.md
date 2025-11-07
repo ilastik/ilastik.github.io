@@ -27,7 +27,7 @@ In all workflows, there is a designated applet to export results (see, for examp
 ## Data Export Applet
 
 <div style="float: right; width: 60%" markdown="1">
-<a name="data-export-applet-ss" href="screenshots/export-applet.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
+<a name="data-export-applet-ss" href="screenshots/export_applet_with_source.png" data-toggle="lightbox"><img src="screenshots/export_applet_with_source.png" class="img-responsive" /></a>
 </div>
 
 The export step is handled through the data export applet in ilastik. In [pixel classification]({{baseurl}}/documentation/pixelclassification/pixelclassification.html), for example, the applet is called "Prediction Export".
@@ -95,12 +95,57 @@ ilastik exports multipage TIFFs as OME-TIFFs, and as such follows the OME XML st
 
 ## Scaling and metadata carryover in OME-Zarr
 
-Since version 1.4.1b22, ilastik can export to the OME-Zarr format.
-While OME-Zarr is a multiscale image format, ilastik can only export a single scale for now.
+Since version 1.4.1, ilastik can export to the OME-Zarr format, and since version 1.4.2b1, ilastik can scale exports to produce multiscale OME-Zarr datasets.
+
+### Multiscale
+
+When choosing the multiscale export option, the export dialog previews the sizes of the individual scales that will be generated.
+Note that the preview applies only to the dataset that was currently selected when you opened the export settings dialog.
+If you export several datasets to "multi-scale OME-Zarr" at once (using Export All), the scales are independently determined for each dataset by the rules explained below.
+This means each dataset will be downscaled by 2x, or match the respective source scales, depending on whether the input was multiscale.
+You can try to open the dialog after selecting each dataset to see the different scale previews.
+
+For the default 2x downscaling, the scale shapes depend on the input dataset and the data type.
+Generally, ilastik will generate downscales by a factor of 2 along x, y and z.
+The smallest scale is aimed to be no more than 1 MB in size before compression (i.e. the entire image fits into one zarr chunk file, with a chunk size aimed at being roughly 1 MB).
+As a consequence, the smallest scale for data types with fewer bits per value (e.g. 8-bit integer) will have a larger shape than for data types with more bits.
+
+If the export is derived from a multiscale dataset (raw data or segmentation were already multiscale), ilastik will match the input as described below.
+
+### Input-matching and metadata carryover
+
+When exporting to OME-Zarr, ilastik will carry over all metadata from the source dataset to the exported dataset.
+
 ilastik will do its best to maintain compatibility with multiscale workflows by matching properties of the exported dataset to the source dataset where possible.
 
 If the source dataset was multiscale (Neuroglancer Precomputed or OME-Zarr), behind the scenes ilastik will match the internal names of the exported scales to the names of the corresponding scales in the input dataset.
-This means that if you continue using the exported data in other workflows, the scale names will remain consistent across all exports.
-When you take these results into other tools, they may be able to match the data from ilastik to the corresponding scale of the source dataset.
+This means that if you continue using the exported data in other workflows, the scale names and proportions will remain consistent across all exports.
+When you take these results into other tools, they may be able to match the data from ilastik to the corresponding scale(s) of the source dataset.
 
 Additionally, if the source dataset was OME-Zarr, ilastik will carry over all pixel resolution metadata from the source dataset to the exported dataset.
+
+The exported scale levels/factors will match the input if the input was also multiscale, even if you export only a subregion of the whole dataset.
+However, ilastik will only downscale, not upscale the exported data.
+Example: If the input raw data was downscaled to a total of 5 levels (called e.g. 1, 2, 3, 4 and 5, with level 1 being the raw data), you run Pixel Classification on level 3, and then export in "multi-scale OME-Zarr", the exported multiscale will contain scale levels 3, 4 and 5.
+
+### Interpolation
+
+By default, downscaling is done using linear interpolation.
+For certain export types where the exact pixel values need to be maintained, nearest-neighbor interpolation is used instead (e.g. for segmentations and labels).
+
+## Exporting OME-Zarr to cloud storage
+Exporting to AWS S3 is possible, but this is in experimental stage and untested.
+Please proceed with caution.
+
+To export to AWS S3, simply open [the export settings dialog](#settings), select the OME-Zarr export format, and change the export path to the target `s3://` URL.
+Magic placeholders like `{nickname}` and `{result_type}` will be replaced as usual for each dataset.
+
+For the export to work, you must have write access to the target.
+You should set up write permission (`s3:PutObject`) for a specific user in the AWS IAM, and then set up that user's credentials on your system as described in the [section on OME-Zarr access with authentication]({{baseurl}}/documentation/basics/dataselection.html#multiscale-ome-zarr-auth).
+We do not recommend opening a bucket for public write access.
+
+Writing to S3-like servers is not implemented yet (you will receive a "Forbidden" error).
+Please get in touch if you require this.
+
+As warned above, this is untested and not hardened to the various risks that come with uploading files over HTTPS.
+If any problems occur during the export, such as interruptions in the connection to the server, this will likely lead to unpredictable results.
