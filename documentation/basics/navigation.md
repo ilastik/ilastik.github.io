@@ -85,3 +85,23 @@ _z_-view has a blue color.
 * ![](screenshots/hud3d_02.png) 
   Dock the 3D view out of ilastik's main window (for example to move it to
   another screen). Another click docks the window back.
+
+
+## Label Explorer
+
+Some steps in ilastik involve labeling your data, either in the form of brush stroke annotations (e.g. in [Pixel Classification][pc], [Autocontext][ac], Carving[ca]), and class assignments for objects (in [Object Classification][oc] and [Tracking][tr]).
+In order to quickly navigate between different manual annotations, the relevant steps in the ilastik workflow have a "Label Explorer" on the right side of the viewport.
+The Label Explorer can be opened by either double clicking on the _Label Explorer_ caption, or clicking and dragging from the right.
+Each row in the table represents an annotation label.
+Clicking on the row will jump to the specific position in the central view.
+You can indicate the position of the label more clearly by activating the _Crosshairs_ with the checkbox in the lower left.
+The Label explorer can be closed by double clicking the _Label Explorer_ caption or clicking and dragging the divider towards the right.
+
+<a href="screenshots/label-explorer-doc1.png" data-toggle="lightbox"><img src="screenshots/label-explorer-doc1.png" class="img-responsive" /></a>
+
+
+[pc]: {{site.baseurl}}/documentation/pixelclassification/pixelclassification
+[ac]: {{site.baseurl}}/documentation/autocontext/autocontext
+[ca]: {{site.baseurl}}/documentation/carving/carving
+[oc]: {{site.baseurl}}/documentation/objects/objects
+[tr]: {{site.baseurl}}/documentation/tracking/tracking

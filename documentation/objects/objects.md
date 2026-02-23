@@ -187,6 +187,7 @@ It is also useful if you want to compute and export some features for downstream
 In that case, you can select all features of interest in the Object Feature Selection applet, and then choose the subset for the classifier here.
 
 To label objects, either simply left-click on them or right-click and select the corresponding option. Right-clicking also allows you to print the object properties in the terminal. To trigger classification, press the "Live Update" button.
+You can use the [Label Explorer]({{site.baseurl}}/documentation/basics/navigation#label-explorer) to find all existing annotations.
 
 <a href="figs/oc_live_upd_labeled.png" data-toggle="lightbox"><img src="figs/oc_live_upd_labeled.png" class="img-responsive" /></a>
 

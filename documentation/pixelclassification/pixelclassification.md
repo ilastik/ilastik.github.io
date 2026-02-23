@@ -71,6 +71,7 @@ To begin with the training of the classifier, we switch to the **Training** appl
 Each added label should correspond to a pixel class that we want to separate. This can, for example, be "cell" and "background", or "sky", "grass" and "tree". Two labels are already added by default, add more if needed by pressing the "Add Label" button. You can change the color of the annotations or the names of the labels by double-clicking on the little color square or on the "Label x" text field.
 
 You are now ready to give some training annotations! Select a class and scribble over pixels which belong to it. Then change to another class and add more scribbles for it. If you add a wrong scribble, use an eraser to remove it (eraser controls are shown below). You can also change the size of the brush in the next control. 
+You can use the [Label Explorer]({{site.baseurl}}/documentation/basics/navigation#label-explorer) to find all existing annotations.
 
 <a href="snapshots/scribbles_1.png" data-toggle="lightbox"><img src="snapshots/scribbles_1.png" class="img-responsive" /></a>
 
