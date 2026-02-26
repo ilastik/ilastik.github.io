@@ -89,9 +89,9 @@ _z_-view has a blue color.
 
 ## Label Explorer
 
-Some steps in ilastik involve labeling your data, either in the form of brush stroke annotations (e.g. in [Pixel Classification][pc], [Autocontext][ac], Carving[ca]), and class assignments for objects (in [Object Classification][oc] and [Tracking][tr]).
-In order to quickly navigate between different manual annotations, the relevant steps in the ilastik workflow have a "Label Explorer" on the right side of the viewport.
-The Label Explorer can be opened by either double clicking on the _Label Explorer_ caption, or clicking and dragging from the right.
+Some steps in ilastik involve labeling your data, either in the form of brush stroke annotations (e.g. in [Pixel Classification][pc], [Autocontext][ac], Carving[ca]), or class assignments for objects (in [Object Classification][oc] and [Tracking][tr]).
+To quickly navigate between different manual annotations, these steps in each ilastik workflow have a "Label Explorer" on the right side next to the viewer.
+The Label Explorer can be opened by either double clicking on the _Label Explorer_ caption, or clicking and dragging towards the center.
 Each row in the table represents an annotation label.
 Clicking on the row will jump to the specific position in the central view.
 You can indicate the position of the label more clearly by activating the _Crosshairs_ with the checkbox in the lower left.
