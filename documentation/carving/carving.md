@@ -105,6 +105,7 @@ The seeds can be refined by drawing markers, the currently active seed type can 
 on the left side by clicking on the corresponding seed.
 To erase erroneous markers, the **Brush mode** (below the seeds) needs to be changed to the eraser to switch back to drawing mode 
 the paint brush item has to be activated again.
+You can use the [Label Explorer]({{site.baseurl}}/documentation/basics/navigation#label-explorer) to find all existing annotations/seeds.
  
 Additional available interactions include:
 
