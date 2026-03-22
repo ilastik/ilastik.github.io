@@ -91,7 +91,7 @@ _z_-view has a blue color.
 
 __available since ilastik `1.4.2b9`__
 
-Some steps in ilastik involve labeling your data, either in the form of brush stroke annotations (e.g. in [Pixel Classification][pc], [Autocontext][ac], Carving[ca]), or class assignments for objects (in [Object Classification][oc] and [Tracking][tr]).
+Some steps in ilastik involve labeling your data, either in the form of brush stroke annotations (e.g. in [Pixel Classification][pc], [Autocontext][ac], [Carving][ca]), or class assignments for objects (in [Object Classification][oc] and [Tracking][tr]).
 To quickly navigate between different manual annotations, these steps in each ilastik workflow have a "Label Explorer" on the right side next to the viewer.
 The Label Explorer can be opened by either double clicking on the _Label Explorer_ caption, or clicking and dragging towards the center.
 Each row in the table represents an annotation label.
