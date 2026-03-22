@@ -257,6 +257,8 @@ After adding a few more labels we get a much better uncertainty estimate:
 </div>
 </div>
 
+You can use the [Label Explorer]({{site.baseurl}}/documentation/basics/navigation#label-explorer) to find all existing annotations.
+
 Division detection classifier should be treated in the same way.
 
 
