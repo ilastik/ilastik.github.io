@@ -60,31 +60,34 @@ By default, ilastik will use all available CPU cores (as detected by Python's "m
 
 If you want to explicitly specify the number of parallel threads ilastik should use, you can do so either by
 
-* setting special environment variables, or
-* creating a configuration file for ilastik.
+* using the Settings Dialog,
+* creating a configuration file for ilastik, or
+* setting special environment variables.
 
-### Using environment variables to control resources
+### Using the settings dialog to control resources
 
-ilastik will check for two environment variables on startup that control resource usage: `LAZYFLOW_THREADS`, and `LAZYFLOW_TOTAL_RAM_MB`.
-Note, these environment variables overrule any settings made in a config file (see below).
+The settings dialog is available from ilastik `1.4.1b21` and onward.
+It can be found in the menu _Settings -> Preferences_ (on MacOS _ilastik -> Preferences_).
 
-On linux and OSX you can specify the environment variables when starting ilastik from the command line:
+<a href="screenshots/preferences-dialog.png" data-toggle="lightbox"><img src="screenshots/preferences-dialog.png" width="100%" class="img-responsive" /></a>
 
-    LAZYFLOW_THREADS=4 run_ilastik.sh [...options]
-    
-There's an additional environment variable for specifying how much RAM to use during headless execution:
+In the above screenshot ilastik has been configured to use 12 threads and 40 GB (40000 MB) of RAM.
+Confirming the dialog will write the settings to:
 
-    LAZYFLOW_THREADS=4 LAZYFLOW_TOTAL_RAM_MB=4000 run_ilastik.sh [...options]
-    
-The RAM limit is not perfectly respected in all cases, so you may want to leave some buffer if your RAM budget is strict.
+* On Windows: `C:\Users\<YourUserName>\AppData\Local\ilastik\ilastik.ini`
+* On MacOS: `/Users/<YourUserName>/Library/Application Support/ilastik/ilastik.ini`
+* On Linux: `/home/<YourUserName>/.local/share/ilastik/ilastik.ini`
+
+Please note that ilastik needs to be restarted after changing the settings!
 
 ### Using a configuration file to control resources
 
-ilastik will check on each startup whether it can find its configuration file `.ilastikrc` in the home folder.
+ilastik will check on each startup whether it can find its configuration file `ilastik.ini` in the home folder.
 In order to control RAM and CPU resources, use a text-editor to create the file at
-* `C:\Users\<YourUserName>\.ilastikrc` on windows,
-* `/Users/<YourUserName>/.ilastikrc` on OSX, and
-* `/home/<YourUserName>/.ilastikrc` on linux.
+
+* On Windows: `C:\Users\<YourUserName>\AppData\Local\ilastik\ilastik.ini`
+* On MacOS: `/Users/<YourUserName>/Library/Application Support/ilastik/ilastik.ini`
+* On Linux: `/home/<YourUserName>/.local/share/ilastik/ilastik.ini`
 
 In order to limit ilastik to use `4000` megabytes of RAM and `4` threads, the file should have the following content:
 
@@ -93,6 +96,23 @@ In order to limit ilastik to use `4000` megabytes of RAM and `4` threads, the fi
 total_ram_mb=4000
 threads=4
 ```
+
+(In order to maintain legacy compatibility, ilastik will also load settings from a `.ilastikrc` file, located in the home folder.)
+
+### Using environment variables to control resources
+
+ilastik will check for two environment variables on startup that control resource usage: `LAZYFLOW_THREADS`, and `LAZYFLOW_TOTAL_RAM_MB`.
+Note, these environment variables overrule any settings made in the preferences dialog and config file.
+
+On linux and OSX you can specify the environment variables when starting ilastik from the command line:
+
+    LAZYFLOW_THREADS=4 run_ilastik.sh [...options]
+
+There's an additional environment variable for specifying how much RAM to use during headless execution:
+
+    LAZYFLOW_THREADS=4 LAZYFLOW_TOTAL_RAM_MB=4000 run_ilastik.sh [...options]
+
+The RAM limit is not perfectly respected in all cases, so you may want to leave some buffer if your RAM budget is strict.
 
 
 -----------------
