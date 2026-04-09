@@ -17,12 +17,16 @@ weight: 1
 
 As the name suggests, the object classification workflow aims to classify full *objects*, based on object-level features and user annotations.
 An *object* in this context is a set of pixels that belong to the same instance.
-Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. pixel predictions, a segmentation or a label image.
-This can be obtained e.g. using the [Pixel Classification Workflow].
-The workflow exists in two variants to handle different types for the second input:
+Object classification requires a second input besides the usual raw image data: an image that indicates for pixels whether they belong to an object or not, i.e. pixel predictions, a binary segmentation, or a label image.
+The workflow exists in three variants to handle different types for the _second_ input:
 
 * Object Classification [Inputs: Raw Data, Pixel Prediction Map]
 * Object Classification [Inputs: Raw Data, Segmentation]
+* Object Classification [Inputs: Raw Data, Label Image] (new in `1.4.2`)
+
+If you used the [Pixel Classification Workflow] to obtain foreground probabilities, then the first variant with _Pixel Prediction Map_ should be used.
+The _Segmentation_ variant should be used with binary segmentations (e.g. from thresholding in Fiji).
+The _Label Image_ variant is intended for inputs that already assign object identities (i.e. each object has a unique label), e.g. outputs from tools such as Stardist or Cellpose.
 
 The combined "Pixel Classification + Object Classification" workflow (found under "Other Workflows") is primarily intended for demonstration purposes and its use in real projects is discouraged.
 We instead recommend to use the two workflows separately, exporting probability maps from the Pixel Classification workflow and using them as input for the Object Classification workflow.
@@ -44,9 +48,10 @@ Load the probability maps in addition to the raw data in the Input Data step:
 
 <a href="figs/input_prediction_image.png" data-toggle="lightbox"><img src="figs/input_prediction_image.png" class="img-responsive" /></a>
 
-### Object Classification [Inputs: Raw Data, Segmentation]
+### Object Classification [Inputs: Raw Data, Segmentation] and [Inputs: Raw Data, Label Image]
 This workflow should be used if you already have a binary segmentation or a label image.
 Note that background pixels must have the value 0.
+In these two workflow variants there is no "Threshold and Size Filter" step.
 
 The image should be loaded in the data input applet:
 
@@ -253,10 +258,12 @@ The table export can be configured in three sections:
  Exporting a table to `h5` is most suitable for more involved post-processing, e.g. with Python.
  In addition to the table data, images of the respective objects can be included in the `h5` file, see _Settings_.
  * _Features_: Select the features to be included in the exported table.
+ For the [Inputs: Raw Data, Label Image], a column `original_oid` indicating the object id in the supplied label image.
  * _Settings_: Only applicable for `h5` export.
  Per default only the bounding box of each object is exported.
  A margin can be configured to include context around this bounding box (size in pixels/voxels).
  Alternatively, it is also possible to include the whole image instead of the individual object images.
+
 
 ## HDF5 export format
 
