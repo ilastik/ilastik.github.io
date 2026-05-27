@@ -14,11 +14,11 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
 </p>
 
 
-<h3 id="beta">Release Candidate 1.4.2rc1 (2. April 2026)</h3>
+<h3 id="stable">Release 1.4.2 (27. May 2026)</h3>
 
 <p><strong>Release Highlights:</strong></p>
 <ul>
-  <li>Physical pixel size metadata is now carried over from inputs to exports when using TIFF or H5</li>
+  <li>Physical pixel size metadata is now carried over from inputs to exports when using TIFF, H5 or OME-Zarr</li>
   <li>Viewer performance upgrade: Browsing big datasets should feel much smoother now</li>
   <li>Label explorer: Easily find and jump to previously drawn brush strokes and object labels</li>
   <li>New "multi-scale OME-Zarr" export format and better UX when adding multiscale datasets to a project</li>
@@ -33,22 +33,22 @@ For help with installation, see the <a href="{{site.baseurl}}/documentation/basi
   <tbody>
   <tr>
     <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-win64.exe">version 1.4.2rc1 (541 MB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-win64.exe">version 1.4.2 (500 MB)</a></td>
     <td><b>Supported Versions:</b> Windows 10 and up</td>
   </tr>
   <tr>
     <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple Silicon (arm64), OSX</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-arm64-OSX.zip">version 1.4.2rc1 (658 MB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-arm64-OSX.zip">version 1.4.2 (660 MB)</a></td>
     <td><b>Supported Versions:</b> 11 and up</td>
   </tr>
   <tr>
     <th><i class="fa fa-apple fa-lg"></i>&nbsp;Apple intel (64-bit), OSX</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-OSX.zip">version 1.4.2rc1 (910 MB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-OSX.zip">version 1.4.2 (900 MB)</a></td>
     <td><b>Supported Versions:</b> 10.9 and up</td>
   </tr>
   <tr>
     <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-Linux.tar.bz2">version 1.4.2rc1 (649 MB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-Linux.tar.bz2">version 1.4.2 (650 MB)</a></td>
     <td><b>Supported Versions:</b> Ubuntu 14 and up </td>
   </tr>
   </tbody>
@@ -64,13 +64,13 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
   <tbody>
   <tr>
     <th><i class="fa fa-windows fa-lg"></i>&nbsp;Windows (64-bit)</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-gpu-win64.7z.exe">version 1.4.2rc1-gpu (2.4 GB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-gpu-win64.7z.exe">version 1.4.2-gpu (2.4 GB)</a></td>
     </td>
     <td><b>Supported Versions:</b> Windows 10 and up, comes with cuda 12.6</td>
   </tr>
   <tr>
     <th><i class="fa fa-linux fa-lg"></i>&nbsp;Linux (64-bit)</th>
-    <td><a href="https://files.ilastik.org/ilastik-1.4.2rc1-gpu-Linux.tar.bz2">version 1.4.2rc1-gpu (4.5 GB)</a></td>
+    <td><a href="https://files.ilastik.org/ilastik-1.4.2-gpu-Linux.tar.bz2">version 1.4.2-gpu (4.6 GB)</a></td>
     <td><b>Supported Versions:</b> Ubuntu 14 and up, comes with cuda 12.6</td>
   </tr>
   </tbody>
@@ -80,8 +80,9 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
 <br>
 
 
+<h3 id="previous">Previous stable versions</h3>
 
-<h3 id="stable">Release 1.4.1.post1 (31. May 2025)</h3>
+<h4 id="141">Release 1.4.1.post1 (31. May 2025)</h4>
 
 <p><strong>Release Highlights:</strong></p>
 <ul>
@@ -103,8 +104,8 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
             <li>Currently only 2D networks are run accelerated on apple hardware, leveraging Metal Performance Shaders (mps), in the Neural Network and Trainable Domain Adaptation Workflows.
             3D networks will fallback to CPU execution.</li>
         </ul>
-    <li>Commercial solver support with gurobi <code>12.0.0</code> for tracking with learning.</li>
     </li>
+    <li>Commercial solver support with gurobi <code>12.0.0</code> for tracking with learning.</li>
 </ul>
 
 <h5>Regular builds</h5>
@@ -156,25 +157,7 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
 </tbody>
 </table>
 
-<br>
-<br>
-
-<h3 id="previous">Previous stable versions</h3>
-
-<div class="panel panel-danger">
-  <div class="panel-heading">
-    <h3 class="panel-title">macOS compatibility note for ilastik version older than 1.4.0</a></h3>
-  </div>
-  <div class="panel-body">
-    Starting with macOS 11 (Big Sur), or newer <em>ilastik versions
-    older than 1.4.0 will not run anymore on MacOS.</em>
-    Please download the latest version.
-  </div>
-</div>
-
-
-
-<h4 id="140">Version 1.4.0.post1 (10. November 2023)</h3>
+<h4 id="140">Version 1.4.0.post1 (10. November 2023)</h4>
 
 <p><strong>Release Highlights:</strong></p>
 <ul>
@@ -192,7 +175,7 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
 </ul>
 
 <br>
-ilastik 1.4.0 is distributed in two versions for Windows and Linux.
+Starting with 1.4.0, ilastik is distributed in two versions for Windows and Linux.
 In addition to our regular build, you can download GPU-enabled builds.
 With these you can <a href="{{site.baseurl}}/documentation/nn/nn.html">run pre-trained neural network models</a> from the <a href="https://bioimage.io/#/?partner=ilastik">bioimage.io Model Zoo</a> faster, if you have a compatible nvidia GPU on your system.
 All other workflows, besides the <i>Neural Network Workflow (local)</i> will work on the CPU, like before.
@@ -252,6 +235,16 @@ ilastik GPU-enabled builds are distributed with NVidia's CUDA toolkit. By downlo
 <br>
 <br>
 
+
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h4 class="panel-title">macOS compatibility note for ilastik version older than 1.4.0</h4>
+    </div>
+    <div class="panel-body">
+      ilastik versions older than 1.4.0 <em>will not run on macOS 11 (Big Sur) or newer.</em>
+      Please download a newer version above unless you are running an older macOS version.
+    </div>
+  </div>
 
 
 <h4 id="133">Version 1.3.3</h4>
