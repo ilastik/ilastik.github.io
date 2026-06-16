@@ -21,6 +21,27 @@ If you need to send us data you'd rather not post publicly, e-mail the ilastik t
 team@ilastik.org</a>.
 </p>
 
+<h2>Contrib Code</h2>
+
+<div class="list-group">
+  {% for repo in site.data.contrib_links %}
+    <a href="{{ repo.url }}" class="list-group-item">
+      <h3 class="list-group-heading">
+        {{ repo.title }}
+        <small>{{ repo.author }}</small>
+      </h3>
+      <p class="list-group-item-text">{{ repo.description }}</p>
+    </a>
+  {% endfor %}
+</div>
+
+<p>
+  <a href="https://github.com/ilastik/ilastik.github.io/edit/master/_data/contrib_links.yaml">
+    <button type="button" class="btn btn-primary">Add your project</button>
+  </a>
+</p>
+
+
 <!-- <p>
 If you want to earn money improving ilastik, look at our <b><a href="https://hci.iwr.uni-heidelberg.de/Jobs/#software">job offers</a></b>.
 </p> -->
