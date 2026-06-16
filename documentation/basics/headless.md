@@ -302,7 +302,9 @@ See the following example invocation that produces a csv-table via the plugin ex
     --export_plugin="CSV-Table" \
 ```
 
-## Running distributed ilastik via MPI (potentially trough SLURM)
+## Running distributed ilastik via MPI (potentially through SLURM)
+
+This feature is only available on [ilastik 1.4, currently still in beta](https://www.ilastik.org/download.html#beta).
 
 You can run some ilastik headless workflows as a distributed MPI application. This is functionally equivalent to (though far more efficient than) invoking ilastik multiple times, each time with a different `--cutout_subregion`, and saving all those executions as tiles of a single `.n5` dataset.
 
