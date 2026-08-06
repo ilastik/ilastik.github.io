@@ -1,0 +1,8 @@
+## Thank you for contributing your project link!
+## Please add your project details to the bottom of this file.
+
+- title: "Utility ImageJ macros"
+  description: |
+    Run ilastik Pixel Classifier followed by ilastik boundary based segmentation on all files in a given folder.
+  author: "Ofra Golani at the MICC Cell Observatory, Weizmann Institute of Science"
+  url: "https://github.com/WIS-MICC-CellObservatory/Utils"
