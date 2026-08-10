@@ -99,7 +99,7 @@ This ensures faster computations and enables processing of stacks larger than RA
 
 ## Loading multiscale data {#multiscale}
 
-Starting in version 1.4.1, multiscale datasets are supported in the formats OME-Zarr (URLs containing `.zarr`) and Neuroglancer Precomputed (URLs starting with `precomputed://`).
+Starting in version 1.4.1, multiscale datasets are supported in the formats OME-Zarr and Neuroglancer Precomputed.
 
 <div style="float: right;" markdown="1">
 <a href="screenshots/data_selection-multiscale.png" data-toggle="lightbox"><img src="screenshots/data_selection-multiscale.png" class="img-responsive" /></a>
@@ -109,11 +109,16 @@ You can use "Add multiscale dataset" to load multiscale, a.k.a. pyramidal images
 The dialog will ask for an address.
 This must be a full URL including protocol.
 When you click "Check", ilastik will try to obtain image metadata from the given address, and display the results of the request.
-If the dataset is stored on the local filesystem, you can paste the path into the address field, e.g. `C:\Users\me\Downloads\tissue-gfp.zarr`.
-The "Check" button will test whether the path exists on the filesystem and automatically convert it to a `file:///` URL if successful.
-Note that the URL has to contain ".zarr", or for Neuroglancer Precomputed it has to include the "precomputed://" prefix.
-Some tools unfortunately nest the actual multiscale image inside a folder named with the ".zarr" suffix.
-If ilastik cannot find any dataset at the ".zarr" level, you may need to inspect the folder yourself and try the subfolders inside it.
+
+Note that for Neuroglancer Precomputed, the URL must start with the Precomputed prefix, followed by the protocol, like: `precomputed://https://my.server/...`.
+
+If the dataset is stored on the local filesystem, you can skip the multiscale dialog if you drag-and-drop the OME-Zarr folder directly into the data selection table.
+When going via "Add multiscale dataset", you can use the Browse button, drag-and-drop the folder onto the dialog, or paste the path into the address field (e.g. `C:\Users\me\project\raw_data_multiscale.zarr`).
+You can also pre-select a specific scale by dropping/pasting its subfolder (e.g. `C:\Users\me\project\raw_data_multiscale.zarr/s1`).
+
+OME-Zarr writers have followed different folder layout conventions over time, and ilastik has progressively made its handling more flexible.
+For example, in older ilastik versions, the pasted URL needed to have a `.zarr` suffix, and drag-and-drop was not supported.
+If you cannot open a multiscale dataset, upgrading to the newest version could fix the issue.
 
 ### Accessing OME-Zarr datasets with authentication {#ome-zarr-auth}
 Datasets stored on Amazon Web Service's S3, or on S3-like servers, can be accessed in ilastik with authentication.
@@ -122,9 +127,17 @@ When anonymous/public access fails, ilastik automatically tries authenticated ac
 For this to work, your credentials must be set up before you start ilastik.
 Changes to credentials while ilastik is running will not be picked up.
 
-For authentication, ilastik uses the module s3fs, which builds on Amazon's boto.
-You can find instructions on how to set up credentials in [the boto documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+ilastik uses the module `s3fs` for authentication, which builds on Amazon's `boto`.
+You can find detailed instructions on how to set up credentials in [the boto documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 We recommend following the "shared credential file" approach.
+
+<div style="float: right;" markdown="1">
+<a href="screenshots/settings-aws-credentials.png" data-toggle="lightbox"><img src="screenshots/settings-aws-credentials.png" class="img-responsive" /></a>
+</div>
+
+The Settings menu in ilastik offers an option "Set AWS credentials", as a convenience for editing the shared S3 credential file.
+Remember that changes will not take effect until you restart ilastik.
+
 If authentication via shared credential file does not work, you can try using environment variables as described in the boto reference if you are trying to access an AWS S3 server.
 If you are trying to access an S3-like server (but not AWS), s3fs additionally supports authentication via environment variables named `FSSPEC_...`, see the [s3fs docs](https://s3fs.readthedocs.io/en/latest/#s3-compatible-storage).
 If the connection fails, the error messages in ilastik should indicate whether the problem is with access/authentication, or something else.

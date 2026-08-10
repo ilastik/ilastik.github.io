@@ -105,8 +105,8 @@ If you export several datasets to "multi-scale OME-Zarr" at once (using Export A
 This means each dataset will be downscaled by 2x, or match the respective source scales, depending on whether the input was multiscale.
 You can try to open the dialog after selecting each dataset to see the different scale previews.
 
-For the default 2x downscaling, the scale shapes depend on the input dataset and the data type.
-Generally, ilastik will generate downscales by a factor of 2 along x, y and z.
+The default when converting any regular dataset to multiscale is downscaling by factor 2 along x, y, and z if the dataset has a z-axis.
+How many scale levels are included depends on the dataset's shape and the data type.
 The smallest scale is aimed to be no more than 1 MB in size before compression (i.e. the entire image fits into one zarr chunk file, with a chunk size aimed at being roughly 1 MB).
 As a consequence, the smallest scale for data types with fewer bits per value (e.g. 8-bit integer) will have a larger shape than for data types with more bits.
 
