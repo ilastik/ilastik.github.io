@@ -53,6 +53,10 @@ CPU and RAM resources can be controlled with environment variables or a config f
 
 [controlling resources]: {{site.baseurl}}/documentation/basics/installation#controlling-cpu-and-ram-resources
 
+### External Projects
+
+We have [a list of projects]({{site.baseurl}}/community) that call headless ilastik from their scripts or code.
+
 ## Input options
 
 **Required settings:**
