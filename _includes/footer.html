@@ -5,8 +5,13 @@
     This badge is required for the Netlify open-source team account.
   {% endcomment %}
   {% if page.category == "Home" %}
-    <div class="row" align="center">
-      <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12 footer-badges">
+        {% if page.url == "/" %}
+          <a href="https://de.surveymonkey.com/r/denbi-service?sc=hd-hub&amp;tool=ilastik" title="This is an approved de.NBI service. Please help us improve by taking our short user survey.">
+            <img src="{{ site.baseurl }}/assets/denbi-logo-color.svg" alt="de.NBI user survey" width="120">
+          </a>
+        {% endif %}
         <a href="https://www.netlify.com">
           <img src="https://www.netlify.com/img/global/badges/netlify-light.svg">
         </a>

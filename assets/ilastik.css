@@ -131,6 +131,23 @@ h2:hover .header-link {
   text-align: center;
 }
 
+.footer-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-badges > a {
+  min-width: 0;
+}
+
+.footer-badges img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .feature-card {
     margin-bottom: 7px;
 }
